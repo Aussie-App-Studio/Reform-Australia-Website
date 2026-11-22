@@ -1,0 +1,101 @@
+{
+  "year": "2027",
+  "title": "CRCA Youth Convention 2027",
+  "subtitle": "A national week in God’s Word, worship, and Christian community for young people across the Christian Reformed Churches of Australia.",
+  "statusBanner": {
+    "isSoldOut": true,
+    "badge": "Sold Out — Waitlist Open",
+    "headline": "Convention 2027 is currently sold out!",
+    "message": "Register using the official form below to be added to the Convention waitlist.",
+    "ctaLabel": "Join the 2027 Waitlist",
+    "registrationUrl": "https://form.jotform.com/260332588128055"
+  },
+  "dates": "11–16 January 2027",
+  "datesDetail": "Afternoon on Monday 11 January until the morning of Saturday 16 January 2027.",
+  "location": "Busselton, Western Australia",
+  "venue": "Busselton Baptist Camping Centre",
+  "transportNote": "A free charter bus leaves from Perth Airport at 2:00pm sharp on 11 January and returns to Perth Airport at 4:00pm on 16 January. Be sure to select this option in your registration if you need a seat.",
+  "ages": "16–28",
+  "agePolicyNote": "Convention is for anyone aged 16–28. To support the spiritual growth of our young adults, the Convention Planning Committee enforces a strict age policy. For any age-policy questions, email admin@crcaconvention.au.",
+  "pricing": {
+    "opensDate": "1 March 2026",
+    "earlyBird": "$549",
+    "earlyBirdNote": "Early bird (ended 30 June 2026)",
+    "fullPrice": "$599",
+    "fullPriceNote": "Full price (registrations close 30 November 2026)",
+    "includes": "5 nights of accommodation at Busselton Baptist Camping Centre, all meals during Convention, guest speakers and panellists, and planned camp activities."
+  },
+  "speaker": {
+    "name": "Murray Capill",
+    "role": "Reformed Theological College (RTC), Melbourne",
+    "roleUrl": "https://rtc.edu.au/",
+    "bio": "Murray Capill works at Reformed Theological College in Melbourne, where he loves helping train and equip the next generation of pastors and gospel workers. He regularly speaks at camps and conferences, teaching the Bible and equipping God’s people for ministry. Born in New Zealand, Murray is married to Wendy and they have five adult children and several grandchildren. Outside ministry, he enjoys the outdoors, jobs around the home, a good coffee, and spending time with his grandkids."
+  },
+  "theme": {
+    "title": "Union with Christ — His Body & Bride",
+    "scripture": "Book of Ephesians",
+    "paragraphs": [
+      "One of the great joys of Convention is gathering with other disciples and seekers to discover Jesus, praise Jesus, and grow in Jesus. Together we are an expression of the church — the body and the bride of Christ.",
+      "Through the book of Ephesians, Convention 2027 delves into the deep, rich, mysterious, and glorious union of Christ and His Church. God’s great reveal in the gospel is Jesus and His resurrected Body — not merely a human organisation, but a God-given living organism powered by His Spirit.",
+      "Union with Christ shapes our identity, purpose, relationships, and future both individually and together, making those who are ‘in Christ’ both recipients and channels of God’s outpouring of grace."
+    ]
+  },
+  "about": [
+    "CRCA Convention exists to bring together young adults from across the Christian Reformed Churches of Australia for a week immersed in God’s Word, worship, and fellowship.",
+    "With a strong focus on personal discipleship, Convention serves as a spiritual reset for the year ahead — partnering with local churches to raise up young people who will be lifelong, disciple-making followers of Jesus.",
+    "Expect unhurried time opening Scripture, singing together, hanging out around the village, making lifelong friends from across Australia, and enjoying plenty of fun coastal activities."
+  ],
+  "promoVideo": {
+    "youtubeId": "yTxwQ9AvCLA",
+    "title": "Convention 2027 Promo Video"
+  },
+  "previousRecordings": [
+    {
+      "youtubeId": "6gVS10udKjQ",
+      "title": "In Jesus, in Life",
+      "subtitle": "Previous CRCA Convention Session"
+    },
+    {
+      "youtubeId": "t6L9hTKgREI",
+      "title": "In Jesus, in the Spirit",
+      "subtitle": "Previous CRCA Convention Session"
+    },
+    {
+      "youtubeId": "XR0WcPRUN3c",
+      "title": "In Jesus, in the Church",
+      "subtitle": "Previous CRCA Convention Session"
+    },
+    {
+      "youtubeId": "DxH5kJe_1sY",
+      "title": "In Jesus, in the World",
+      "subtitle": "Previous CRCA Convention Session"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Convention Code of Conduct",
+      "description": "Expectations, safety standards, and shared commitments for all campers and leaders.",
+      "url": "/ministry-resources/convention/Code-of-conduct-Convention.pdf",
+      "format": "PDF"
+    },
+    {
+      "title": "Fundraising Ideas for Convention",
+      "description": "Practical ideas to help youth groups and young adults raise funds for travel and registration.",
+      "url": "/ministry-resources/convention/Fund-Raising-Ideas-for-Convention.pdf",
+      "format": "PDF"
+    },
+    {
+      "title": "Church Promo Slide & Information",
+      "description": "Announcement slide and key event details to share during Sunday worship or youth group.",
+      "url": "/ministry-resources/convention/Promo_slide_info-1.pdf",
+      "format": "PDF"
+    }
+  ],
+  "leadersGuideStatus": "Leaders Guide (TBC)",
+  "contact": {
+    "email": "admin@crcaconvention.au",
+    "facebookUrl": "https://www.facebook.com/crcayouthconvention",
+    "instagramUrl": "https://www.instagram.com/crcaconvention/",
+    "standaloneUrl": "https://www.crcaconvention.au/"
+  }
+}

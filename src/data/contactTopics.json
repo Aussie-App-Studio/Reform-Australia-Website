@@ -1,0 +1,78 @@
+[
+  {
+    "id": "admin",
+    "title": "General Administration & Synod",
+    "subtitle": "Denominational office, records, website & directory updates, and general enquiries",
+    "routeToLabel": "CRCA National Administration",
+    "contactName": "CRCA Administration Office",
+    "email": "admin@crca.org.au",
+    "responseNote": "Best for church directory corrections, website updates, elder reading-sermon enquiries, and general denominational records.",
+    "iconName": "Mail"
+  },
+  {
+    "id": "safe-church",
+    "title": "Safe Church Unit",
+    "subtitle": "Safeguarding advice, WWCC compliance, training & confidential reporting",
+    "routeToLabel": "CRCA Safe Church Unit",
+    "externalUrl": "https://safechurch.crca.org.au/",
+    "externalLabel": "Visit safechurch.crca.org.au",
+    "email": "admin@crca.org.au",
+    "responseNote": "If you need safeguarding support, policy guidance, or training for your local congregation, access the Safe Church portal directly.",
+    "iconName": "ShieldCheck"
+  },
+  {
+    "id": "candidacy",
+    "title": "Candidacy & Ministry Training",
+    "subtitle": "Exploring ordination, vicariate placements, or study at RTC",
+    "routeToLabel": "Candidacy Committee Chair",
+    "contactName": "Rev. Josh Hartog (Chair)",
+    "phone": "0423 814 700",
+    "email": "joshhartog@outlook.com",
+    "externalUrl": "https://rtc.edu.au/",
+    "externalLabel": "Reformed Theological College (RTC)",
+    "responseNote": "Reach out early if you or someone in your congregation is considering ordained pastoral ministry in the CRCA.",
+    "iconName": "GraduationCap"
+  },
+  {
+    "id": "church-planting",
+    "title": "Church Planting & Missional Explorations",
+    "subtitle": "Church Planting Taskforce (CPT) & $2,500 matching seed grants",
+    "routeToLabel": "Church Planting Taskforce Convenor",
+    "contactName": "KJ Tromp (CPT Convenor)",
+    "email": "kj@southbarwon.org.au",
+    "responseNote": "For churches exploring a new plant, revitalisation project, or submitting a Missional Explorations application.",
+    "iconName": "MapPinPlus"
+  },
+  {
+    "id": "outreach",
+    "title": "Outreach, Shift Coaching & Health Checks",
+    "subtitle": "Organic Outreach cohorts, Shift pastoral coaching & NCD surveys",
+    "routeToLabel": "Local Church Support & Training",
+    "contactName": "CRCA Ministry Formation & Administration",
+    "email": "admin@crca.org.au",
+    "responseNote": "Connect for upcoming Organic Outreach cohorts, Shift Coaching connections, or ordering an NCD Church Health Check.",
+    "iconName": "Compass"
+  },
+  {
+    "id": "next-gen",
+    "title": "Next Gen (Cadets, GEMS & Youth Convention)",
+    "subtitle": "Starting or finding a Cadets/GEMS club, or Youth Convention queries",
+    "routeToLabel": "CRCA Next Gen Ministries",
+    "contactName": "National Administration & Youth Convention Committee",
+    "email": "admin@crca.org.au",
+    "secondaryEmail": "admin@crcaconvention.au",
+    "responseNote": "For Youth Convention registrations, waitlist, or age-policy enquiries, email admin@crcaconvention.au directly. For Cadets or GEMS club enquiries, contact CRCA Administration.",
+    "iconName": "Flame"
+  },
+  {
+    "id": "swim",
+    "title": "Solomon Islands SWIM",
+    "subtitle": "Honiara mission base bookings, short-term mission teams & student sponsorship",
+    "routeToLabel": "Solomon Islands Workgroup (SIW)",
+    "contactName": "SIW Chairperson",
+    "phone": "0412 058 848",
+    "email": "repeet777@hotmail.com",
+    "responseNote": "Reach out regarding Honiara base bookings, short-term mission teams, or student sponsorship.",
+    "iconName": "Anchor"
+  }
+]

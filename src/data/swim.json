@@ -1,0 +1,168 @@
+{
+  "name": "Solomon Islands SWIM",
+  "acronymMeaning": "Supporting Work in Ministry",
+  "eyebrow": "Global Mission • Solomon Islands",
+  "tagline": "Serving in the Solomon Islands with compassion through Biblical teaching, equipping, and practical support in Jesus’ name.",
+  "mission": "Serving in Solomon Islands with compassion through Biblical teaching, equipping, and support in Jesus’ name.",
+  "vision": "As a mission community of Christ-centred people, we will provide effective, practical, compassionate support and Bible-based teaching and equipping ministries to build up Christians and establish self-reliant communities in the Solomon Islands using our base facilities, resources, and the talents of our long- and short-term team members.",
+  "whatIsSwim": "SWIM stands for Supporting Work in Ministry. It is an overseas mission arm of the Christian Reformed Churches of Australia (CRCA), a Registered Charitable Trust in the Solomon Islands, and an associate member of the Solomon Islands Christian Association (SICA).",
+  "featuredVideo": {
+    "youtubeId": "pFjqdKlveyc",
+    "title": "Katova District High School Project — Solomon Islands",
+    "caption": "A glimpse into SWIM short-term mission partnerships working alongside Solomon Islands communities."
+  },
+  "keyMinistryAreas": [
+    "Teaching and Equipping Church Leaders",
+    "Know Your Bible (KYB)",
+    "SWIM Short-Term Mission Teams",
+    "Community Development and Assistance",
+    "Practical Aid and Disaster Relief",
+    "Days for Girls Program",
+    "School Student Sponsorship",
+    "Conference Centre and Accommodation",
+    "Prison Ministry (Crossroads)",
+    "Media Ministry",
+    "Bethesda Disability Centre Support"
+  ],
+  "coreValues": [
+    {
+      "title": "Biblical Teaching",
+      "references": "2 Tim. 3:16–17; 1 Cor. 2:7–14; 2 Peter 1:20–21",
+      "description": "We value the Bible as God’s authoritative and accurate Word for salvation and service, striving to teach Scripture with integrity so seekers find Christ and believers mature in Him."
+    },
+    {
+      "title": "Unity",
+      "references": "Eph. 4:3–5; 1 Cor. 1:10; John 17:21; Ps. 133:1",
+      "description": "Focused on what unites us in Jesus Christ rather than what divides us, we refuse a spirit of complaining and pursue godly problem-solving that protects the unity of the Spirit."
+    },
+    {
+      "title": "Teamwork",
+      "references": "Eph. 4:11–16; 1 Peter 2:4–9; 1 Cor. 12:14–30; Eccl. 4:9–12",
+      "description": "Doing ministry as a team is God’s design — Spirit-empowered serving with willing-hearted involvement from every member makes us stronger together than apart."
+    },
+    {
+      "title": "Godly Leadership",
+      "references": "2 Tim. 4:1–5; 1 Peter 5:1–4; 1 Cor. 3:5–23; Rom. 12:8",
+      "description": "A godly ministry can rise no higher than its leadership. We aim to raise up men and women of servant leadership, godly wisdom, integrity, accountability, and unity."
+    },
+    {
+      "title": "Loving People",
+      "references": "1 Cor. 13; 1 John 4:7–12; Micah 6:8; Matt. 25:31–46",
+      "description": "Every individual is equally valuable in God’s eyes. We seek to build loving biblical community while serving and caring for the poor, oppressed, and marginalised."
+    },
+    {
+      "title": "Prayer",
+      "references": "Acts 2:42; Matt. 6:5–13; Eph. 6:18–20; 1 Tim. 2:1–4",
+      "description": "Prayer precedes and permeates everything we do — keeping our hearts listening to God rather than leaning on our own understanding."
+    },
+    {
+      "title": "Spiritual Growth",
+      "references": "2 Peter 1:5–9; Eph. 4:15–16; Acts 2:44–47; 1 Peter 2:2",
+      "description": "Committed to ongoing discipleship through small groups, honest accountability, and continual growth in love for God."
+    },
+    {
+      "title": "Cultural Relevance",
+      "references": "1 Cor. 9:22; 2 Cor. 5:14–21; Luke 5:36–39",
+      "description": "While God’s message is timeless, forms and methods adapt thoughtfully so we guard gospel truth while ministering in ways the local culture understands."
+    }
+  ],
+  "theBase": {
+    "headline": "The SWIM Mission Base — Honiara",
+    "summary": "Set on a peaceful five-acre block on the eastern outskirts of Honiara (around 12 km from the city centre and 4 km from the international airport), the SWIM base serves both long-term missionaries and visiting mission teams.",
+    "highlights": [
+      {
+        "label": "Location & Setting",
+        "detail": "5-acre grounds 12 km east of Honiara and 4 km from Henderson International Airport, with gardens, quiet spaces for small groups, and a 20-minute walk to the beach."
+      },
+      {
+        "label": "Accommodation Capacity",
+        "detail": "Conference Centre and Transit House comfortably accommodating up to 34 people in bunk-style rooms, plus a large shared common room, dining area, and kitchen."
+      },
+      {
+        "label": "Facilities & Long-Term Housing",
+        "detail": "Includes seven residences for long-term team members and a large traditional leaf meeting house equipped for conferences, workshops, and team gatherings."
+      },
+      {
+        "label": "On-Site Utilities",
+        "detail": "240V electricity via solar panels backed by a generator, rainwater catchment for drinking water, and a borehole supply for general base needs."
+      }
+    ],
+    "bookingNote": "The Conference Centre and Transit House are available at very reasonable rates for short-term mission teams, retreats, conferences, and workshops (usually self-catering). Contact the SWIM team to enquire about bookings and rates."
+  },
+  "opportunities": [
+    {
+      "id": "deed-missionaries",
+      "title": "Full-Time Deed Missionaries",
+      "summary": "Oversee maintenance of all SWIM buildings and property, supervise construction projects, care for base vehicles and mechanical equipment, and prepare supplies for incoming SWIM teams alongside base staff."
+    },
+    {
+      "id": "short-term-missions",
+      "title": "Short-Term Mission Teams",
+      "summary": "Congregational teams and volunteers from Australia, New Zealand, and beyond travel to the Solomon Islands to partner with local believers. SWIM provides preparation, cultural orientation, and training resources so short trips genuinely strengthen long-term ministry."
+    },
+    {
+      "id": "school-sponsorship",
+      "title": "School Student Sponsorship",
+      "summary": "Because schooling in the Solomon Islands is neither free nor compulsory, fewer than 50% of children attend primary school, only 30% enrol in secondary school, and national literacy sits around 18%. Sponsorship helps cover tuition fees, uniforms, and school supplies."
+    },
+    {
+      "id": "crossroads-prison",
+      "title": "Crossroads Prison Ministry",
+      "summary": "Working in partnership with SWIM, Michael and Janet Light coordinate Crossroads Bible studies that disciple incarcerated men and women in the Word of God free of charge — preparing inmates for hope, spiritual renewal, and successful re-entry upon release."
+    },
+    {
+      "id": "samasodu-village",
+      "title": "Samasodu Village Project",
+      "summary": "Building on more than 12 years of partnership (over 160 team members across 7 projects constructing a Rural Health Centre, staff housing, sanitation, and clean water supply), Australian teams are partnering to build a High School in Samasodu Village.",
+      "externalUrl": "https://www.facebook.com/SWIMSamasodumissiontrips/",
+      "externalLabel": "Samasodu Mission Trips on Facebook"
+    },
+    {
+      "id": "bethesda-disability",
+      "title": "Bethesda Disability School",
+      "summary": "Developed by SWIM alongside the Ministry of Health and People With Disabilities Solomon Islands (PWDSI), Bethesda has run three 8-week residential life-skills courses each year since 2010 — teaching Christian faith, personal healthcare, gardening, woodwork, and sewing, supported by an on-site poultry farm. Building teams are still needed to complete additional staff housing."
+    }
+  ],
+  "servingReflection": "Over the years, dozens of teams from Australia and New Zealand have served at the SWIM base. Serving in the Solomon Islands is not about tourism or a personal pilgrimage — SWIM equips every short-term team to serve in ways that are culturally humble, support local long-term ministry, and help establish self-reliant Christian communities.",
+  "newsletters": [
+    {
+      "title": "SWIM Newsletter — Q1 2026",
+      "url": "/ministry-resources/swim/newsletters/Newsletter-2026-QTR-1.pdf"
+    },
+    {
+      "title": "SWIM Newsletter — Q4 2025",
+      "url": "/ministry-resources/swim/newsletters/Newsletter-2025-QTR-4.pdf"
+    },
+    {
+      "title": "SWIM Newsletter — Q3 2025",
+      "url": "/ministry-resources/swim/newsletters/Newsletter-2025-Qtr3.pdf"
+    },
+    {
+      "title": "SWIM Newsletter — Q2 2025",
+      "url": "/ministry-resources/swim/newsletters/Newsletter-2025-QTR2.pdf"
+    },
+    {
+      "title": "SWIM Newsletter — Q1 2025",
+      "url": "/ministry-resources/swim/newsletters/Newsletter-2025-QTR1.pdf"
+    },
+    {
+      "title": "SWIM Newsletter — End of Year 2024",
+      "url": "/ministry-resources/swim/newsletters/Newsletter-2024-Final.pdf"
+    }
+  ],
+  "policies": [
+    {
+      "title": "SWIM Policy for Short-Term Missions",
+      "description": "Governance standards and expectations for visiting church teams and individual volunteers.",
+      "url": "/ministry-resources/swim/SWIM-STM-Policy.pdf"
+    },
+    {
+      "title": "SWIM Short-Term Missions Agreement Form",
+      "description": "Participant commitment and sign-off form for teams serving through the SWIM Base.",
+      "url": "/ministry-resources/swim/SWIM-STM-Agreement-Form.pdf"
+    }
+  ],
+  "social": {
+    "facebookUrl": "https://www.facebook.com/swimsolomons"
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "themeHighlight": {
+    "yearLabel": "Featured Club Theme",
+    "title": "“Amazing” — Joshua 3:5",
+    "verse": "“Consecrate yourselves, for tomorrow the LORD will do amazing things among you.” (Joshua 3:5)",
+    "intro": "Both Cadets and GEMS clubs share an annual curriculum theme reminding young people and their volunteer leaders of three core truths:",
+    "reminders": [
+      "That God is holy.",
+      "That we must prepare ourselves if we are to be in His presence.",
+      "That God has done, is doing, and will do amazing things."
+    ],
+    "closing": "These reminders encourage children and mentors alike to strive for holiness, recognise the many ways God blesses them, and share the amazing things God is doing across local clubs."
+  },
+  "sharedResources": [
+    {
+      "title": "Theme Lessons — “Amazing” (2022–2024 Curriculum)",
+      "description": "Leader lesson guide and club devotionals based on Joshua 3:5.",
+      "url": "/ministry-resources/cadets-gems/Theme-Lessons-2022.pdf",
+      "format": "PDF"
+    },
+    {
+      "title": "Club Bulletin Cover (Downloadable)",
+      "description": "Printable 8.5×11 club bulletin and handout cover artwork.",
+      "url": "/ministry-resources/cadets-gems/Bulletin-Cover-22.8.5x11-Downloadable.pdf",
+      "format": "PDF"
+    },
+    {
+      "title": "Club Gold Sheet (2022–2023)",
+      "description": "Quick-reference club schedule and planning guide for counsellors and leaders.",
+      "url": "/ministry-resources/cadets-gems/2022_2023-Gold-Sheet.pdf",
+      "format": "PDF"
+    }
+  ],
+  "cadets": {
+    "eyebrow": "Next Gen • Boys Mentoring",
+    "title": "CRCA Cadets",
+    "subtitle": "Equipping local churches to share Christ’s love with primary and early high-school boys through Bible study, badge work, crafts, outdoor adventure, and Christian mentoring.",
+    "quickStats": [
+      {
+        "label": "Ages 9–14",
+        "detail": "Designed for primary and early high-school boys"
+      },
+      {
+        "label": "In Australia Since 1964",
+        "detail": "Founded in the USA in 1952 and established in Australia in 1964"
+      },
+      {
+        "label": "15 Active Clubs",
+        "detail": "Approximately 180 cadets and 70 volunteer counsellors nationwide"
+      },
+      {
+        "label": "Reformed Foundation",
+        "detail": "Grounded in Scripture and the Three Forms of Unity"
+      }
+    ],
+    "whoWeAre": [
+      "The Christian Cadet Corps is a youth ministry organisation whose purpose is to provide local churches with a structured ministry program that helps them effectively share Christ’s love with boys from their congregation and wider community.",
+      "Cadets is run entirely by local church volunteers (counsellors) for boys aged 9 to 14. At Cadets, boys learn about God, complete hands-on badge work, build crafts, play games, sing songs, build lasting friendships, and head out on camps and outdoor excursions.",
+      "Founded in 1952 in the United States, the Cadet movement was introduced into Australia in 1964. Since then it has grown to 15 clubs across Australia with approximately 180 cadets and 70 counsellors."
+    ],
+    "whatWeBelieve": "The basis of the Christian Cadet Corps is the Word of God (the Bible), understood according to the Reformed confessions: the Heidelberg Catechism, the Canons of Dort, and the Belgic Confession.",
+    "goalVerse": "Luke 2:52 — “Jesus grew in wisdom and stature, and in favour with God and men.”",
+    "goalSummary": "Based on Luke 2:52, the goal of the Christian Cadet Corps is to help boys grow spiritually across every area of life by providing Christian men with a structured program, mentoring framework, and practical materials.",
+    "growthPillars": [
+      {
+        "title": "Devotional",
+        "description": "Growing in love for Jesus Christ through Scripture study, prayer, and godly example."
+      },
+      {
+        "title": "Mental",
+        "description": "Developing curiosity, discernment, practical problem-solving, and badge skills."
+      },
+      {
+        "title": "Physical",
+        "description": "Building teamwork, resilience, outdoor skills, campcraft, and healthy recreation."
+      },
+      {
+        "title": "Social",
+        "description": "Forming loyal friendships and learning respect, service, and Christian character."
+      }
+    ],
+    "activities": [
+      "Interactive Bible study and devotional mentoring",
+      "Hands-on badge work and woodworking or craft projects",
+      "Team games, club songs, and memory work",
+      "Camps, campouts, and outdoor excursions"
+    ]
+  },
+  "gems": {
+    "eyebrow": "Next Gen • Girls Mentoring",
+    "title": "CRCA GEMS Girls’ Clubs",
+    "subtitle": "Girls Everywhere Meeting the Saviour — helping girls discover God’s love, build lasting Christian friendships, and live out their faith in everyday life.",
+    "overview": [
+      "G.E.M.S. is a volunteer-run Christian girls’ club program created especially for girls aged 9–15, with many congregations also running a Busy Bees program for younger girls aged 6–8.",
+      "G.E.M.S. clubs typically meet weekly or fortnightly and are led by Christian women from local CRCA congregations, welcoming girls from both the church and the local community."
+    ],
+    "mission": "To help bring girls into a living, dynamic relationship with Jesus Christ.",
+    "vision": "To see girls actively and enthusiastically expressing love for God and others by equipping and encouraging them to live out their faith.",
+    "motto": {
+      "reference": "Micah 6:8",
+      "prompt": "“What does the Lord require of us?”",
+      "response": "“To act justly, to love kindness, and to walk humbly with our God.”",
+      "context": "The Bible is central to every G.E.M.S. evening. Clubs open with this call-and-response from Micah 6:8 and set aside dedicated time to learn from God’s Word through group Bible studies and talks from leaders."
+    },
+    "levels": [
+      {
+        "name": "Busy Bees (Awareness)",
+        "ages": "Ages 6–8",
+        "description": "A welcoming introduction for younger girls focused on foundational Bible stories, crafts, games, and belonging in church family life."
+      },
+      {
+        "name": "Discovery Level",
+        "ages": "Ages 9–13",
+        "description": "Structured Bible discovery, badges, friendship-building, and practical service projects tailored for upper-primary and early-high-school girls."
+      },
+      {
+        "name": "Advanced Level",
+        "ages": "Ages 13–15",
+        "description": "Deeper biblical application, leadership mentoring, camp experiences, and real-world discipleship for teenage girls navigating modern challenges."
+      }
+    ],
+    "activities": [
+      "Small-group Bible study and talks from mentors",
+      "Badge work across faith, life skills, and creativity",
+      "Games, crafts, drama, and singing",
+      "Serving others in the community (including nursing home visits)",
+      "Recreational outings such as swimming and bushwalks",
+      "Club and state G.E.M.S. camps"
+    ]
+  }
+}

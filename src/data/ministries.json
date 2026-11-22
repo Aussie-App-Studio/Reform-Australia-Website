@@ -1,0 +1,203 @@
+[
+  {
+    "id": "shift-coaching",
+    "name": "Shift Coaching",
+    "shortDescription": "Encourages CRCA pastors to build intentional peer, elder, and ministry coaching relationships around pastoral health and disciple-making.",
+    "fullDescription": "Overseen by the TRAIN Workgroup and Ministry Development Coordinator, Shift Coaching invites pastors and Church Councils into structured reflection across five key rhythms: Love One Another, Discipleship, Multiplying Leadership, Reaching the Lost, and Professional Development.",
+    "megaMenuGroup": "training-planting",
+    "homepageTab": "training-support",
+    "iconName": "Compass",
+    "url": "/ministries/shift-coaching",
+    "isExternal": false,
+    "ctaLabel": "Explore Shift Coaching",
+    "secondaryLinks": [
+      {
+        "label": "Download Shift Brochure (PDF)",
+        "url": "/ministry-resources/shift/Shift-Brochure.pdf"
+      }
+    ]
+  },
+  {
+    "id": "local-church-outreach-training",
+    "name": "Local Church Outreach Training",
+    "shortDescription": "Equips everyday church members to share the gospel naturally through cohorts, coaching, and a partnership with Organic Outreach International.",
+    "fullDescription": "Through cohorts, practical evangelism resources, and ongoing coaching, Local Church Outreach Training helps congregations build a culture where outreach flows naturally from everyday relationships and local community engagement.",
+    "megaMenuGroup": "training-planting",
+    "homepageTab": "training-support",
+    "iconName": "MessageCircleHeart",
+    "url": "/ministries/local-church-outreach-training",
+    "isExternal": false,
+    "ctaLabel": "Explore Outreach Training",
+    "contact": "CRCA Ministry Development — admin@crca.org.au",
+    "secondaryLinks": [
+      {
+        "label": "Organic Outreach International",
+        "url": "https://www.organicoutreach.org/"
+      },
+      {
+        "label": "Training Pathway & Free Church Tools",
+        "url": "https://www.organicoutreach.org/how-it-works-2-0/"
+      }
+    ]
+  },
+  {
+    "id": "missional-explorations",
+    "name": "Missional Explorations",
+    "shortDescription": "Provides matching seed grants up to $2,500 to help local churches bridge everyday outreach and formal church planting.",
+    "fullDescription": "Supported by the Church Planting Taskforce (CPT), Missional Explorations helps emerging church-planting teams fund core-team training, hospitality, equipment, venue hire, and outreach materials as they test new gospel initiatives.",
+    "megaMenuGroup": "training-planting",
+    "homepageTab": "training-support",
+    "iconName": "Sparkles",
+    "url": "/ministries/missional-explorations",
+    "isExternal": false,
+    "ctaLabel": "Explore Missional Explorations",
+    "highlights": ["Up to $2,500 matching seed funding from CPT"],
+    "contact": "KJ Tromp (CPT Convenor) — kj@southbarwon.org.au",
+    "secondaryLinks": [
+      {
+        "label": "Application Form (PDF)",
+        "url": "/ministry-resources/missional-explorations/Missional-Exploration-Application.pdf"
+      }
+    ]
+  },
+  {
+    "id": "church-planting-taskforce",
+    "name": "Church Planting Taskforce (CPT)",
+    "shortDescription": "Encourages, researches, and resources new CRCA church plants and congregation revitalisation efforts across Australia.",
+    "fullDescription": "The Church Planting Taskforce works across states and classes to research unreached regions, refine church planting and revitalisation models, develop financial sustainability, and oversee Missional Explorations grants.",
+    "megaMenuGroup": "training-planting",
+    "homepageTab": "training-support",
+    "iconName": "MapPinPlus",
+    "url": "/ministries/church-planting-taskforce",
+    "isExternal": false,
+    "ctaLabel": "Explore Church Planting Taskforce",
+    "contact": "KJ Tromp (CPT Convenor) — kj@southbarwon.org.au",
+    "secondaryLinks": [
+      {
+        "label": "Missional Explorations Grant (PDF)",
+        "url": "/ministry-resources/missional-explorations/Missional-Exploration-Application.pdf"
+      }
+    ]
+  },
+  {
+    "id": "candidacy",
+    "name": "Candidacy Committee",
+    "shortDescription": "Guides aspiring pastors through theological training, mentoring, vicariate placement, and Classis examination toward ordained CRCA ministry.",
+    "fullDescription": "The Candidacy Committee oversees four ordination pathways and an 11-step approval journey—typically encouraging study at the Reformed Theological College (RTC) followed by a supervised one-year vicariate in a local congregation.",
+    "megaMenuGroup": "training-planting",
+    "homepageTab": "training-support",
+    "iconName": "GraduationCap",
+    "url": "/ministries/candidacy",
+    "isExternal": false,
+    "ctaLabel": "View 11-Step Pathway",
+    "highlights": ["4 ordination tracks", "11-step pathway with 1-year vicariate"],
+    "contact": "Rev. Josh Hartog (Chair) — 0423 814 700 • joshhartog@outlook.com",
+    "secondaryLinks": [
+      {
+        "label": "Enquire About Candidacy",
+        "url": "/contact?topic=candidacy"
+      }
+    ]
+  },
+  {
+    "id": "reformed-theological-college",
+    "name": "Reformed Theological College (RTC)",
+    "shortDescription": "Provides accredited, biblically faithful Reformed theological education preparing pastors, missionaries, and ministry leaders.",
+    "fullDescription": "Located in Victoria and serving students across Australia and online, RTC partners closely with the CRCA to form men and women grounded in Scripture, Reformed confessions, and pastoral wisdom.",
+    "megaMenuGroup": "training-planting",
+    "homepageTab": "training-support",
+    "iconName": "BookOpenCheck",
+    "url": "https://rtc.edu.au/",
+    "isExternal": true,
+    "ctaLabel": "Visit rtc.edu.au"
+  },
+  {
+    "id": "cadets",
+    "name": "CRCA Cadets",
+    "shortDescription": "Equips boys and mentors across local congregations to live for Christ through Scripture study, outdoor adventure, and service projects.",
+    "fullDescription": "Part of the Christian Cadet Corps network, local CRCA Cadet clubs pair faithful men from the church with primary and early-high-school boys for hands-on badges, camping, and biblical character formation.",
+    "megaMenuGroup": "next-gen",
+    "homepageTab": "next-gen-families",
+    "iconName": "Trees",
+    "url": "/ministries/cadets",
+    "isExternal": false,
+    "ctaLabel": "Explore CRCA Cadets"
+  },
+  {
+    "id": "gems",
+    "name": "CRCA GEMS Girls' Clubs",
+    "shortDescription": "Creates welcoming club communities where girls discover God's love, build lasting friendships, and grow as disciples of Jesus.",
+    "fullDescription": "GEMS (Girls Everywhere Meeting the Saviour) connects mentors and girls in local congregations through Bible discovery, worship, crafts, camps, and practical community care.",
+    "megaMenuGroup": "next-gen",
+    "homepageTab": "next-gen-families",
+    "iconName": "Sun",
+    "url": "/ministries/gems",
+    "isExternal": false,
+    "ctaLabel": "Explore CRCA GEMS"
+  },
+  {
+    "id": "youth-convention",
+    "name": "CRCA Youth Convention",
+    "shortDescription": "Brings Reformed teenagers and young adults from across Australia together for biblical teaching, worship, and lifelong fellowship.",
+    "fullDescription": "A flagship national gathering where high-schoolers and young leaders explore Scripture deeply, build friendships beyond their home state, and catch a bigger vision for God's kingdom.",
+    "megaMenuGroup": "next-gen",
+    "homepageTab": "next-gen-families",
+    "iconName": "Flame",
+    "url": "/ministries/youth-convention",
+    "isExternal": false,
+    "ctaLabel": "Explore Youth Convention"
+  },
+  {
+    "id": "safe-church-unit",
+    "name": "Safe Church Unit",
+    "shortDescription": "Supports congregations with safeguarding policies, Working With Children compliance, leadership training, and pastoral care guidance.",
+    "fullDescription": "Committed to protecting children and vulnerable people in every CRCA congregation, the Safe Church Unit provides national standards, screening protocols, training workshops, and confidential advice for elders and ministry teams.",
+    "megaMenuGroup": "training-planting",
+    "homepageTab": "next-gen-families",
+    "iconName": "ShieldCheck",
+    "url": "https://safechurch.crca.org.au/",
+    "isExternal": true,
+    "ctaLabel": "Visit safechurch.crca.org.au"
+  },
+  {
+    "id": "world-transform",
+    "name": "World Transform",
+    "shortDescription": "Oversees CRCA international mission partnerships bringing holistic gospel word and community transformation across partner nations.",
+    "fullDescription": "Working alongside local church partners overseas, World Transform supports gospel ministry, leadership training, compassion initiatives, and long-term cross-cultural mission.",
+    "megaMenuGroup": "global-mission",
+    "homepageTab": "global",
+    "iconName": "Globe2",
+    "url": "https://worldtransform.org.au/",
+    "isExternal": true,
+    "ctaLabel": "Visit worldtransform.org.au"
+  },
+  {
+    "id": "swim-solomon-islands",
+    "name": "Solomon Islands SWIM",
+    "shortDescription": "Supports indigenous church life, leadership equipping, and practical community ministry at the SWIM mission base in the Solomon Islands.",
+    "fullDescription": "SWIM (Supporting Work in Ministry) is an overseas mission arm of the CRCA connecting Australian congregations with believers in the Solomon Islands through mutual encouragement, training, community partnerships, and short-term mission teams.",
+    "megaMenuGroup": "global-mission",
+    "homepageTab": "global",
+    "iconName": "Anchor",
+    "url": "/ministries/swim",
+    "isExternal": false,
+    "ctaLabel": "Explore Solomon Islands SWIM"
+  },
+  {
+    "id": "ecumenical-relations",
+    "name": "Ecumenical Relations",
+    "shortDescription": "Maintains sister-church fellowship with Reformed denominations worldwide and represents the CRCA within the ICRC.",
+    "fullDescription": "Under Church Order Article 52, this three-member synodical committee fosters unity and mutual encouragement with sister churches across Australia and around the globe.",
+    "megaMenuGroup": "global-mission",
+    "homepageTab": "global",
+    "iconName": "Handshake",
+    "url": "/ministries/ecumenical-relations",
+    "isExternal": false,
+    "ctaLabel": "Explore Ecumenical Relations",
+    "highlights": [
+      "Ecclesiastical Fellowship: Presbyterian Church of Eastern Australia, Reformed Churches of New Zealand, Orthodox Presbyterian Church (USA), Reformed Churches in South Africa",
+      "International Member: International Conference of Reformed Churches (ICRC)",
+      "Other Reformed Contacts: Presbyterian Church of Australia, Westminster Presbyterian Church (Australia), Reformed Presbyterian Church (Australia), URCNA"
+    ]
+  }
+]

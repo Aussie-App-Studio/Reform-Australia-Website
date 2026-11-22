@@ -1,0 +1,618 @@
+/* Styles for the embedded CRCA Forms, Confessions & Church Order Reader */
+
+.crca-reader-article {
+  font-size: var(--reader-font-size, 16px);
+  line-height: 1.72;
+  color: var(--color-navy-900);
+}
+
+.crca-reader-article > *:first-child {
+  margin-top: 0;
+}
+
+.crca-reader-article h1 {
+  font-family: var(--font-serif);
+  font-size: 1.75em;
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--color-navy-900);
+  padding-bottom: 0.65rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 2px solid var(--color-stone-200);
+}
+
+.crca-reader-article h2 {
+  font-family: var(--font-serif);
+  font-size: 1.32em;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--color-navy-900);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.crca-reader-article h3 {
+  font-family: var(--font-serif);
+  font-size: 1.12em;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--color-navy-800);
+  margin-top: 1.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.crca-reader-article h4 {
+  font-family: var(--font-sans);
+  font-size: 0.96em;
+  line-height: 1.4;
+  font-weight: 700;
+  color: var(--color-teal-700);
+  margin-top: 1.25rem;
+  margin-bottom: 0.45rem;
+}
+
+.crca-reader-article h1,
+.crca-reader-article h2,
+.crca-reader-article h3,
+.crca-reader-article h4,
+.crca-reader-article .qa-block {
+  scroll-margin-top: 7.5rem;
+}
+
+.crca-reader-article p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--color-stone-700);
+}
+
+.crca-reader-article strong {
+  color: var(--color-navy-900);
+  font-weight: 600;
+}
+
+.crca-reader-article ul,
+.crca-reader-article ol {
+  margin: 0.75rem 0 1.15rem;
+  padding-left: 1.45rem;
+  color: var(--color-stone-700);
+}
+
+.crca-reader-article ul {
+  list-style-type: disc;
+}
+
+.crca-reader-article ol {
+  list-style-type: decimal;
+}
+
+.crca-reader-article li {
+  margin-bottom: 0.4rem;
+}
+
+.crca-reader-article li > ul,
+.crca-reader-article li > ol {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.crca-reader-article blockquote {
+  margin: 1.1rem 0;
+  padding: 0.85rem 1.15rem;
+  border-left: 3px solid var(--color-teal-500);
+  background: var(--color-stone-50);
+  border-radius: 0 0.65rem 0.65rem 0;
+  color: var(--color-navy-900);
+}
+
+.crca-reader-article blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.crca-reader-article blockquote.status-not-adopted {
+  border-left-color: #b42318;
+  background: #fef3f2;
+  color: #912018;
+}
+
+.crca-reader-article blockquote.status-not-adopted p {
+  color: #912018;
+}
+
+.crca-reader-article hr {
+  margin: 1.75rem 0;
+  border: 0;
+  border-top: 1px solid var(--color-stone-200);
+}
+
+/* Implicit & Reading Headings */
+.crca-reader-article .implicit-heading {
+  letter-spacing: 0.01em;
+}
+
+.crca-reader-article .reading-heading {
+  padding-top: 0.4rem;
+  border-top: 1px dashed var(--color-stone-200);
+}
+
+/* Section & Q&A Inline Copy Actions */
+.crca-reader-article .section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.crca-reader-article .section-actions,
+.crca-reader-article .qa-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+  flex-shrink: 0;
+  opacity: 0.75;
+  transition: opacity 0.15s ease;
+}
+
+.crca-reader-article .section-heading:hover .section-actions,
+.crca-reader-article .qa-block:hover .qa-actions,
+.crca-reader-article .wcf-section-block:hover .qa-actions,
+.crca-reader-article .section-actions:focus-within,
+.crca-reader-article .qa-actions:focus-within {
+  opacity: 1;
+}
+
+.crca-reader-article .mini-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.16rem 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-navy-800);
+  background: var(--color-stone-100);
+  border: 1px solid var(--color-stone-300);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.crca-reader-article .mini-copy-btn:hover {
+  background: var(--color-teal-50);
+  border-color: var(--color-teal-500);
+  color: var(--color-teal-700);
+}
+
+/* Heidelberg Catechism Q&A Blocks */
+.crca-reader-article .qa-block {
+  margin: 1rem 0 1.25rem;
+  padding: 1rem 1.15rem;
+  background: var(--color-stone-50);
+  border: 1px solid var(--color-stone-200);
+  border-left: 4px solid var(--color-teal-600);
+  border-radius: 0.75rem;
+}
+
+.crca-reader-article .qa-question {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--color-navy-900);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.crca-reader-article .qa-block > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Westminster Confession Section Blocks */
+.crca-reader-article .wcf-section-block {
+  scroll-margin-top: 7.5rem;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.35rem;
+  margin: 0 -0.35rem 0.65rem;
+  transition: background-color 0.2s ease;
+}
+
+.crca-reader-article .wcf-section-block:hover {
+  background: var(--color-stone-50);
+}
+
+/* Footnotes */
+.crca-reader-article .fn-ref {
+  display: inline-block;
+  margin: 0 1px;
+  padding: 0 0.32rem;
+  font-family: var(--font-sans);
+  font-size: 0.72em;
+  font-weight: 700;
+  line-height: 1.45;
+  vertical-align: super;
+  color: var(--color-teal-700);
+  background: var(--color-teal-50);
+  border: 1px solid var(--color-teal-100);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.crca-reader-article .fn-ref:hover {
+  background: var(--color-teal-600);
+  border-color: var(--color-teal-600);
+  color: #ffffff;
+}
+
+.hide-footnotes .fn-ref {
+  display: none;
+}
+
+.footnotes-section {
+  margin-top: 2.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-stone-200);
+  font-size: 0.875rem;
+  color: var(--color-stone-700);
+}
+
+.fn-list-badge {
+  font-weight: 700;
+  color: var(--color-teal-700);
+  margin-right: 0.4rem;
+}
+
+.fn-highlight {
+  background: var(--color-teal-50);
+  border-radius: 0.5rem;
+  outline: 2px solid var(--color-teal-400);
+}
+
+/* Scripture & Cross-Document Links */
+.crca-reader-article .scripture-link,
+.footnotes-section .scripture-link,
+.fn-popover-body .scripture-link {
+  color: var(--color-teal-700);
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 137, 168, 0.45);
+  text-underline-offset: 2px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.crca-reader-article .scripture-link:hover,
+.footnotes-section .scripture-link:hover,
+.fn-popover-body .scripture-link:hover {
+  color: var(--color-navy-900);
+  text-decoration-color: var(--color-teal-600);
+}
+
+.crca-reader-article .doc-xref-link {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: var(--color-navy-800);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--color-gold-600);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.crca-reader-article .doc-xref-link:hover {
+  color: var(--color-teal-700);
+  text-decoration-color: var(--color-teal-600);
+}
+
+/* Internal Church Order Article Reference Buttons */
+.crca-reader-article .co-art-ref {
+  display: inline;
+  font-family: var(--font-sans);
+  font-size: 0.85em;
+  font-weight: 600;
+  padding: 0.05rem 0.4rem;
+  margin: 0 1px;
+  border: 1px solid var(--color-stone-300);
+  border-radius: 0.35rem;
+  background: var(--color-stone-50);
+  color: var(--color-navy-900);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.crca-reader-article .co-art-ref:hover {
+  border-color: var(--color-teal-600);
+  background: var(--color-teal-50);
+  color: var(--color-teal-700);
+}
+
+/* Service Prep Personalised Tokens */
+.crca-reader-article .form-filled {
+  display: inline;
+  padding: 0.05rem 0.35rem;
+  border-radius: 0.3rem;
+  background: var(--color-teal-50);
+  border: 1px solid var(--color-teal-100);
+  color: var(--color-navy-900);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.crca-reader-article .form-blank {
+  display: inline;
+  padding: 0.05rem 0.35rem;
+  border-radius: 0.3rem;
+  background: var(--color-gold-50);
+  border: 1px dashed var(--color-gold-500);
+  color: var(--color-navy-900);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.crca-reader-article .form-blank:hover {
+  background: var(--color-gold-100);
+  border-color: var(--color-gold-600);
+}
+
+/* Tables & EITHER/OR Selectable Choice Tables */
+.crca-reader-article .table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.25rem 0 1.5rem;
+  border: 1px solid var(--color-stone-200);
+  border-radius: 0.75rem;
+  background: #ffffff;
+}
+
+.crca-reader-article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94em;
+}
+
+.crca-reader-article th,
+.crca-reader-article td {
+  padding: 0.75rem 0.95rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-stone-200);
+  border-right: 1px solid var(--color-stone-200);
+}
+
+.crca-reader-article th:last-child,
+.crca-reader-article td:last-child {
+  border-right: 0;
+}
+
+.crca-reader-article tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.crca-reader-article th {
+  background: var(--color-stone-100);
+  font-family: var(--font-sans);
+  font-size: 0.85em;
+  font-weight: 700;
+  color: var(--color-navy-900);
+}
+
+.crca-reader-article .choice-table {
+  table-layout: fixed;
+}
+
+.crca-reader-article .choice-th-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.crca-reader-article .choice-col-btn {
+  padding: 0.2rem 0.55rem;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 9999px;
+  border: 1px solid var(--color-teal-600);
+  background: #ffffff;
+  color: var(--color-teal-700);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.crca-reader-article .choice-col-btn:hover {
+  background: var(--color-teal-50);
+}
+
+.crca-reader-article th.choice-selected {
+  background: var(--color-teal-50);
+  color: var(--color-navy-900);
+}
+
+.crca-reader-article td.choice-selected {
+  background: rgba(230, 247, 251, 0.45);
+}
+
+.crca-reader-article th.choice-selected .choice-col-btn {
+  background: var(--color-teal-600);
+  color: #ffffff;
+}
+
+.crca-reader-article .choice-unselected {
+  opacity: 0.45;
+}
+
+/* Search Highlight */
+.crca-search-snippet mark {
+  background: var(--color-gold-100);
+  color: var(--color-navy-900);
+  padding: 0 0.15rem;
+  border-radius: 0.2rem;
+  font-weight: 600;
+}
+
+/* Jump Highlight Pulse */
+@keyframes readerJumpPulse {
+  0% {
+    background-color: var(--color-gold-100);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.reader-jump-highlight {
+  animation: readerJumpPulse 2.2s ease-out;
+  border-radius: 0.375rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reader-jump-highlight {
+    animation: none;
+    background-color: var(--color-gold-50);
+  }
+}
+
+/* Print Layout */
+@page {
+  margin: 20mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .crca-reader-print-root {
+    display: block !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+  }
+
+  .crca-reader-article {
+    font-family: Georgia, Cambria, "Times New Roman", serif !important;
+    font-size: 11pt !important;
+    line-height: 1.55 !important;
+    color: #111111 !important;
+  }
+
+  .crca-reader-article p,
+  .crca-reader-article li {
+    color: #111111 !important;
+  }
+
+  .crca-reader-article h1,
+  .crca-reader-article h2,
+  .crca-reader-article h3,
+  .crca-reader-article h4 {
+    color: #111111 !important;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .crca-reader-article h1 {
+    border-bottom: 1.5pt solid #444444 !important;
+  }
+
+  .crca-reader-article blockquote,
+  .crca-reader-article tr,
+  .crca-reader-article .qa-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .crca-reader-article .qa-block {
+    background: #ffffff !important;
+    border-color: #cccccc !important;
+    border-left-color: #333333 !important;
+  }
+
+  .crca-reader-article blockquote.status-not-adopted,
+  .crca-reader-article blockquote.status-not-adopted p {
+    border-left-color: #666666 !important;
+    background: #ffffff !important;
+    color: #333333 !important;
+  }
+
+  .crca-reader-article .table-wrap {
+    overflow: visible !important;
+    border-color: #999999 !important;
+  }
+
+  .crca-reader-article table[data-chosen-col] .choice-unselected {
+    display: none !important;
+  }
+
+  .crca-reader-article table[data-chosen-col][data-pure-kicker="1"] thead {
+    display: none !important;
+  }
+
+  .crca-reader-article th.choice-selected,
+  .crca-reader-article td.choice-selected {
+    background: #ffffff !important;
+  }
+
+  .crca-reader-article .form-filled {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    color: inherit !important;
+    font-weight: inherit !important;
+  }
+
+  .crca-reader-article .form-blank {
+    background: none !important;
+    border: none !important;
+    border-bottom: 1pt solid #666666 !important;
+    border-radius: 0 !important;
+    padding: 0 2pt !important;
+  }
+
+  .crca-reader-article .scripture-link,
+  .crca-reader-article .doc-xref-link,
+  .crca-reader-article .co-art-ref,
+  .footnotes-section .scripture-link {
+    color: inherit !important;
+    text-decoration: none !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    font-weight: inherit !important;
+  }
+
+  .crca-reader-article .fn-ref {
+    background: none !important;
+    border: none !important;
+    color: #111111 !important;
+    padding: 0 1px !important;
+  }
+
+  .footnotes-section {
+    border-top: 1pt solid #999999 !important;
+    color: #222222 !important;
+    font-size: 9pt !important;
+  }
+
+  .fn-list-badge {
+    color: #111111 !important;
+  }
+}

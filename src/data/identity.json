@@ -1,0 +1,97 @@
+{
+  "missionAndVision": {
+    "intro": "The Christian Reformed Churches of Australia is committed to advancing the CRCA mission and vision in and through local churches. This mission and vision is lived out in submission to the Lord Jesus Christ and his command to make disciples of all nations.",
+    "missionLabel": "Our Mission",
+    "mission": "We are a church reforming to reach the lost for Christ",
+    "visionLabel": "Our Vision",
+    "vision": "We will multiply Bible-based churches which equip and nurture their members and grow throughout Australia and the world."
+  },
+  "coreValues": {
+    "intro": "As a denomination that is firmly rooted in Scripture, our core values stem from the Bible and shape the culture of a contemporary, Reformed, gospel-focused denomination.",
+    "items": [
+      {
+        "id": "contemporary-reformed",
+        "title": "Contemporary Reformed",
+        "summary": "We are confessional and contextual.",
+        "detail": "Anchored in the historic Reformed confessions while engaging contemporary Australian communities with clarity, warmth, and cultural understanding.",
+        "scriptures": "Eph. 4:3–6; 1 Cor. 11:2; 2 Thess. 2:15; 1 Cor. 9:19–23; Acts 14:8–18; 17:16–31"
+      },
+      {
+        "id": "word-based",
+        "title": "Word Based",
+        "summary": "We are committed to biblical preaching, teaching, training, equipping.",
+        "detail": "We hold the Bible as God's inspired Word and the final authority for faith, worship, doctrine, and every area of Christian life.",
+        "scriptures": "Rom. 10:14–17; 2 Tim. 2:1–2; 3:16–17; Deut. 4:9–14; Col. 3:16; Eph. 4:11–16"
+      },
+      {
+        "id": "gospel-focused",
+        "title": "Gospel Focused",
+        "summary": "We are on mission in word and deed, both locally and globally: kingdom-oriented, outward looking, evangelistic, disciple-making, community-hearted.",
+        "detail": "The good news of Jesus Christ moves our congregations outward in sacrificial love, mercy, and faithful witness.",
+        "scriptures": "Micah 6:8; Isa. 1:17; 61:1–11; Luke 4:18–19; Matt. 5:13–16; 6:33; 28:18–20; Phil. 1:14; Acts 1:6–8; Col. 4:5–6; 1 Pet. 2:9–12; Rev. 5:9–10"
+      },
+      {
+        "id": "local-church-empowering",
+        "title": "Local Church Empowering",
+        "summary": "We are light on structures and hierarchy, high on support, partnership, mutual accountability and encouragement.",
+        "detail": "Denominational workgroups and committees exist to serve, equip, and strengthen the ministry of local congregations and their elders.",
+        "scriptures": "Matt. 20:24–28; 25:14–30; Heb. 13:17; 1 Thess. 5:11; 2 Cor. 1:24; 8:23; Phil. 1:5; 4:15; 3 John 1:5–8; 1 Pet. 5:3"
+      },
+      {
+        "id": "prayerful-urgency",
+        "title": "Prayerful Urgency",
+        "summary": "We are humbly dependent upon God and filled with prayerful, sacrificial compassion for the lost in all the world.",
+        "detail": "Recognising that only God gives growth, we cultivate earnest, persevering prayer across our churches for spiritual renewal and gospel harvest.",
+        "scriptures": "Isa. 62:6; Acts 2:42; Matt. 6:5–13; Rom. 10:1; Eph. 6:10–20; 1 Tim. 2:1–4; 1 Thess. 5:17; Jude 20"
+      },
+      {
+        "id": "historic-orthodoxy",
+        "title": "Historic Orthodoxy",
+        "summary": "We are complementarian, Scripture-regulated in worship, and unashamedly anchored in unchanging truth rather than cultural trends.",
+        "detail": "Upholding God's design for male and female, lifelong marriage, and the sanctity of life, we gather for expository, Christ-centred preaching and theologically rich singing.",
+        "scriptures": "Gen. 1:27–28; 2:24; Deut. 12:32; Ps. 139:13–16; Matt. 19:4–6; Luke 24:27; Eph. 5:19–33; 1 Tim. 2:11–3:7; 2 Tim. 4:2; Heb. 12:28"
+      }
+    ]
+  },
+  "history": {
+    "heading": "History of the CRCA",
+    "lead": "The Christian Reformed Churches of Australia (CRCA) includes over fifty congregations across Australia established since 1951 in just about every state and territory.",
+    "scriptureQuote": "All over the world this gospel is bearing fruit and growing...",
+    "scriptureRef": "Colossians 1:6",
+    "reformedEmphasesIntro": "The CRCA stands within the Calvinist or Reformed stream of the Christian Church, which emphasises:",
+    "reformedEmphases": [
+      "God's honour, pre-eminence, and grace in all things",
+      "Reconciliation with God through Christ Jesus alone",
+      "The work of the Holy Spirit as essential for faith and spiritual growth",
+      "The Bible as the foundation of our faith's substance",
+      "The church as a community in covenant with God"
+    ],
+    "foundingCommitments": [
+      "Embrace and uphold Biblical and Reformed theology as summarised in the Three Ecumenical Creeds (Apostles', Nicene, Athanasian) and Reformed Confessions (Belgic Confession, Heidelberg Catechism, Canons of Dort, Scottish Westminster Confession, and the Contemporary Testimony of the CRCNA).",
+      "Maintain a national profile able to enfold new settlers and seekers across every Australian state and capital city.",
+      "Be governed locally by elders chosen periodically by the congregation, linked with representative regional (Classis) and national (Synod) assemblies."
+    ],
+    "milestones": [
+      {
+        "era": "1951",
+        "title": "Founding & Post-War Migration",
+        "description": "Formed following post-World War II migration of Dutch Christians to Australia, establishing the first CRCA congregation in 1951 with a strong commitment to biblical theology, elder-led governance, and church planting."
+      },
+      {
+        "era": "1950s – 1980s",
+        "title": "Establishing National Roots & Theological Training",
+        "description": "New congregations were planted across major cities and regional towns in nearly every Australian state and territory, supported by denominational publications such as Trowel and Sword (launched October 1954) and Reformed theological education."
+      },
+      {
+        "era": "1990s",
+        "title": "Steady Growth Across Australia",
+        "description": "Through the 1990s the CRCA experienced steady numerical and geographical growth, expanding churches in local Australian communities and welcoming people from diverse cultural backgrounds."
+      },
+      {
+        "era": "2000s – Present",
+        "title": "Reforming to Reach the Lost for Christ",
+        "description": "Since 2000 the denomination has renewed its missional commitment to planting new churches, reaching multicultural communities, equipping leaders, and partnering locally and globally to see the gospel bear fruit."
+      }
+    ]
+  }
+}

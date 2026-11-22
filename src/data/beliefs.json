@@ -1,0 +1,154 @@
+{
+  "overview": "Most of what we believe we hold in common with the Christian church around the world and throughout the ages. We believe that the Bible is God's inspired Word. Our understanding of key Christian doctrines is summarised in the three ecumenical creeds (Apostles', Nicene, Athanasian) and in the Reformed Confessions: the Belgic Confession, the Heidelberg Catechism and the Canons of Dort. We also hold the Westminster Confession in high regard and greatly appreciate the \"Contemporary Testimony\" document produced by the Christian Reformed Church in North America.",
+  "gospelSummary": [
+    {
+      "number": "01",
+      "title": "One Holy & Loving Creator God",
+      "summary": "There is one true God—Father, Son, and Holy Spirit—who created the heavens and the earth, sustains all life, and rules with perfect goodness, justice, and love."
+    },
+    {
+      "number": "02",
+      "title": "The Bible as God's Inspired Word",
+      "summary": "Scripture is God's infallible, authoritative Word, revealing who God is, why he made us, and the sure way of salvation through Jesus Christ."
+    },
+    {
+      "number": "03",
+      "title": "Humanity's Brokenness & Need for Grace",
+      "summary": "Though made in God's image to know and love him, humanity rebelled against God, bringing sin, brokenness, and spiritual death into the world—something we cannot fix on our own."
+    },
+    {
+      "number": "04",
+      "title": "Salvation Through Jesus Christ Alone",
+      "summary": "Out of sheer grace, God sent his Son Jesus Christ—fully God and fully human—to live a sinless life, die on the cross in our place, and rise bodily from the dead so all who trust him are forgiven and made new."
+    },
+    {
+      "number": "05",
+      "title": "Spirit-Empowered Life, Church & Renewal",
+      "summary": "By the Holy Spirit, Christ gathers his church into loving local communities called to worship, grow in holiness, care for neighbours, share the gospel, and await Christ's return to renew all creation."
+    }
+  ],
+  "ecumenicalCreeds": [
+    {
+      "id": "apostles-creed",
+      "readerDocId": "creeds-and-confessions-01-ecumenical-creeds-01-the-apostles-creed",
+      "title": "The Apostles' Creed",
+      "subtitle": "Historic baptismal confession of the early Christian church (CRCA Book of Worship translation)",
+      "paragraphs": [
+        "I believe in God, the Father almighty, creator of heaven and earth.",
+        "I believe in Jesus Christ, God's only Son, our Lord, who was conceived by the Holy Spirit, born of the virgin Mary, suffered under Pontius Pilate, was crucified, died, and was buried; he descended to the dead. On the third day he rose again; he ascended into heaven, he is seated at the right hand of the Father, and he will come to judge the living and the dead.",
+        "I believe in the Holy Spirit, the holy catholic church, the communion of saints, the forgiveness of sins, the resurrection of the body, and the life everlasting. Amen."
+      ]
+    },
+    {
+      "id": "nicene-creed",
+      "readerDocId": "creeds-and-confessions-01-ecumenical-creeds-02-the-nicene-creed",
+      "title": "The Nicene Creed",
+      "subtitle": "Ecumenical confession of Nicaea (325 AD) and Constantinople (381 AD) affirming the full deity of Christ and the Holy Spirit",
+      "paragraphs": [
+        "We believe in one God, the Father almighty, maker of heaven and earth, of all things visible and invisible.",
+        "And in one Lord Jesus Christ, the only Son of God, begotten from the Father before all ages, God from God, Light from Light, true God from true God, begotten, not made; of the same essence as the Father. Through him all things were made. For us and for our salvation he came down from heaven; he became incarnate by the Holy Spirit and the virgin Mary, and was made human. He was crucified for us under Pontius Pilate; he suffered and was buried. The third day he rose again, according to the Scriptures. He ascended to heaven and is seated at the right hand of the Father. He will come again with glory to judge the living and the dead. His kingdom will never end.",
+        "And we believe in the Holy Spirit, the Lord, the giver of life. He proceeds from the Father and the Son, and with the Father and the Son is worshiped and glorified. He spoke through the prophets.",
+        "We believe in one holy catholic and apostolic church. We affirm one baptism for the forgiveness of sins. We look forward to the resurrection of the dead, and to life in the world to come. Amen."
+      ]
+    },
+    {
+      "id": "athanasian-creed",
+      "readerDocId": "creeds-and-confessions-01-ecumenical-creeds-03-the-athanasian-creed",
+      "title": "The Athanasian Creed",
+      "subtitle": "Ancient Trinitarian and Christological confession (CRC 1988 / CRCA 1991 translation — key summary sections)",
+      "paragraphs": [
+        "Whoever desires to be saved should above all hold to the catholic faith. Anyone who does not keep it whole and unbroken will doubtless perish eternally.",
+        "Now this is the catholic faith: That we worship one God in trinity and the trinity in unity, neither blending their persons nor dividing their essence. For the person of the Father is a distinct person, the person of the Son is another, and that of the Holy Spirit still another. But the divinity of the Father, Son, and Holy Spirit is one, their glory equal, their majesty coeternal.",
+        "What quality the Father has, the Son has, and the Holy Spirit has. The Father is uncreated, the Son is uncreated, the Holy Spirit is uncreated. The Father is immeasurable, the Son is immeasurable, the Holy Spirit is immeasurable. The Father is eternal, the Son is eternal, the Holy Spirit is eternal. And yet there are not three eternal beings; there is but one eternal being. So too there are not three uncreated or immeasurable beings; there is but one uncreated and immeasurable being.",
+        "Similarly, the Father is almighty, the Son is almighty, the Holy Spirit is almighty. Yet there are not three almighty beings; there is but one almighty being. Thus the Father is God, the Son is God, the Holy Spirit is God. Yet there are not three gods; there is but one God.",
+        "Furthermore, it is necessary for eternal salvation that one also believe in the incarnation of our Lord Jesus Christ faithfully. Now this is the true faith: That we believe and confess that our Lord Jesus Christ, God's Son, is both God and human, equally. He is God from the essence of the Father, begotten before time; and he is human from the essence of his mother, born in time; completely God, completely human, with a rational soul and human flesh; equal to the Father as regards divinity, less than the Father as regards humanity.",
+        "He suffered for our salvation, descended to hell, arose from the dead on the third day. He ascended to heaven, is seated at the right hand of God the Father almighty, from there he will come to judge the living and the dead. At his coming all people will arise bodily and give an accounting of their own deeds. Those who have done good will enter eternal life, and those who have done evil will enter eternal fire. This is the catholic faith: one cannot be saved without believing it firmly and faithfully."
+      ]
+    }
+  ],
+  "reformedConfessions": [
+    {
+      "id": "belgic-confession",
+      "readerDocId": "creeds-and-confessions-02-reformed-confessions-01-the-belgic-confession",
+      "title": "The Belgic Confession (1561)",
+      "author": "Guido de Brès",
+      "pdfUrl": "/documents/CRCA%20BelgicConfession.pdf",
+      "summary": "A 37-article doctrinal confession setting out the Reformed faith in clear theological order—from the knowledge of God and Scripture to Christ's saving work, the church, the sacraments, and Christ's return.",
+      "sections": [
+        {
+          "heading": "Articles 1–7: God & the Authority of Holy Scripture",
+          "content": "Confesses one eternal, spiritual, all-wise and merciful God (Art. 1), known clearly through creation and still more fully through his written Word (Art. 2). Holy Scripture—the 66 canonical books of the Old and New Testaments—is inspired by God and serves as the complete, sufficient, and unerring rule of faith (Arts. 3–7)."
+        },
+        {
+          "heading": "Articles 8–11: The Holy Trinity",
+          "content": "Affirms one single divine essence in three distinct persons—Father, Son, and Holy Spirit—each eternal and co-equal, clearly revealed in Christ's baptism and redemptive work."
+        },
+        {
+          "heading": "Articles 12–17: Creation, Providence, the Fall & God's Promise",
+          "content": "Teaches that God created all things good and actively governs all creation by his fatherly providence (Arts. 12–13). Humanity fell into sin through disobedience, yet God immediately sought fallen humanity with the promise of a Redeemer (Arts. 14–17)."
+        },
+        {
+          "heading": "Articles 18–26: Jesus Christ, Justification & Sanctification",
+          "content": "Confesses the incarnation of God's eternal Son and his atoning sacrifice as our only High Priest (Arts. 18–21). Sinners are justified freely by faith in Christ's righteousness (Arts. 22–23), transformed into grateful obedience by the Holy Spirit (Art. 24), and rely on Christ as our sole Mediator (Art. 26)."
+        },
+        {
+          "heading": "Articles 27–37: The Church, Sacraments & Final Renewal",
+          "content": "Defines the marks of the true church—pure preaching of the gospel, pure administration of baptism and the Lord's Supper, and loving church discipline (Art. 29)—alongside office-bearers, civil government (Art. 36), and the joyful hope of Christ's return and the new creation (Art. 37)."
+        }
+      ]
+    },
+    {
+      "id": "heidelberg-catechism",
+      "readerDocId": "creeds-and-confessions-02-reformed-confessions-02-the-heidelberg-catechism",
+      "title": "The Heidelberg Catechism (1563)",
+      "author": "Zacharias Ursinus & Caspar Olevianus",
+      "pdfUrl": "/documents/CRCA%20HeidelbergCatechism.pdf",
+      "summary": "Organised into 52 Lord's Days (129 Q&As), this warm pastoral catechism frames the Christian faith around three personal realities: our Misery, our Deliverance in Christ, and our Gratitude.",
+      "sections": [
+        {
+          "heading": "Lord's Day 1 (Q&A 1–2): Our Only Comfort in Life and in Death",
+          "content": "\"What is your only comfort in life and in death? That I am not my own, but belong—body and soul, in life and in death—to my faithful Saviour, Jesus Christ. He has fully paid for all my sins with his precious blood, and has set me free from the tyranny of the devil.\" Knowing this comfort moves us to live wholeheartedly for him."
+        },
+        {
+          "heading": "Part I — Lord's Days 2–4 (Q&A 3–11): Sin & Human Misery",
+          "content": "God's law reveals our call to love God and neighbour wholeheartedly—and exposes our natural inability and need for God's mercy, since God is both perfectly just and deeply merciful."
+        },
+        {
+          "heading": "Part II — Lord's Days 5–31 (Q&A 12–85): Deliverance in Jesus Christ",
+          "content": "Unpacks the gospel of a true human and true God who mediates for us (LD 5–6), true faith as both sure knowledge and heartfelt trust (LD 7), an exposition of the Apostles' Creed (LD 8–22), justification by faith alone (LD 23–24), and the means of grace in Baptism, the Lord's Supper, and loving church restoration (LD 25–31)."
+        },
+        {
+          "heading": "Part III — Lord's Days 32–52 (Q&A 86–129): Thankfulness & Christian Living",
+          "content": "Because Christ has redeemed us, believers respond in grateful obedience—explained warmly through the Ten Commandments as a guide to joyful discipleship (LD 34–44) and the Lord's Prayer as the heart of daily communion with God (LD 45–52)."
+        }
+      ]
+    },
+    {
+      "id": "canons-of-dort",
+      "readerDocId": "creeds-and-confessions-02-reformed-confessions-03-the-canons-of-dort",
+      "title": "The Canons of Dort (1618–1619)",
+      "author": "International Synod of Dort",
+      "pdfUrl": "/documents/CRCA%20CanonsofDort.pdf",
+      "summary": "A pastoral and theological statement celebrating God's sovereign grace in salvation across five points of doctrine, assuring believers that salvation rests securely on Christ from beginning to end.",
+      "sections": [
+        {
+          "heading": "First Main Point: Divine Election and Reprobation",
+          "content": "Declares that because all humanity fell in Adam, God's saving initiative flows entirely from his gracious, unmerited election in Christ—calling believers to humility, evangelistic proclamation of the gospel to all people, and comforting assurance."
+        },
+        {
+          "heading": "Second Main Point: Christ's Death and Human Redemption",
+          "content": "Affirms that the death of God's Son is of infinite value—more than sufficient to atone for the sins of the whole world—and effectively secures forgiveness, faith, and eternal life for all who belong to Christ. The gospel promise is to be proclaimed without distinction to all nations."
+        },
+        {
+          "heading": "Third & Fourth Main Points: Human Corruption & Conversion by the Spirit",
+          "content": "Explains that fallen humanity cannot turn to God by its own strength, so the Holy Spirit graciously regenerates hearts through the preaching of the gospel, making unwilling hearts willing without treating people like blocks of wood."
+        },
+        {
+          "heading": "Fifth Main Point: The Perseverance of the Saints",
+          "content": "Reassures believers who stumble or struggle that God faithfully preserves his redeemed people through his Word, Spirit, and church fellowship—not encouraging carelessness, but inspiring deep gratitude, watchfulness, and prayer."
+        }
+      ]
+    }
+  ],
+  "additionalNote": "Alongside the Three Ecumenical Creeds and the Three Forms of Unity, the CRCA holds the Westminster Confession of Faith in high regard and greatly appreciates the \"Contemporary Testimony\" document produced by the Christian Reformed Church in North America."
+}
