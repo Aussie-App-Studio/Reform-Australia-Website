@@ -2,6 +2,8 @@
 
 A modern, fast, data-driven website prototype for the **Christian Reformed Churches of Australia (CRCA)** built with **React 19, Vite, Tailwind CSS v4, and TypeScript**.
 
+🌐 **Live Preview (GitHub Pages):** **[https://aussie-app-studio.github.io/Reform-Australia-Website/](https://aussie-app-studio.github.io/Reform-Australia-Website/)**
+
 ---
 
 ## Getting Started (Viewing Locally or Editing with Claude Code)

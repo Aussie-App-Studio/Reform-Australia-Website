@@ -15,6 +15,7 @@ This file provides context for Claude Code (and other AI coding assistants) when
 - **Verify all data, assets & links:** `npm run verify`
 - **Type-check and build production static files (`dist/`):** `npm run build`
 - **Preview production build locally:** `npm run preview`
+- **Publish live preview to GitHub Pages (`gh-pages` branch):** `npm run deploy:pages`
 - **Sync liturgical forms & documents from upstream GitHub repo:** `npm run sync-docs`
 
 ## Project Architecture

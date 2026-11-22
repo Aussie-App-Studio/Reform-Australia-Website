@@ -224,7 +224,7 @@ export function MinistriesPage() {
                   {ministry.secondaryLinks &&
                     ministry.secondaryLinks.map((sec) => {
                       const isLocalPdf =
-                        sec.url.startsWith('/ministry-resources/') || sec.url.endsWith('.pdf');
+                        sec.url.includes('/ministry-resources/') || sec.url.endsWith('.pdf');
                       const isInternalRoute = sec.url.startsWith('/') && !isLocalPdf;
 
                       return (

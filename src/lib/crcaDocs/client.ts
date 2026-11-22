@@ -31,9 +31,11 @@ export const EXTENSION_URLS = {
     'https://github.com/Aussie-App-Studio/crca-forms-and-documents/releases/latest/download/CRCA-Forms-Extension.zip',
 } as const;
 
+const DOCS_BASE = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/documents`;
+
 export function encodeDocUrl(relPath: string): string {
   return (
-    '/documents/' +
+    `${DOCS_BASE}/` +
     relPath
       .split('/')
       .filter((s) => s.length > 0)
@@ -58,7 +60,7 @@ async function fetchJson<T>(url: string): Promise<T> {
 
 export function fetchDocsIndex(): Promise<DocsIndex> {
   if (!docsIndexPromise) {
-    docsIndexPromise = fetchJson<DocsIndex>('/documents/index.json').catch((err) => {
+    docsIndexPromise = fetchJson<DocsIndex>(`${DOCS_BASE}/index.json`).catch((err) => {
       docsIndexPromise = null;
       throw err;
     });
@@ -68,7 +70,7 @@ export function fetchDocsIndex(): Promise<DocsIndex> {
 
 export function fetchSearchIndex(): Promise<SearchIndex> {
   if (!searchIndexPromise) {
-    searchIndexPromise = fetchJson<SearchIndex>('/documents/search-index.json').catch((err) => {
+    searchIndexPromise = fetchJson<SearchIndex>(`${DOCS_BASE}/search-index.json`).catch((err) => {
       searchIndexPromise = null;
       throw err;
     });
@@ -78,7 +80,7 @@ export function fetchSearchIndex(): Promise<SearchIndex> {
 
 export function fetchSyncMeta(): Promise<SyncMeta | null> {
   if (!syncMetaPromise) {
-    syncMetaPromise = fetch('/documents/sync-meta.json')
+    syncMetaPromise = fetch(`${DOCS_BASE}/sync-meta.json`)
       .then((res) => (res.ok ? (res.json() as Promise<SyncMeta>) : null))
       .catch(() => null);
   }

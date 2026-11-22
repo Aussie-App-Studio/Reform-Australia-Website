@@ -84,7 +84,7 @@ function RouteErrorBoundary({ children }: { children: ReactNode }) {
 
 export function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Layout>
         <RouteErrorBoundary>
           <Suspense fallback={<PageLoadingFallback />}>

@@ -52,7 +52,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                 <span>Reload Page</span>
               </button>
               <a
-                href="/"
+                href={import.meta.env.BASE_URL}
                 className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-stone-50"
               >
                 <ArrowLeft className="h-4 w-4 text-teal-600" />
