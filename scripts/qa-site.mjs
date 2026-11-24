@@ -48,6 +48,9 @@ const problems = [];
 const linkTargets = new Set();
 const report = (w, route, msg) => problems.push(`[${w}] ${route}: ${msg}`);
 const browser = await chromium.launch();
+// GitHub Pages serves public/documents/index.json for /documents before the app can redirect;
+// real hosts handle it via public/_redirects and public/.htaccess.
+if (BASE.includes('github.io')) routes.delete('/documents');
 const list = [...routes];
 let done = 0;
 
