@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Edit the CRCA website</title>
+    <link rel="icon" type="image/png" href="/images/logos/favicon-64.png" />
+  </head>
+  <body>
+    <!-- Settings (collections and fields) are in config.js. -->
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <script src="./config.js"></script>
+    <script src="https://unpkg.com/@sveltia/cms@0.262.1/dist/sveltia-cms.js"></script>
+    <script>
+      window.CMS.init({ config: window.CMS_CONFIG });
+    </script>
+  </body>
+</html>

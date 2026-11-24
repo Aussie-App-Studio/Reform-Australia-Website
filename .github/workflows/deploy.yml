@@ -7,17 +7,24 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# A newer push (e.g. several quick edits in /admin) replaces a publish that is still running.
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: 'npm'
       - run: npm ci
       - run: npm run verify
+      # Phone-sized copies of any photos uploaded through /admin
+      - run: npm run images
       - run: npx playwright install --with-deps chromium
       - name: Build and deploy
         run: npm run deploy:cloudflare
