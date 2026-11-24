@@ -19,32 +19,8 @@ const HistoryPage = lazy(() =>
 const MinistriesPage = lazy(() =>
   import('./pages/MinistriesPage').then((m) => ({ default: m.MinistriesPage }))
 );
-const CadetsPage = lazy(() =>
-  import('./pages/ministries/CadetsPage').then((m) => ({ default: m.CadetsPage }))
-);
-const GemsPage = lazy(() =>
-  import('./pages/ministries/GemsPage').then((m) => ({ default: m.GemsPage }))
-);
-const YouthConventionPage = lazy(() =>
-  import('./pages/ministries/YouthConventionPage').then((m) => ({
-    default: m.YouthConventionPage,
-  }))
-);
-const SwimPage = lazy(() =>
-  import('./pages/ministries/SwimPage').then((m) => ({ default: m.SwimPage }))
-);
-const CandidacyPage = lazy(() =>
-  import('./pages/ministries/CandidacyPage').then((m) => ({ default: m.CandidacyPage }))
-);
-const ShiftCoachingPage = lazy(() =>
-  import('./pages/ministries/ShiftCoachingPage').then((m) => ({
-    default: m.ShiftCoachingPage,
-  }))
-);
-const MinistryDetailPage = lazy(() =>
-  import('./pages/ministries/MinistryDetailPage').then((m) => ({
-    default: m.MinistryDetailPage,
-  }))
+const MinistryPage = lazy(() =>
+  import('./pages/ministries/MinistryPage').then((m) => ({ default: m.MinistryPage }))
 );
 const ForChurchesPage = lazy(() =>
   import('./pages/ForChurchesPage').then((m) => ({ default: m.ForChurchesPage }))
@@ -114,28 +90,17 @@ export function App() {
 
               {/* Core Sections */}
               <Route path="/ministries" element={<MinistriesPage />} />
-              <Route path="/ministries/cadets" element={<CadetsPage />} />
-              <Route path="/ministries/gems" element={<GemsPage />} />
-              <Route path="/ministries/youth-convention" element={<YouthConventionPage />} />
-              <Route path="/ministries/swim" element={<SwimPage />} />
-              <Route path="/ministries/candidacy" element={<CandidacyPage />} />
-              <Route path="/ministries/shift-coaching" element={<ShiftCoachingPage />} />
-              <Route
-                path="/ministries/local-church-outreach-training"
-                element={<MinistryDetailPage slug="local-church-outreach-training" />}
-              />
-              <Route
-                path="/ministries/missional-explorations"
-                element={<MinistryDetailPage slug="missional-explorations" />}
-              />
-              <Route
-                path="/ministries/church-planting-taskforce"
-                element={<MinistryDetailPage slug="church-planting-taskforce" />}
-              />
-              <Route
-                path="/ministries/ecumenical-relations"
-                element={<MinistryDetailPage slug="ecumenical-relations" />}
-              />
+              {/* Every ministry page uses one template, driven by src/data/ministry-pages/<slug>.json */}
+              <Route path="/ministries/cadets" element={<MinistryPage slug="cadets" />} />
+              <Route path="/ministries/gems" element={<MinistryPage slug="gems" />} />
+              <Route path="/ministries/youth-convention" element={<MinistryPage slug="youth-convention" />} />
+              <Route path="/ministries/swim" element={<MinistryPage slug="swim" />} />
+              <Route path="/ministries/candidacy" element={<MinistryPage slug="candidacy" />} />
+              <Route path="/ministries/shift-coaching" element={<MinistryPage slug="shift-coaching" />} />
+              <Route path="/ministries/local-church-outreach-training" element={<MinistryPage slug="local-church-outreach-training" />} />
+              <Route path="/ministries/missional-explorations" element={<MinistryPage slug="missional-explorations" />} />
+              <Route path="/ministries/church-planting-taskforce" element={<MinistryPage slug="church-planting-taskforce" />} />
+              <Route path="/ministries/ecumenical-relations" element={<MinistryPage slug="ecumenical-relations" />} />
               <Route path="/for-churches" element={<ForChurchesPage />} />
               <Route
                 path="/for-churches/forms-and-documents"

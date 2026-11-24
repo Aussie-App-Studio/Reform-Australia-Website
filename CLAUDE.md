@@ -32,7 +32,7 @@ This file provides context for Claude Code (and other AI coding assistants) when
    - `src/data/ministries.json` — All 13 denominational ministries, descriptions, audience filters, and committee contacts.
    - `src/data/nextGenClubs.json` — CRCA Cadets & GEMS Girls' Clubs (`/ministries/cadets`, `/ministries/gems`).
    - `src/data/convention.json` — CRCA Youth Convention (`/ministries/youth-convention`).
-   - `src/data/swim.json` — Solomon Islands Work & Instruction in Mission (`/ministries/swim`).
+   - `src/data/swim.json` — Supporting Work in Ministry, Solomon Islands (`/ministries/swim`).
    - `src/data/internalMinistries.json` — Candidacy Committee, Shift Coaching, Local Church Outreach Training, Missional Explorations, Church Planting Taskforce, Ecumenical Relations (`/ministries/<slug>`).
    - `src/data/leaderResources.json` — `For Churches` resources (Word of Salvation reading sermons, Regional Counsellors, Church Health Check, searchable 2022 Church Order index).
    - `src/data/contactTopics.json` — Smart Contact Routing topics.
@@ -46,6 +46,8 @@ This file provides context for Claude Code (and other AI coding assistants) when
    - `public/images/` — Site photography and official CRCA logos (`public/images/logos/`).
 
 3. **Pages & Components (`src/pages/`, `src/components/`):**
+   - **Ministry pages:** every `/ministries/<slug>` page is rendered by `src/pages/ministries/MinistryPage.tsx` from `src/data/ministry-pages/<slug>.json` (one shared template, as Synod 2024 asked for). Write content in plain Australian English, only from sources; record each file`s `sources` and any unverified claim in `needsChecking`.
+   - Navigation menus (desktop panels + mobile) come from `navMenus` in `src/data/navigation.ts`.
    - `/safe-church/*` → `SafeChurchPage.tsx` (hub + every migrated page; urgent contact numbers live in `siteConfig.safeChurch.urgent`).
    - `/sermons` and `/sermons/:sermonId` → `SermonsPage.tsx` / `SermonPage.tsx`. Old `/word-of-salvation/<slug>` URLs redirect.
    - Migrated HTML is rendered with `components/RichHtml.tsx` (resolves `{{BASE}}` placeholders, routes in-site links through React Router).

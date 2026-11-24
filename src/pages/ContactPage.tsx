@@ -110,9 +110,8 @@ export function ContactPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Contact Us"
-        title="Connect With the Right CRCA Team"
-        description="Choose a topic below to reach the right ministry coordinator, committee chair, or support office directly."
+        title="Contact us"
+        description="Choose a topic so your message reaches the right person or committee."
         breadcrumbs={[{ label: 'Contact' }]}
       />
 

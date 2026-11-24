@@ -1,0 +1,35 @@
+// One JSON file per ministry in src/data/ministry-pages/, all rendered by the
+// same template (src/pages/ministries/MinistryPage.tsx). This is the
+// "standardised template" pattern Synod 2024 asked for (Acts Art. 10).
+
+export type MinistryGroup = 'next-gen' | 'training-planting' | 'global-mission';
+
+export interface MinistryPageData {
+  slug: string;
+  name: string;
+  group: MinistryGroup;
+  summary: string;
+  body: { heading?: string; paragraphs?: string[]; list?: string[] }[];
+  steps?: { heading: string; items: { title: string; text: string }[] };
+  facts?: { label: string; value: string }[];
+  contact?: { name?: string; role?: string; email?: string; phone?: string; topic?: string };
+  actions?: { label: string; url: string; kind: 'primary' | 'secondary' }[];
+  resources?: { label: string; url: string; type: 'pdf' | 'link' | 'video'; note?: string }[];
+  video?: { youtubeId: string; title: string };
+  sources?: string[];
+  needsChecking?: string[];
+}
+
+export const GROUP_LABELS: Record<MinistryGroup, string> = {
+  'next-gen': 'Next generation',
+  'training-planting': 'Training & church planting',
+  'global-mission': 'Mission & partnerships',
+};
+
+const modules = import.meta.glob<MinistryPageData>('../data/ministry-pages/*.json', { eager: true, import: 'default' });
+
+export const ministryPages: MinistryPageData[] = Object.values(modules).sort((a, b) => a.name.localeCompare(b.name));
+
+export function getMinistryPage(slug: string): MinistryPageData | undefined {
+  return ministryPages.find((m) => m.slug === slug);
+}

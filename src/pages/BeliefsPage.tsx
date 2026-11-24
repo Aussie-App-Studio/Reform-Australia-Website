@@ -62,8 +62,7 @@ export function BeliefsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="What We Believe"
-        title="The Gospel & Reformed Confessions"
+        title="What we believe"
         description={beliefsData.overview}
         breadcrumbs={[{ label: 'Who We Are' }, { label: 'What We Believe' }]}
       />

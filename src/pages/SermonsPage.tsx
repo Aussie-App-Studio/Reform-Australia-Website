@@ -113,8 +113,8 @@ export function SermonsPage() {
     <>
       <PageHeader
         eyebrow="Word of Salvation"
-        title="Reading Sermon Archive"
-        description={`${total ? total.toLocaleString() : 'Over 2,000'} sermons by CRCA ministers since the 1950s — for reading services in vacant congregations, personal devotion, and further study of Scripture and the Reformed confessions.`}
+        title="Reading sermons"
+        description={`${total ? total.toLocaleString() : 'Over 2,000'} sermons by CRCA ministers, for reading services, personal devotion and further study. Search by book, passage, preacher or Lord’s Day.`}
         breadcrumbs={[{ label: 'For Churches', to: '/for-churches' }, { label: 'Word of Salvation' }]}
       />
 

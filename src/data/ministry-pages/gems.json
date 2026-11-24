@@ -1,0 +1,99 @@
+{
+  "slug": "gems",
+  "name": "GEMS",
+  "group": "next-gen",
+  "summary": "Christian girls' clubs for girls aged 9 to 15, run by women volunteers from CRCA churches, with Busy Bees for girls aged 6 to 8.",
+  "body": [
+    {
+      "heading": "What GEMS is",
+      "paragraphs": [
+        "G.E.M.S. is a Christian organisation, run by volunteers, with a program made for girls aged 9 to 15. Some groups also run Busy Bees for girls aged 6 to 8.",
+        "Groups usually meet weekly or fortnightly. They are led by Christian women who are members of the Christian Reformed Churches of Australia."
+      ]
+    },
+    {
+      "heading": "Mission and vision",
+      "paragraphs": [
+        "G.E.M.S. stands for Girls Everywhere Meeting the Saviour.",
+        "Mission: \"To help bring girls into a living, dynamic relationship with Jesus Christ.\"",
+        "Vision: \"To see girls actively and enthusiastically expressing love for God and others by equipping and encouraging them to live out their faith.\""
+      ]
+    },
+    {
+      "heading": "The Bible at every meeting",
+      "paragraphs": [
+        "At each meeting the girls are asked, \"What does the Lord require of us?\" They answer together: \"To act justly, to love kindness and to walk humbly with our God\" (Micah 6:8).",
+        "Part of each evening is set aside to learn from God's Word, in group Bible studies or in Bible talks from the leaders."
+      ]
+    },
+    {
+      "heading": "Other activities",
+      "list": [
+        "Badge work",
+        "Games, craft, drama and singing",
+        "Serving others, such as visiting nursing homes",
+        "Outings such as swimming and walks",
+        "Club or state camps"
+      ]
+    },
+    {
+      "heading": "Three levels",
+      "paragraphs": [
+        "Each level is designed to meet the spiritual, social, physical and emotional needs of girls. Girls learn to apply the Bible's teaching to their own lives and find answers to the challenges they face."
+      ],
+      "list": [
+        "Busy Bees (Awareness): girls aged 6 to 8",
+        "Discovery level: girls aged 9 to 13",
+        "Advanced level: girls aged 13 to 15"
+      ]
+    }
+  ],
+  "facts": [
+    { "label": "Who it's for", "value": "Girls aged 9 to 15 (Busy Bees for ages 6 to 8 in some groups)" },
+    { "label": "Led by", "value": "Christian women from CRCA churches" },
+    { "label": "Meets", "value": "Usually weekly or fortnightly" },
+    { "label": "Motto", "value": "Micah 6:8" }
+  ],
+  "contact": {
+    "name": "CRCA Administration",
+    "email": "admin@crca.org.au",
+    "topic": "next-gen"
+  },
+  "actions": [
+    { "label": "Enquire about GEMS", "url": "/contact?topic=next-gen", "kind": "primary" },
+    { "label": "Visit the GEMS website", "url": "https://gems.crca.org.au/", "kind": "secondary" }
+  ],
+  "resources": [
+    {
+      "label": "Theme lessons 2022-2023 (PDF)",
+      "url": "/ministry-resources/cadets-gems/Theme-Lessons-2022.pdf",
+      "type": "pdf",
+      "note": "Bible lessons on the \"Amazing\" theme (Joshua 3:5), shared with Cadets"
+    },
+    {
+      "label": "Bulletin cover 2022-2023 (PDF)",
+      "url": "/ministry-resources/cadets-gems/Bulletin-Cover-22.8.5x11-Downloadable.pdf",
+      "type": "pdf",
+      "note": "Shared with Cadets"
+    },
+    {
+      "label": "Gold Sheet 2022-2023 (PDF)",
+      "url": "/ministry-resources/cadets-gems/2022_2023-Gold-Sheet.pdf",
+      "type": "pdf",
+      "note": "Leader quick reference, shared with Cadets"
+    }
+  ],
+  "sources": [
+    "https://gems.crca.org.au/ (fetched 24 Nov 2026)",
+    "https://crca.org.au/ (Our Ministries menu links GEMS to www.gems.crca.org.au)",
+    "public/ministry-resources/cadets-gems/Theme-Lessons-2022.pdf",
+    "src/data/nextGenClubs.json",
+    "src/data/contactTopics.json"
+  ],
+  "needsChecking": [
+    "The three resources are Cadets materials from the Calvinist Cadet Corps (they talk about boys, cadets and counsellors). gems.crca.org.au links the same files, so they are kept here, but confirm GEMS wants them or has its own materials.",
+    "gems.crca.org.au (last updated 2024) shows the same 'Amazing' theme as Cadets, labelled '2024 Theme'. Confirm whether there is a newer theme.",
+    "The crca.org.au menu links to https://www.gems.crca.org.au/, but that hostname does not resolve; https://gems.crca.org.au/ works. The action uses the working address. The main CRCA site link may need fixing.",
+    "No named GEMS contact appears on any source. Enquiries route to CRCA Administration (admin@crca.org.au) via the next-gen contact topic, as in contactTopics.json. Confirm, or supply a GEMS coordinator."
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "slug": "cadets",
+  "name": "Cadets",
+  "group": "next-gen",
+  "summary": "A club program run by volunteers in local churches for primary school boys aged 9 to 14.",
+  "body": [
+    {
+      "heading": "What Cadets is",
+      "paragraphs": [
+        "The Christian Cadet Corps is an independent youth ministry. It gives local churches a program that helps them share Christ's love with boys from their church and community.",
+        "Cadets is run by volunteers called counsellors. The program is for primary school boys aged 9 to 14."
+      ]
+    },
+    {
+      "heading": "What happens at Cadets",
+      "paragraphs": [
+        "At a club night the boys learn about God, work on badges, make crafts, play games, sing songs and make new friends. Clubs also go on camps and outings."
+      ]
+    },
+    {
+      "heading": "What we believe",
+      "paragraphs": [
+        "The basis of the Christian Cadet Corps is the Word of God (the Bible) according to the concepts expressed in the Heidelberg Catechism, the Canons of Dort and the Belgic Confession."
+      ]
+    },
+    {
+      "heading": "The goal",
+      "paragraphs": [
+        "Luke 2:52 says that \"Jesus grew in wisdom and stature, and in favour with God and men.\"",
+        "Based on that verse, Cadets aims to help boys grow spiritually in all areas of life: devotional, mental, physical and social. It does this by giving Christian men a structure, program and materials designed for the purpose."
+      ]
+    },
+    {
+      "heading": "Current theme: Amazing",
+      "paragraphs": [
+        "The club theme is \"Amazing\", based on Joshua 3:5: \"Consecrate yourselves, for tomorrow the Lord will do amazing things among you.\" Through the year the boys are reminded that God is holy, that we must prepare ourselves to be in his presence, and that God has done, is doing and will do amazing things.",
+        "Leaders are encouraged to set the example: look for, find and share the amazing things God is doing."
+      ]
+    }
+  ],
+  "facts": [
+    { "label": "Who it's for", "value": "Boys aged 9 to 14" },
+    { "label": "Run by", "value": "Volunteer counsellors in local churches" },
+    { "label": "In Australia since", "value": "1964 (founded in the USA in 1952)" },
+    { "label": "Size", "value": "About 15 clubs, 180 cadets and 70 counsellors" }
+  ],
+  "contact": {
+    "name": "CRCA Administration",
+    "email": "admin@crca.org.au",
+    "topic": "next-gen"
+  },
+  "actions": [
+    { "label": "Enquire about Cadets", "url": "/contact?topic=next-gen", "kind": "primary" },
+    { "label": "Visit the Cadets website", "url": "https://cadets.crca.org.au/", "kind": "secondary" }
+  ],
+  "resources": [
+    {
+      "label": "Theme lessons 2022-2023 (PDF)",
+      "url": "/ministry-resources/cadets-gems/Theme-Lessons-2022.pdf",
+      "type": "pdf",
+      "note": "Bible lessons on the \"Amazing\" theme, from the Calvinist Cadet Corps"
+    },
+    {
+      "label": "Bulletin cover 2022-2023 (PDF)",
+      "url": "/ministry-resources/cadets-gems/Bulletin-Cover-22.8.5x11-Downloadable.pdf",
+      "type": "pdf",
+      "note": "Printable church bulletin cover on the theme verse"
+    },
+    {
+      "label": "Gold Sheet 2022-2023 (PDF)",
+      "url": "/ministry-resources/cadets-gems/2022_2023-Gold-Sheet.pdf",
+      "type": "pdf",
+      "note": "Quick reference for counsellors: theme verses, badges, service ideas and a sample club meeting"
+    }
+  ],
+  "sources": [
+    "https://cadets.crca.org.au/ (fetched 24 Nov 2026)",
+    "https://crca.org.au/ (Our Ministries menu links Cadets to cadets.crca.org.au)",
+    "public/ministry-resources/cadets-gems/2022_2023-Gold-Sheet.pdf",
+    "public/ministry-resources/cadets-gems/Bulletin-Cover-22.8.5x11-Downloadable.pdf",
+    "public/ministry-resources/cadets-gems/Theme-Lessons-2022.pdf",
+    "src/data/nextGenClubs.json",
+    "src/data/contactTopics.json"
+  ],
+  "needsChecking": [
+    "Club numbers (about 15 clubs, 180 cadets, 70 counsellors) come from cadets.crca.org.au, which was last updated in 2024. Confirm they are still current.",
+    "The cadets.crca.org.au site calls the 'Amazing' theme the '2024 Theme', but the PDFs are for the 2022-2023 season. Confirm whether there is a newer theme and newer materials.",
+    "Name of the organisation: cadets.crca.org.au says 'Christian Cadet Corps', while the PDFs are published by the 'Calvinist Cadet Corps' (Grand Rapids, USA) and describe Australian clubs as partner clubs. Confirm which name to use.",
+    "No named Cadets contact appears on any source. The page routes enquiries to CRCA Administration (admin@crca.org.au) via the next-gen contact topic, as in contactTopics.json. Confirm this is the right contact, or supply a Cadets coordinator."
+  ]
+}

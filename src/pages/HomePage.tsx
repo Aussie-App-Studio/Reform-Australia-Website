@@ -7,6 +7,7 @@ import beliefs from '../data/beliefs.json';
 import { ministryMegaMenuColumns } from '../data/navigation';
 import type { ChurchRecord } from '../components/AustraliaChurchMap';
 import { loadAuLocations } from '../data/locationHubs';
+import { AustraliaDotMap } from '../components/AustraliaDotMap';
 
 const allChurches = churchesRaw as ChurchRecord[];
 
@@ -40,8 +41,6 @@ const LEADER_LINKS = [
   { label: 'Contact the office', detail: 'Find the right person', to: '/contact' },
 ];
 
-const linkUnderline =
-  'text-navy-900 underline decoration-teal-500 decoration-2 underline-offset-[6px] hover:decoration-navy-900';
 
 function TwoColumn({ id, title, children, tone = 'white' }: { id: string; title: string; children: ReactNode; tone?: 'white' | 'paper' }) {
   return (
@@ -69,72 +68,78 @@ export function HomePage() {
   return (
     <>
       {/* Welcome + find a church */}
-      <section className="border-b border-stone-200 bg-stone-50">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8 lg:py-24">
-          <div className="lg:col-span-7">
-            <p className="text-sm font-semibold text-teal-700">Christian Reformed Churches of Australia</p>
-            <h1 className="mt-3 font-serif text-[2.6rem] font-semibold leading-[1.05] text-navy-900 sm:text-6xl">
-              Reforming to reach the lost for Christ
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-stone-700 sm:text-xl">
+      <section className="relative overflow-hidden bg-navy-900 text-white">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:px-8 lg:py-20">
+          <div className="lg:col-span-6">
+            <p className="text-sm font-semibold text-teal-100">Christian Reformed Churches of Australia</p>
+            <h1 className="mt-3 font-serif text-[2.6rem] font-semibold leading-[1.05] sm:text-6xl">Reforming to reach the lost for Christ</h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-navy-100 sm:text-xl">
               We are a family of {allChurches.length} congregations across Australia, together since 1951. We believe the Bible is
               God’s Word, and we hold to the historic Reformed confessions.
             </p>
-            <p className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-base font-semibold">
-              <Link to="/who-we-are/beliefs" className={linkUnderline}>
-                What we believe
-              </Link>
-              <Link to="/who-we-are/history" className={linkUnderline}>
-                Our history
-              </Link>
-            </p>
-          </div>
 
-          <div className="lg:col-span-5">
-            <div className="border-t-4 border-teal-500 bg-white p-6 ring-1 ring-stone-200 sm:p-8">
-              <h2 className="font-serif text-2xl font-semibold text-navy-900">Find a church near you</h2>
-              <p className="mt-2 text-stone-700">Service times, addresses and livestreams for every CRCA congregation.</p>
-              <form onSubmit={handleChurchSearch} role="search" className="mt-5 flex gap-2">
-                <label htmlFor="home-church-search" className="sr-only">
-                  Suburb, city or postcode
-                </label>
+            <form onSubmit={handleChurchSearch} role="search" className="mt-8 max-w-xl">
+              <label htmlFor="home-church-search" className="font-semibold">
+                Find a church near you
+              </label>
+              <div className="mt-2 flex gap-2">
                 <input
                   id="home-church-search"
                   type="text"
                   value={churchQuery}
                   onFocus={() => void loadAuLocations()}
                   onChange={(e) => setChurchQuery(e.target.value)}
-                  placeholder="Suburb, city or postcode"
-                  className="min-w-0 flex-1 rounded-md border border-stone-300 bg-white px-3.5 py-3 text-base text-navy-900 placeholder:text-stone-500 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500/25"
+                  placeholder="Suburb, town or postcode"
+                  className="min-w-0 flex-1 rounded-md border-0 bg-white px-4 py-3 text-base text-navy-900 placeholder:text-stone-500 focus:outline-none focus:ring-4 focus:ring-teal-400/50"
                 />
-                <button type="submit" className="inline-flex items-center gap-2 rounded-md bg-navy-900 px-4 py-3 font-semibold text-white hover:bg-navy-800">
+                <button type="submit" className="inline-flex items-center gap-2 rounded-md bg-teal-500 px-4 py-3 font-semibold text-navy-950 hover:bg-teal-400">
                   <Search className="h-4 w-4" aria-hidden="true" />
                   <span className="sr-only sm:not-sr-only">Search</span>
                 </button>
-              </form>
-              <ul className="mt-6 grid grid-cols-1 gap-x-6 border-t min-[440px]:grid-cols-2 border-stone-200 pt-2 text-[0.95rem]">
-                {STATES.map((s) => (
-                  <li key={s.code}>
-                    <Link
-                      to={`/find-a-church?state=${s.code}`}
-                      className="flex items-baseline justify-between gap-2 border-b border-stone-100 py-2 text-navy-900 hover:text-teal-700"
-                    >
-                      <span>{s.name}</span>
-                      <span className="tabular-nums text-sm text-stone-500">{allChurches.filter((c) => c.state === s.code).length}</span>
-                    </Link>
-                  </li>
-                ))}
-                <li>
-                  <Link to="/find-a-church" className="flex items-center justify-between gap-2 py-2 font-semibold text-teal-700 hover:text-navy-900">
-                    <span>Map of all churches</span>
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </div>
+            </form>
+            <ul className="mt-5 flex max-w-xl flex-wrap gap-x-4 gap-y-1.5 text-[0.95rem] text-navy-100">
+              {STATES.map((s) => (
+                <li key={s.code}>
+                  <Link to={`/find-a-church?state=${s.code}`} className="underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white">
+                    {s.code === 'ACT' ? 'ACT' : s.name}{' '}
+                    <span className="tabular-nums text-navy-100/70">({allChurches.filter((c) => c.state === s.code).length})</span>
                   </Link>
                 </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-6">
+            <AustraliaDotMap churches={allChurches} className="mx-auto block w-full max-w-[38rem]" />
+            <p className="mt-3 text-center text-sm text-navy-100/80">
+              Each dot is a CRCA congregation.{' '}
+              <Link to="/find-a-church" className="font-semibold text-white underline decoration-teal-400 underline-offset-4">
+                Open the full map
+              </Link>
+            </p>
           </div>
         </div>
       </section>
+
+      {/* Quick paths */}
+      <nav aria-label="Popular" className="border-b border-stone-200 bg-white">
+        <ul className="mx-auto grid max-w-7xl grid-cols-2 px-4 sm:px-6 md:grid-cols-4 lg:px-8">
+          {[
+            { label: 'What we believe', to: '/who-we-are/beliefs' },
+            { label: 'Our history', to: '/who-we-are/history' },
+            { label: 'Ministries', to: '/ministries' },
+            { label: 'For church leaders', to: '/for-churches' },
+          ].map((l) => (
+            <li key={l.to} className="border-stone-200 [&:not(:first-child)]:md:border-l">
+              <Link to={l.to} className="group flex items-center justify-between gap-2 px-1 py-4 font-semibold text-navy-900 hover:text-teal-700 md:px-5">
+                {l.label}
+                <ArrowRight className="h-4 w-4 text-teal-600 transition group-hover:translate-x-0.5" aria-hidden="true" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       <TwoColumn id="believe" title="What we believe">
         <p className="font-serif text-xl leading-relaxed text-navy-900 sm:text-2xl sm:leading-relaxed">

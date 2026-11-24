@@ -1,0 +1,128 @@
+{
+  "slug": "youth-convention",
+  "name": "Youth Convention",
+  "group": "next-gen",
+  "summary": "A week in God's Word, worship and community for CRCA young adults aged 16 to 28. Convention 2027 is sold out, with a waitlist open.",
+  "body": [
+    {
+      "heading": "Convention 2027 is sold out",
+      "paragraphs": [
+        "Convention 2027 is full. You can still register to be added to the waitlist."
+      ]
+    },
+    {
+      "heading": "What Convention is",
+      "paragraphs": [
+        "Convention exists to bring together the young adults of the CRCA for a week in God's Word, worship and community. With a focus on personal discipleship, it serves as a \"spiritual reset\" for the year ahead.",
+        "Convention seeks to support the local church in raising up young people who will be lifelong, disciple-making disciples of Jesus.",
+        "The week includes plenty of time opening God's Word, worshipping together, hanging out at the village and some fun activities."
+      ]
+    },
+    {
+      "heading": "The 2027 theme",
+      "paragraphs": [
+        "Through the book of Ephesians, Convention 2027 looks at the union of Christ and his Church. The church is not just a human organisation, but a God-given organism, powered by his Spirit.",
+        "This shapes our identity, our purpose, our relationships and our future, both individually and together. Those who are \"in Christ\" are both recipients and channels of God's grace."
+      ]
+    },
+    {
+      "heading": "Keynote speaker: Murray Capill",
+      "paragraphs": [
+        "Murray Capill works at Reformed Theological College in Melbourne, where he helps train the next generation of pastors and gospel workers. He regularly speaks at camps and conferences.",
+        "Murray grew up in New Zealand. He is married to Wendy, and they have five adult children and quite a few grandchildren."
+      ]
+    },
+    {
+      "heading": "Getting there and what it costs",
+      "paragraphs": [
+        "Convention runs from the afternoon of Monday 11 January to the morning of Saturday 16 January 2027 at Busselton Baptist Camping Centre, Busselton, WA. A free bus leaves Perth Airport at 2pm sharp on 11 January and returns there at 4pm on 16 January. Select the bus in your registration if you need a seat.",
+        "The cost is $599 ($549 early bird, which closed 30 June). It covers five nights' accommodation, all meals during Convention, the guest speakers and panellists, and some activities. Registrations close 30 November 2026.",
+        "Convention has a strict age policy of 16 to 28. Questions about the age policy go to admin@crcaconvention.au."
+      ]
+    }
+  ],
+  "facts": [
+    { "label": "Dates", "value": "11 to 16 January 2027" },
+    { "label": "Where", "value": "Busselton Baptist Camping Centre, Busselton, WA" },
+    { "label": "Ages", "value": "16 to 28" },
+    { "label": "Cost", "value": "$599 (early bird $549 until 30 June)" },
+    { "label": "Speaker", "value": "Murray Capill, Reformed Theological College" }
+  ],
+  "contact": {
+    "name": "Convention Planning Committee",
+    "email": "admin@crcaconvention.au",
+    "topic": "next-gen"
+  },
+  "actions": [
+    { "label": "Join the 2027 waitlist", "url": "https://form.jotform.com/260332588128055", "kind": "primary" },
+    { "label": "Visit the Convention website", "url": "https://www.crcaconvention.au/", "kind": "secondary" }
+  ],
+  "resources": [
+    {
+      "label": "Code of conduct (PDF)",
+      "url": "/ministry-resources/convention/Code-of-conduct-Convention.pdf",
+      "type": "pdf",
+      "note": "What everyone attending Convention 2027 agrees to"
+    },
+    {
+      "label": "Fundraising ideas (PDF)",
+      "url": "/ministry-resources/convention/Fund-Raising-Ideas-for-Convention.pdf",
+      "type": "pdf",
+      "note": "Ideas for churches and youth groups to help with the cost"
+    },
+    {
+      "label": "Promo slide (PDF)",
+      "url": "/ministry-resources/convention/Promo_slide_info-1.pdf",
+      "type": "pdf",
+      "note": "Slide with the key details to show at church"
+    },
+    {
+      "label": "Previous Convention: In Jesus, in Life",
+      "url": "https://www.youtube.com/watch?v=6gVS10udKjQ",
+      "type": "video"
+    },
+    {
+      "label": "Previous Convention: In Jesus, in the Spirit",
+      "url": "https://www.youtube.com/watch?v=t6L9hTKgREI",
+      "type": "video"
+    },
+    {
+      "label": "Previous Convention: In Jesus, in the Church",
+      "url": "https://www.youtube.com/watch?v=XR0WcPRUN3c",
+      "type": "video"
+    },
+    {
+      "label": "Previous Convention: In Jesus, in the World",
+      "url": "https://www.youtube.com/watch?v=DxH5kJe_1sY",
+      "type": "video"
+    },
+    {
+      "label": "Convention on Facebook",
+      "url": "https://www.facebook.com/crcayouthconvention",
+      "type": "link"
+    },
+    {
+      "label": "Convention on Instagram",
+      "url": "https://www.instagram.com/crcaconvention/",
+      "type": "link"
+    }
+  ],
+  "video": { "youtubeId": "yTxwQ9AvCLA", "title": "Convention 2027 promo" },
+  "sources": [
+    "https://www.crcaconvention.au/ (fetched 24 Nov 2026; identical to scratchpad src/conv.html)",
+    "public/ministry-resources/convention/Code-of-conduct-Convention.pdf",
+    "public/ministry-resources/convention/Fund-Raising-Ideas-for-Convention.pdf",
+    "public/ministry-resources/convention/Promo_slide_info-1.pdf",
+    "YouTube oEmbed titles for yTxwQ9AvCLA, 6gVS10udKjQ, t6L9hTKgREI, XR0WcPRUN3c, DxH5kJe_1sY",
+    "src/data/convention.json",
+    "src/data/contactTopics.json"
+  ],
+  "needsChecking": [
+    "Registrations close 30 November 2026 (per crcaconvention.au). After that date the waitlist action and 'sold out' wording will need updating, and the page will need refreshing for the next Convention.",
+    "Contact name 'Convention Planning Committee' is taken from the 'CPC' named in the code of conduct and the site's age-policy text; the site itself only gives admin@crcaconvention.au.",
+    "The old data gave the theme a title, 'Union with Christ - His Body & Bride'. The website does not use that as a title (its tagline is 'Together in Christ'), so the title was dropped. Confirm the official theme name if there is one.",
+    "Promo video yTxwQ9AvCLA is titled 'Convention 2027 Promo 1' but is uploaded by a personal YouTube account, not the CRCA Convention channel. It is embedded on crcaconvention.au, so it is kept.",
+    "Day names (Monday 11 January, Saturday 16 January 2027) were added from the calendar; the site gives dates only.",
+    "'Leaders Guide (TBC)' is listed on the website with no file yet. Add it when published."
+  ]
+}

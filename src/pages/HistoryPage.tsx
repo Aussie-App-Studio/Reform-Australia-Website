@@ -9,7 +9,6 @@ export function HistoryPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Our Heritage"
         title={history.heading}
         description={history.lead}
         breadcrumbs={[{ label: 'Who We Are' }, { label: 'Our History' }]}

@@ -6,8 +6,7 @@ export function VisionValuesPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Who We Are"
-        title="Vision & Values"
+        title="Vision and values"
         description={identity.missionAndVision.intro}
         breadcrumbs={[{ label: 'Who We Are' }, { label: 'Vision & Values' }]}
       />

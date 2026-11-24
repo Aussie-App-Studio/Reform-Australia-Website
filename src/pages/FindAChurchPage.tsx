@@ -34,9 +34,8 @@ export function FindAChurchPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Congregations Across Australia"
-        title="Find a Local CRCA Church"
-        description="Browse our congregations across nearly every Australian state and territory. Search by suburb or postcode, sort by nearest location, and preview each church's website, livestream, Facebook page, or sermon podcast."
+        title="Find a church"
+        description="Search by suburb, town or postcode, or use your location, to find service times and directions for your nearest CRCA church."
         breadcrumbs={[{ label: 'Find a Church' }]}
       />
 

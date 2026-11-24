@@ -1,417 +1,149 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import {
-  ChevronDown,
-  ExternalLink,
-  MapPin,
-  Menu,
-  X,
-} from 'lucide-react';
+import { ArrowRight, ChevronDown, ExternalLink, MapPin, Menu, X } from 'lucide-react';
 import { CrcaLogo } from './CrcaLogo';
-import {
-  forChurchesNavItems,
-  ministryMegaMenuColumns,
-  whoWeAreNavItems,
-} from '../data/navigation';
+import { navMenus, type NavLinkItem, type NavMenu } from '../data/navigation';
 
-type OpenMenu = 'who-we-are' | 'ministries' | 'for-churches' | null;
+type MenuId = NavMenu['id'] | null;
+
+function MenuLink({ item, className, onNavigate }: { item: NavLinkItem; className: string; onNavigate?: () => void }) {
+  if (item.isExternal) {
+    return (
+      <a href={item.to} target="_blank" rel="noopener noreferrer" className={className}>
+        <span>{item.label}</span>
+        <ExternalLink className="ml-1.5 inline h-3.5 w-3.5 text-stone-400" aria-label="(opens in a new tab)" />
+      </a>
+    );
+  }
+  return (
+    <Link to={item.to} className={className} onClick={onNavigate}>
+      {item.label}
+    </Link>
+  );
+}
 
 export function Navbar() {
-  const [openMenu, setOpenMenu] = useState<OpenMenu>(null);
-  const [pinnedMenu, setPinnedMenu] = useState<OpenMenu>(null);
+  const [openMenu, setOpenMenu] = useState<MenuId>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileSection, setMobileSection] = useState<OpenMenu>('who-we-are');
   const headerRef = useRef<HTMLElement>(null);
-  const closeTimerRef = useRef<number | null>(null);
+  const closeTimer = useRef<number | null>(null);
   const location = useLocation();
 
-  function clearCloseTimer() {
-    if (closeTimerRef.current !== null) {
-      window.clearTimeout(closeTimerRef.current);
-      closeTimerRef.current = null;
+  const clearTimer = () => {
+    if (closeTimer.current !== null) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
     }
-  }
+  };
 
-  // Close menus whenever route changes
+  // Close everything on navigation.
   useEffect(() => {
-    clearCloseTimer();
+    clearTimer();
     setOpenMenu(null);
-    setPinnedMenu(null);
     setMobileOpen(false);
   }, [location.pathname, location.hash]);
 
-  // Keep --site-header-height synced with rendered sticky header height
+  // Keep --site-header-height in sync for sticky elements further down the page.
   useEffect(() => {
     const el = headerRef.current;
     if (!el) return;
-
-    function updateHeight() {
-      if (!headerRef.current) return;
-      const height = Math.round(headerRef.current.getBoundingClientRect().height);
-      document.documentElement.style.setProperty('--site-header-height', `${height}px`);
-    }
-
-    updateHeight();
-
-    let observer: ResizeObserver | null = null;
-    if (typeof ResizeObserver !== 'undefined') {
-      observer = new ResizeObserver(updateHeight);
-      observer.observe(el);
-    }
-    window.addEventListener('resize', updateHeight);
+    const update = () =>
+      document.documentElement.style.setProperty('--site-header-height', `${Math.round(el.getBoundingClientRect().height)}px`);
+    update();
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(update) : null;
+    ro?.observe(el);
+    window.addEventListener('resize', update);
     return () => {
-      observer?.disconnect();
-      window.removeEventListener('resize', updateHeight);
+      ro?.disconnect();
+      window.removeEventListener('resize', update);
     };
   }, []);
 
-  // Close dropdowns on outside click or Escape
+  // Outside click / Escape closes menus.
   useEffect(() => {
-    function handleOutsideClick(e: MouseEvent) {
-      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
-        clearCloseTimer();
-        setOpenMenu(null);
-        setPinnedMenu(null);
-      }
-    }
-    function handleKeyDown(e: KeyboardEvent) {
+    const onDown = (e: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) setOpenMenu(null);
+    };
+    const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        clearCloseTimer();
         setOpenMenu(null);
-        setPinnedMenu(null);
         setMobileOpen(false);
       }
-    }
-    document.addEventListener('mousedown', handleOutsideClick);
-    document.addEventListener('keydown', handleKeyDown);
+    };
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('keydown', onKey);
     return () => {
-      clearCloseTimer();
-      document.removeEventListener('mousedown', handleOutsideClick);
-      document.removeEventListener('keydown', handleKeyDown);
+      clearTimer();
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('keydown', onKey);
     };
   }, []);
 
-  function handleDesktopTriggerClick(menu: Exclude<OpenMenu, null>) {
-    clearCloseTimer();
-    if (pinnedMenu === menu) {
-      setPinnedMenu(null);
-      setOpenMenu(null);
-    } else {
-      setPinnedMenu(menu);
-      setOpenMenu(menu);
-    }
-  }
+  const isActive = (m: NavMenu) => m.activePrefixes.some((p) => location.pathname.startsWith(p));
+  const current = navMenus.find((m) => m.id === openMenu) ?? null;
 
-  function handleDesktopMouseEnter(menu: Exclude<OpenMenu, null>) {
-    clearCloseTimer();
-    if (!pinnedMenu || pinnedMenu === menu) {
-      setOpenMenu(menu);
-    }
-  }
+  const scheduleClose = () => {
+    clearTimer();
+    closeTimer.current = window.setTimeout(() => setOpenMenu(null), 150);
+  };
 
-  function handleDesktopMouseLeave(menu: Exclude<OpenMenu, null>) {
-    if (pinnedMenu !== menu) {
-      clearCloseTimer();
-      closeTimerRef.current = window.setTimeout(() => {
-        setOpenMenu((prev) => (prev === menu ? null : prev));
-        closeTimerRef.current = null;
-      }, 120);
-    }
-  }
-
-  const isWhoWeAreActive = location.pathname.startsWith('/who-we-are');
-  const isMinistriesActive = location.pathname.startsWith('/ministries');
-  const isForChurchesActive = location.pathname.startsWith('/for-churches');
+  const topLink = (active: boolean, open = false) =>
+    `relative inline-flex items-center gap-1 px-3 py-2 text-[0.95rem] font-semibold transition-colors after:absolute after:inset-x-3 after:-bottom-[1.05rem] after:h-[3px] after:rounded-full ${
+      active ? 'text-navy-900 after:bg-teal-500' : open ? 'text-navy-900 after:bg-stone-300' : 'text-navy-800 hover:text-teal-700 after:bg-transparent'
+    }`;
 
   return (
-    <header ref={headerRef} className="sticky top-0 z-40 print:hidden">
-      {/* Main Navigation Bar */}
-      <div className="bg-white/95 border-b border-stone-200">
-        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3.5 sm:px-6 lg:px-8">
-          {/* Brand Logo (Home link — removes redundant "Home" text nav item) */}
-          <Link
-            to="/"
-            className="min-w-0 rounded-lg py-0.5 transition-opacity hover:opacity-90"
-            aria-label="Christian Reformed Churches of Australia — Home"
-          >
+    <header ref={headerRef} className="sticky top-0 z-40 bg-white print:hidden" onMouseLeave={scheduleClose} onMouseEnter={clearTimer}>
+      <div className="border-b border-stone-200 bg-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3.5 sm:px-6 lg:px-8">
+          <Link to="/" className="min-w-0 py-0.5" aria-label="Christian Reformed Churches of Australia, home">
             <CrcaLogo variant="dark" />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav aria-label="Primary Navigation" className="hidden lg:flex items-center gap-1">
-            {/* Who We Are Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => handleDesktopMouseEnter('who-we-are')}
-              onMouseLeave={() => handleDesktopMouseLeave('who-we-are')}
-            >
+          {/* Desktop */}
+          <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
+            {navMenus.map((m) => (
               <button
+                key={m.id}
                 type="button"
-                aria-expanded={openMenu === 'who-we-are'}
-                onClick={() => handleDesktopTriggerClick('who-we-are')}
-                className={`inline-flex items-center gap-1 rounded-lg px-3.5 py-2 text-sm font-semibold transition-colors ${
-                  isWhoWeAreActive || openMenu === 'who-we-are'
-                    ? 'bg-navy-50 text-navy-900'
-                    : 'text-navy-800 hover:bg-stone-100 hover:text-navy-900'
-                }`}
+                aria-expanded={openMenu === m.id}
+                aria-controls="site-menu-panel"
+                onMouseEnter={() => {
+                  clearTimer();
+                  setOpenMenu(m.id);
+                }}
+                onClick={() => setOpenMenu((prev) => (prev === m.id ? null : m.id))}
+                className={topLink(isActive(m), openMenu === m.id)}
               >
-                <span>Who We Are</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-150 ${
-                    openMenu === 'who-we-are' ? 'rotate-180 text-teal-600' : ''
-                  }`}
-                />
+                {m.label}
+                <ChevronDown className={`h-4 w-4 text-stone-500 transition-transform ${openMenu === m.id ? 'rotate-180' : ''}`} aria-hidden="true" />
               </button>
-
-              {openMenu === 'who-we-are' && (
-                <div className="absolute left-0 top-full pt-2 w-80">
-                  <div className="rounded-md border border-stone-200 bg-white p-2 shadow-xl ring-1 ring-navy-900/5">
-                    {whoWeAreNavItems.map((item) => (
-                      <Link
-                        key={item.to}
-                        to={item.to}
-                        className="block rounded-lg px-3.5 py-2.5 transition-colors hover:bg-stone-50 group"
-                      >
-                        <div className="text-sm font-semibold text-navy-900 group-hover:text-teal-700">
-                          {item.label}
-                        </div>
-                        {item.description && (
-                          <p className="mt-0.5 text-xs leading-relaxed text-stone-600">
-                            {item.description}
-                          </p>
-                        )}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Ministries Mega-Menu */}
-            <div
-              className="py-3.5 -my-3.5"
-              onMouseEnter={() => handleDesktopMouseEnter('ministries')}
-              onMouseLeave={() => handleDesktopMouseLeave('ministries')}
-            >
-              <button
-                type="button"
-                aria-expanded={openMenu === 'ministries'}
-                onClick={() => handleDesktopTriggerClick('ministries')}
-                className={`inline-flex items-center gap-1 rounded-lg px-3.5 py-2 text-sm font-semibold transition-colors ${
-                  isMinistriesActive || openMenu === 'ministries'
-                    ? 'bg-navy-50 text-navy-900'
-                    : 'text-navy-800 hover:bg-stone-100 hover:text-navy-900'
-                }`}
-              >
-                <span>Ministries</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-150 ${
-                    openMenu === 'ministries' ? 'rotate-180 text-teal-600' : ''
-                  }`}
-                />
-              </button>
-
-              {openMenu === 'ministries' && (
-                <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 w-[min(94vw,64rem)] pt-2">
-                  <div className="rounded-lg border border-stone-200 bg-white p-6 shadow-2xl ring-1 ring-navy-900/5">
-                    <div className="mb-4 flex items-center justify-between border-b border-stone-200 pb-3">
-                      <div>
-                        <h3 className="font-serif text-base font-bold text-navy-900">
-                          CRCA Ministries & Partnerships
-                        </h3>
-                        <p className="text-xs text-stone-600">
-                          Supporting local congregations, rising generations, and global mission
-                        </p>
-                      </div>
-                      <Link
-                        to="/ministries"
-                        className="rounded-lg bg-navy-50 px-3 py-1.5 text-xs font-semibold text-navy-900 transition-colors hover:bg-teal-50 hover:text-teal-700"
-                      >
-                        View All Ministries →
-                      </Link>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-6">
-                      {ministryMegaMenuColumns.map((col) => (
-                        <div key={col.id} className="space-y-2.5">
-                          <div className="border-b border-gold-400/40 pb-1.5">
-                            <div className="text-xs font-bold uppercase tracking-wider text-teal-700">
-                              {col.heading}
-                            </div>
-                            <p className="text-[11px] text-stone-600">{col.subtitle}</p>
-                          </div>
-                          <ul className="space-y-1">
-                            {col.items.map((item) => (
-                              <li key={item.label}>
-                                {item.isExternal ? (
-                                  <a
-                                    href={item.to}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="group block rounded-lg px-2.5 py-1.5 transition-colors hover:bg-stone-50"
-                                  >
-                                    <div className="flex items-center gap-1.5 text-sm font-semibold text-navy-900 group-hover:text-teal-700">
-                                      <span>{item.label}</span>
-                                      <ExternalLink className="h-3 w-3 opacity-60" />
-                                    </div>
-                                    {item.description && (
-                                      <p className="text-xs text-stone-600 line-clamp-1">
-                                        {item.description}
-                                      </p>
-                                    )}
-                                  </a>
-                                ) : (
-                                  <Link
-                                    to={item.to}
-                                    className="group block rounded-lg px-2.5 py-1.5 transition-colors hover:bg-stone-50"
-                                  >
-                                    <div className="text-sm font-semibold text-navy-900 group-hover:text-teal-700">
-                                      {item.label}
-                                    </div>
-                                    {item.description && (
-                                      <p className="text-xs text-stone-600 line-clamp-1">
-                                        {item.description}
-                                      </p>
-                                    )}
-                                  </Link>
-                                )}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* For Churches Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => handleDesktopMouseEnter('for-churches')}
-              onMouseLeave={() => handleDesktopMouseLeave('for-churches')}
-            >
-              <button
-                type="button"
-                aria-expanded={openMenu === 'for-churches'}
-                onClick={() => handleDesktopTriggerClick('for-churches')}
-                className={`inline-flex items-center gap-1 rounded-lg px-3.5 py-2 text-sm font-semibold transition-colors ${
-                  isForChurchesActive || openMenu === 'for-churches'
-                    ? 'bg-navy-50 text-navy-900'
-                    : 'text-navy-800 hover:bg-stone-100 hover:text-navy-900'
-                }`}
-              >
-                <span>For Churches</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-150 ${
-                    openMenu === 'for-churches' ? 'rotate-180 text-teal-600' : ''
-                  }`}
-                />
-              </button>
-
-              {openMenu === 'for-churches' && (
-                <div className="absolute right-0 top-full z-50 pt-2 w-96">
-                  <div className="rounded-md border border-stone-200 bg-white p-2 shadow-xl ring-1 ring-navy-900/5">
-                    <Link
-                      to="/for-churches"
-                      className="mb-1.5 flex items-center justify-between gap-3 rounded-lg border-b border-stone-200 px-3.5 pb-3 pt-2.5 transition-colors hover:bg-stone-50 group"
-                    >
-                      <div>
-                        <div className="text-sm font-bold text-navy-900 group-hover:text-teal-700">
-                          Leader &amp; Elder Hub
-                        </div>
-                        <p className="mt-0.5 text-xs text-stone-600">
-                          Governance, liturgical forms, Church Order &amp; pastoral tools
-                        </p>
-                      </div>
-                      <span className="shrink-0 rounded-lg bg-navy-50 px-2.5 py-1 text-xs font-semibold text-navy-900 group-hover:bg-teal-50 group-hover:text-teal-700">
-                        Overview →
-                      </span>
-                    </Link>
-
-                    <div className="space-y-0.5">
-                      {forChurchesNavItems.map((item) =>
-                        item.isExternal ? (
-                          <a
-                            key={item.label}
-                            href={item.to}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block rounded-lg px-3.5 py-2 transition-colors hover:bg-stone-50 group"
-                          >
-                            <div className="flex items-center gap-1.5 text-sm font-semibold text-navy-900 group-hover:text-teal-700">
-                              <span>{item.label}</span>
-                              <ExternalLink className="h-3 w-3 opacity-60" />
-                            </div>
-                            {item.description && (
-                              <p className="mt-0.5 text-xs leading-relaxed text-stone-600">
-                                {item.description}
-                              </p>
-                            )}
-                          </a>
-                        ) : (
-                          <Link
-                            key={item.label}
-                            to={item.to}
-                            className="block rounded-lg px-3.5 py-2 transition-colors hover:bg-stone-50 group"
-                          >
-                            <div className="text-sm font-semibold text-navy-900 group-hover:text-teal-700">
-                              {item.label}
-                            </div>
-                            {item.description && (
-                              <p className="mt-0.5 text-xs leading-relaxed text-stone-600">
-                                {item.description}
-                              </p>
-                            )}
-                          </Link>
-                        )
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                `rounded-lg px-3.5 py-2 text-sm font-semibold transition-colors ${
-                  isActive
-                    ? 'bg-navy-50 text-navy-900'
-                    : 'text-navy-800 hover:bg-stone-100 hover:text-navy-900'
-                }`
-              }
-            >
+            ))}
+            <NavLink to="/contact" onMouseEnter={() => setOpenMenu(null)} className={({ isActive: a }) => topLink(a)}>
               Contact
             </NavLink>
-
-            <div className="pl-3">
-              <Link
-                to="/find-a-church"
-                className="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-teal-700 hover:shadow focus-visible:ring-2 focus-visible:ring-teal-500"
-              >
-                <MapPin className="h-4 w-4" />
-                <span>Find a Church</span>
-              </Link>
-            </div>
-          </nav>
-
-          {/* Mobile Primary CTA + Menu Button */}
-          <div className="flex shrink-0 items-center gap-2 lg:hidden">
             <Link
               to="/find-a-church"
-              className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg bg-teal-600 px-3 py-2 text-xs font-semibold text-white hover:bg-teal-700"
+              onMouseEnter={() => setOpenMenu(null)}
+              className="ml-3 inline-flex items-center gap-2 rounded-md bg-navy-900 px-4 py-2.5 text-[0.95rem] font-semibold text-white hover:bg-navy-800"
             >
-              <MapPin className="h-3.5 w-3.5" />
-              <span>Find a Church</span>
+              <MapPin className="h-4 w-4 text-teal-400" aria-hidden="true" />
+              Find a church
+            </Link>
+          </nav>
+
+          {/* Mobile */}
+          <div className="flex shrink-0 items-center gap-2 lg:hidden">
+            <Link to="/find-a-church" className="inline-flex items-center gap-1.5 rounded-md bg-navy-900 px-3 py-2 text-sm font-semibold text-white">
+              <MapPin className="h-4 w-4 text-teal-400" aria-hidden="true" />
+              Find a church
             </Link>
             <button
               type="button"
-              onClick={() => setMobileOpen((prev) => !prev)}
-              aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileOpen}
-              className="inline-flex items-center justify-center rounded-lg border border-stone-200 p-2 text-navy-900 hover:bg-stone-100"
+              className="inline-flex items-center justify-center rounded-md border border-stone-300 p-2 text-navy-900"
             >
               {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -419,163 +151,60 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer */}
-      {mobileOpen && (
-        <div className="lg:hidden border-b border-stone-200 bg-white shadow-xl max-h-[calc(100vh-var(--site-header-height,72px))] overflow-y-auto">
-          <div className="space-y-3 px-4 py-5">
-            {/* Who We Are Accordion */}
-            <div className="rounded-md border border-stone-200 bg-stone-50/70">
-              <button
-                type="button"
-                aria-expanded={mobileSection === 'who-we-are'}
-                onClick={() =>
-                  setMobileSection((prev) => (prev === 'who-we-are' ? null : 'who-we-are'))
-                }
-                className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold text-navy-900"
-              >
-                <span>Who We Are</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform ${
-                    mobileSection === 'who-we-are' ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-              {mobileSection === 'who-we-are' && (
-                <div className="space-y-1 border-t border-stone-200 px-3 py-2">
-                  {whoWeAreNavItems.map((item) => (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      className="block rounded-lg px-3 py-2 text-sm font-medium text-navy-800 hover:bg-white"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Ministries Accordion */}
-            <div className="rounded-md border border-stone-200 bg-stone-50/70">
-              <button
-                type="button"
-                aria-expanded={mobileSection === 'ministries'}
-                onClick={() =>
-                  setMobileSection((prev) => (prev === 'ministries' ? null : 'ministries'))
-                }
-                className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold text-navy-900"
-              >
-                <span>Ministries</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform ${
-                    mobileSection === 'ministries' ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-              {mobileSection === 'ministries' && (
-                <div className="space-y-4 border-t border-stone-200 px-4 py-3">
-                  <Link
-                    to="/ministries"
-                    className="block rounded-lg bg-navy-900 px-3 py-2 text-center text-xs font-semibold text-white"
-                  >
-                    Explore All CRCA Ministries
-                  </Link>
-                  {ministryMegaMenuColumns.map((col) => (
-                    <div key={col.id}>
-                      <div className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-teal-700">
-                        {col.heading}
-                      </div>
-                      <div className="space-y-1">
-                        {col.items.map((item) =>
-                          item.isExternal ? (
-                            <a
-                              key={item.label}
-                              href={item.to}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center justify-between rounded-lg px-2.5 py-1.5 text-sm font-medium text-navy-800 hover:bg-white"
-                            >
-                              <span>{item.label}</span>
-                              <ExternalLink className="h-3.5 w-3.5 text-stone-600" />
-                            </a>
-                          ) : (
-                            <Link
-                              key={item.label}
-                              to={item.to}
-                              className="block rounded-lg px-2.5 py-1.5 text-sm font-medium text-navy-800 hover:bg-white"
-                            >
-                              {item.label}
-                            </Link>
-                          )
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* For Churches Accordion */}
-            <div className="rounded-md border border-stone-200 bg-stone-50/70">
-              <button
-                type="button"
-                aria-expanded={mobileSection === 'for-churches'}
-                onClick={() =>
-                  setMobileSection((prev) => (prev === 'for-churches' ? null : 'for-churches'))
-                }
-                className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold text-navy-900"
-              >
-                <span>For Churches</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform ${
-                    mobileSection === 'for-churches' ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-              {mobileSection === 'for-churches' && (
-                <div className="space-y-1.5 border-t border-stone-200 px-3 py-3">
-                  <Link
-                    to="/for-churches"
-                    className="block rounded-lg bg-navy-900 px-3 py-2 text-center text-xs font-semibold text-white"
-                  >
-                    Leader &amp; Elder Hub Overview
-                  </Link>
-                  {forChurchesNavItems.map((item) =>
-                    item.isExternal ? (
-                      <a
-                        key={item.label}
-                        href={item.to}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-navy-800 hover:bg-white"
-                      >
-                        <span>{item.label}</span>
-                        <ExternalLink className="h-3.5 w-3.5 text-stone-600" />
-                      </a>
-                    ) : (
-                      <Link
-                        key={item.label}
-                        to={item.to}
-                        className="block rounded-lg px-3 py-2 text-sm font-medium text-navy-800 hover:bg-white"
-                      >
-                        {item.label}
-                      </Link>
-                    )
-                  )}
-                </div>
-              )}
-            </div>
-
-            <div className="grid grid-cols-1 gap-2">
-              <Link
-                to="/contact"
-                className="rounded-md border border-stone-200 px-4 py-3 text-sm font-semibold text-navy-900 hover:bg-stone-50"
-              >
-                Contact &amp; Enquiries
+      {/* Desktop dropdown panel (same layout for every menu) */}
+      {current && (
+        <div id="site-menu-panel" className="absolute inset-x-0 top-full hidden border-b border-stone-200 bg-white shadow-[0_12px_24px_-12px_rgba(0,34,76,0.18)] lg:block">
+          <div className="mx-auto grid max-w-7xl grid-cols-12 gap-10 px-8 py-9">
+            <div className="col-span-3 border-r border-stone-200 pr-8">
+              <p className="font-serif text-2xl font-semibold text-navy-900">{current.label}</p>
+              <p className="mt-2 leading-relaxed text-stone-600">{current.overview.blurb}</p>
+              <Link to={current.overview.to} className="mt-4 inline-flex items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
+                {current.overview.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
+            </div>
+            <div className={`col-span-9 grid gap-10 ${current.columns.length === 3 ? 'grid-cols-3' : 'grid-cols-3'}`}>
+              {current.columns.map((col) => (
+                <div key={col.heading}>
+                  <p className="border-b border-stone-200 pb-2 text-sm font-semibold uppercase tracking-[0.08em] text-stone-500">{col.heading}</p>
+                  <ul className="mt-2">
+                    {col.items.map((item) => (
+                      <li key={item.to}>
+                        <MenuLink item={item} className="block py-1.5 text-[1.02rem] text-navy-900 hover:text-teal-700 hover:underline underline-offset-4" />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
         </div>
+      )}
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <nav aria-label="Main" className="max-h-[calc(100dvh-5.5rem)] overflow-y-auto border-b border-stone-200 bg-white lg:hidden">
+          <div className="space-y-7 px-4 py-6 sm:px-6">
+            {navMenus.map((m) => (
+              <div key={m.id}>
+                <Link to={m.overview.to} className="font-serif text-xl font-semibold text-navy-900">
+                  {m.label}
+                </Link>
+                {m.columns.map((col) => (
+                  <ul key={col.heading} className="mt-2 border-t border-stone-200">
+                    {col.items.map((item) => (
+                      <li key={item.to} className="border-b border-stone-100">
+                        <MenuLink item={item} className="block py-2.5 text-navy-800" />
+                      </li>
+                    ))}
+                  </ul>
+                ))}
+              </div>
+            ))}
+            <Link to="/contact" className="block font-serif text-xl font-semibold text-navy-900">
+              Contact
+            </Link>
+          </div>
+        </nav>
       )}
     </header>
   );

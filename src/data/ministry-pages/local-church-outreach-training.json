@@ -1,0 +1,56 @@
+{
+  "slug": "local-church-outreach-training",
+  "name": "Local Church Outreach Training",
+  "group": "training-planting",
+  "summary": "Organic Outreach training to help every church member share their faith naturally, offered through a partnership with Organic Outreach International.",
+  "body": [
+    {
+      "heading": "Organic Outreach: sharing good news naturally",
+      "paragraphs": [
+        "Most churches would agree that evangelism is a priority. The CRCA declares that reaching the lost is central to its calling: we are a church reforming to reach the lost for Christ.",
+        "Yet few churches and Christians are bearing fruit, and most churches are either holding steady or in decline. Many Christians want to share their faith, but they do not want it to feel awkward or unnatural, for themselves or for the people they hope to reach."
+      ]
+    },
+    {
+      "heading": "Light and salt",
+      "paragraphs": [
+        "Jesus tells us that his followers are the light of the world and the salt of the earth. They are to let their light shine and make a difference in their families, neighbourhoods and communities.",
+        "Organic Outreach is designed to help every church member share their faith naturally. Through a partnership with Organic Outreach International, Ministry Development can help churches build gospel-focused passion and practice into the life of the local church."
+      ]
+    },
+    {
+      "heading": "Getting started",
+      "paragraphs": [
+        "Ministry Development can help you start Organic Outreach in your church. You can also join an Organic Outreach cohort here in Australia and receive ongoing coaching as you put it into practice.",
+        "Organic Outreach International has free downloadable resources for churches, as well as recordings of past conference sessions and interviews."
+      ]
+    }
+  ],
+  "facts": [
+    { "label": "Who it's for", "value": "CRCA churches and their members" },
+    { "label": "Program", "value": "Organic Outreach" },
+    { "label": "Partner", "value": "Organic Outreach International" },
+    { "label": "Support", "value": "Australian cohorts with ongoing coaching" }
+  ],
+  "contact": {
+    "name": "CRCA Administration",
+    "email": "admin@crca.org.au",
+    "topic": "outreach"
+  },
+  "actions": [
+    { "label": "Ask about Organic Outreach", "url": "/contact?topic=outreach", "kind": "primary" },
+    { "label": "Organic Outreach International", "url": "https://www.organicoutreach.org/", "kind": "secondary" }
+  ],
+  "resources": [
+    { "label": "Organic Outreach International", "url": "https://www.organicoutreach.org/", "type": "link", "note": "Free downloadable resources for churches" },
+    { "label": "How Organic Outreach works", "url": "https://www.organicoutreach.org/how-it-works-2-0/", "type": "link" }
+  ],
+  "sources": [
+    "https://crca.org.au/local-church-outreach-training/",
+    "src/data/internalMinistries.json (detailPages.local-church-outreach-training)"
+  ],
+  "needsChecking": [
+    "The 'How Organic Outreach works' link (https://www.organicoutreach.org/how-it-works-2-0/) is only in the old data; check it still works.",
+    "The official page links to 'Previous Conference Sessions & Interviews', but that URL is not in the data, so it is mentioned without a link."
+  ]
+}

@@ -62,22 +62,22 @@ export const ministryMegaMenuColumns: MinistryMegaMenuColumn[] = [
   {
     id: 'next-gen',
     heading: 'Next Gen',
-    subtitle: 'Discipling children, youth & young adults',
+    subtitle: 'Children, youth and young adults',
     items: [
       {
         label: 'Cadets',
         to: '/ministries/cadets',
-        description: 'Mentoring boys in Christlike character, outdoor skills, and Scripture.',
+        description: 'A club program run by volunteers in local churches for primary school boys aged 9 to 14.',
       },
       {
         label: 'GEMS',
         to: '/ministries/gems',
-        description: 'Helping girls grow in faith, friendship, and service to Jesus.',
+        description: 'Christian girls’ clubs for girls aged 9 to 15, run by women volunteers from CRCA churches, with Busy Bees for girls aged 6 to 8.',
       },
       {
         label: 'Youth Convention',
         to: '/ministries/youth-convention',
-        description: 'National biennial gathering uniting Reformed youth across Australia.',
+        description: 'A week in God’s Word, worship and community for CRCA young adults aged 16 to 28. Convention 2027 is sold out, with a waitlist open.',
       },
     ],
   },
@@ -89,33 +89,33 @@ export const ministryMegaMenuColumns: MinistryMegaMenuColumn[] = [
       {
         label: 'Reformed Theological College (RTC)',
         to: 'https://rtc.edu.au/',
-        description: 'Biblical and Reformed theological training for pastors and church leaders.',
+        description: 'The theological college where the CRCA encourages candidates for ordination to study.',
         isExternal: true,
       },
       {
         label: 'Candidacy',
         to: '/ministries/candidacy',
-        description: '11-step pathway and examination process for ordained CRCA ministry.',
+        description: 'How to become a candidate for ordained ministry in the CRCA, from first contact through study, vicariate and ordination.',
       },
       {
         label: 'Church Planting Taskforce',
         to: '/ministries/church-planting-taskforce',
-        description: 'Research, vision, and support to plant and revitalise Australian churches.',
+        description: 'The Church Planting Taskforce (CPT) encourages CRCA churches in the task of planting churches throughout Australia.',
       },
       {
         label: 'Shift Coaching',
         to: '/ministries/shift-coaching',
-        description: 'Intentional peer, elder, and ministry coaching for CRCA pastors.',
+        description: 'A set of coaching questions to help CRCA pastors and church councils grow in love, discipleship, leadership and outreach.',
       },
       {
         label: 'Local Church Outreach Training',
         to: '/ministries/local-church-outreach-training',
-        description: 'Organic Outreach cohorts equipping members to share their faith naturally.',
+        description: 'Organic Outreach training to help every church member share their faith naturally, offered through a partnership with Organic Outreach International.',
       },
       {
         label: 'Missional Explorations',
         to: '/ministries/missional-explorations',
-        description: 'Matching seed grants up to $2,500 bridging local outreach and church planting.',
+        description: 'Seed funding from the Church Planting Taskforce for local outreach that could one day grow into a church plant.',
       },
     ],
   },
@@ -127,18 +127,18 @@ export const ministryMegaMenuColumns: MinistryMegaMenuColumn[] = [
       {
         label: 'World Transform',
         to: 'https://worldtransform.org.au/',
-        description: 'Gospel transformation and community development across partner nations.',
+        description: 'Christian development for the needy, through partners overseas.',
         isExternal: true,
       },
       {
         label: 'Solomon Islands SWIM',
         to: '/ministries/swim',
-        description: 'Supporting Work in Ministry — Solomon Islands mission support and partnerships.',
+        description: 'SWIM (Supporting Work in Ministry) is the CRCA’s mission base in Honiara, Solomon Islands, offering Bible teaching, leadership training and practical support.',
       },
       {
         label: 'Ecumenical Relations',
         to: '/ministries/ecumenical-relations',
-        description: 'Fellowship with sister Reformed churches worldwide and the ICRC.',
+        description: 'A synodical committee that manages the CRCA’s relationships with Reformed and Presbyterian churches in Australia and around the world.',
       },
     ],
   },
@@ -168,7 +168,7 @@ export const footerColumns: { title: string; links: NavLinkItem[] }[] = [
   {
     title: 'Church Resources',
     links: [
-      { label: 'Leader & Elder Hub', to: '/for-churches' },
+      { label: 'For churches', to: '/for-churches' },
       { label: 'Forms & Documents Library', to: '/for-churches/forms-and-documents' },
       {
         label: 'CRCA Church Order',
@@ -176,6 +176,90 @@ export const footerColumns: { title: string; links: NavLinkItem[] }[] = [
       },
       { label: 'Word of Salvation Sermons', to: '/sermons' },
       { label: 'Safe Church Unit', to: '/safe-church' },
+    ],
+  },
+];
+
+/**
+ * Desktop dropdown panels and the mobile menu. Each panel has a short
+ * introduction with an overview link, then plain columns of links.
+ */
+export interface NavMenu {
+  id: 'who-we-are' | 'ministries' | 'for-churches';
+  label: string;
+  /** Route prefixes that mark this menu as the current section. */
+  activePrefixes: string[];
+  overview: { to: string; label: string; blurb: string };
+  columns: { heading: string; items: NavLinkItem[] }[];
+}
+
+export const navMenus: NavMenu[] = [
+  {
+    id: 'who-we-are',
+    label: 'Who we are',
+    activePrefixes: ['/who-we-are'],
+    overview: {
+      to: '/who-we-are/vision-values',
+      label: 'About the CRCA',
+      blurb: 'A family of Reformed churches across Australia since 1951.',
+    },
+    columns: [
+      {
+        heading: 'About us',
+        items: [
+          { label: 'Vision & values', to: '/who-we-are/vision-values' },
+          { label: 'What we believe', to: '/who-we-are/beliefs' },
+          { label: 'Our history', to: '/who-we-are/history' },
+        ],
+      },
+      {
+        heading: 'Visit',
+        items: [
+          { label: 'Find a church', to: '/find-a-church' },
+          { label: 'Contact us', to: '/contact' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'ministries',
+    label: 'Ministries',
+    activePrefixes: ['/ministries'],
+    overview: {
+      to: '/ministries',
+      label: 'All ministries',
+      blurb: 'The work CRCA churches do together, at home and overseas.',
+    },
+    columns: ministryMegaMenuColumns.map((c) => ({ heading: c.heading, items: c.items })),
+  },
+  {
+    id: 'for-churches',
+    label: 'For churches',
+    activePrefixes: ['/for-churches', '/sermons', '/safe-church'],
+    overview: {
+      to: '/for-churches',
+      label: 'For churches',
+      blurb: 'For ministers, elders, deacons and church administrators.',
+    },
+    columns: [
+      {
+        heading: 'Documents',
+        items: [
+          { label: 'Forms & documents', to: '/for-churches/forms-and-documents' },
+          { label: 'Church Order (2022)', to: '/for-churches/forms-and-documents/church-order-01-crca-church-order-2022' },
+          { label: 'Acts of Synod (2024)', to: '/for-churches/forms-and-documents/acts-of-synod-01-acts-of-synod-2024' },
+          { label: 'Reading sermons', to: '/sermons' },
+        ],
+      },
+      {
+        heading: 'Support',
+        items: [
+          { label: 'Safe Church', to: '/safe-church' },
+          { label: 'Candidacy', to: '/ministries/candidacy' },
+          { label: 'Shift coaching', to: '/ministries/shift-coaching' },
+          { label: 'Contact the office', to: '/contact' },
+        ],
+      },
     ],
   },
 ];
