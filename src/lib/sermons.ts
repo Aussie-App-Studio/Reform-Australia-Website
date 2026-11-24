@@ -53,7 +53,7 @@ export const GROUP_LABELS: Record<SermonGroup, string> = {
   conf: 'Confessions',
 };
 
-const BASE = `${import.meta.env.BASE_URL}sermons`;
+const BASE = `${import.meta.env.BASE_URL}data/sermons`;
 let indexPromise: Promise<SermonIndex> | null = null;
 const sermonCache = new Map<string, Promise<Sermon>>();
 

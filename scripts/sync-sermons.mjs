@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // Pulls the full Word of Salvation reading-sermon archive
-// (wordofsalvation.crca.org.au) into public/sermons/ as static JSON.
+// (wordofsalvation.crca.org.au) into public/data/sermons/ as static JSON.
 //
 //   npm run sync-sermons
 //
 // Output:
-//   public/sermons/index.json      compact catalogue used for browse + search
-//   public/sermons/s/<slug>.json   one file per sermon (loaded on demand)
+//   public/data/sermons/index.json      compact catalogue used for browse + search
+//   public/data/sermons/s/<slug>.json   one file per sermon (loaded on demand)
 import { mkdir, readdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -14,7 +14,7 @@ import { cleanHtml, decodeEntities, fetchAllWp, htmlToText } from './lib/wp.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const OUT_DIR = path.join(ROOT, 'public', 'sermons');
+const OUT_DIR = path.join(ROOT, 'public', 'data', 'sermons');
 const ITEM_DIR = path.join(OUT_DIR, 's');
 const HOST = 'wordofsalvation.crca.org.au';
 

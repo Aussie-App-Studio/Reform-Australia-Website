@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 // Pulls every page of the legacy Safe Church Unit site (safechurch.crca.org.au)
-// into public/safe-church/ so it can be served as part of the main CRCA site.
+// into public/data/safe-church/ so it can be served as part of the main CRCA site.
 //
 //   npm run sync-safe-church            -> refresh pages, download new files
 //   npm run sync-safe-church -- --force -> also re-download every file
 //
 // Output:
-//   public/safe-church/content.json  sections, page tree, cleaned HTML
-//   public/safe-church/files/*       self-hosted PDFs / Word documents
+//   public/data/safe-church/content.json  sections, page tree, cleaned HTML
+//   public/data/safe-church/files/*       self-hosted PDFs / Word documents
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,7 +15,7 @@ import { cleanHtml, decodeEntities, downloadFile, fetchAllWp, htmlToText } from 
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const OUT_DIR = path.join(ROOT, 'public', 'safe-church');
+const OUT_DIR = path.join(ROOT, 'public', 'data', 'safe-church');
 const FILES_DIR = path.join(OUT_DIR, 'files');
 const HOST = 'safechurch.crca.org.au';
 const FORCE = process.argv.includes('--force');
@@ -74,7 +74,7 @@ async function main() {
         usedNames.add(name.toLowerCase());
         files.set(remote, name);
       }
-      return `{{BASE}}safe-church/files/${files.get(remote)}`;
+      return `{{BASE}}data/safe-church/files/${files.get(remote)}`;
     }
     if (isOurHost) {
       const legacy = url.pathname.replace(/^\/|\/$/g, '');
@@ -149,7 +149,7 @@ async function main() {
       [...files.entries()].filter(([u]) => failures.some((f) => f.startsWith(u))).map(([u, n]) => [n, u])
     );
     for (const page of Object.values(out)) {
-      page.html = page.html.replace(/\{\{BASE\}\}safe-church\/files\/([^"]+)/g, (m, n) => failedNames.get(n) ?? m);
+      page.html = page.html.replace(/\{\{BASE\}\}data\/safe-church\/files\/([^"]+)/g, (m, n) => failedNames.get(n) ?? m);
     }
   }
 
@@ -161,7 +161,7 @@ async function main() {
     pages: out,
   };
   await writeFile(path.join(OUT_DIR, 'content.json'), JSON.stringify(content));
-  console.log(`Wrote ${Object.keys(out).length} pages and ${files.size - failures.length} files to public/safe-church/`);
+  console.log(`Wrote ${Object.keys(out).length} pages and ${files.size - failures.length} files to public/data/safe-church/`);
   if (failures.length) console.warn(`Could not download ${failures.length} file(s); linked to the original instead:\n  ${failures.join('\n  ')}`);
 }
 

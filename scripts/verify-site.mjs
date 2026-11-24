@@ -311,21 +311,22 @@ for (const file of srcFiles) {
 
 const siteConfigText = fs.readFileSync(path.join(SRC_DIR, 'data/siteConfig.ts'), 'utf8');
 
-// 6c. Safe Church content (public/safe-church/, synced by scripts/sync-safe-church.mjs)
+// 6c. Safe Church content (public/data/safe-church/, synced by scripts/sync-safe-church.mjs)
 let safeChurchPageCount = 0;
 let safeChurchPaths = new Set();
 try {
-  const sc = readJson('public/safe-church/content.json');
+  const sc = readJson('public/data/safe-church/content.json');
   safeChurchPaths = new Set(Object.keys(sc.pages));
   safeChurchPageCount = safeChurchPaths.size;
   for (const s of sc.sections) {
     if (!sc.pages[s.path]) errors.push(`Safe Church section page missing: ${s.path}`);
   }
   for (const page of Object.values(sc.pages)) {
-    for (const m of page.html.matchAll(/href="\{\{BASE\}\}safe-church\/([^"#]*)/g)) {
-      const target = decodeURIComponent(m[1]);
-      if (target.startsWith('files/')) {
-        const full = path.join(PUBLIC_DIR, 'safe-church', target);
+    for (const m of page.html.matchAll(/href="\{\{BASE\}\}(data\/)?safe-church\/([^"#]*)/g)) {
+      const target = decodeURIComponent(m[2]);
+      if (m[1] && !target.startsWith('files/')) errors.push(`Safe Church page "${page.path}" has a bad data link ${target}`);
+      if (m[1]) {
+        const full = path.join(PUBLIC_DIR, 'data', 'safe-church', target);
         if (!fs.existsSync(full)) errors.push(`Safe Church page "${page.path}" links to missing file ${target}`);
       } else if (target && !sc.pages[target]) {
         errors.push(`Safe Church page "${page.path}" links to unknown page "${target}"`);
@@ -343,15 +344,15 @@ try {
     if (!sc.pages[p.replace(/^\/safe-church\//, '')]) errors.push(`siteConfig Safe Church path not found: ${p}`);
   }
 } catch (err) {
-  errors.push(`Failed to validate public/safe-church/content.json: ${err.message}`);
+  errors.push(`Failed to validate public/data/safe-church/content.json: ${err.message}`);
 }
 
-// 6d. Word of Salvation sermons (public/sermons/, synced by scripts/sync-sermons.mjs)
+// 6d. Word of Salvation sermons (public/data/sermons/, synced by scripts/sync-sermons.mjs)
 let sermonCount = 0;
 try {
-  const idx = readJson('public/sermons/index.json');
+  const idx = readJson('public/data/sermons/index.json');
   sermonCount = idx.sermons.length;
-  const files = new Set(fs.readdirSync(path.join(PUBLIC_DIR, 'sermons', 's')).map((f) => f.replace(/\.json$/, '')));
+  const files = new Set(fs.readdirSync(path.join(PUBLIC_DIR, 'data', 'sermons', 's')).map((f) => f.replace(/\.json$/, '')));
   const ids = new Set();
   for (const s of idx.sermons) {
     if (ids.has(s.id)) errors.push(`Duplicate sermon id ${s.id}`);
@@ -362,7 +363,20 @@ try {
   for (const f of files) if (!ids.has(f)) warnings.push(`Orphan sermon file not in index: ${f}.json`);
   if (sermonCount < 1000) errors.push(`Expected 1000+ sermons, found ${sermonCount}`);
 } catch (err) {
-  errors.push(`Failed to validate public/sermons/: ${err.message}`);
+  errors.push(`Failed to validate public/data/sermons/: ${err.message}`);
+}
+
+// 6d2. Top-level public/ folders must not share a name with a page route,
+// otherwise static hosts serve the folder instead of the app.
+{
+  const appText = fs.readFileSync(path.join(SRC_DIR, 'App.tsx'), 'utf8');
+  const topRoutes = new Set([...appText.matchAll(/path="\/([^"/*:]+)/g)].map((m) => m[1]));
+  for (const entry of fs.readdirSync(PUBLIC_DIR, { withFileTypes: true })) {
+    // public/documents/ is allowed: /documents is redirected by _redirects and .htaccess.
+    if (entry.isDirectory() && topRoutes.has(entry.name) && entry.name !== "documents") {
+      errors.push(`public/${entry.name}/ clashes with the /${entry.name} page route`);
+    }
+  }
 }
 
 // 6e. Every internal route referenced from data/navigation must resolve to a real page.
@@ -375,10 +389,10 @@ try {
     if (clean.startsWith('/for-churches/forms-and-documents/')) return true; // validated above by doc ID
     if (clean === '/safe-church') return true;
     if (clean.startsWith('/safe-church/')) return safeChurchPaths.has(clean.slice('/safe-church/'.length));
-    if (clean.startsWith('/sermons/')) return fs.existsSync(path.join(PUBLIC_DIR, 'sermons', 's', `${clean.slice(9)}.json`));
+    if (clean.startsWith('/sermons/')) return fs.existsSync(path.join(PUBLIC_DIR, 'data', 'sermons', 's', `${clean.slice(9)}.json`));
     return false;
   };
-  const routeRefRe = /(?:\bto|"url"|"externalUrl"|\burl|Path)\s*[:=]\s*["'](\/(?!images\/|documents\/|ministry-resources\/|safe-church\/files\/)[^"']*)["']/g;
+  const routeRefRe = /(?:\bto|"url"|"externalUrl"|\burl|Path)\s*[:=]\s*["'](\/(?!images\/|documents\/|ministry-resources\/|data\/)[^"']*)["']/g;
   for (const file of srcFiles) {
     const rel = path.relative(ROOT, file);
     if (!/src[\\/](data|components|pages)[\\/]/.test(rel)) continue;

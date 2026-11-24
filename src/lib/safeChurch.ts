@@ -27,7 +27,7 @@ export interface SafeChurchContent {
   pages: Record<string, SafeChurchPage>;
 }
 
-const URL_ = `${import.meta.env.BASE_URL}safe-church/content.json`;
+const URL_ = `${import.meta.env.BASE_URL}data/safe-church/content.json`;
 let promise: Promise<SafeChurchContent> | null = null;
 
 export function fetchSafeChurch(): Promise<SafeChurchContent> {
