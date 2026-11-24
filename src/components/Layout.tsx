@@ -1,17 +1,21 @@
 import { ReactNode, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigationType } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { BackToTop } from './BackToTop';
 import { applyPageMeta, ROUTE_META } from '../utils/usePageTitle';
+
+const scrollPositions = new Map<string, number>();
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 export function Layout({ children }: LayoutProps) {
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, key } = useLocation();
+  const navigationType = useNavigationType();
   const prevPathnameRef = useRef(pathname);
+  const prevHashRef = useRef(hash);
 
   // Fixed routes get their title and description here; dynamic pages call usePageTitle themselves.
   useEffect(() => {
@@ -29,6 +33,10 @@ export function Layout({ children }: LayoutProps) {
     if (!isFirst && prevPathname !== pathname) {
       document.getElementById('main-content')?.focus({ preventScroll: true });
     }
+    const prevHash = prevHashRef.current;
+    prevHashRef.current = hash;
+    // Only the query changed (e.g. a sermon filter): stay where you are.
+    if (!isFirst && prevPathname === pathname && prevHash === hash && navigationType !== 'POP') return;
 
     if (pathname.startsWith('/for-churches/forms-and-documents/') && hash) {
       if (prevPathname === pathname) {
@@ -53,8 +61,26 @@ export function Layout({ children }: LayoutProps) {
     }
     // On first load the browser is already at the right place (the visitor may have
     // scrolled while the pre-rendered page was showing).
-    if (!isFirst) window.scrollTo({ top: 0, behavior: 'auto' });
-  }, [pathname, hash]);
+    if (isFirst) return;
+    // Back/forward: return to where the visitor was on that page (content may still be loading).
+    const saved = navigationType === 'POP' ? scrollPositions.get(key) : undefined;
+    if (saved !== undefined) {
+      const restore = () => window.scrollTo({ top: saved, behavior: 'auto' });
+      restore();
+      requestAnimationFrame(restore);
+      const t = window.setTimeout(restore, 350);
+      return () => window.clearTimeout(t);
+    }
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, [pathname, hash, key, navigationType]);
+
+  // Remember the scroll position of each history entry, for back/forward.
+  useEffect(() => {
+    const save = () => scrollPositions.set(key, window.scrollY);
+    window.addEventListener('scroll', save, { passive: true });
+    // (Not saved again on the way out: by then the next page is on screen.)
+    return () => window.removeEventListener('scroll', save);
+  }, [key]);
 
   return (
     <div className="flex min-h-screen flex-col bg-stone-50 text-navy-900">

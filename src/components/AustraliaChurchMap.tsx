@@ -119,7 +119,7 @@ function buildPopupHtml(church: ChurchRecord): string {
     );
   }
   if (church.facebook) {
-    const fbLabel = church.livestreamOnFacebook ? 'Facebook Livestream' : 'Facebook';
+    const fbLabel = church.livestreamOnFacebook ? 'Facebook livestream' : 'Facebook';
     links.push(
       `<a href="${escapeHtml(church.facebook)}" target="_blank" rel="noopener noreferrer" style="${pillStyle}background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;">${fbLabel}</a>`
     );

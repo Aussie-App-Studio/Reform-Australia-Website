@@ -41,11 +41,11 @@ export function VisionValuesPage() {
       <section className="bg-navy-900 text-white">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-20">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.08em] text-teal-100">{missionAndVision.missionLabel}</p>
+            <h2 className="font-serif text-xl font-semibold text-teal-100">{missionAndVision.missionLabel}</h2>
             <p className="mt-3 font-serif text-3xl leading-snug sm:text-4xl">{missionAndVision.mission}</p>
           </div>
           <div className="lg:border-l lg:border-white/15 lg:pl-16">
-            <p className="text-sm font-semibold uppercase tracking-[0.08em] text-teal-100">{missionAndVision.visionLabel}</p>
+            <h2 className="font-serif text-xl font-semibold text-teal-100">{missionAndVision.visionLabel}</h2>
             <p className="mt-3 font-serif text-2xl leading-snug sm:text-3xl">{missionAndVision.vision}</p>
           </div>
         </div>
@@ -63,7 +63,7 @@ export function VisionValuesPage() {
         </dl>
       </Section>
 
-      <Section id="four-fold-task" title="Our four-fold task" intro={fourFoldTask.intro} tone="paper">
+      <Section id="four-fold-task" title="Our fourfold task" intro={fourFoldTask.intro} tone="paper">
         <ol className="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
           {fourFoldTask.items.map((t, i) => (
             <li key={t.id} className="border-t-2 border-navy-900 pt-4">

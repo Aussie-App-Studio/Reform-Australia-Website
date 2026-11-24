@@ -13,8 +13,11 @@ This file provides context for Claude Code (and other AI coding assistants) when
 - **Install dependencies:** `npm install`
 - **Start local dev server (open in browser):** `npm run dev`
 - **Verify all data, assets & links:** `npm run verify`
-- **Full browser QA (every page, desktop + phone; fails on error screens, console errors, broken images/files, overflow):** `npm run build && npx vite preview --port 4174` then `npm run qa -- http://localhost:4174` (or pass the deployed preview URL). First time: `npx playwright install chromium`.
-- **Type-check and build production static files (`dist/`):** `npm run build`
+- **Full browser QA (every page, desktop + phone; fails on error screens, console errors, broken images/files, overflow):** `npm run build && npm run serve` then `npm run qa -- http://localhost:4174` (or pass the deployed preview URL). First time: `npx playwright install chromium`.
+- **Type-check, build and pre-render (`dist/`):** `npm run build` (about 3 minutes: `scripts/prerender.mjs` saves all ~2,350 pages as HTML with Chromium, then writes `sitemap.xml`, `robots.txt`, `_headers`, `_redirects`). `PRERENDER_LIMIT=40` for a quick check, `npm run build:spa` to skip pre-rendering.
+- **Serve `dist/` like Cloudflare Pages (pre-rendered pages, redirects, 404s, gzip):** `npm run serve` → http://localhost:4174
+- **Publish to Cloudflare Pages:** `npx wrangler login` once, then `npm run deploy:cloudflare` (project `crca-website`). **The site is built noindex until launch**; build with `SITE_INDEXING=on` only when it goes live.
+- **Phone-sized photo copies, favicons, share image:** `npm run images` after adding photos (writes `<name>-800w.webp` and `src/data/imageVariants.json`; use `responsive(src, sizes)` from `src/utils/responsiveImage.ts` on new <img> tags).
 - **Preview production build locally:** `npm run preview`
 - **Publish live preview to GitHub Pages (`gh-pages` branch):** `npm run deploy:pages`
 - **Sync liturgical forms & documents from upstream GitHub repo:** `npm run sync-docs`
@@ -54,7 +57,9 @@ This file provides context for Claude Code (and other AI coding assistants) when
    - `/safe-church/*` → `SafeChurchPage.tsx` (hub + every migrated page; urgent contact numbers live in `siteConfig.safeChurch.urgent`).
    - `/sermons` and `/sermons/:sermonId` → `SermonsPage.tsx` / `SermonPage.tsx`. Old `/word-of-salvation/<slug>` URLs redirect.
    - Migrated HTML is rendered with `components/RichHtml.tsx` (resolves `{{BASE}}` placeholders, routes in-site links through React Router).
-   - Fixed routes get their browser-tab title from `ROUTE_TITLES` in `src/utils/usePageTitle.ts`; dynamic pages call `usePageTitle()`.
+   - Fixed routes get their title and description from `ROUTE_META` in `src/utils/usePageTitle.ts`; dynamic pages call `usePageTitle(title, description)` (sets canonical and share tags too).
+   - Pre-rendering: `src/main.tsx` keeps the saved HTML on screen and swaps in the live app once it is ready. Loading placeholders must carry `data-loading` so the pre-renderer and the swap wait for real content. New page components go in `ROUTE_PAGES` in `App.tsx`.
+   - Synced titles (documents library groups, Safe Church) are shown in sentence case by `src/utils/sentenceCase.ts`; add names that keep capitals to `PROPER` there.
    - Contact form: set `siteConfig.contactForm.endpoint` (e.g. a Formspree URL) to send directly; empty = prepare an email in the visitor's mail app.
    - General content pages (Regional counsellors, Positions vacant, Trowel and Sword, etc.) are `src/data/pages/<slug>.json`, rendered by `src/pages/ContentPage.tsx` via the shared `StandardPage` template; old crca.org.au URLs redirect via `src/data/legacyRedirects.json`. The home page vacancies band reads the first list on the Positions vacant page.
    - **House style:** plain and editorial. Real photos only (no AI-generated images); no icon badges, eyebrow labels, check-mark lists or quote cards; write facts from sources, not marketing summaries. Liturgies: `liturgy.ts` also sets verse (one-line-per-paragraph Scripture and creeds), dash lists, cue labels (EITHER / OR / Prayer) and rejoins sentences the source split; ALL-CAPS section headings are title-cased in `markdown.js`.

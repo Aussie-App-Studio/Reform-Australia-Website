@@ -92,12 +92,12 @@ export function BeliefsPage() {
                       </Link>
                       <p className="mt-1 leading-relaxed text-stone-600">{doc.note}</p>
                     </div>
-                    <div className="flex shrink-0 gap-5 text-sm font-semibold">
-                      <Link to={reader(doc.docId)} className="text-teal-700 hover:text-navy-900">
+                    <div className="flex shrink-0 gap-2 font-semibold">
+                      <Link to={reader(doc.docId)} className="inline-flex min-h-11 items-center rounded-md border border-stone-300 px-4 text-teal-700 hover:border-teal-500 hover:text-navy-900">
                         Read
                       </Link>
                       {doc.pdfUrl && (
-                        <a href={doc.pdfUrl} target="_blank" rel="noopener noreferrer" className="text-teal-700 hover:text-navy-900">
+                        <a href={doc.pdfUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-md border border-stone-300 px-4 text-teal-700 hover:border-teal-500 hover:text-navy-900">
                           PDF
                         </a>
                       )}

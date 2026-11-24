@@ -191,9 +191,13 @@ export function Navbar() {
 
           {/* Mobile */}
           <div className="flex shrink-0 items-center gap-2 lg:hidden">
-            <Link to="/find-a-church" className="inline-flex h-11 items-center gap-1.5 rounded-md bg-navy-900 px-3 text-sm font-semibold text-white">
-              <MapPin className="h-4 w-4 text-teal-400" aria-hidden="true" />
-              Find a church
+            {/* Very narrow phones: just the pin, so the logo keeps its room */}
+            <Link
+              to="/find-a-church"
+              className="inline-flex h-11 items-center justify-center gap-1.5 whitespace-nowrap rounded-md bg-navy-900 px-3 text-sm font-semibold text-white max-[399px]:w-11 max-[399px]:px-0"
+            >
+              <MapPin className="hidden h-4 w-4 text-teal-400 max-[399px]:block min-[420px]:block" aria-hidden="true" />
+              <span className="max-[399px]:sr-only">Find a church</span>
             </Link>
             <button
               type="button"

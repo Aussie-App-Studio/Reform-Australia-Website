@@ -20,7 +20,8 @@
     "qa": "node scripts/qa-site.mjs",
     "build:spa": "tsc -b && vite build",
     "serve": "node scripts/serve-dist.mjs",
-    "images": "node scripts/optimise-images.mjs"
+    "images": "node scripts/optimise-images.mjs",
+    "deploy:cloudflare": "node scripts/deploy-cloudflare.mjs"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

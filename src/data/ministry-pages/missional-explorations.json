@@ -9,12 +9,7 @@
       "paragraphs": [
         "Missional Explorations are designed to identify local missional contexts that might one day become future church plants. They are a stepping-stone between a congregation's regular outreach and something that might take on a life of its own.",
         "Under the supervision of the local church, a Missional Exploration might develop its own identity and, as a new congregation, lead to a formal church plant."
-      ],
-      "image": {
-        "src": "/images/ministries/food-relief-drive.webp",
-        "alt": "Volunteers sorting boxes of donated food outside a brick church building",
-        "caption": "A food relief drive run by a local Reformed church"
-      }
+      ]
     },
     {
       "heading": "Why we fund them",
@@ -100,8 +95,8 @@
     "The official page says the application is an online form; the site links the self-hosted PDF version instead. Check how applications should be submitted."
   ],
   "hero": {
-    "src": "/images/stock/pexels-akilmazumder-1072824.webp",
-    "alt": "A seedling held in an open hand",
-    "credit": "Akil Mazumder, Pexels"
+    "src": "/images/ministries/food-relief-drive.webp",
+    "alt": "Volunteers sorting boxes of donated food outside a brick church building",
+    "caption": "A food relief drive run by a local Reformed church"
   }
 }

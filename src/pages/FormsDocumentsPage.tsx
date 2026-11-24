@@ -17,9 +17,7 @@ import {
 } from 'react-router-dom';
 import {
   ArrowLeft,
-  BookOpen,
   ChevronDown,
-  ChevronRight,
   Copy,
   Download,
   ExternalLink,
@@ -917,7 +915,14 @@ export function FormsDocumentsPage() {
             value={query}
             onFocus={ensureSearchIndex}
             onChange={(e) => updateQuery(e.target.value)}
-            placeholder="Search or jump (LD 1, BC 29, CO 52)..."
+            onKeyDown={(e) => {
+              // Enter opens the top result, so "CO 52" + Enter jumps straight to Article 52.
+              if (e.key !== 'Enter' || !searchResults.length) return;
+              e.preventDefault();
+              const top = searchResults[0];
+              openDoc(top.doc.id, top.qaAnchor || top.headingSlug);
+            }}
+            placeholder="Search or jump (LD 1, BC 29, CO 52)…"
             className="w-full rounded-md border border-stone-300 bg-white py-2.5 pl-9 pr-9 text-sm text-navy-900 placeholder:text-stone-600/80 focus:border-teal-500 focus:outline-none [&::-webkit-search-cancel-button]:hidden"
           />
           {query && (
@@ -940,7 +945,7 @@ export function FormsDocumentsPage() {
       {query.trim() ? (
         /* Search Results View */
         <div className="max-h-[65vh] overflow-y-auto p-3 space-y-2">
-          <div role="status" aria-live="polite" className="px-1 text-[11px] font-bold uppercase tracking-wider text-stone-600">
+          <div role="status" aria-live="polite" className="px-1 text-sm font-semibold text-stone-600">
             {searchResults.length} {searchResults.length === 1 ? 'match' : 'matches'} for “{query}”
           </div>
 
@@ -960,7 +965,7 @@ export function FormsDocumentsPage() {
                   className="w-full rounded-md border border-stone-200 bg-white p-3 text-left transition-colors hover:border-teal-500 hover:bg-teal-50/40"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-teal-700">
+                    <span className="text-xs font-semibold text-teal-700">
                       {res.doc.groupTitle}
                     </span>
                     {res.badge && (
@@ -1025,8 +1030,8 @@ export function FormsDocumentsPage() {
           <div className="max-h-[60vh] overflow-y-auto p-3 space-y-4">
             {activeCategory === 'recent' ? (
               <div>
-                <div className="px-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-teal-700">
-                  Recently Opened
+                <div className="px-1.5 text-sm font-semibold text-teal-700">
+                  Recently opened
                 </div>
                 {recentDocItems.length === 0 ? (
                   <p className="mt-2 rounded-md border border-stone-200 bg-stone-50 p-3 text-xs text-stone-700">
@@ -1073,7 +1078,7 @@ export function FormsDocumentsPage() {
             ) : (
               visibleCategories.map((cat) => (
                 <div key={cat.id}>
-                  <div className="px-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-stone-600">
+                  <div className="px-1.5 text-sm font-semibold text-stone-600">
                     {cat.title}
                   </div>
                   <div className="mt-1.5 space-y-1.5">
@@ -1158,7 +1163,7 @@ export function FormsDocumentsPage() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 font-semibold text-teal-700 hover:text-navy-900"
           >
-            <span>Browser Extension</span>
+            <span>Browser extension</span>
             <ExternalLink className="h-3 w-3" />
           </a>
           <a
@@ -1201,113 +1206,35 @@ export function FormsDocumentsPage() {
             }
           />
         ) : (
-          <section className="border-b border-stone-200 bg-stone-50 text-navy-900">
-            <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-5 lg:px-8">
-              <nav aria-label="Breadcrumb">
-                <ol className="flex flex-wrap items-center gap-1.5 text-xs font-medium text-stone-600">
-                  <li>
-                    <Link to="/" className="hover:text-navy-900 transition-colors">
-                      Home
-                    </Link>
-                  </li>
-                  {isPublicConfession ? (
-                    <>
-                      <li className="flex items-center gap-1.5">
-                        <ChevronRight className="h-3.5 w-3.5 text-stone-400" />
-                        <Link
-                          to="/who-we-are/beliefs"
-                          className="hover:text-navy-900 transition-colors"
-                        >
-                          What We Believe
-                        </Link>
-                      </li>
-                      <li className="flex items-center gap-1.5">
-                        <ChevronRight className="h-3.5 w-3.5 text-stone-400" />
-                        <Link
-                          to="/for-churches/forms-and-documents?category=creeds-and-confessions"
-                          className="hover:text-navy-900 transition-colors"
-                        >
-                          Creeds &amp; Confessions
-                        </Link>
-                      </li>
-                    </>
-                  ) : (
-                    <>
-                      <li className="flex items-center gap-1.5">
-                        <ChevronRight className="h-3.5 w-3.5 text-stone-400" />
-                        <Link to="/for-churches" className="hover:text-navy-900 transition-colors">
-                          For churches
-                        </Link>
-                      </li>
-                      <li className="flex items-center gap-1.5">
-                        <ChevronRight className="h-3.5 w-3.5 text-stone-400" />
-                        <Link
-                          to="/for-churches/forms-and-documents"
-                          className="hover:text-navy-900 transition-colors"
-                        >
-                          Forms &amp; Documents
-                        </Link>
-                      </li>
-                    </>
-                  )}
-                  <li className="flex items-center gap-1.5">
-                    <ChevronRight className="h-3.5 w-3.5 text-stone-400" />
-                    <span className="text-navy-900">{currentDoc.title}</span>
-                  </li>
-                </ol>
-              </nav>
-
-              <div className="mt-2.5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="min-w-0">
-                  
-                  <h1 className="font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">
-                    {currentDoc.title}
-                  </h1>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-2 shrink-0">
-                  {isPublicConfession ? (
-                    <>
-                      <Link
-                        to="/who-we-are/beliefs"
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-stone-300 bg-white px-3 py-1.5 text-xs font-semibold text-navy-900 transition-colors hover:border-navy-900"
-                      >
-                        <ArrowLeft className="h-3.5 w-3.5" />
-                        <span>Back to Beliefs</span>
-                      </Link>
-                      <Link
-                        to="/for-churches/forms-and-documents"
-                        className="inline-flex items-center gap-1.5 rounded-lg bg-teal-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-teal-500"
-                      >
-                        <BookOpen className="h-3.5 w-3.5" />
-                        <span>Full Document Library</span>
-                      </Link>
-                    </>
-                  ) : (
-                    <>
-                      <Link
-                        to="/for-churches/forms-and-documents"
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-stone-300 bg-white px-3 py-1.5 text-xs font-semibold text-navy-900 transition-colors hover:border-navy-900"
-                      >
-                        <ArrowLeft className="h-3.5 w-3.5" />
-                        <span>Library Overview</span>
-                      </Link>
-                      <a
-                        href={EXTENSION_URLS.installGuide}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hidden items-center gap-1.5 rounded-lg bg-teal-600 lg:inline-flex px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-teal-500"
-                      >
-                        <Download className="h-3.5 w-3.5" />
-                        <span>Offline Extension</span>
-                        <ExternalLink className="h-3 w-3" />
-                      </a>
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
-          </section>
+          // Same header as every other page.
+          <PageHeader
+            title={currentDoc.title}
+            breadcrumbs={
+              isPublicConfession
+                ? [
+                    { label: 'What we believe', to: '/who-we-are/beliefs' },
+                    { label: 'Creeds and confessions', to: '/for-churches/forms-and-documents?category=creeds-and-confessions' },
+                    { label: currentDoc.title },
+                  ]
+                : [
+                    { label: 'For churches', to: '/for-churches' },
+                    { label: 'Forms and documents', to: '/for-churches/forms-and-documents' },
+                    { label: currentDoc.title },
+                  ]
+            }
+            actions={
+              <a
+                href={EXTENSION_URLS.installGuide}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden items-center gap-2 rounded-md border border-stone-300 bg-white px-4 py-2.5 text-sm font-semibold text-navy-900 hover:border-navy-900 lg:inline-flex"
+              >
+                <Download className="h-4 w-4" />
+                <span>Offline extension</span>
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            }
+          />
         )}
       </div>
 
@@ -1329,7 +1256,7 @@ export function FormsDocumentsPage() {
             {currentDoc && (
               <Link
                 to="/for-churches/forms-and-documents"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-700 hover:text-navy-900"
+                className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-navy-900"
               >
                 <ArrowLeft className="h-3.5 w-3.5" />
                 <span>Overview</span>
@@ -1373,11 +1300,11 @@ export function FormsDocumentsPage() {
                       to="/for-churches/forms-and-documents"
                       className="mt-5 inline-flex items-center gap-2 rounded-md bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-700"
                     >
-                      <span>Return to Library Overview</span>
+                      <span>Back to the library overview</span>
                     </Link>
                   </div>
                 ) : !currentDoc ? (
-                  /* Library Overview (when no :docId is selected) */
+                  /* Library overview (when no :docId is selected) */
                   <div className="rounded-lg border border-stone-200 bg-white p-6 sm:p-8">
                     <h2 className="font-serif text-2xl font-semibold text-navy-900">In the library</h2>
                     <dl className="mt-5 divide-y divide-stone-200 border-y border-stone-200">
@@ -1733,9 +1660,9 @@ export function FormsDocumentsPage() {
 
                     {/* Related CRCA Standards Strip (Harmony) */}
                     {relatedLinks.length > 0 && (
-                      <div className="no-print flex flex-wrap items-center gap-1.5 border-b border-stone-200 bg-stone-50/50 px-4 py-2 sm:px-6">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-stone-600 mr-1">
-                          Related Standards:
+                      <div className="no-print hidden flex-wrap items-center gap-1.5 border-b border-stone-200 bg-stone-50/50 px-4 py-2 sm:flex sm:px-6">
+                        <span className="text-sm font-semibold text-stone-600 mr-1">
+                          Related standards:
                         </span>
                         {relatedLinks.map((link) => (
                           <button
@@ -1743,7 +1670,7 @@ export function FormsDocumentsPage() {
                             type="button"
                             onClick={() => openDoc(link.docId, link.slug)}
                             title={link.title}
-                            className="rounded-full border border-stone-200 bg-white px-2.5 py-0.5 text-[11px] font-semibold text-navy-800 transition-colors hover:border-teal-500 hover:bg-teal-50 hover:text-teal-700"
+                            className="rounded-full border border-stone-200 bg-white px-2.5 py-0.5 text-xs font-semibold text-navy-800 transition-colors hover:border-teal-500 hover:bg-teal-50 hover:text-teal-700"
                           >
                             {link.label}
                           </button>
@@ -1751,6 +1678,28 @@ export function FormsDocumentsPage() {
                       </div>
                     )}
 
+                    {/* Phones: the same links behind one tap, so the text starts sooner */}
+                    {relatedLinks.length > 0 && (
+                      <details className="no-print group border-b border-stone-200 bg-stone-50/50 px-4 sm:hidden">
+                        <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between text-sm font-semibold text-stone-700">
+                          Related standards ({relatedLinks.length})
+                          <ChevronDown className="h-4 w-4 transition group-open:rotate-180" aria-hidden="true" />
+                        </summary>
+                        <div className="flex flex-wrap gap-1.5 pb-3">
+                        {relatedLinks.map((link) => (
+                          <button
+                            key={`${link.docId}-${link.slug || 'doc'}`}
+                            type="button"
+                            onClick={() => openDoc(link.docId, link.slug)}
+                            title={link.title}
+                            className="rounded-full border border-stone-200 bg-white px-2.5 py-0.5 text-xs font-semibold text-navy-800 transition-colors hover:border-teal-500 hover:bg-teal-50 hover:text-teal-700"
+                          >
+                            {link.label}
+                          </button>
+                        ))}
+                        </div>
+                      </details>
+                    )}
                     {/* Jump-to-Section Outline Bar (smaller screens; xl shows a side outline) */}
                     {renderedDocument.headings.length > 1 && (
                       <div className="no-print border-b border-stone-200 bg-white px-4 py-2.5 sm:px-6 xl:hidden">
@@ -1790,7 +1739,7 @@ export function FormsDocumentsPage() {
                             className="hidden items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-1 text-xs font-semibold text-navy-800 hover:border-teal-500 hover:text-teal-700 sm:inline-flex"
                           >
                             <List className="h-3.5 w-3.5" />
-                            <span>{outlineOpen ? 'Hide Outline' : 'Document Outline'}</span>
+                            <span>{outlineOpen ? 'Hide outline' : 'Document outline'}</span>
                           </button>
                         </div>
 
@@ -1829,7 +1778,7 @@ export function FormsDocumentsPage() {
                       {renderedDocument.headings.length > 1 && (
                         <nav aria-label="In this document" className="no-print hidden xl:order-2 xl:block">
                           <div className="sticky top-[calc(var(--site-header-height,72px)+1.5rem)] max-h-[calc(100vh-var(--site-header-height,72px)-3rem)] overflow-y-auto">
-                            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-stone-500">In this document</p>
+                            <p className="text-sm font-semibold text-stone-600">In this document</p>
                             <ul className="mt-2 space-y-1 border-l-2 border-stone-200">
                               {renderedDocument.headings.map((h) => (
                                 <li key={h.slug}>

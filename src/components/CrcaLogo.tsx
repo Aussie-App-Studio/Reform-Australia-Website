@@ -32,13 +32,13 @@ export function CrcaLogo({ variant = 'dark', className = '' }: CrcaLogoProps) {
         src={siteConfig.logos.iconTeal}
         alt=""
         aria-hidden="true"
-        className="h-9 sm:h-10 w-auto shrink-0 object-contain mix-blend-multiply"
+        className="h-8 sm:h-10 w-auto shrink-0 object-contain mix-blend-multiply"
       />
       <span className="flex flex-col leading-none">
-        <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.12em] sm:tracking-[0.08em] uppercase text-navy-900">
+        <span className="whitespace-nowrap text-[11px] font-bold tracking-[0.05em] uppercase text-navy-900 sm:tracking-[0.08em]">
           Christian Reformed
         </span>
-        <span className="mt-0.5 text-[11px] sm:text-[13px] font-semibold tracking-[0.06em] sm:tracking-[0.08em] uppercase text-navy-900">
+        <span className="mt-0.5 whitespace-nowrap text-[11px] font-semibold tracking-[0.03em] uppercase text-navy-900 sm:text-[13px] sm:tracking-[0.08em]">
           Churches of Australia
         </span>
       </span>

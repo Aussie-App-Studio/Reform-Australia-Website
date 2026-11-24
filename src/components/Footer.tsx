@@ -37,7 +37,7 @@ export function Footer() {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 lg:col-span-8">
             {footerColumns.map((col) => (
               <div key={col.title}>
-                <h3 className="font-sans text-xs font-bold uppercase tracking-wider text-teal-100">
+                <h3 className="font-sans text-base font-semibold text-white">
                   {col.title}
                 </h3>
                 <ul className="mt-3 lg:mt-4 lg:space-y-2.5">
@@ -77,13 +77,13 @@ export function Footer() {
           <div className="flex flex-wrap items-center gap-4">
             <Link
               to={siteConfig.safeChurch.url}
-              className="inline-flex items-center gap-1.5 font-medium text-teal-100 transition-colors hover:text-white"
+              className="inline-flex items-center gap-1.5 py-2 font-medium text-teal-100 transition-colors hover:text-white"
             >
               <ShieldCheck className="h-3.5 w-3.5 text-teal-400" />
               <span>Safe Church</span>
             </Link>
             <span className="text-white/25">•</span>
-            <Link to="/contact" className="transition-colors hover:text-white">
+            <Link to="/contact" className="inline-block py-2 transition-colors hover:text-white">
               Contact
             </Link>
           </div>

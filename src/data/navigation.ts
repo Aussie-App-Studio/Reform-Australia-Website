@@ -29,7 +29,7 @@ export const forChurchesNavItems: NavLinkItem[] = [
     description: 'Official Synod 2024 decisions, committee mandates, and resolutions.',
   },
   {
-    label: 'Word of Salvation Sermons',
+    label: 'Reading sermons',
     to: '/sermons',
     description: '2,000+ CRCA reading sermons — search by book, passage, preacher or Lord’s Day.',
   },
@@ -44,7 +44,7 @@ export const whoWeAreNavItems: NavLinkItem[] = [
   {
     label: 'Vision and values',
     to: '/who-we-are/vision-values',
-    description: 'Our mission, vision, core values, four-fold task and strategies.',
+    description: 'Our mission, vision, core values, fourfold task and strategies.',
   },
   {
     label: 'What we believe',
@@ -206,7 +206,7 @@ export const navMenus: NavMenu[] = [
       {
         heading: 'About us',
         items: [
-          { label: 'Vision & values', to: '/who-we-are/vision-values' },
+          { label: 'Vision and values', to: '/who-we-are/vision-values' },
           { label: 'Four-fold task', to: '/who-we-are/vision-values#four-fold-task' },
           { label: 'Strategies', to: '/who-we-are/vision-values#strategies' },
           { label: 'What we believe', to: '/who-we-are/beliefs' },

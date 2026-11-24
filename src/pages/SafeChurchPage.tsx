@@ -140,7 +140,7 @@ function SafeChurchHub({ content }: { content: SafeChurchContent }) {
     { path: 'resources/policies-and-documents', label: 'Policies & documents' },
     { path: 'about/training', label: 'Training & calendars' },
     { path: 'about/safe-church-representatives', label: 'Safe Church Representatives' },
-    { path: 'children/the-working-with-children-check', label: 'Working With Children Checks' },
+    { path: 'children/the-working-with-children-check', label: 'Working with Children Checks' },
     { path: 'volunteers/volunteer-approval-process', label: 'Volunteer approval process' },
     { path: 'resources/seeking-help', label: 'Seeking help & support services' },
     { path: 'contacts', label: 'Contact the Safe Church Unit' },
@@ -268,7 +268,7 @@ function SectionNav({ content, current }: { content: SafeChurchContent; current:
       </Link>
       {renderList(root.children, 0)}
       <div className="mt-5 border-t border-stone-200 pt-4">
-        <p className="px-2.5 text-xs font-bold uppercase tracking-wider text-stone-500">Other sections</p>
+        <p className="px-2.5 text-sm font-semibold text-stone-600">Other sections</p>
         <ul className="mt-2 space-y-0.5">
           {content.sections
             .filter((s) => s.path !== root.path)
@@ -303,7 +303,6 @@ function SafeChurchArticle({ content, page }: { content: SafeChurchContent; page
   return (
     <>
       <PageHeader
-        eyebrow={ancestors.length ? displayTitle(content, ancestors[0].path) : 'Safe Church Unit'}
         title={title}
         description={hasBody ? '' : page.summary}
         breadcrumbs={[
@@ -325,11 +324,12 @@ function SafeChurchArticle({ content, page }: { content: SafeChurchContent; page
               <SectionNav content={content} current={page} />
             </div>
           </details>
-          <div className="hidden lg:block">
-            <SectionNav content={content} current={page} />
-          </div>
+          {/* Reporting help first, so it is always in view */}
           <div className="hidden lg:block">
             <UrgentHelpPanel compact />
+          </div>
+          <div className="hidden lg:block">
+            <SectionNav content={content} current={page} />
           </div>
         </div>
 
@@ -377,7 +377,7 @@ function SafeChurchArticle({ content, page }: { content: SafeChurchContent; page
             <nav aria-label="Previous and next topic" className="mt-6 grid gap-3 sm:grid-cols-2">
               {prev ? (
                 <Link to={`/safe-church/${prev.path}`} className="group rounded-md border border-stone-200 bg-white p-4 hover:border-teal-300">
-                  <span className="flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-stone-500">
+                  <span className="flex items-center gap-1 text-sm font-semibold text-stone-600">
                     <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /> Previous
                   </span>
                   <span className="mt-1 block font-semibold text-navy-900 group-hover:text-teal-700">{prev.title}</span>
@@ -387,7 +387,7 @@ function SafeChurchArticle({ content, page }: { content: SafeChurchContent; page
               )}
               {next && (
                 <Link to={`/safe-church/${next.path}`} className="group rounded-md border border-stone-200 bg-white p-4 text-right hover:border-teal-300">
-                  <span className="flex items-center justify-end gap-1 text-xs font-semibold uppercase tracking-wide text-stone-500">
+                  <span className="flex items-center justify-end gap-1 text-sm font-semibold text-stone-600">
                     Next <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                   <span className="mt-1 block font-semibold text-navy-900 group-hover:text-teal-700">{next.title}</span>

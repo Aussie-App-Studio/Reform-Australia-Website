@@ -67,7 +67,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                 className="inline-flex items-center gap-2 rounded-md bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-navy-800"
               >
                 <RotateCw className="h-4 w-4" />
-                <span>Reload Page</span>
+                <span>Reload page</span>
               </button>
               <a
                 href={import.meta.env.BASE_URL}

@@ -41,7 +41,16 @@ export function SermonsPage() {
   const [index, setIndex] = useState<SermonIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [params, setParams] = useSearchParams();
-  const [shown, setShown] = useState(PAGE_SIZE);
+  // How many results are showing is remembered per search, so Back from a sermon returns to the same list.
+  const shownKey = `sermons-shown:${params.toString()}`;
+  const readShown = (k: string) => {
+    try {
+      return Number(sessionStorage.getItem(k)) || PAGE_SIZE;
+    } catch {
+      return PAGE_SIZE;
+    }
+  };
+  const [shown, setShown] = useState(() => readShown(shownKey));
   const [draft, setDraft] = useState(params.get('q') ?? '');
 
   useEffect(() => {
@@ -67,7 +76,14 @@ export function SermonsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [draft]);
 
-  useEffect(() => setShown(PAGE_SIZE), [params]);
+  useEffect(() => setShown(readShown(shownKey)), [shownKey]);
+  useEffect(() => {
+    try {
+      sessionStorage.setItem(shownKey, String(shown));
+    } catch {
+      /* private mode */
+    }
+  }, [shownKey, shown]);
 
   function update(patch: Record<string, string | null>) {
     const next = new URLSearchParams(params);
@@ -102,7 +118,7 @@ export function SermonsPage() {
       <PageHeader
         title="Reading sermons"
         description={`${total ? total.toLocaleString() : 'Over 2,000'} sermons by CRCA ministers, for reading services, personal devotion and further study. Search by book, passage, preacher or Lord’s Day.`}
-        breadcrumbs={[{ label: 'For churches', to: '/for-churches' }, { label: 'Word of Salvation' }]}
+        breadcrumbs={[{ label: 'For churches', to: '/for-churches' }, { label: 'Reading sermons' }]}
       />
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">

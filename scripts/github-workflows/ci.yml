@@ -24,5 +24,8 @@ jobs:
       - name: Verify data, assets & links
         run: npm run verify
 
-      - name: TypeScript & production build
+      - name: Browser for pre-rendering
+        run: npx playwright install --with-deps chromium
+
+      - name: TypeScript, production build & pre-render
         run: npm run build

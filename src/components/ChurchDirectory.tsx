@@ -311,7 +311,7 @@ export function ChurchDirectory({
                   <Navigation className="h-4 w-4" />
                 )}
                 <span>
-                  {locating ? 'Locating...' : userCoords ? 'Sorted by Nearest' : 'Use My Location'}
+                  {locating ? 'Locating…' : userCoords ? 'Sorted by nearest' : 'Use my location'}
                 </span>
                 {userCoords && !locating && (
                   <>

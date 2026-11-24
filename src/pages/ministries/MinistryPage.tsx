@@ -4,7 +4,7 @@ import { ArrowRight, ChevronDown, Download, ExternalLink, Mail, Phone, PlayCircl
 import { PageHeader } from '../../components/PageHeader';
 import { YouTubeEmbedCard } from '../../components/YouTubeEmbedCard';
 import { ministryMegaMenuColumns } from '../../data/navigation';
-import { GROUP_LABELS, getMinistryPage, type MinistryImage, type MinistryPageData } from '../../lib/ministryPages';
+import { getMinistryPage, type MinistryImage, type MinistryPageData } from '../../lib/ministryPages';
 import { usePageTitle } from '../../utils/usePageTitle';
 import { NotFoundPage } from '../NotFoundPage';
 import { responsive } from '../../utils/responsiveImage';
@@ -239,7 +239,6 @@ export function MinistryPage({ slug }: { slug: string }) {
   return (
     <StandardPage
       page={page}
-      eyebrow={GROUP_LABELS[page.group]}
       breadcrumbs={[{ label: 'Ministries', to: '/ministries' }, { label: page.name }]}
       related={related}
       relatedTitle="Related ministries"

@@ -130,14 +130,15 @@ export function HomePage() {
 
       {/* Quick paths */}
       <nav aria-label="Popular" className="border-b border-stone-200 bg-white">
-        <ul className="mx-auto grid max-w-7xl grid-cols-2 px-4 sm:px-6 md:grid-cols-4 lg:px-8">
+        {/* One link per row on phones, so each arrow sits with its own link */}
+        <ul className="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-stone-200 px-4 sm:grid-cols-2 sm:divide-y-0 sm:px-6 md:grid-cols-4 lg:px-8">
           {[
             { label: 'What we believe', to: '/who-we-are/beliefs' },
             { label: 'Our history', to: '/who-we-are/history' },
             { label: 'Ministries', to: '/ministries' },
             { label: 'For church leaders', to: '/for-churches' },
           ].map((l) => (
-            <li key={l.to} className="border-stone-200 [&:not(:first-child)]:md:border-l">
+            <li key={l.to} className="border-stone-200 sm:[&:nth-child(even)]:border-l sm:[&:nth-child(even)]:pl-4 md:[&:not(:first-child)]:border-l md:[&:nth-child(even)]:pl-0">
               <Link to={l.to} className="group flex items-center justify-between gap-2 px-1 py-4 font-semibold text-navy-900 hover:text-teal-700 md:px-5">
                 {l.label}
                 <ArrowRight className="h-4 w-4 text-teal-600 transition group-hover:translate-x-0.5" aria-hidden="true" />
@@ -225,7 +226,7 @@ export function HomePage() {
                   const photo = col.items.map((i) => getMinistryPage(i.to.split('/').pop() ?? '')?.hero).find(Boolean);
                   return photo ? <img src={photo.src} {...responsive(photo.src, '(min-width: 1024px) 400px, 100vw')} alt={photo.alt} loading="lazy" className="mb-5 aspect-[3/2] w-full rounded-md object-cover" /> : null;
                 })()}
-                <h3 className="border-b-2 border-navy-900 pb-2 text-sm font-semibold uppercase tracking-[0.08em] text-navy-900">{col.heading}</h3>
+                <h3 className="border-b-2 border-navy-900 pb-2 font-serif text-xl font-semibold text-navy-900">{col.heading}</h3>
                 <ul className="divide-y divide-stone-200">
                   {col.items.map((item) => {
                     const body = (

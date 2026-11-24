@@ -26,10 +26,10 @@ export function PageHeader({ eyebrow, title, description, breadcrumbs, actions, 
     <header className="border-b border-stone-200 bg-stone-50">
       <div className="mx-auto max-w-7xl px-4 pb-10 pt-8 sm:px-6 lg:px-8 lg:pb-14 lg:pt-10">
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <nav aria-label="Breadcrumb" className="mb-8">
-            <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-stone-600">
+          <nav aria-label="Breadcrumb" className="mb-6">
+            <ol className="flex flex-wrap items-center gap-x-2 text-sm text-stone-600">
               <li>
-                <Link to="/" className="hover:text-navy-900 hover:underline underline-offset-4">
+                <Link to="/" className="inline-block py-1.5 hover:text-navy-900 hover:underline underline-offset-4">
                   Home
                 </Link>
               </li>
@@ -39,7 +39,7 @@ export function PageHeader({ eyebrow, title, description, breadcrumbs, actions, 
                     /
                   </span>
                   {crumb.to ? (
-                    <Link to={crumb.to} className="hover:text-navy-900 hover:underline underline-offset-4">
+                    <Link to={crumb.to} className="inline-block py-1.5 hover:text-navy-900 hover:underline underline-offset-4">
                       {crumb.label}
                     </Link>
                   ) : (

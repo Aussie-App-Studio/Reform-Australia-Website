@@ -64,7 +64,7 @@ export function SermonPage() {
   }, [fontIdx]);
 
   usePageTitle(
-    sermon ? `${sermon.title} · Word of Salvation` : 'Word of Salvation',
+    sermon ? `${sermon.title} · Reading sermons` : 'Reading sermons',
     sermon
       ? `A reading sermon on ${sermon.ref}${sermon.preacher ? ` by ${sermon.preacher}` : ''}, for reading aloud in church when no minister is available. From the CRCA’s Word of Salvation archive.`
       : null
@@ -203,17 +203,23 @@ export function SermonPage() {
     <>
       <header className="border-b border-stone-200 bg-stone-50">
         <div className="mx-auto max-w-7xl px-4 pb-10 pt-8 sm:px-6 lg:px-8 lg:pb-12 lg:pt-10">
-          <nav aria-label="Breadcrumb" className="mb-8 print:hidden">
+          <nav aria-label="Breadcrumb" className="mb-6 print:hidden">
             <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-stone-600">
               <li>
-                <Link to="/" className="hover:text-navy-900 hover:underline underline-offset-4">
+                <Link to="/" className="inline-block py-1.5 hover:text-navy-900 hover:underline underline-offset-4">
                   Home
                 </Link>
               </li>
               <li className="flex items-center gap-2">
                 <span aria-hidden="true" className="text-stone-400">/</span>
-                <Link to="/sermons" className="hover:text-navy-900 hover:underline underline-offset-4">
-                  Sermons
+                <Link to="/for-churches" className="inline-block py-1.5 hover:text-navy-900 hover:underline underline-offset-4">
+                  For churches
+                </Link>
+              </li>
+              <li className="flex items-center gap-2">
+                <span aria-hidden="true" className="text-stone-400">/</span>
+                <Link to="/sermons" className="inline-block py-1.5 hover:text-navy-900 hover:underline underline-offset-4">
+                  Reading sermons
                 </Link>
               </li>
               {sermon?.book && (
@@ -221,7 +227,7 @@ export function SermonPage() {
                   <span aria-hidden="true" className="text-stone-400">/</span>
                   <Link
                     to={`/sermons?book=${encodeURIComponent(sermon.book)}${sermon.group ? `&g=${sermon.group}` : ''}`}
-                    className="hover:text-navy-900 hover:underline underline-offset-4"
+                    className="inline-block py-1.5 hover:text-navy-900 hover:underline underline-offset-4"
                   >
                     {sermon.book}
                   </Link>

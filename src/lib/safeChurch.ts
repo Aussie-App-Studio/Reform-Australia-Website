@@ -1,4 +1,5 @@
 // Loader for the Safe Church content synced by scripts/sync-safe-church.mjs.
+import { sentenceCase } from '../utils/sentenceCase';
 
 export interface SafeChurchPage {
   path: string;
@@ -34,7 +35,16 @@ export function fetchSafeChurch(): Promise<SafeChurchContent> {
   promise ??= fetch(URL_)
     .then((r) => {
       if (!r.ok) throw new Error(`Unable to load Safe Church content (HTTP ${r.status})`);
-      return r.json() as Promise<SafeChurchContent>;
+      return r.json().then((c: SafeChurchContent) => {
+        // Headings in sentence case (house style).
+        for (const s of c.sections) s.title = sentenceCase(s.title);
+        for (const p of Object.values(c.pages)) {
+          p.title = sentenceCase(p.title);
+          // Headings inside the page text too (plain-text headings only).
+          p.html = p.html.replace(/<(h[1-4])([^>]*)>([^<]+)<\/\1>/g, (_m, tag: string, attrs: string, text: string) => `<${tag}${attrs}>${sentenceCase(text)}</${tag}>`);
+        }
+        return c;
+      });
     })
     .catch((err) => {
       promise = null;
