@@ -13,9 +13,22 @@
 //   VITE_SITE_URL      the final address (default https://crca.org.au), for canonical links and the sitemap
 //   SKIP_BUILD=1       upload the existing dist/ without rebuilding
 import { execSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { ROOT } from './lib/routes.mjs';
+
+// Optional: a Cloudflare API token in .env.local (never committed), e.g.
+//   CLOUDFLARE_API_TOKEN=...   (token with "Cloudflare Pages: Edit" on the CRCA account)
+// With a token, deploys work whatever account `wrangler login` is signed in to.
+const envFile = path.join(ROOT, '.env.local');
+if (existsSync(envFile)) {
+  for (const line of readFileSync(envFile, 'utf8').split(/\r?\n/)) {
+    const m = line.match(/^\s*(CLOUDFLARE_[A-Z_]+)\s*=\s*(.*?)\s*$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^['"]|['"]$/g, '');
+  }
+}
+// The CRCA site lives on Nathanael's Gmail Cloudflare account; always deploy there.
+process.env.CLOUDFLARE_ACCOUNT_ID ||= '66cef5009038be80506ecc3dc23cbb7d';
 
 const project = process.env.CF_PAGES_PROJECT || 'crca-website';
 const branch = process.env.CF_PAGES_BRANCH || 'main';
