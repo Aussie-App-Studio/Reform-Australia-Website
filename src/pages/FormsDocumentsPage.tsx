@@ -60,6 +60,7 @@ import {
   linkifyScriptureHtml,
 } from '../lib/crcaDocs/features';
 import { getDocumentRelatedLinks } from '../lib/crcaDocs/harmony';
+import { formatLiturgyHtml } from '../lib/crcaDocs/liturgy';
 import {
   extractQaMarkdown,
   extractSectionMarkdown,
@@ -456,9 +457,11 @@ export function FormsDocumentsPage() {
       currentDoc.id === DOC_IDS.churchOrder2022 ||
       currentDoc.id === DOC_IDS.rulesFinalExamination2024 ||
       currentDoc.id === DOC_IDS.actsOfSynod2024;
-    const finalHtml = shouldLinkCo
+    const linkedHtml = shouldLinkCo
       ? linkifyChurchOrderRefsHtml(withXrefs, coDoc)
       : withXrefs;
+    // Liturgies and worship readings: speaker labels, verse-like lines, styled rubrics.
+    const finalHtml = isLiturgicalForm || isReadingsDoc ? formatLiturgyHtml(linkedHtml) : linkedHtml;
 
     return {
       html: finalHtml,
@@ -1248,12 +1251,8 @@ export function FormsDocumentsPage() {
 
               <div className="mt-2.5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="min-w-0">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-teal-700">
-                    {isPublicConfession
-                      ? 'Who We Are • Creeds & Confessions'
-                      : `CRCA Forms & Documents • ${currentDoc.categoryTitle}`}
-                  </div>
-                  <p className="mt-0.5 font-serif text-2xl font-semibold text-navy-900 sm:text-2xl truncate">
+                  
+                  <p className="font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">
                     {currentDoc.title}
                   </p>
                 </div>
@@ -1509,18 +1508,17 @@ export function FormsDocumentsPage() {
                       <div className="rounded-lg border border-stone-200 bg-white p-6">
                         <div className="flex items-center justify-between">
                           <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
-                            9 Documents
+                            Creeds & confessions
                           </span>
                           <BookOpen className="h-4 w-4 text-teal-600" />
                         </div>
                         <h3 className="mt-2 font-serif text-xl font-bold text-navy-900">
-                          Creeds, Confessions &amp; Subscription
+                          Creeds &amp; confessions
                         </h3>
                         <p className="mt-1.5 text-sm text-stone-700">
-                          Full text with clickable Scripture proof footnotes for the Ecumenical
-                          Creeds, Belgic Confession, Heidelberg Catechism, Canons of Dort,
-                          Westminster Confession, Contemporary Testimony, and CRCA Form of
-                          Subscription.
+                          The three ecumenical creeds and the Three Forms of Unity, with clickable
+                          Scripture proofs. Also the Westminster Confession and Our World Belongs to
+                          God, which the CRCA holds in high regard.
                         </p>
                         <div className="mt-4 flex flex-wrap gap-2">
                           <Link
@@ -1536,10 +1534,10 @@ export function FormsDocumentsPage() {
                             Belgic Confession
                           </Link>
                           <Link
-                            to={`/for-churches/forms-and-documents/${DOC_IDS.formOfSubscription}`}
+                            to={`/for-churches/forms-and-documents/${DOC_IDS.canonsOfDort}`}
                             className="rounded-lg bg-stone-100 px-3 py-1.5 text-xs font-semibold text-navy-900 hover:bg-teal-50 hover:text-teal-700"
                           >
-                            Form of Subscription
+                            Canons of Dort
                           </Link>
                         </div>
                       </div>
@@ -1955,9 +1953,9 @@ export function FormsDocumentsPage() {
                       </div>
                     )}
 
-                    {/* Jump-to-Section Outline Bar */}
+                    {/* Jump-to-Section Outline Bar (smaller screens; xl shows a side outline) */}
                     {renderedDocument.headings.length > 1 && (
-                      <div className="no-print border-b border-stone-200 bg-white px-4 py-2.5 sm:px-6">
+                      <div className="no-print border-b border-stone-200 bg-white px-4 py-2.5 sm:px-6 xl:hidden">
                         <div className="flex flex-wrap items-center justify-between gap-2">
                           <div className="flex items-center gap-2 flex-1 min-w-[220px]">
                             <label
@@ -2029,7 +2027,28 @@ export function FormsDocumentsPage() {
                     )}
 
                     {/* Document Article Body */}
-                    <div className="px-5 py-7 sm:px-9 sm:py-9 crca-reader-print-root">
+                    <div className={`px-5 py-7 sm:px-9 sm:py-9 crca-reader-print-root ${renderedDocument.headings.length > 1 ? 'xl:grid xl:grid-cols-[minmax(0,1fr)_14rem] xl:gap-10' : ''}`}>
+                      {renderedDocument.headings.length > 1 && (
+                        <nav aria-label="In this document" className="no-print hidden xl:order-2 xl:block">
+                          <div className="sticky top-[calc(var(--site-header-height,72px)+1.5rem)] max-h-[calc(100vh-var(--site-header-height,72px)-3rem)] overflow-y-auto">
+                            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-stone-500">In this document</p>
+                            <ul className="mt-2 space-y-1 border-l-2 border-stone-200">
+                              {renderedDocument.headings.map((h) => (
+                                <li key={h.slug}>
+                                  <button
+                                    type="button"
+                                    onClick={() => jumpToHeading(h.slug)}
+                                    className={`block w-full py-0.5 text-left text-sm leading-snug hover:text-teal-700 ${h.level > 2 ? 'pl-6 text-stone-600' : 'pl-3 text-navy-900'}`}
+                                  >
+                                    {h.text}
+                                  </button>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </nav>
+                      )}
+                      <div className="min-w-0 max-w-[72ch] xl:order-1">
                       {loadingDoc ? (
                         <div className="py-16 text-center text-sm text-stone-600">
                           Loading {currentDoc.title}...
@@ -2081,6 +2100,7 @@ export function FormsDocumentsPage() {
                           )}
                         </>
                       )}
+                      </div>
                     </div>
                   </div>
                 )}

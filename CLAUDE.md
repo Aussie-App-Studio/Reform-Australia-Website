@@ -47,6 +47,8 @@ This file provides context for Claude Code (and other AI coding assistants) when
 
 3. **Pages & Components (`src/pages/`, `src/components/`):**
    - **Ministry pages:** every `/ministries/<slug>` page is rendered by `src/pages/ministries/MinistryPage.tsx` from `src/data/ministry-pages/<slug>.json` (one shared template, as Synod 2024 asked for). Write content in plain Australian English, only from sources; record each file`s `sources` and any unverified claim in `needsChecking`.
+   - **One platform rule:** never link to other CRCA websites (swim/cadets/gems/wt/safechurch/wordofsalvation .crca.org.au, crcaconvention.au, ministryformation.com.au). Migrate their content, photos and PDFs here instead; `npm run verify` fails on such links (reviewer notes in `source`/`sources`/`needsChecking` are exempt).
+   - Forms library grouping is adjusted at display time in `regroupIndex()` (`src/lib/crcaDocs/client.ts`): Three Forms of Unity vs “Other Reformed Statements”, Form of Subscription under Church Order. Liturgies get speaker labels / rubric styling from `src/lib/crcaDocs/liturgy.ts`. Synced files in `public/documents/` are never edited by hand.
    - Navigation menus (desktop panels + mobile) come from `navMenus` in `src/data/navigation.ts`.
    - `/safe-church/*` → `SafeChurchPage.tsx` (hub + every migrated page; urgent contact numbers live in `siteConfig.safeChurch.urgent`).
    - `/sermons` and `/sermons/:sermonId` → `SermonsPage.tsx` / `SermonPage.tsx`. Old `/word-of-salvation/<slug>` URLs redirect.

@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import {
+  ArrowRight,
   BookOpen,
   Church,
   Compass,
@@ -100,6 +102,14 @@ export function VisionValuesPage() {
               <p className="mt-auto pt-4 text-sm text-stone-500">{v.scriptures}</p>
             </li>
           ))}
+          {coreValues.items.length % 3 !== 0 && (
+            <li className="flex flex-col justify-between bg-navy-900 p-6 text-white">
+              <p className="font-serif text-2xl leading-snug">These values grow out of what we believe.</p>
+              <Link to="/who-we-are/beliefs" className="mt-6 inline-flex items-center gap-1.5 font-semibold text-teal-100 hover:text-white">
+                What we believe <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </li>
+          )}
         </ul>
       </Section>
 

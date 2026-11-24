@@ -58,9 +58,46 @@ async function fetchJson<T>(url: string): Promise<T> {
   return (await res.json()) as T;
 }
 
+/**
+ * The synced index (from the crca-forms-and-documents repo) groups everything in the
+ * "Creeds & Confessions" folder together. Present it the way the CRCA describes its standards:
+ *  - Reformed Confessions = the Three Forms of Unity only (Belgic, Heidelberg, Dort)
+ *  - Westminster and Our World Belongs to God are "held in high regard" / "greatly appreciated",
+ *    not confessional standards -> "Other Reformed Statements"
+ *  - the Form of Subscription is a church-order document -> with the Church Order
+ * Doc IDs (and therefore URLs) are unchanged.
+ */
+function regroupIndex(index: DocsIndex): DocsIndex {
+  const creeds = index.categories.find((c) => c.id === 'creeds-and-confessions');
+  const order = index.categories.find((c) => c.id === 'church-order');
+  if (!creeds) return index;
+  const take = (groupId: string) => {
+    const g = creeds.groups.find((x) => x.id === groupId);
+    creeds.groups = creeds.groups.filter((x) => x.id !== groupId);
+    return g?.items ?? [];
+  };
+  const reformed = creeds.groups.find((g) => g.id === 'reformed-confessions');
+  const westminster = reformed?.items.filter((i) => /westminster/i.test(i.id)) ?? [];
+  if (reformed) {
+    reformed.title = 'Reformed Confessions (Three Forms of Unity)';
+    reformed.items = reformed.items.filter((i) => !/westminster/i.test(i.id));
+  }
+  const testimony = take('contemporary-testimony');
+  const subscription = take('form-of-subscription');
+  if (westminster.length || testimony.length) {
+    creeds.groups.push({ ...(reformed ?? creeds.groups[0]), id: 'other-reformed-statements', title: 'Other Reformed Statements', items: [...westminster, ...testimony] });
+  }
+  if (subscription.length && order?.groups[0]) {
+    order.groups[0].items = [...order.groups[0].items, ...subscription];
+  } else if (subscription.length) {
+    creeds.groups.push({ ...creeds.groups[0], id: 'form-of-subscription', title: 'Form of Subscription', items: subscription });
+  }
+  return index;
+}
+
 export function fetchDocsIndex(): Promise<DocsIndex> {
   if (!docsIndexPromise) {
-    docsIndexPromise = fetchJson<DocsIndex>(`${DOCS_BASE}/index.json`).catch((err) => {
+    docsIndexPromise = fetchJson<DocsIndex>(`${DOCS_BASE}/index.json`).then(regroupIndex).catch((err) => {
       docsIndexPromise = null;
       throw err;
     });
