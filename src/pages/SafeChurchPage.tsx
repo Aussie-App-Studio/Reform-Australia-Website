@@ -149,7 +149,6 @@ function SafeChurchHub({ content }: { content: SafeChurchContent }) {
   return (
     <>
       <PageHeader
-        eyebrow="Safe Church Unit"
         title="Safe Church"
         description={content.intro}
         breadcrumbs={[{ label: 'For churches', to: '/for-churches' }, { label: 'Safe Church' }]}

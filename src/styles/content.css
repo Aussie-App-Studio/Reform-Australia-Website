@@ -234,9 +234,12 @@
 }
 .crca-reader-article .verse p {
   margin: 0;
+  /* a line too long for the screen wraps with a hanging indent, so it is not mistaken for a new line */
+  padding-left: 1.5rem;
+  text-indent: -1.5rem;
 }
 .crca-reader-article .verse p.cont {
-  padding-left: 1.5rem;
+  padding-left: 3rem;
 }
 .crca-reader-article .verse p.stanza-end {
   margin-bottom: 0.7rem;

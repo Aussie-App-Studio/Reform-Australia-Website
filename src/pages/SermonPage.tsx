@@ -164,7 +164,7 @@ export function SermonPage() {
 
   const moreInBook = sermon && (prev || next) && (
     <nav aria-label={`More sermons on ${sermon.book}`}>
-      <p className="text-sm font-semibold uppercase tracking-[0.08em] text-stone-500">
+      <p className="font-sans text-base font-semibold text-navy-900">
         More on {sermon.book} ({bookCount})
       </p>
       <ul className="mt-2 divide-y divide-stone-200 border-y border-stone-200">

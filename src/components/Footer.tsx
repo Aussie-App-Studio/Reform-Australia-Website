@@ -80,11 +80,11 @@ export function Footer() {
               className="inline-flex items-center gap-1.5 font-medium text-teal-100 transition-colors hover:text-white"
             >
               <ShieldCheck className="h-3.5 w-3.5 text-teal-400" />
-              <span>Safe Church &amp; Safeguarding</span>
+              <span>Safe Church</span>
             </Link>
             <span className="text-white/25">•</span>
             <Link to="/contact" className="transition-colors hover:text-white">
-              National Enquiries
+              Contact
             </Link>
           </div>
         </div>

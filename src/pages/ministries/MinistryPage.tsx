@@ -57,7 +57,7 @@ function Sidebar({ page, related, relatedTitle }: { page: MinistryPageData; rela
       </div>
       {page.facts && page.facts.length > 0 && (
         <section aria-labelledby="facts">
-          <h2 id="facts" className="text-sm font-semibold uppercase tracking-[0.08em] text-stone-500">
+          <h2 id="facts" className="font-sans text-base font-semibold text-navy-900">
             At a glance
           </h2>
           <dl className="mt-2 divide-y divide-stone-200 border-y border-stone-200">
@@ -73,7 +73,7 @@ function Sidebar({ page, related, relatedTitle }: { page: MinistryPageData; rela
 
       {page.contact && (
         <section aria-labelledby="contact">
-          <h2 id="contact" className="text-sm font-semibold uppercase tracking-[0.08em] text-stone-500">
+          <h2 id="contact" className="font-sans text-base font-semibold text-navy-900">
             Contact
           </h2>
           <div className="mt-3 space-y-2 border-t border-stone-200 pt-3">
@@ -100,7 +100,7 @@ function Sidebar({ page, related, relatedTitle }: { page: MinistryPageData; rela
 
       {related && related.length > 0 && (
         <section aria-labelledby="related">
-          <h2 id="related" className="text-sm font-semibold uppercase tracking-[0.08em] text-stone-500">
+          <h2 id="related" className="font-sans text-base font-semibold text-navy-900">
             {relatedTitle}
           </h2>
           <ul className="mt-2 divide-y divide-stone-200 border-y border-stone-200">
@@ -179,7 +179,7 @@ function OnThisPage({ page }: { page: MinistryPageData }) {
   if (items.length < 4) return null;
   return (
     <nav aria-labelledby="on-this-page">
-      <h2 id="on-this-page" className="text-sm font-semibold uppercase tracking-[0.08em] text-stone-500">
+      <h2 id="on-this-page" className="font-sans text-base font-semibold text-navy-900">
         On this page
       </h2>
       <ul className="mt-2 space-y-1.5 border-l-2 border-stone-200 pl-3">

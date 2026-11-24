@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { ArrowRight, BookOpen, Clock, Search, SlidersHorizontal, User, X } from 'lucide-react';
+import { ArrowRight, Search, X } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import {
   fetchSermonIndex,
@@ -19,30 +19,15 @@ const GROUPS: (SermonGroup | 'all')[] = ['all', 'ot', 'nt', 'conf'];
 
 function SermonCard({ s, index }: { s: SermonIndexItem; index: SermonIndex }) {
   const preacher = s.p ? index.preachers[s.p] : null;
+  const ref = [s.r, s.ld && !/lord/i.test(s.r ?? '') ? `Lord’s Day ${s.ld}` : null].filter(Boolean).join(' · ');
   return (
-    <li>
-      <Link
-        to={`/sermons/${s.id}`}
-        className="group flex h-full flex-col rounded-lg border border-stone-200 bg-white p-5 transition hover:border-teal-300"
-      >
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-semibold">
-          {s.r && <span className="rounded-md bg-teal-50 px-2 py-0.5 text-teal-800">{s.r}</span>}
-          {s.ld && !/lord/i.test(s.r ?? '') && <span className="rounded-md bg-gold-50 px-2 py-0.5 text-stone-600">Lord’s Day {s.ld}</span>}
-        </div>
-        <h3 className="mt-2.5 font-serif text-lg font-bold leading-snug text-navy-900 group-hover:text-teal-700">{s.t}</h3>
-        {s.s && <p className="mt-1 text-xs font-medium text-stone-500">Series: {s.s}</p>}
-        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-stone-600">{s.x}</p>
-        <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1 pt-4 text-xs text-stone-600">
-          {preacher && (
-            <span className="inline-flex items-center gap-1.5">
-              <User className="h-3.5 w-3.5 text-stone-400" aria-hidden="true" /> {preacher}
-            </span>
-          )}
-          <span className="inline-flex items-center gap-1.5">
-            <Clock className="h-3.5 w-3.5 text-stone-400" aria-hidden="true" /> ~{readAloudMinutes(s.w)} min read aloud
-          </span>
-          <span className="text-stone-500">{issueLabel(s.y, s.m)}</span>
-        </div>
+    <li className="border-b border-stone-200">
+      <Link to={`/sermons/${s.id}`} className="group block py-4">
+        <span className="block font-serif text-lg font-semibold leading-snug text-navy-900 group-hover:text-teal-700">{s.t}</span>
+        <span className="mt-1 block text-sm text-stone-600">
+          {[ref, preacher, issueLabel(s.y, s.m), `about ${readAloudMinutes(s.w)} min read aloud`].filter(Boolean).join(' · ')}
+        </span>
+        {s.s && <span className="mt-0.5 block text-sm text-stone-500">Series: {s.s}</span>}
       </Link>
     </li>
   );
@@ -112,7 +97,6 @@ export function SermonsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Word of Salvation"
         title="Reading sermons"
         description={`${total ? total.toLocaleString() : 'Over 2,000'} sermons by CRCA ministers, for reading services, personal devotion and further study. Search by book, passage, preacher or Lord’s Day.`}
         breadcrumbs={[{ label: 'For churches', to: '/for-churches' }, { label: 'Word of Salvation' }]}
@@ -120,7 +104,7 @@ export function SermonsPage() {
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
         {/* Search + filters */}
-        <div className="rounded-lg border border-stone-200 bg-white p-4 sm:p-6">
+        <div>
           <div className="relative">
             <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-stone-500" aria-hidden="true" />
             <label htmlFor="sermon-search" className="sr-only">
@@ -131,7 +115,7 @@ export function SermonsPage() {
               type="search"
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
-              placeholder='Search title, passage, preacher or topic — e.g. "Romans 8", "grace", "LD 12"'
+              placeholder="Title, passage, preacher or topic, e.g. Romans 8"
               className="w-full rounded-md border border-stone-300 bg-stone-50 py-3.5 pl-12 pr-4 text-base text-navy-900 placeholder:text-stone-500 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/30"
             />
           </div>
@@ -153,8 +137,7 @@ export function SermonsPage() {
               ))}
             </div>
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 lg:ml-auto lg:flex lg:items-center">
-              <SlidersHorizontal className="hidden h-4 w-4 text-stone-400 lg:block" aria-hidden="true" />
-              <select
+                            <select
                 aria-label="Book or confession"
                 value={filters.book ?? ''}
                 onChange={(e) => update({ book: e.target.value || null, ld: null })}
@@ -200,7 +183,7 @@ export function SermonsPage() {
 
           {filters.book === 'Heidelberg Catechism' && (
             <div className="mt-4 border-t border-stone-100 pt-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-stone-500">Jump to a Lord’s Day</p>
+              <p className="text-sm font-semibold text-navy-900">Jump to a Lord’s Day</p>
               <div className="mt-2 flex flex-wrap gap-1.5">
                 {Array.from({ length: 52 }, (_, i) => i + 1).map((n) => (
                   <button
@@ -234,9 +217,9 @@ export function SermonsPage() {
           <>
             <section className="mt-10">
               <div className="flex items-end justify-between gap-4">
-                <h2 className="font-serif text-2xl font-bold text-navy-900">Recently added</h2>
+                <h2 className="font-serif text-2xl font-semibold text-navy-900">Recently added</h2>
               </div>
-              <ul className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <ul className="mt-4 grid gap-x-12 border-t border-stone-200 md:grid-cols-2">
                 {recent.map((s) => (
                   <SermonCard key={s.id} s={s} index={index} />
                 ))}
@@ -245,18 +228,17 @@ export function SermonsPage() {
 
             {(['ot', 'nt', 'conf'] as SermonGroup[]).map((g) => (
               <section key={g} className="mt-12">
-                <h2 className="font-serif text-2xl font-bold text-navy-900">{GROUP_LABELS[g]}</h2>
-                <ul className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                <h2 className="font-serif text-2xl font-semibold text-navy-900">{GROUP_LABELS[g]}</h2>
+                <ul className="mt-4 columns-2 gap-8 sm:columns-3 lg:columns-5">
                   {index.books
                     .filter((b) => b.group === g)
                     .map((b) => (
-                      <li key={b.name}>
+                      <li key={b.name} className="break-inside-avoid">
                         <button
                           onClick={() => update({ book: b.name, g })}
-                          className="flex w-full items-center justify-between gap-2 rounded-md border border-stone-200 bg-white px-3.5 py-2.5 text-left text-sm font-semibold text-navy-900 transition hover:border-teal-300 hover:text-teal-700"
+                          className="py-1.5 text-left text-navy-900 underline-offset-4 hover:text-teal-700 hover:underline"
                         >
-                          <span className="leading-snug">{b.name}</span>
-                          <span className="shrink-0 rounded-full bg-stone-100 px-2 py-0.5 text-xs font-medium tabular-nums text-stone-600">{b.count}</span>
+                          {b.name} <span className="tabular-nums text-stone-500">({b.count})</span>
                         </button>
                       </li>
                     ))}
@@ -287,14 +269,13 @@ export function SermonsPage() {
               </button>
             </div>
             {results.length === 0 ? (
-              <div className="mt-6 rounded-lg border border-dashed border-stone-300 bg-white p-10 text-center">
-                <BookOpen className="mx-auto h-8 w-8 text-stone-400" aria-hidden="true" />
-                <p className="mt-3 font-semibold text-navy-900">No sermons match those filters.</p>
+              <div className="mt-6 border-t border-stone-200 py-8">
+                <p className="font-semibold text-navy-900">No sermons match those filters.</p>
                 <p className="mt-1 text-sm text-stone-600">Try a broader search, or clear a filter.</p>
               </div>
             ) : (
               <>
-                <ul className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <ul className="mt-4 grid gap-x-12 border-t border-stone-200 md:grid-cols-2">
                   {results.slice(0, shown).map((s) => (
                     <SermonCard key={s.id} s={s} index={index} />
                   ))}

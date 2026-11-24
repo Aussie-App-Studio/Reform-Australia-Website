@@ -24,9 +24,6 @@ import {
   Download,
   ExternalLink,
   FileDown,
-  FileText,
-  FolderOpen,
-  History,
   List,
   Menu,
   Printer,
@@ -1187,7 +1184,7 @@ export function FormsDocumentsPage() {
                 className="hidden items-center gap-2 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-500 lg:inline-flex"
               >
                 <Download className="h-4 w-4" />
-                <span>Get Offline Browser Extension</span>
+                <span>Browser extension</span>
                 <ExternalLink className="h-3.5 w-3.5" />
               </a>
             }
@@ -1315,7 +1312,7 @@ export function FormsDocumentsPage() {
               className="inline-flex items-center gap-2 rounded-md border border-stone-300 bg-white px-4 py-2.5 text-sm font-semibold text-navy-900 hover:border-teal-500"
             >
               <Menu className="h-4 w-4 text-teal-600" />
-              <span>{mobileDrawerOpen ? 'Hide Library Catalogue' : `Browse All ${docCount} Documents`}</span>
+              <span>{mobileDrawerOpen ? 'Hide the library list' : `Browse all ${docCount} documents`}</span>
             </button>
 
             {currentDoc && (
@@ -1370,345 +1367,135 @@ export function FormsDocumentsPage() {
                   </div>
                 ) : !currentDoc ? (
                   /* Library Overview (when no :docId is selected) */
-                  <div className="space-y-6">
-                    {/* Quick-Jump Shortcuts */}
-                    <div className="rounded-lg border border-stone-200 bg-white p-6">
-                      <div className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
-                        Quick Reference Lookup
-                      </div>
-                      <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900">
-                        Jump straight to a Lord&apos;s Day, Article, or Chapter
-                      </h2>
-                      <p className="mt-1 text-sm text-stone-700">
-                        Type shortcuts like <code className="rounded bg-stone-100 px-1.5 py-0.5 text-xs font-semibold text-navy-900">LD 1</code>,{' '}
-                        <code className="rounded bg-stone-100 px-1.5 py-0.5 text-xs font-semibold text-navy-900">BC 29</code>,{' '}
-                        <code className="rounded bg-stone-100 px-1.5 py-0.5 text-xs font-semibold text-navy-900">CD 1:7</code>,{' '}
-                        <code className="rounded bg-stone-100 px-1.5 py-0.5 text-xs font-semibold text-navy-900">WCF 1:6</code>, or{' '}
-                        <code className="rounded bg-stone-100 px-1.5 py-0.5 text-xs font-semibold text-navy-900">CO 52</code> into
-                        the library search bar—or click an example below.
-                      </p>
+                  <div className="rounded-lg border border-stone-200 bg-white p-6 sm:p-8">
+                    <h2 className="font-serif text-2xl font-semibold text-navy-900">In the library</h2>
+                    <dl className="mt-5 divide-y divide-stone-200 border-y border-stone-200">
+                      {[
+                        {
+                          title: 'Liturgical forms',
+                          text: 'Baptism, profession of faith, the Lord’s Supper, discipline, ordination and installation, marriage and funerals. Use Service Prep to fill in names before printing.',
+                          links: [
+                            { label: 'Baptism of children (I)', to: 'the-liturgical-forms-01-baptism-01-form-for-the-baptism-of-the-children-of-believers-i' },
+                            { label: 'Lord’s Supper (I)', to: 'the-liturgical-forms-03-the-lords-supper-03-form-for-the-celebration-of-the-lords-supper-i' },
+                            { label: 'Marriage', to: 'the-liturgical-forms-06-marriage-02-form-for-the-solemnisation-of-marriage' },
+                          ],
+                        },
+                        {
+                          title: 'Creeds and confessions',
+                          text: 'The three ecumenical creeds and the Three Forms of Unity, with the Westminster Confession and Our World Belongs to God.',
+                          links: [
+                            { label: 'Heidelberg Catechism', to: DOC_IDS.heidelbergCatechism },
+                            { label: 'Belgic Confession', to: DOC_IDS.belgicConfession },
+                            { label: 'Canons of Dort', to: DOC_IDS.canonsOfDort },
+                          ],
+                        },
+                        {
+                          title: 'Church Order',
+                          text: 'The CRCA Church Order (2022) and the Rules for the Final Examination (2024).',
+                          links: [
+                            { label: 'Church Order (2022)', to: DOC_IDS.churchOrder2022 },
+                            { label: 'Rules for the Final Examination', to: DOC_IDS.rulesFinalExamination2024 },
+                          ],
+                        },
+                        {
+                          title: 'Acts of Synod',
+                          text: 'The decisions of Synod 2024.',
+                          links: [{ label: 'Acts of Synod (2024)', to: DOC_IDS.actsOfSynod2024 }],
+                        },
+                        {
+                          title: 'Worship readings',
+                          text: 'Calls to worship, greetings and benedictions, readings of the law, assurances of pardon and readings at the offerings.',
+                          links: [
+                            { label: 'Calls to worship', to: 'other-resources-02-liturgical-readings-01-calls-to-worship' },
+                            { label: 'Readings of the law', to: 'other-resources-02-liturgical-readings-03-readings-of-the-law' },
+                            { label: 'Assurances of pardon', to: 'other-resources-02-liturgical-readings-04-assurances-of-pardon' },
+                          ],
+                        },
+                      ].map((group) => (
+                        <div key={group.title} className="py-5">
+                          <dt className="font-serif text-xl font-semibold text-navy-900">{group.title}</dt>
+                          <dd className="mt-1 leading-relaxed text-stone-700">{group.text}</dd>
+                          <dd className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+                            {group.links.map((l) => (
+                              <Link
+                                key={l.to}
+                                to={`/for-churches/forms-and-documents/${l.to}`}
+                                className="font-semibold text-teal-700 underline-offset-4 hover:text-navy-900 hover:underline"
+                              >
+                                {l.label}
+                              </Link>
+                            ))}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
 
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {QUICK_JUMP_CHIPS.map((chip) => (
+                    {(bookmarkedDocItems.length > 0 || recentDocItems.length > 0) && (
+                      <div className="mt-8 grid gap-8 sm:grid-cols-2">
+                        {[
+                          { title: 'Your bookmarks', items: bookmarkedDocItems },
+                          { title: 'Recently opened', items: recentDocItems },
+                        ]
+                          .filter((g) => g.items.length > 0)
+                          .map((g) => (
+                            <div key={g.title}>
+                              <h3 className="font-semibold text-navy-900">{g.title}</h3>
+                              <ul className="mt-2 space-y-1">
+                                {g.items.slice(0, 5).map((item) => (
+                                  <li key={item.id}>
+                                    <button
+                                      type="button"
+                                      onClick={() => openDoc(item.id)}
+                                      className="text-left text-teal-700 underline-offset-4 hover:text-navy-900 hover:underline"
+                                    >
+                                      {item.title}
+                                    </button>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                      </div>
+                    )}
+
+                    <h3 className="mt-8 font-semibold text-navy-900">Shortcuts</h3>
+                    <p className="mt-1 leading-relaxed text-stone-700">
+                      Type a reference into the library search to jump straight to it:
+                    </p>
+                    <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+                      {QUICK_JUMP_CHIPS.map((chip) => (
+                        <li key={chip.label}>
                           <button
-                            key={chip.label}
                             type="button"
                             onClick={() => {
                               updateQuery(chip.label);
                               setMobileDrawerOpen(true);
                               window.requestAnimationFrame(() => {
-                                searchInputRef.current?.scrollIntoView({
-                                  behavior: 'smooth',
-                                  block: 'center',
-                                });
+                                searchInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
                                 searchInputRef.current?.focus();
                               });
                             }}
-                            className="inline-flex items-center gap-2 rounded-md border border-stone-200 bg-stone-50 px-3.5 py-2 text-xs font-semibold text-navy-900 transition-colors hover:border-teal-500 hover:bg-teal-50 hover:text-teal-700"
+                            className="text-left text-stone-700 hover:text-teal-700"
                           >
-                            <span className="font-mono text-teal-700">{chip.label}</span>
-                            <span className="text-stone-600">• {chip.hint}</span>
+                            <code className="font-semibold text-teal-700">{chip.label}</code> {chip.hint}
                           </button>
-                        ))}
-                      </div>
-                    </div>
+                        </li>
+                      ))}
+                    </ul>
 
-                    {/* Recent & Bookmarked Quick Access */}
-                    {(bookmarkedDocItems.length > 0 || recentDocItems.length > 0) && (
-                      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                        {bookmarkedDocItems.length > 0 && (
-                          <div className="rounded-lg border border-stone-200 bg-white p-5">
-                            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-600">
-                              <Star className="h-3.5 w-3.5 fill-gold-500 text-gold-500" />
-                              <span>Saved Bookmarks</span>
-                            </div>
-                            <ul className="mt-3 space-y-1.5">
-                              {bookmarkedDocItems.slice(0, 5).map((item) => (
-                                <li key={item.id}>
-                                  <button
-                                    type="button"
-                                    onClick={() => openDoc(item.id)}
-                                    className="flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-left text-sm font-medium text-navy-900 hover:bg-teal-50 hover:text-teal-700"
-                                  >
-                                    <span>{item.title}</span>
-                                    <ChevronRight className="h-4 w-4 shrink-0 text-stone-600" />
-                                  </button>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-
-                        {recentDocItems.length > 0 && (
-                          <div className="rounded-lg border border-stone-200 bg-white p-5">
-                            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
-                              <History className="h-3.5 w-3.5" />
-                              <span>Recently Opened</span>
-                            </div>
-                            <ul className="mt-3 space-y-1.5">
-                              {recentDocItems.slice(0, 5).map((item) => (
-                                <li key={item.id}>
-                                  <button
-                                    type="button"
-                                    onClick={() => openDoc(item.id)}
-                                    className="flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-left text-sm font-medium text-navy-900 hover:bg-teal-50 hover:text-teal-700"
-                                  >
-                                    <span>{item.title}</span>
-                                    <ChevronRight className="h-4 w-4 shrink-0 text-stone-600" />
-                                  </button>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                    )}
-
-                    {/* 4 Category Showcase Cards */}
-                    <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                      {/* Liturgical Forms */}
-                      <div className="rounded-lg border border-stone-200 bg-white p-6">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
-                            25 Forms
-                          </span>
-                          <FolderOpen className="h-4 w-4 text-teal-600" />
-                        </div>
-                        <h3 className="mt-2 font-serif text-xl font-bold text-navy-900">
-                          The Liturgical Forms
-                        </h3>
-                        <p className="mt-1.5 text-sm text-stone-700">
-                          Baptism, Profession of Faith, Lord&apos;s Supper, Discipline, Ordination
-                          &amp; Installation, Marriage, and Funerals—with built-in Service Prep
-                          name/pronoun personalisation and EITHER/OR choice toggles.
-                        </p>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          <Link
-                            to="/for-churches/forms-and-documents/the-liturgical-forms-01-baptism-01-form-for-the-baptism-of-the-children-of-believers-i"
-                            className="rounded-lg bg-stone-100 px-3 py-1.5 text-xs font-semibold text-navy-900 hover:bg-teal-50 hover:text-teal-700"
-                          >
-                            Baptism of Children (I)
-                          </Link>
-                          <Link
-                            to="/for-churches/forms-and-documents/the-liturgical-forms-03-the-lords-supper-03-form-for-the-celebration-of-the-lords-supper-i"
-                            className="rounded-lg bg-stone-100 px-3 py-1.5 text-xs font-semibold text-navy-900 hover:bg-teal-50 hover:text-teal-700"
-                          >
-                            Lord&apos;s Supper (I)
-                          </Link>
-                          <Link
-                            to="/for-churches/forms-and-documents/the-liturgical-forms-06-marriage-02-form-for-the-solemnisation-of-marriage"
-                            className="rounded-lg bg-stone-100 px-3 py-1.5 text-xs font-semibold text-navy-900 hover:bg-teal-50 hover:text-teal-700"
-                          >
-                            Marriage Form
-                          </Link>
-                        </div>
-                      </div>
-
-                      {/* Creeds & Confessions */}
-                      <div className="rounded-lg border border-stone-200 bg-white p-6">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
-                            Creeds & confessions
-                          </span>
-                          <BookOpen className="h-4 w-4 text-teal-600" />
-                        </div>
-                        <h3 className="mt-2 font-serif text-xl font-bold text-navy-900">
-                          Creeds &amp; confessions
-                        </h3>
-                        <p className="mt-1.5 text-sm text-stone-700">
-                          The three ecumenical creeds and the Three Forms of Unity, with clickable
-                          Scripture proofs. Also the Westminster Confession and Our World Belongs to
-                          God, which the CRCA holds in high regard.
-                        </p>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          <Link
-                            to={`/for-churches/forms-and-documents/${DOC_IDS.heidelbergCatechism}`}
-                            className="rounded-lg bg-stone-100 px-3 py-1.5 text-xs font-semibold text-navy-900 hover:bg-teal-50 hover:text-teal-700"
-                          >
-                            Heidelberg Catechism
-                          </Link>
-                          <Link
-                            to={`/for-churches/forms-and-documents/${DOC_IDS.belgicConfession}`}
-                            className="rounded-lg bg-stone-100 px-3 py-1.5 text-xs font-semibold text-navy-900 hover:bg-teal-50 hover:text-teal-700"
-                          >
-                            Belgic Confession
-                          </Link>
-                          <Link
-                            to={`/for-churches/forms-and-documents/${DOC_IDS.canonsOfDort}`}
-                            className="rounded-lg bg-stone-100 px-3 py-1.5 text-xs font-semibold text-navy-900 hover:bg-teal-50 hover:text-teal-700"
-                          >
-                            Canons of Dort
-                          </Link>
-                        </div>
-                      </div>
-
-                      {/* CRCA Church Order 2022 & Examination Rules */}
-                      <div className="rounded-lg border border-stone-200 bg-white p-6">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold uppercase tracking-wider text-stone-600">
-                            Polity &amp; Candidacy • 2022 / 2024
-                          </span>
-                          <FileText className="h-4 w-4 text-teal-600" />
-                        </div>
-                        <h3 className="mt-2 font-serif text-xl font-bold text-navy-900">
-                          Church Order &amp; Examination Rules
-                        </h3>
-                        <p className="mt-1.5 text-sm text-stone-700">
-                          Read the complete 86-article <strong>CRCA Church Order (2022)</strong>{' '}
-                          alongside the <strong>Rules for the Final Examination (2024)</strong> for
-                          ministry candidates—with clickable internal article links.
-                        </p>
-                        <div className="mt-4 flex flex-wrap items-center gap-2">
-                          <Link
-                            to={`/for-churches/forms-and-documents/${DOC_IDS.churchOrder2022}`}
-                            className="inline-flex items-center gap-1.5 rounded-lg bg-navy-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-navy-800"
-                          >
-                            <span>2022 Church Order</span>
-                            <ChevronRight className="h-3.5 w-3.5" />
-                          </Link>
-                          <Link
-                            to={`/for-churches/forms-and-documents/${DOC_IDS.rulesFinalExamination2024}`}
-                            className="inline-flex items-center gap-1.5 rounded-lg bg-teal-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-teal-700"
-                          >
-                            <span>Final Exam Rules (2024)</span>
-                            <ChevronRight className="h-3.5 w-3.5" />
-                          </Link>
-                        </div>
-                        <div className="mt-3 flex flex-wrap items-center gap-4 text-xs">
-                          <a
-                            href={encodeDocUrl('CRCA Book of Church Order 2022.docx')}
-                            download
-                            className="inline-flex items-center gap-1 font-semibold text-teal-700 hover:text-navy-900"
-                          >
-                            <FileDown className="h-3.5 w-3.5" />
-                            <span>Church Order (.docx)</span>
-                          </a>
-                          <a
-                            href={encodeDocUrl('CRCA Rules for the Final Examination 2024.pdf')}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 font-semibold text-teal-700 hover:text-navy-900"
-                          >
-                            <FileDown className="h-3.5 w-3.5" />
-                            <span>Final Exam Rules PDF</span>
-                          </a>
-                        </div>
-                      </div>
-
-                      {/* Worship Readings */}
-                      <div className="rounded-lg border border-stone-200 bg-white p-6">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
-                            6 Resources
-                          </span>
-                          <Sparkles className="h-4 w-4 text-teal-600" />
-                        </div>
-                        <h3 className="mt-2 font-serif text-xl font-bold text-navy-900">
-                          Worship Readings &amp; Liturgy Options
-                        </h3>
-                        <p className="mt-1.5 text-sm text-stone-700">
-                          One-click copy and ProPresenter slide formatting for Calls to Worship,
-                          Greetings &amp; Benedictions, Readings of the Law, Assurances of Pardon,
-                          and Readings at the Offerings.
-                        </p>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          <Link
-                            to="/for-churches/forms-and-documents/other-resources-02-liturgical-readings-01-calls-to-worship"
-                            className="rounded-lg bg-stone-100 px-3 py-1.5 text-xs font-semibold text-navy-900 hover:bg-teal-50 hover:text-teal-700"
-                          >
-                            Calls to Worship
-                          </Link>
-                          <Link
-                            to="/for-churches/forms-and-documents/other-resources-02-liturgical-readings-02-greetings-and-benedictions"
-                            className="rounded-lg bg-stone-100 px-3 py-1.5 text-xs font-semibold text-navy-900 hover:bg-teal-50 hover:text-teal-700"
-                          >
-                            Greetings &amp; Benedictions
-                          </Link>
-                          <Link
-                            to="/for-churches/forms-and-documents/other-resources-02-liturgical-readings-04-assurances-of-pardon"
-                            className="rounded-lg bg-stone-100 px-3 py-1.5 text-xs font-semibold text-navy-900 hover:bg-teal-50 hover:text-teal-700"
-                          >
-                            Assurances of Pardon
-                          </Link>
-                        </div>
-                      </div>
-
-                      {/* Acts of Synod (2024) */}
-                      <div className="md:col-span-2 rounded-lg border border-stone-200 bg-white p-6">
-                        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                          <div className="max-w-2xl">
-                            <span className="text-xs font-bold uppercase tracking-wider text-stone-600">
-                              Synod Decisions &amp; Resolutions
-                            </span>
-                            <h3 className="mt-1.5 font-serif text-xl font-bold text-navy-900">
-                              Acts of Synod (2024)
-                            </h3>
-                            <p className="mt-1 text-sm text-stone-700">
-                              Full searchable record of Synod 2024 resolutions, committee mandates,
-                              and motions with linked Church Order references.
-                            </p>
-                          </div>
-                          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
-                            <Link
-                              to={`/for-churches/forms-and-documents/${DOC_IDS.actsOfSynod2024}`}
-                              className="inline-flex items-center gap-1.5 rounded-lg bg-navy-900 px-3.5 py-2 text-xs font-semibold text-white hover:bg-navy-800"
-                            >
-                              <span>Read Acts of Synod (2024)</span>
-                              <ChevronRight className="h-3.5 w-3.5" />
-                            </Link>
-                            <a
-                              href={encodeDocUrl('CRCA Acts of Synod 2024.pdf')}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 rounded-lg border border-stone-300 bg-stone-50 px-3 py-2 text-xs font-semibold text-navy-900 hover:border-teal-500 hover:text-teal-700"
-                            >
-                              <FileDown className="h-3.5 w-3.5" />
-                              <span>Official PDF</span>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Offline Browser Extension Banner */}
-                    <div className="rounded-lg border border-teal-500/30 bg-navy-900 p-6 text-white sm:p-8">
-                      <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-                        <div className="max-w-2xl">
-                          <div className="text-xs font-bold uppercase tracking-[0.08em] text-teal-100">
-                            Offline Browser Extension
-                          </div>
-                          <h3 className="mt-1.5 font-serif text-2xl font-bold text-white">
-                            Prefer a Side Panel beside Google Docs or Word?
-                          </h3>
-                          <p className="mt-2 text-sm leading-relaxed text-navy-100">
-                            Install the free <strong>CRCA Forms &amp; Documents</strong> browser
-                            extension for Chrome, Microsoft Edge, or Brave. Keep every form open in
-                            your browser side panel while preparing bulletins and orders of service—even
-                            without internet access.
-                          </p>
-                        </div>
-                        <div className="flex flex-wrap gap-3 shrink-0">
-                          <a
-                            href={EXTENSION_URLS.downloadZip}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-teal-500"
-                          >
-                            <Download className="h-4 w-4" />
-                            <span>Download Extension (.zip)</span>
-                          </a>
-                          <a
-                            href={EXTENSION_URLS.installGuide}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-md border border-white/25 bg-white/10 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/20"
-                          >
-                            <span>2-Min Setup Guide</span>
-                            <ExternalLink className="h-3.5 w-3.5" />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
+                    <h3 className="mt-8 font-semibold text-navy-900">Browser extension</h3>
+                    <p className="mt-1 leading-relaxed text-stone-700">
+                      The CRCA Forms and Documents extension for Chrome, Edge and Brave keeps the forms in your browser’s side
+                      panel, and works offline.{' '}
+                      <a href={EXTENSION_URLS.downloadZip} target="_blank" rel="noopener noreferrer" className="font-semibold text-teal-700 underline-offset-4 hover:underline">
+                        Download it
+                      </a>{' '}
+                      or read the{' '}
+                      <a href={EXTENSION_URLS.installGuide} target="_blank" rel="noopener noreferrer" className="font-semibold text-teal-700 underline-offset-4 hover:underline">
+                        set-up guide
+                      </a>
+                      .
+                    </p>
                   </div>
                 ) : (
                   /* Document Reader View */

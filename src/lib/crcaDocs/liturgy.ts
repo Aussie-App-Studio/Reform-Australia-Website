@@ -105,6 +105,16 @@ function tidyFootnotes(root: Element) {
   });
 }
 
+
+/** Placeholder blanks leave gaps in the source: "Full Name ," and runs of spaces. */
+function tidySpaces(root: Element, doc: Document) {
+  const walker = doc.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+    const t = n.textContent ?? '';
+    const fixed = t.replace(/[ \u00a0]{2,}/g, ' ').replace(/ +([,.;:])(?=\s|$)/g, '$1');
+    if (fixed !== t) n.textContent = fixed;
+  }
+}
 /** Join a sentence that the source split over two paragraphs ("…mature in" / "the faith, whose…"). */
 function joinBrokenLines(root: Element, doc: Document) {
   for (const a of Array.from(root.children)) {
@@ -221,6 +231,7 @@ export function formatLiturgyHtml(html: string, opts: { readings?: boolean } = {
   }
 
   tidyFootnotes(root);
+  tidySpaces(root, doc);
   dashLists(root, doc);
   joinBrokenLines(root, doc);
   if (!opts.readings) labelsAndDirections(root);
