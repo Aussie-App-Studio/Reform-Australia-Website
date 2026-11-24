@@ -1,9 +1,12 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { Check, CheckCircle2, Copy, ExternalLink, Mail, Phone, Send } from 'lucide-react';
+import { Link, useSearchParams } from 'react-router-dom';
+import { ArrowRight, Check, CheckCircle2, Copy, ExternalLink, Mail, Phone, Send } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import { MinistryIcon } from '../components/MinistryIcon';
 import contactTopics from '../data/contactTopics.json';
+import { siteConfig } from '../data/siteConfig';
+
+const FORM_ENDPOINT: string = siteConfig.contactForm.endpoint;
 
 interface ContactTopic {
   id: string;
@@ -34,6 +37,10 @@ export function ContactPage() {
   const [message, setMessage] = useState('');
   const [submittedTo, setSubmittedTo] = useState<ContactTopic | null>(null);
   const [copied, setCopied] = useState(false);
+  const [sending, setSending] = useState(false);
+  // 'sent' = delivered by the form service; 'prepared' = visitor sends via their email app.
+  const [delivery, setDelivery] = useState<'sent' | 'prepared'>('prepared');
+  const [sendError, setSendError] = useState<string | null>(null);
 
   useEffect(() => {
     const param = searchParams.get('topic');
@@ -51,10 +58,41 @@ export function ContactPage() {
     setSearchParams({ topic: id }, { replace: true });
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setCopied(false);
-    setSubmittedTo(activeTopic);
+    setSendError(null);
+    if (!FORM_ENDPOINT) {
+      setDelivery('prepared');
+      setSubmittedTo(activeTopic);
+      return;
+    }
+    setSending(true);
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          topic: activeTopic.title,
+          to: activeTopic.email,
+          cc: activeTopic.secondaryEmail ?? '',
+          name,
+          email: senderEmail,
+          church: churchOrSuburb,
+          message,
+          _subject: `[${activeTopic.title}] Enquiry from ${name}`,
+        }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setDelivery('sent');
+    } catch {
+      // Fall back to the email-app flow so the enquiry is never lost.
+      setDelivery('prepared');
+      setSendError('We couldn’t send your message automatically, but you can still send it from your email app below.');
+    } finally {
+      setSending(false);
+      setSubmittedTo(activeTopic);
+    }
   }
 
   async function handleCopyEnquiry(topic: ContactTopic) {
@@ -181,7 +219,16 @@ export function ContactPage() {
                     </a>
                   )}
 
-                  {activeTopic.externalUrl && (
+                  {activeTopic.externalUrl && activeTopic.externalUrl.startsWith('/') && (
+                    <Link
+                      to={activeTopic.externalUrl}
+                      className="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-3.5 py-2 font-semibold text-white hover:bg-teal-500"
+                    >
+                      <span>{activeTopic.externalLabel ?? 'Open'}</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  )}
+                  {activeTopic.externalUrl && !activeTopic.externalUrl.startsWith('/') && (
                     <a
                       href={activeTopic.externalUrl}
                       target="_blank"
@@ -210,8 +257,14 @@ export function ContactPage() {
                       <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" />
                       <div>
                         <h4 className="font-serif text-base font-bold text-navy-900">
-                          Enquiry Prepared for {submittedTo.routeToLabel}
+                          {delivery === 'sent' ? `Thank you — your message was sent to ${submittedTo.routeToLabel}` : `Enquiry Prepared for ${submittedTo.routeToLabel}`}
                         </h4>
+                        {sendError && <p className="mt-1 text-sm font-medium text-rose-800">{sendError}</p>}
+                        {delivery === 'sent' ? (
+                          <p className="mt-1 text-sm text-stone-700">
+                            We’ll reply to <strong>{senderEmail}</strong>. {submittedTo.responseNote}
+                          </p>
+                        ) : (
                         <p className="mt-1 text-sm text-stone-700">
                           Your enquiry details are formatted and ready to send directly to{' '}
                           <strong>{submittedTo.email}</strong>
@@ -221,7 +274,10 @@ export function ContactPage() {
                           . Open your email client below or copy the message details to paste into
                           any webmail service.
                         </p>
+                        )}
                         <div className="mt-4 flex flex-wrap gap-3">
+                          {delivery === 'prepared' && (
+                          <>
                           <a
                             href={`mailto:${submittedTo.email}?${
                               submittedTo.secondaryEmail
@@ -249,9 +305,12 @@ export function ContactPage() {
                             )}
                             <span>{copied ? 'Copied' : 'Copy Message Details'}</span>
                           </button>
+                          </>
+                          )}
                           <button
                             type="button"
                             onClick={() => {
+                              setSendError(null);
                               setSubmittedTo(null);
                               setCopied(false);
                               setMessage('');
@@ -281,7 +340,7 @@ export function ContactPage() {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           placeholder="Full name"
-                          className="mt-1.5 w-full rounded-xl border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-sm text-navy-900 focus:border-teal-500 focus:bg-white focus:outline-none"
+                          className="mt-1.5 w-full rounded-xl border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
                         />
                       </div>
                       <div>
@@ -298,7 +357,7 @@ export function ContactPage() {
                           value={senderEmail}
                           onChange={(e) => setSenderEmail(e.target.value)}
                           placeholder="you@example.com.au"
-                          className="mt-1.5 w-full rounded-xl border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-sm text-navy-900 focus:border-teal-500 focus:bg-white focus:outline-none"
+                          className="mt-1.5 w-full rounded-xl border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
                         />
                       </div>
                     </div>
@@ -316,7 +375,7 @@ export function ContactPage() {
                         value={churchOrSuburb}
                         onChange={(e) => setChurchOrSuburb(e.target.value)}
                         placeholder="e.g., Scoresby, VIC or visiting enquiry"
-                        className="mt-1.5 w-full rounded-xl border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-sm text-navy-900 focus:border-teal-500 focus:bg-white focus:outline-none"
+                        className="mt-1.5 w-full rounded-xl border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
                       />
                     </div>
 
@@ -334,13 +393,14 @@ export function ContactPage() {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder={`Write your enquiry for ${activeTopic.routeToLabel}...`}
-                        className="mt-1.5 w-full rounded-xl border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-sm text-navy-900 focus:border-teal-500 focus:bg-white focus:outline-none"
+                        className="mt-1.5 w-full rounded-xl border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-teal-700"
+                      disabled={sending}
+                      className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-teal-700 disabled:opacity-60"
                     >
                       <Send className="h-4 w-4" />
                       <span>Send Enquiry to {activeTopic.routeToLabel}</span>

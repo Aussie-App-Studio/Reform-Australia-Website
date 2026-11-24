@@ -19,6 +19,8 @@ import { searchChurches } from '../utils/churchSearch';
 import { handleTabListKeyDown } from '../utils/tablistKeyboard';
 import { AustraliaChurchMap, ChurchRecord, getDirectionsUrl } from './AustraliaChurchMap';
 
+const MOBILE_LIST_LIMIT = 8;
+
 const allChurches = churchesRaw as ChurchRecord[];
 
 const stateOrder: Array<'ALL' | ChurchRecord['state']> = [
@@ -62,6 +64,8 @@ export function ChurchDirectory({
   });
   const [selectedChurchId, setSelectedChurchId] = useState<string | null>(null);
   const [selectionNonce, setSelectionNonce] = useState(0);
+  // Mobile only: show a short list first so the page isn't 50+ cards tall.
+  const [showAllMobile, setShowAllMobile] = useState(false);
   const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(null);
   const [locating, setLocating] = useState(false);
   const [locationError, setLocationError] = useState<string | null>(null);
@@ -197,6 +201,7 @@ export function ChurchDirectory({
 
   function handleSelectFromMap(churchId: string) {
     setSelectedChurchId(churchId);
+    setShowAllMobile(true);
     const isDesktop =
       typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches;
     if (!isDesktop) return;
@@ -535,7 +540,7 @@ export function ChurchDirectory({
               </div>
             ) : (
               <div className="space-y-3 lg:max-h-[640px] lg:overflow-y-auto lg:pr-1">
-                {filteredChurches.map(({ church, distanceKm }) => {
+                {filteredChurches.map(({ church, distanceKm }, i) => {
                   const isSelected = church.id === selectedChurchId;
                   const directionsUrl = getDirectionsUrl(church);
 
@@ -547,6 +552,8 @@ export function ChurchDirectory({
                       }}
                       onClick={() => handleSelectFromCard(church.id)}
                       className={`cursor-pointer rounded-2xl border bg-white p-5 transition-all ${
+                        !showAllMobile && i >= MOBILE_LIST_LIMIT ? 'max-lg:hidden ' : ''
+                      }${
                         isSelected
                           ? 'border-teal-600 shadow-md ring-2 ring-teal-500/25'
                           : 'border-stone-200 hover:border-teal-500/40 hover:shadow-sm'
@@ -685,6 +692,15 @@ export function ChurchDirectory({
                     </article>
                   );
                 })}
+                {!showAllMobile && filteredChurches.length > MOBILE_LIST_LIMIT && (
+                  <button
+                    type="button"
+                    onClick={() => setShowAllMobile(true)}
+                    className="w-full rounded-2xl border border-dashed border-teal-500/50 bg-teal-50 px-5 py-4 text-sm font-semibold text-teal-800 hover:bg-teal-100 lg:hidden"
+                  >
+                    Show all {filteredChurches.length} churches
+                  </button>
+                )}
               </div>
             )}
           </div>

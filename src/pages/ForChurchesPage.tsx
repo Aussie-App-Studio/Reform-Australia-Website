@@ -16,6 +16,7 @@ import {
   X,
 } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
+import { FeaturedHubs } from '../components/FeaturedHubs';
 import leaderData from '../data/leaderResources.json';
 import {
   DOC_IDS,
@@ -472,6 +473,15 @@ export function ForChurchesPage() {
               </div>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Sermon archive + Safe Church (formerly separate websites) */}
+      <section className="border-t border-stone-200 bg-white py-12 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">Now part of this site</div>
+          <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900 sm:text-3xl">Sermons &amp; Safe Church</h2>
+          <FeaturedHubs className="mt-6" />
         </div>
       </section>
 

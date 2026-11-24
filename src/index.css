@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./styles/crca-reader.css";
+@import "./styles/content.css";
 
 @theme {
   --color-navy-950: #001836;

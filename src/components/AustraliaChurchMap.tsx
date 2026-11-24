@@ -440,9 +440,7 @@ export function AustraliaChurchMap({
       return;
     }
 
-    if (churches.length === totalChurchCount) {
-      map.jumpTo({ center: AUSTRALIA_CENTER, zoom: AUSTRALIA_DEFAULT_ZOOM });
-    } else if (coords.length === 1) {
+    if (coords.length === 1) {
       map.jumpTo({ center: coords[0], zoom: 12 });
     } else {
       const bounds = new maplibregl.LngLatBounds(coords[0], coords[0]);

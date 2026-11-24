@@ -309,6 +309,87 @@ for (const file of srcFiles) {
   }
 }
 
+const siteConfigText = fs.readFileSync(path.join(SRC_DIR, 'data/siteConfig.ts'), 'utf8');
+
+// 6c. Safe Church content (public/safe-church/, synced by scripts/sync-safe-church.mjs)
+let safeChurchPageCount = 0;
+let safeChurchPaths = new Set();
+try {
+  const sc = readJson('public/safe-church/content.json');
+  safeChurchPaths = new Set(Object.keys(sc.pages));
+  safeChurchPageCount = safeChurchPaths.size;
+  for (const s of sc.sections) {
+    if (!sc.pages[s.path]) errors.push(`Safe Church section page missing: ${s.path}`);
+  }
+  for (const page of Object.values(sc.pages)) {
+    for (const m of page.html.matchAll(/href="\{\{BASE\}\}safe-church\/([^"#]*)/g)) {
+      const target = decodeURIComponent(m[1]);
+      if (target.startsWith('files/')) {
+        const full = path.join(PUBLIC_DIR, 'safe-church', target);
+        if (!fs.existsSync(full)) errors.push(`Safe Church page "${page.path}" links to missing file ${target}`);
+      } else if (target && !sc.pages[target]) {
+        errors.push(`Safe Church page "${page.path}" links to unknown page "${target}"`);
+      }
+    }
+    if (page.html.includes('safechurch.crca.org.au/wp-content')) {
+      warnings.push(`Safe Church page "${page.path}" still links to a legacy upload on safechurch.crca.org.au`);
+    }
+  }
+  const sitePaths = [
+    siteConfigText.match(/childReportPath: '([^']+)'/)?.[1],
+    siteConfigText.match(/adultReportPath: '([^']+)'/)?.[1],
+  ].filter(Boolean);
+  for (const p of sitePaths) {
+    if (!sc.pages[p.replace(/^\/safe-church\//, '')]) errors.push(`siteConfig Safe Church path not found: ${p}`);
+  }
+} catch (err) {
+  errors.push(`Failed to validate public/safe-church/content.json: ${err.message}`);
+}
+
+// 6d. Word of Salvation sermons (public/sermons/, synced by scripts/sync-sermons.mjs)
+let sermonCount = 0;
+try {
+  const idx = readJson('public/sermons/index.json');
+  sermonCount = idx.sermons.length;
+  const files = new Set(fs.readdirSync(path.join(PUBLIC_DIR, 'sermons', 's')).map((f) => f.replace(/\.json$/, '')));
+  const ids = new Set();
+  for (const s of idx.sermons) {
+    if (ids.has(s.id)) errors.push(`Duplicate sermon id ${s.id}`);
+    ids.add(s.id);
+    if (!files.has(s.id)) errors.push(`Sermon index entry without file: ${s.id}`);
+    if (s.p && !idx.preachers[s.p]) errors.push(`Sermon ${s.id} has unknown preacher key ${s.p}`);
+  }
+  for (const f of files) if (!ids.has(f)) warnings.push(`Orphan sermon file not in index: ${f}.json`);
+  if (sermonCount < 1000) errors.push(`Expected 1000+ sermons, found ${sermonCount}`);
+} catch (err) {
+  errors.push(`Failed to validate public/sermons/: ${err.message}`);
+}
+
+// 6e. Every internal route referenced from data/navigation must resolve to a real page.
+{
+  const appText = fs.readFileSync(path.join(SRC_DIR, 'App.tsx'), 'utf8');
+  const exact = new Set([...appText.matchAll(/path="([^"*:]+)"/g)].map((m) => m[1]));
+  const isKnownRoute = (p) => {
+    const clean = p.split(/[?#]/)[0].replace(/\/$/, '') || '/';
+    if (exact.has(clean)) return true;
+    if (clean.startsWith('/for-churches/forms-and-documents/')) return true; // validated above by doc ID
+    if (clean === '/safe-church') return true;
+    if (clean.startsWith('/safe-church/')) return safeChurchPaths.has(clean.slice('/safe-church/'.length));
+    if (clean.startsWith('/sermons/')) return fs.existsSync(path.join(PUBLIC_DIR, 'sermons', 's', `${clean.slice(9)}.json`));
+    return false;
+  };
+  const routeRefRe = /(?:\bto|"url"|"externalUrl"|\burl|Path)\s*[:=]\s*["'](\/(?!images\/|documents\/|ministry-resources\/|safe-church\/files\/)[^"']*)["']/g;
+  for (const file of srcFiles) {
+    const rel = path.relative(ROOT, file);
+    if (!/src[\\/](data|components|pages)[\\/]/.test(rel)) continue;
+    const txt = fs.readFileSync(file, 'utf8');
+    for (const m of txt.matchAll(routeRefRe)) {
+      if (m[1].includes('${')) continue;
+      if (!isKnownRoute(m[1])) errors.push(`Internal link to unknown route "${m[1]}" in ${rel}`);
+    }
+  }
+}
+
 // 7. Optional external link check (--links)
 async function checkExternalLinks() {
   const urls = new Map();
@@ -395,7 +476,7 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `Verification passed: ${docMap.size} documents, ${churches.length} churches, ${ministries.length} ministries, 0 errors` +
+  `Verification passed: ${docMap.size} documents, ${churches.length} churches, ${ministries.length} ministries, ${safeChurchPageCount} Safe Church pages, ${sermonCount} sermons, 0 errors` +
     (warnings.length > 0 ? `, ${warnings.length} warning(s).` : '.')
 );
 process.exit(0);

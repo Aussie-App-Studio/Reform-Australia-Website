@@ -80,15 +80,13 @@ export function Footer() {
             © {currentYear} {siteConfig.brandName}. Established {siteConfig.establishedYear}.
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <a
-              href={siteConfig.safeChurch.url}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to={siteConfig.safeChurch.url}
               className="inline-flex items-center gap-1.5 font-medium text-teal-100 transition-colors hover:text-white"
             >
               <ShieldCheck className="h-3.5 w-3.5 text-teal-400" />
               <span>Safe Church &amp; Safeguarding</span>
-            </a>
+            </Link>
             <span className="text-white/25">•</span>
             <Link to="/contact" className="transition-colors hover:text-white">
               National Enquiries

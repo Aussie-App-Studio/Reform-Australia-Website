@@ -101,25 +101,25 @@ export function HomePage() {
               news of his grace with our neighbours.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3.5">
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center sm:gap-3.5">
               <Link
                 to="/who-we-are/beliefs"
-                className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-teal-500"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-4 py-3 sm:px-5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-teal-500"
               >
                 <BookOpen className="h-4 w-4" />
                 <span>What We Believe</span>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="hidden h-4 w-4 sm:block" />
               </Link>
               <Link
                 to="/find-a-church"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-xs transition-colors hover:bg-white/20"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-4 py-3 sm:px-5 text-sm font-semibold text-white backdrop-blur-xs transition-colors hover:bg-white/20"
               >
                 <MapPin className="h-4 w-4 text-teal-400" />
                 <span>Find a Church</span>
               </Link>
               <Link
                 to="/who-we-are/vision-values"
-                className="inline-flex items-center gap-1.5 px-2 py-2 text-sm font-semibold text-teal-100 transition-colors hover:text-white"
+                className="col-span-2 inline-flex items-center justify-center gap-1.5 px-2 py-2 sm:justify-start text-sm font-semibold text-teal-100 transition-colors hover:text-white"
               >
                 <span>Our Vision &amp; Values</span>
                 <ArrowRight className="h-4 w-4" />

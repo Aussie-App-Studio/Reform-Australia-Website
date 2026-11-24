@@ -1,5 +1,5 @@
 import { lazy, ReactNode, Suspense } from 'react';
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
@@ -55,6 +55,15 @@ const FormsDocumentsPage = lazy(() =>
 const ContactPage = lazy(() =>
   import('./pages/ContactPage').then((m) => ({ default: m.ContactPage }))
 );
+const SafeChurchPage = lazy(() =>
+  import('./pages/SafeChurchPage').then((m) => ({ default: m.SafeChurchPage }))
+);
+const SermonsPage = lazy(() =>
+  import('./pages/SermonsPage').then((m) => ({ default: m.SermonsPage }))
+);
+const SermonPage = lazy(() =>
+  import('./pages/SermonPage').then((m) => ({ default: m.SermonPage }))
+);
 const NotFoundPage = lazy(() =>
   import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage }))
 );
@@ -75,6 +84,12 @@ function PageLoadingFallback() {
       </div>
     </div>
   );
+}
+
+/** Old Word of Salvation URLs were /word-of-salvation/<slug>/ — same slug here. */
+function LegacySermonRedirect() {
+  const { sermonId } = useParams();
+  return <Navigate to={`/sermons/${sermonId ?? ''}`} replace />;
 }
 
 function RouteErrorBoundary({ children }: { children: ReactNode }) {
@@ -131,6 +146,18 @@ export function App() {
                 element={<FormsDocumentsPage />}
               />
               <Route path="/contact" element={<ContactPage />} />
+
+              {/* Safe Church Unit (migrated from safechurch.crca.org.au) */}
+              <Route path="/safe-church/*" element={<SafeChurchPage />} />
+              <Route path="/safechurch" element={<Navigate to="/safe-church" replace />} />
+              <Route path="/for-churches/safe-church" element={<Navigate to="/safe-church" replace />} />
+
+              {/* Word of Salvation sermon archive (migrated from wordofsalvation.crca.org.au) */}
+              <Route path="/sermons" element={<SermonsPage />} />
+              <Route path="/sermons/:sermonId" element={<SermonPage />} />
+              <Route path="/word-of-salvation" element={<Navigate to="/sermons" replace />} />
+              <Route path="/word-of-salvation/:sermonId" element={<LegacySermonRedirect />} />
+              <Route path="/for-churches/sermons" element={<Navigate to="/sermons" replace />} />
 
               {/* Clean Convenience Redirects from Legacy Paths */}
               <Route path="/about" element={<Navigate to="/who-we-are/vision-values" replace />} />

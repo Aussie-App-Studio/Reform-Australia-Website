@@ -155,9 +155,9 @@
     "megaMenuGroup": "training-planting",
     "homepageTab": "next-gen-families",
     "iconName": "ShieldCheck",
-    "url": "https://safechurch.crca.org.au/",
-    "isExternal": true,
-    "ctaLabel": "Visit safechurch.crca.org.au"
+    "url": "/safe-church",
+    "isExternal": false,
+    "ctaLabel": "Open Safe Church"
   },
   {
     "id": "world-transform",

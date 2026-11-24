@@ -10,7 +10,7 @@ interface BreadcrumbItem {
 interface PageHeaderProps {
   eyebrow: string;
   title: string;
-  description: string;
+  description?: string;
   breadcrumbs?: BreadcrumbItem[];
   actions?: ReactNode;
 }
@@ -67,9 +67,11 @@ export function PageHeader({
             <h1 className="mt-3 font-serif text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               {title}
             </h1>
-            <p className="mt-4 text-base leading-relaxed text-navy-100 sm:text-lg">
-              {description}
-            </p>
+            {description && (
+              <p className="mt-4 text-base leading-relaxed text-navy-100 sm:text-lg">
+                {description}
+              </p>
+            )}
           </div>
 
           {actions && <div className="shrink-0">{actions}</div>}

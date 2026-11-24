@@ -29,16 +29,14 @@ export const forChurchesNavItems: NavLinkItem[] = [
     description: 'Official Synod 2024 decisions, committee mandates, and resolutions.',
   },
   {
-    label: 'Word of Salvation',
-    to: 'https://wordofsalvation.crca.org.au/',
-    description: 'CRCA reading sermons library for vacant pulpits and local congregations.',
-    isExternal: true,
+    label: 'Word of Salvation Sermons',
+    to: '/sermons',
+    description: '2,000+ CRCA reading sermons — search by book, passage, preacher or Lord’s Day.',
   },
   {
     label: 'Safe Church Unit',
-    to: 'https://safechurch.crca.org.au/',
-    description: 'Safeguarding policies, screening, training, and pastoral care guidance.',
-    isExternal: true,
+    to: '/safe-church',
+    description: 'Safeguarding policies, reporting a concern, volunteers, training, forms and posters.',
   },
 ];
 
@@ -176,8 +174,8 @@ export const footerColumns: { title: string; links: NavLinkItem[] }[] = [
         label: 'CRCA Church Order',
         to: '/for-churches/forms-and-documents/church-order-01-crca-church-order-2022',
       },
-      { label: 'Word of Salvation', to: 'https://wordofsalvation.crca.org.au/', isExternal: true },
-      { label: 'Safe Church Unit', to: 'https://safechurch.crca.org.au/', isExternal: true },
+      { label: 'Word of Salvation Sermons', to: '/sermons' },
+      { label: 'Safe Church Unit', to: '/safe-church' },
     ],
   },
 ];

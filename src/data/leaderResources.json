@@ -5,9 +5,9 @@
       "title": "Word of Salvation — Reading Sermons",
       "category": "Vacant Pulpit & Worship",
       "description": "Sermon repository for elders and vacant congregations without a pastor to access vetted reading sermons for Sunday worship.",
-      "url": "https://wordofsalvation.crca.org.au/",
+      "url": "/sermons",
       "format": "Sermon Library",
-      "isExternal": true,
+      "isExternal": false,
       "tags": ["word of salvation", "reading sermons", "sermons", "vacant", "pulpit supply", "elders", "worship"]
     },
     {
@@ -15,9 +15,9 @@
       "title": "Safe Church Unit Portal",
       "category": "Safeguarding & Compliance",
       "description": "National CRCA safeguarding policies, Working With Children Check compliance guides, mandatory leadership training, and confidential incident support.",
-      "url": "https://safechurch.crca.org.au/",
+      "url": "/safe-church",
       "format": "Portal",
-      "isExternal": true,
+      "isExternal": false,
       "tags": ["safe church", "safeguarding", "children", "compliance", "training", "abuse", "policy"]
     },
     {

@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { formatPageTitle, ROUTE_TITLES } from '../utils/usePageTitle';
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,6 +11,12 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   const { pathname, hash } = useLocation();
   const prevPathnameRef = useRef(pathname);
+
+  // Fixed routes get their tab title here; dynamic pages call usePageTitle themselves.
+  useEffect(() => {
+    const key = pathname.replace(/\/$/, '') || '/';
+    if (key in ROUTE_TITLES) document.title = formatPageTitle(ROUTE_TITLES[key]);
+  }, [pathname]);
 
   useEffect(() => {
     const prevPathname = prevPathnameRef.current;

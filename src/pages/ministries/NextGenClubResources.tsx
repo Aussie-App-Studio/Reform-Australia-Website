@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Download, ExternalLink, FileText, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, Download, FileText, ShieldCheck, Sparkles } from 'lucide-react';
 import nextGenData from '../../data/nextGenClubs.json';
 import { siteConfig } from '../../data/siteConfig';
 
@@ -140,15 +140,13 @@ export function NextGenClubResources({ clubName, enquiryLabel }: NextGenClubReso
                 </div>
               </div>
               <div className="mt-5">
-                <a
-                  href={siteConfig.safeChurch.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={siteConfig.safeChurch.url}
                   className="inline-flex items-center gap-2 rounded-lg bg-navy-900 px-4 py-2.5 text-xs font-semibold text-white hover:bg-navy-800"
                 >
-                  <span>Visit Safe Church Portal</span>
-                  <ExternalLink className="h-3.5 w-3.5" />
-                </a>
+                  <span>Open Safe Church</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
               </div>
             </div>
 

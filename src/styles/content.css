@@ -1,0 +1,105 @@
+/* Extra rules for migrated rich content (Safe Church pages, Word of Salvation sermons).
+   Builds on .crca-reader-article from crca-reader.css. */
+
+.crca-content a {
+  color: var(--color-teal-700);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-teal-600) 35%, transparent);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+  transition: text-decoration-color 0.15s ease;
+}
+
+.crca-content a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Document links get a small file badge so people know what they're opening. */
+.crca-content a[data-file-type]::after {
+  content: attr(data-file-type);
+  display: inline-block;
+  margin-left: 0.4em;
+  padding: 0.05em 0.4em;
+  border-radius: 0.3em;
+  border: 1px solid var(--color-stone-300);
+  background: var(--color-stone-50);
+  color: var(--color-stone-600);
+  font-size: 0.68em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  vertical-align: 0.15em;
+  text-transform: uppercase;
+}
+
+.crca-content table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-size: 0.94em;
+}
+
+.crca-content th,
+.crca-content td {
+  border: 1px solid var(--color-stone-200);
+  padding: 0.55rem 0.75rem;
+  vertical-align: top;
+  text-align: left;
+}
+
+.crca-content th {
+  background: var(--color-stone-100);
+  color: var(--color-navy-900);
+}
+
+.crca-content iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+  border-radius: 0.85rem;
+  margin: 1.25rem 0;
+  background: var(--color-navy-950);
+}
+
+/* Sermons: a comfortable long-form reading measure. */
+.crca-sermon {
+  font-family: var(--font-serif);
+  font-size: var(--reader-font-size, 18px);
+  line-height: 1.8;
+}
+
+.crca-sermon p {
+  color: var(--color-navy-900);
+  margin-bottom: 1.1em;
+}
+
+.crca-sermon h2,
+.crca-sermon h3,
+.crca-sermon h4 {
+  font-family: var(--font-sans);
+}
+
+@media print {
+  .crca-content a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  .crca-content a[data-file-type]::after {
+    display: none !important;
+  }
+
+  .crca-content iframe {
+    display: none !important;
+  }
+
+  .crca-sermon {
+    font-size: 12pt !important;
+    line-height: 1.6 !important;
+  }
+}
