@@ -36,4 +36,14 @@ function siteIndexing(): Plugin {
 export default defineConfig({
   base: basePath,
   plugins: [react(), tailwindcss(), rewritePublicAssetBasePath(basePath), siteIndexing()],
+  build: {
+    rollupOptions: {
+      output: {
+        // React and the router change rarely: a separate file stays cached between site updates.
+        manualChunks(id) {
+          if (/node_modules[\\/](react|react-dom|react-router|react-router-dom|scheduler)[\\/]/.test(id)) return 'react'
+        },
+      },
+    },
+  },
 })

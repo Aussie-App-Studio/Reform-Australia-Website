@@ -16,10 +16,12 @@ const walk = (d) => readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.is
 const toUrl = (f) => '/' + path.relative(path.join(ROOT, 'public'), f).split(path.sep).join('/');
 
 const variants = [];
+const widths = {}; // natural width of every photo, so pages never stretch one past its size
 for (const file of walk(IMAGES)) {
   if (!/\.(webp|jpe?g|png)$/i.test(file) || /-\d+w\.webp$/.test(file) || /[\\/](logos|og)[\\/]/.test(file)) continue;
   let input = readFileSync(file); // read into memory: Windows won't overwrite a file sharp has open
   const meta = await sharp(input).metadata();
+  if (meta.width) widths[toUrl(file)] = Math.min(meta.width, 1600);
   if (!meta.width || meta.width <= 900) continue;
   // Very large originals: cap at 1600px wide and recompress (only once: later runs see 1600px).
   if (input.length > 250_000 && meta.width > 1600 && /\.webp$/i.test(file)) {
@@ -35,6 +37,7 @@ for (const file of walk(IMAGES)) {
 }
 variants.sort();
 writeFileSync(path.join(ROOT, 'src/data/imageVariants.json'), JSON.stringify(variants, null, 2) + '\n');
+writeFileSync(path.join(ROOT, 'src/data/imageWidths.json'), JSON.stringify(Object.fromEntries(Object.entries(widths).sort()), null, 2) + '\n');
 console.log(`images: ${variants.length} phone-sized copies`);
 
 // Header icon (shown about 40px high) and favicons, from the full-size teal icon.

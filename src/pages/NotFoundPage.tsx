@@ -14,7 +14,7 @@ export function NotFoundPage() {
   usePageMeta({ title: 'Page not found', noindex: true });
   return (
     <section className="bg-stone-50">
-      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24 [&>*]:max-w-3xl">
         <h1 className="font-serif text-4xl font-semibold text-navy-900">We couldn’t find that page</h1>
         <p className="mt-4 text-lg leading-relaxed text-stone-700">
           It may have moved when the CRCA websites were brought together, or the address may be mistyped. These pages

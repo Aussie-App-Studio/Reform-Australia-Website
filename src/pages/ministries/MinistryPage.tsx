@@ -7,7 +7,7 @@ import { ministryMegaMenuColumns } from '../../data/navigation';
 import { getMinistryPage, type MinistryImage, type MinistryPageData } from '../../lib/ministryPages';
 import { usePageTitle } from '../../utils/usePageTitle';
 import { NotFoundPage } from '../NotFoundPage';
-import { responsive } from '../../utils/responsiveImage';
+import { naturalWidth, responsive } from '../../utils/responsiveImage';
 
 const isInternal = (url: string) => url.startsWith('/') && !/\.(pdf|docx?)$/i.test(url) && !url.startsWith('/ministry-resources/');
 
@@ -295,6 +295,8 @@ export function StandardPage({
               {...responsive(page.hero.src, '100vw')}
               alt={page.hero.alt}
               fetchPriority="high"
+              // Never wider than the photo itself (small banners would look soft stretched).
+              style={{ maxWidth: naturalWidth(page.hero.src) }}
               className="aspect-[21/9] max-h-[30rem] w-full rounded-md object-cover"
             />
             {page.hero.credit && <p className="mt-2 text-right text-xs text-stone-500">Photo: {page.hero.credit}</p>}
@@ -302,7 +304,7 @@ export function StandardPage({
         </div>
       )}
 
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-20 lg:px-8 lg:py-16">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_17rem] lg:gap-12 lg:px-8 lg:py-16 xl:grid-cols-[minmax(0,1fr)_19rem] xl:gap-20">
         <article className="min-w-0 max-w-[70ch]">
           <MobileContents page={page} />
           {page.body.map((sec, i) => (

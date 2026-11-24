@@ -78,13 +78,24 @@ export function fetchSermonIndex(): Promise<SermonIndex> {
 export function fetchSermon(id: string): Promise<Sermon> {
   let p = sermonCache.get(id);
   if (!p) {
-    p = getJson<Sermon>(`${BASE}/s/${encodeURIComponent(id)}.json`).then((s) => ({ ...s, title: lowerMinorWords(s.title) })).catch((e) => {
+    p = getJson<Sermon>(`${BASE}/s/${encodeURIComponent(id)}.json`).then((s) => ({ ...s, title: lowerMinorWords(s.title), html: tidySermonHtml(s.html) })).catch((e) => {
       sermonCache.delete(id);
       throw e;
     });
     sermonCache.set(id, p);
   }
   return p;
+}
+
+/**
+ * Leftovers from the printed originals: "***" section breaks become a rule, and underlining
+ * (used for emphasis in print, but it looks like a link on screen) becomes italics.
+ */
+function tidySermonHtml(html: string): string {
+  return html
+    .replace(/<p>[\s*]*\*\*\*[\s*]*<\/p>/g, '<hr>')
+    .replace(/<u>/g, '<em>')
+    .replace(/<\/u>/g, '</em>');
 }
 
 /** Reading time for a sermon read aloud (~130 words per minute). */

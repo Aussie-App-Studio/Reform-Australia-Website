@@ -47,7 +47,7 @@ export function HistoryPage() {
       />
 
       <section className="bg-white">
-        <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:py-20">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20 [&>*]:max-w-3xl">
           <h2 className="font-serif text-3xl font-semibold text-navy-900">How the CRCA began</h2>
           <p className="mt-4 text-lg leading-relaxed text-stone-700">
             The CRCA was formed in 1951, after the post-war migration of Dutch people to Australia. From the start, the new
@@ -98,7 +98,7 @@ export function HistoryPage() {
       </section>
 
       <section className="border-t border-stone-200 bg-stone-50">
-        <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:py-20">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20 [&>*]:max-w-3xl">
           <h2 className="font-serif text-3xl font-semibold text-navy-900">Since 1951</h2>
           <dl className="mt-8 divide-y divide-stone-200 border-y border-stone-200">
             {history.milestones.map((milestone) => (
@@ -140,7 +140,7 @@ export function HistoryPage() {
       </section>
 
       <section className="border-t border-stone-200 bg-white">
-        <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:py-20">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20 [&>*]:max-w-3xl">
           <h2 className="font-serif text-3xl font-semibold text-navy-900">Our congregations</h2>
           <p className="mt-4 text-lg leading-relaxed text-stone-700">{churchHistory.intro}</p>
           {DECADES.map(([decade, list]) => (

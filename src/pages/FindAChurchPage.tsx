@@ -1,6 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import { PageHeader } from '../components/PageHeader';
 import { ChurchDirectory } from '../components/ChurchDirectory';
+import { ChurchStructuredData } from '../components/ChurchStructuredData';
 
 export function FindAChurchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -36,7 +37,7 @@ export function FindAChurchPage() {
       <PageHeader
         title="Find a church"
         description="Search by suburb, town or postcode, or use your location, to find service times and directions for your nearest CRCA church."
-        breadcrumbs={[{ label: 'Find a Church' }]}
+        breadcrumbs={[{ label: 'Find a church' }]}
       />
 
       <ChurchDirectory
@@ -44,6 +45,7 @@ export function FindAChurchPage() {
         initialStateFilter={initialState}
         onFiltersChange={handleFiltersChange}
       />
+      <ChurchStructuredData />
     </>
   );
 }

@@ -75,7 +75,7 @@ export function BeliefsPage() {
       />
 
       <section className="bg-white">
-        <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:py-20">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20 [&>*]:max-w-3xl">
           {GROUPS.map((group, gi) => (
             <div key={group.title} className={gi > 0 ? 'mt-14' : ''}>
               <h2 className="font-serif text-3xl font-semibold text-navy-900">{group.title}</h2>
