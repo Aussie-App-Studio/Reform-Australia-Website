@@ -5,11 +5,12 @@ import churchesRaw from '../data/churches.json';
 import identity from '../data/identity.json';
 import beliefs from '../data/beliefs.json';
 import { ministryMegaMenuColumns } from '../data/navigation';
-import type { ChurchRecord } from '../components/AustraliaChurchMap';
+import type { ChurchRecord } from '../utils/churchRecord';
 import { loadAuLocations } from '../data/locationHubs';
 import { AustraliaDotMap } from '../components/AustraliaDotMap';
 import { getMinistryPage } from '../lib/ministryPages';
 import { getContentPageByPath } from '../lib/contentPages';
+import { responsive } from '../utils/responsiveImage';
 
 const allChurches = churchesRaw as ChurchRecord[];
 
@@ -222,7 +223,7 @@ export function HomePage() {
               <div key={col.id}>
                 {(() => {
                   const photo = col.items.map((i) => getMinistryPage(i.to.split('/').pop() ?? '')?.hero).find(Boolean);
-                  return photo ? <img src={photo.src} alt={photo.alt} loading="lazy" className="mb-5 aspect-[3/2] w-full rounded-md object-cover" /> : null;
+                  return photo ? <img src={photo.src} {...responsive(photo.src, '(min-width: 1024px) 400px, 100vw')} alt={photo.alt} loading="lazy" className="mb-5 aspect-[3/2] w-full rounded-md object-cover" /> : null;
                 })()}
                 <h3 className="border-b-2 border-navy-900 pb-2 text-sm font-semibold uppercase tracking-[0.08em] text-navy-900">{col.heading}</h3>
                 <ul className="divide-y divide-stone-200">

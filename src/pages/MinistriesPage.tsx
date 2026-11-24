@@ -3,6 +3,7 @@ import { ArrowRight, ExternalLink } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import { ministryMegaMenuColumns } from '../data/navigation';
 import { GROUP_LABELS, getMinistryPage, type MinistryGroup } from '../lib/ministryPages';
+import { responsive } from '../utils/responsiveImage';
 
 const EXTERNAL_LOGOS: Record<string, string> = {
   'https://rtc.edu.au/': `${import.meta.env.BASE_URL}images/logos/ministries/rtc.webp`,
@@ -32,7 +33,7 @@ export function MinistriesPage() {
                 const inner = (
                   <span className="flex gap-5">
                     {mp?.hero ? (
-                      <img src={mp.hero.src} alt="" loading="lazy" className="hidden h-24 w-36 shrink-0 rounded-md object-cover sm:block" />
+                      <img src={mp.hero.src} {...responsive(mp.hero.src, '144px')} alt="" loading="lazy" className="hidden h-24 w-36 shrink-0 rounded-md object-cover sm:block" />
                     ) : (
                       <span className="hidden h-24 w-36 shrink-0 items-center justify-center rounded-md border border-stone-200 bg-white p-3 sm:flex" aria-hidden="true">{EXTERNAL_LOGOS[item.to] ? <img src={EXTERNAL_LOGOS[item.to]} alt="" className="max-h-full max-w-full object-contain" /> : <span className="text-center font-serif text-sm text-navy-900">{item.label}</span>}</span>
                     )}

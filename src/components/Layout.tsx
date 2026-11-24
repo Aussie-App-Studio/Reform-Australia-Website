@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { BackToTop } from './BackToTop';
-import { formatPageTitle, ROUTE_TITLES } from '../utils/usePageTitle';
+import { applyPageMeta, ROUTE_META } from '../utils/usePageTitle';
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,15 +13,22 @@ export function Layout({ children }: LayoutProps) {
   const { pathname, hash } = useLocation();
   const prevPathnameRef = useRef(pathname);
 
-  // Fixed routes get their tab title here; dynamic pages call usePageTitle themselves.
+  // Fixed routes get their title and description here; dynamic pages call usePageTitle themselves.
   useEffect(() => {
     const key = pathname.replace(/\/$/, '') || '/';
-    if (key in ROUTE_TITLES) document.title = formatPageTitle(ROUTE_TITLES[key]);
+    if (key in ROUTE_META) applyPageMeta(ROUTE_META[key]);
   }, [pathname]);
+  const firstRender = useRef(true);
 
   useEffect(() => {
     const prevPathname = prevPathnameRef.current;
     prevPathnameRef.current = pathname;
+    const isFirst = firstRender.current;
+    firstRender.current = false;
+    // After moving to a new page, put keyboard and screen-reader focus at the start of the content.
+    if (!isFirst && prevPathname !== pathname) {
+      document.getElementById('main-content')?.focus({ preventScroll: true });
+    }
 
     if (pathname.startsWith('/for-churches/forms-and-documents/') && hash) {
       if (prevPathname === pathname) {
@@ -44,7 +51,9 @@ export function Layout({ children }: LayoutProps) {
         return;
       }
     }
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    // On first load the browser is already at the right place (the visitor may have
+    // scrolled while the pre-rendered page was showing).
+    if (!isFirst) window.scrollTo({ top: 0, behavior: 'auto' });
   }, [pathname, hash]);
 
   return (

@@ -7,6 +7,7 @@ import { ministryMegaMenuColumns } from '../../data/navigation';
 import { GROUP_LABELS, getMinistryPage, type MinistryImage, type MinistryPageData } from '../../lib/ministryPages';
 import { usePageTitle } from '../../utils/usePageTitle';
 import { NotFoundPage } from '../NotFoundPage';
+import { responsive } from '../../utils/responsiveImage';
 
 const isInternal = (url: string) => url.startsWith('/') && !/\.(pdf|docx?)$/i.test(url) && !url.startsWith('/ministry-resources/');
 
@@ -125,7 +126,7 @@ const formatDate = (d: string) =>
 function Figure({ img, className = '' }: { img: MinistryImage; className?: string }) {
   return (
     <figure className={className}>
-      <img src={img.src} alt={img.alt} loading="lazy" decoding="async" className="w-full rounded-md bg-stone-200 object-cover" />
+      <img src={img.src} {...responsive(img.src, '(min-width: 1024px) 720px, 100vw')} alt={img.alt} loading="lazy" decoding="async" className="w-full rounded-md bg-stone-200 object-cover" />
       {(img.caption || img.credit) && (
         <figcaption className="mt-2 text-sm text-stone-600">
           {img.caption}
@@ -200,7 +201,7 @@ export function MinistryNewsPage() {
   const { slug = '', newsId = '' } = useParams();
   const page = getMinistryPage(slug);
   const item = page?.news?.find((n) => n.id === newsId);
-  usePageTitle(item ? `${item.title} · ${page?.name}` : 'News');
+  usePageTitle(item ? `${item.title} · ${page?.name}` : 'News', item?.summary ?? item?.paragraphs?.[0], item?.image);
   if (!page || !item) return <NotFoundPage />;
   return (
     <>
@@ -215,7 +216,7 @@ export function MinistryNewsPage() {
       />
       <article className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="max-w-[70ch]">
-          {item.image && <img src={item.image} alt="" className="mb-8 w-full rounded-md object-cover" />}
+          {item.image && <img src={item.image} {...responsive(item.image, '(min-width: 800px) 768px, 100vw')} alt="" className="mb-8 w-full rounded-md object-cover" />}
           {(item.paragraphs ?? [item.summary ?? '']).map((p, i) => (
             <p key={i} className="mt-4 text-[1.06rem] leading-relaxed text-stone-700 first:mt-0">
               {p}
@@ -232,7 +233,7 @@ export function MinistryNewsPage() {
 
 export function MinistryPage({ slug }: { slug: string }) {
   const page = getMinistryPage(slug);
-  usePageTitle(page?.name ?? 'Ministry');
+  usePageTitle(page?.name ?? 'Ministry', page?.summary, page?.hero?.src);
   if (!page) return <NotFoundPage />;
   const related = ministryMegaMenuColumns.find((c) => c.id === page.group)?.items.filter((i) => !i.to.endsWith(`/${page.slug}`));
   return (
@@ -286,6 +287,7 @@ export function StandardPage({
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <img
               src={page.hero.src}
+              {...responsive(page.hero.src, '100vw')}
               alt={page.hero.alt}
               fetchPriority="high"
               className="aspect-[21/9] max-h-[30rem] w-full rounded-md object-cover"
@@ -359,7 +361,7 @@ export function StandardPage({
                 {shownNews.map((n) => (
                   <li key={n.id}>
                     <Link to={`/ministries/${page.slug}/news/${n.id}`} className="group flex gap-4 py-4">
-                      {n.image && <img src={n.image} alt="" loading="lazy" className="hidden h-20 w-28 shrink-0 rounded object-cover sm:block" />}
+                      {n.image && <img src={n.image} {...responsive(n.image, '112px')} alt="" loading="lazy" className="hidden h-20 w-28 shrink-0 rounded object-cover sm:block" />}
                       <span>
                         <span className="block text-sm text-stone-500">{formatDate(n.date)}</span>
                         <span className="block font-serif text-lg font-semibold text-navy-900 group-hover:text-teal-700">{n.title}</span>
@@ -388,7 +390,7 @@ export function StandardPage({
                 {page.gallery.map((g) => (
                   <li key={g.src}>
                     <a href={g.src} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-md">
-                      <img src={g.src} alt={g.alt} loading="lazy" className="aspect-[4/3] w-full object-cover transition duration-300 hover:scale-[1.03]" />
+                      <img src={g.src} {...responsive(g.src, '(min-width: 1024px) 300px, 50vw')} alt={g.alt} loading="lazy" className="aspect-[4/3] w-full object-cover transition duration-300 hover:scale-[1.03]" />
                     </a>
                     {g.caption && <p className="mt-1 text-xs text-stone-600">{g.caption}</p>}
                   </li>

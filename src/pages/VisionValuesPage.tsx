@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { PageHeader } from '../components/PageHeader';
 import identity from '../data/identity.json';
+import { responsive } from '../utils/responsiveImage';
 
 function Section({ id, title, intro, tone = 'white', children }: { id: string; title: string; intro?: string; tone?: 'white' | 'paper'; children: React.ReactNode }) {
   return (
@@ -29,6 +30,7 @@ export function VisionValuesPage() {
       <figure className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <img
           src={`${import.meta.env.BASE_URL}images/crca/synod-2022.webp`}
+          {...responsive(`${import.meta.env.BASE_URL}images/crca/synod-2022.webp`, '100vw')}
           alt="Synod delegates seated at tables facing the front of a hall, with a large screen and the chair's table"
           className="aspect-[4/1] w-full rounded-md object-cover max-sm:aspect-[2/1]"
         />

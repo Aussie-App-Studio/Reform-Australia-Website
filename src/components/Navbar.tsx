@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ArrowRight, ChevronDown, ExternalLink, Mail, MapPin, Menu, X } from 'lucide-react';
 import { CrcaLogo } from './CrcaLogo';
@@ -28,6 +28,8 @@ export function Navbar() {
   const [mobileSection, setMobileSection] = useState<MenuId>(null);
   const headerRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<number | null>(null);
+  /** How the open menu was opened: by hovering (closes when the mouse leaves) or by a click/tap/key. */
+  const openedBy = useRef<'hover' | 'click'>('click');
   const location = useLocation();
 
   const clearTimer = () => {
@@ -43,6 +45,16 @@ export function Navbar() {
     setOpenMenu(null);
     setMobileOpen(false);
   }, [location.pathname, location.hash]);
+
+  // Stop the page behind the phone menu from scrolling.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [mobileOpen]);
 
   // Keep --site-header-height in sync for sticky elements further down the page.
   useEffect(() => {
@@ -85,6 +97,7 @@ export function Navbar() {
 
   const scheduleClose = () => {
     clearTimer();
+    if (openedBy.current === 'click') return;
     closeTimer.current = window.setTimeout(() => setOpenMenu(null), 150);
   };
 
@@ -104,21 +117,64 @@ export function Navbar() {
           {/* Desktop */}
           <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
             {navMenus.map((m) => (
-              <button
-                key={m.id}
-                type="button"
-                aria-expanded={openMenu === m.id}
-                aria-controls="site-menu-panel"
-                onMouseEnter={() => {
-                  clearTimer();
-                  setOpenMenu(m.id);
-                }}
-                onClick={() => setOpenMenu((prev) => (prev === m.id ? null : m.id))}
-                className={topLink(isActive(m), openMenu === m.id)}
-              >
-                {m.label}
-                <ChevronDown className={`h-4 w-4 text-stone-500 transition-transform ${openMenu === m.id ? 'rotate-180' : ''}`} aria-hidden="true" />
-              </button>
+              <Fragment key={m.id}>
+                <button
+                  type="button"
+                  aria-expanded={openMenu === m.id}
+                  aria-controls="site-menu-panel"
+                  onPointerEnter={(e) => {
+                    // Mouse only: on touch screens the tap (click) opens the menu.
+                    if (e.pointerType !== 'mouse') return;
+                    clearTimer();
+                    if (openMenu !== m.id) {
+                      openedBy.current = 'hover';
+                      setOpenMenu(m.id);
+                    }
+                  }}
+                  onClick={() => {
+                    clearTimer();
+                    if (openMenu === m.id && openedBy.current === 'hover') {
+                      // Already open from hovering: a click keeps it open (and pinned).
+                      openedBy.current = 'click';
+                      return;
+                    }
+                    openedBy.current = 'click';
+                    setOpenMenu(openMenu === m.id ? null : m.id);
+                  }}
+                  className={topLink(isActive(m), openMenu === m.id)}
+                >
+                  {m.label}
+                  <ChevronDown className={`h-4 w-4 text-stone-500 transition-transform ${openMenu === m.id ? 'rotate-180' : ''}`} aria-hidden="true" />
+                </button>
+                {/* The panel follows its button, so keyboard users tab straight into it. */}
+                {current?.id === m.id && (
+                  <div id="site-menu-panel" className="absolute inset-x-0 top-full hidden border-b border-stone-200 bg-white shadow-[0_12px_24px_-12px_rgba(0,34,76,0.18)] lg:block">
+                    <div className="mx-auto grid max-w-7xl grid-cols-12 gap-10 px-8 py-9">
+                      <div className="col-span-3 pr-8">
+                        <p className="font-serif text-2xl font-semibold text-navy-900">{current.label}</p>
+                        <p className="mt-2 leading-relaxed text-stone-600">{current.overview.blurb}</p>
+                        <Link to={current.overview.to} className="mt-4 inline-flex items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
+                          {current.overview.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        </Link>
+                      </div>
+                      <div className={`col-span-9 grid grid-cols-3 gap-10`}>
+                        {current.columns.map((col) => (
+                          <div key={col.heading}>
+                            <p className="text-sm font-semibold text-stone-600">{col.heading}</p>
+                            <ul className="mt-2">
+                              {col.items.map((item) => (
+                                <li key={item.to}>
+                                  <MenuLink item={item} className="block py-1.5 text-[1.02rem] text-navy-900 hover:text-teal-700 hover:underline underline-offset-4" />
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </Fragment>
             ))}
             <NavLink to="/contact" onMouseEnter={() => setOpenMenu(null)} className={({ isActive: a }) => topLink(a)}>
               Contact
@@ -156,35 +212,6 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Desktop dropdown panel (same layout for every menu) */}
-      {current && (
-        <div id="site-menu-panel" className="absolute inset-x-0 top-full hidden border-b border-stone-200 bg-white shadow-[0_12px_24px_-12px_rgba(0,34,76,0.18)] lg:block">
-          <div className="mx-auto grid max-w-7xl grid-cols-12 gap-10 px-8 py-9">
-            <div className="col-span-3 pr-8">
-              <p className="font-serif text-2xl font-semibold text-navy-900">{current.label}</p>
-              <p className="mt-2 leading-relaxed text-stone-600">{current.overview.blurb}</p>
-              <Link to={current.overview.to} className="mt-4 inline-flex items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
-                {current.overview.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
-            <div className={`col-span-9 grid grid-cols-3 gap-10`}>
-              {current.columns.map((col) => (
-                <div key={col.heading}>
-                  <p className="text-sm font-semibold uppercase tracking-[0.08em] text-stone-500">{col.heading}</p>
-                  <ul className="mt-2">
-                    {col.items.map((item) => (
-                      <li key={item.to}>
-                        <MenuLink item={item} className="block py-1.5 text-[1.02rem] text-navy-900 hover:text-teal-700 hover:underline underline-offset-4" />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Mobile menu: one tap-to-open section per menu */}
       {mobileOpen && (
         <nav aria-label="Main" className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto overscroll-contain border-b border-stone-200 bg-white lg:hidden">
@@ -215,7 +242,7 @@ export function Navbar() {
                       {m.columns.map((col) => (
                         <div key={col.heading} className="mt-3">
                           {m.columns.length > 1 && (
-                            <p className="pb-1 text-xs font-semibold uppercase tracking-[0.08em] text-stone-500">{col.heading}</p>
+                            <p className="pb-1 text-sm font-semibold text-stone-600">{col.heading}</p>
                           )}
                           <ul className="border-t border-stone-100">
                             {col.items.map((item) => (

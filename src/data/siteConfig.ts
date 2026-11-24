@@ -34,7 +34,7 @@ export const siteConfig = {
   },
   logos: {
     landscapeWhite: '/images/logos/crca-logo-landscape-white.png',
-    iconTeal: '/images/logos/crca-icon-teal.jpg',
+    iconTeal: '/images/logos/crca-icon-teal-96.webp',
     stackedColor: '/images/logos/crca-logo-stacked.jpg',
   },
   quickStats: [

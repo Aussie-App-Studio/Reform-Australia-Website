@@ -76,6 +76,7 @@ import type {
   TableChoices,
 } from '../lib/crcaDocs/types';
 import { formatAuDate } from '../utils/formatDate';
+import { applyPageMeta } from '../utils/usePageTitle';
 
 const PREFS_STORAGE_KEY = 'crcaDocsPrefs_v1';
 
@@ -294,6 +295,15 @@ export function FormsDocumentsPage() {
     if (!docId) return null;
     return docsById.get(docId) ?? null;
   }, [docId, docsById]);
+
+  // Each document gets its own tab title and description (the library itself is set in Layout).
+  useEffect(() => {
+    if (!currentDoc) return;
+    applyPageMeta({
+      title: currentDoc.title,
+      description: `The full text of ${currentDoc.title}, as used in the Christian Reformed Churches of Australia. Read it online, search it, copy it or print it.`,
+    });
+  }, [currentDoc]);
 
   // Load markdown whenever currentDoc changes
   useEffect(() => {
@@ -1167,10 +1177,11 @@ export function FormsDocumentsPage() {
 
   return (
     <>
+      {((!docsIndex && !indexError) || (docId && !docError && !renderedDocument.html)) && <span hidden data-loading />}
       <div className="no-print">
         {!currentDoc ? (
           <PageHeader
-            title="Forms & documents"
+            title="Forms and documents"
             description={`The CRCA’s ${docCount} liturgical forms, creeds and confessions, worship readings and Church Order. Read, search, copy or print, and prepare forms for a service.`}
             breadcrumbs={[
               { label: 'For churches', to: '/for-churches' },
@@ -1837,8 +1848,8 @@ export function FormsDocumentsPage() {
                       )}
                       <div className="min-w-0 max-w-[72ch] xl:order-1">
                       {loadingDoc ? (
-                        <div className="py-16 text-center text-sm text-stone-600">
-                          Loading {currentDoc.title}...
+                        <div data-loading className="py-16 text-center text-sm text-stone-600">
+                          Loading {currentDoc.title}…
                         </div>
                       ) : docError ? (
                         <div className="rounded-md border border-stone-200 bg-stone-50 p-6 text-center">

@@ -195,6 +195,8 @@ for (const file of srcFiles) {
   if (/churches\.json$/.test(relPath)) continue;
   const txt = scannableText(file);
   for (const m of txt.matchAll(CRCA_SITE_RE)) {
+    // This site's own future address (canonical links, sitemap) is not another site.
+    if (/^https?:\/\/(www\.)?crca\.org\.au\/?$/i.test(m[0])) continue;
     errors.push(`Link to another CRCA website (${m[0]}) in ${relPath}: bring that content into this site instead`);
   }
 }

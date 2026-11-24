@@ -3,26 +3,12 @@ import * as maplibregl from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
+import { getDirectionsUrl, type ChurchRecord } from '../utils/churchRecord';
+
+export { getDirectionsUrl, type ChurchRecord };
+
 maplibregl.setWorkerUrl(workerUrl);
 
-export interface ChurchRecord {
-  id: string;
-  name: string;
-  suburb: string;
-  state: 'NSW' | 'ACT' | 'QLD' | 'SA' | 'TAS' | 'VIC' | 'WA';
-  postcode: string;
-  classis: string;
-  address: string;
-  lat: number;
-  lng: number;
-  serviceTimes: string | null;
-  website: string | null;
-  facebook: string | null;
-  youtube: string | null;
-  videoUrl: string | null;
-  livestreamOnFacebook: boolean;
-  podcast: string | null;
-}
 
 interface AustraliaChurchMapProps {
   churches: ChurchRecord[];
@@ -43,9 +29,6 @@ const AUSTRALIA_MAX_BOUNDS: [[number, number], [number, number]] = [
   [172.0, -3.0],
 ];
 
-export function getDirectionsUrl(church: Pick<ChurchRecord, 'lat' | 'lng'>): string {
-  return `https://www.google.com/maps/dir/?api=1&destination=${church.lat},${church.lng}`;
-}
 
 function escapeHtml(text: string): string {
   return text

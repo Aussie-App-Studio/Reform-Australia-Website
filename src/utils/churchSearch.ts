@@ -1,4 +1,4 @@
-import type { ChurchRecord } from '../components/AustraliaChurchMap';
+import type { ChurchRecord } from './churchRecord';
 import {
   AuLocationsDataset,
   AuStateCode,

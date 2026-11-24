@@ -19,7 +19,21 @@ function rewritePublicAssetBasePath(base: string): Plugin {
   }
 }
 
+/**
+ * Until launch the whole site stays out of search results. Build with SITE_INDEXING=on
+ * to allow indexing (scripts/prerender.mjs also writes robots.txt and _headers to match).
+ */
+function siteIndexing(): Plugin {
+  const on = process.env.SITE_INDEXING === 'on'
+  return {
+    name: 'site-indexing',
+    transformIndexHtml(html) {
+      return on ? html : html.replace('<head>', '<head>\n    <meta name="robots" content="noindex, nofollow" data-site />')
+    },
+  }
+}
+
 export default defineConfig({
   base: basePath,
-  plugins: [react(), tailwindcss(), rewritePublicAssetBasePath(basePath)],
+  plugins: [react(), tailwindcss(), rewritePublicAssetBasePath(basePath), siteIndexing()],
 })

@@ -63,7 +63,12 @@ export function SermonPage() {
     }
   }, [fontIdx]);
 
-  usePageTitle(sermon ? `${sermon.title} · Word of Salvation` : 'Word of Salvation');
+  usePageTitle(
+    sermon ? `${sermon.title} · Word of Salvation` : 'Word of Salvation',
+    sermon
+      ? `A reading sermon on ${sermon.ref}${sermon.preacher ? ` by ${sermon.preacher}` : ''}, for reading aloud in church when no minister is available. From the CRCA’s Word of Salvation archive.`
+      : null
+  );
 
   const { prev, next, bookCount } = useMemo(() => {
     if (!index || !sermon?.book) return { prev: null, next: null, bookCount: 0 };
@@ -244,7 +249,7 @@ export function SermonPage() {
             {tools}
           </div>
           {status === 'loading' && (
-            <div role="status" className="max-w-[68ch] space-y-3" aria-label="Loading sermon">
+            <div role="status" data-loading className="max-w-[68ch] space-y-3" aria-label="Loading sermon">
               {Array.from({ length: 10 }, (_, i) => (
                 <div key={i} className="h-4 animate-pulse rounded bg-stone-200" style={{ width: `${70 + ((i * 37) % 30)}%` }} />
               ))}

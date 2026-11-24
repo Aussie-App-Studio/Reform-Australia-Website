@@ -1,62 +1,84 @@
-import { lazy, ReactNode, Suspense } from 'react';
+import { ComponentType, lazy, ReactNode, Suspense, useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
 import legacyRedirects from './data/legacyRedirects.json';
 
-const FindAChurchPage = lazy(() =>
-  import('./pages/FindAChurchPage').then((m) => ({ default: m.FindAChurchPage }))
-);
-const VisionValuesPage = lazy(() =>
-  import('./pages/VisionValuesPage').then((m) => ({ default: m.VisionValuesPage }))
-);
-const BeliefsPage = lazy(() =>
-  import('./pages/BeliefsPage').then((m) => ({ default: m.BeliefsPage }))
-);
-const HistoryPage = lazy(() =>
-  import('./pages/HistoryPage').then((m) => ({ default: m.HistoryPage }))
-);
-const MinistriesPage = lazy(() =>
-  import('./pages/MinistriesPage').then((m) => ({ default: m.MinistriesPage }))
-);
-const MinistryPage = lazy(() =>
-  import('./pages/ministries/MinistryPage').then((m) => ({ default: m.MinistryPage }))
-);
-const MinistryNewsPage = lazy(() =>
-  import('./pages/ministries/MinistryPage').then((m) => ({ default: m.MinistryNewsPage }))
-);
-const ForChurchesPage = lazy(() =>
-  import('./pages/ForChurchesPage').then((m) => ({ default: m.ForChurchesPage }))
-);
-const FormsDocumentsPage = lazy(() =>
-  import('./pages/FormsDocumentsPage').then((m) => ({ default: m.FormsDocumentsPage }))
-);
-const ContactPage = lazy(() =>
-  import('./pages/ContactPage').then((m) => ({ default: m.ContactPage }))
-);
-const SafeChurchPage = lazy(() =>
-  import('./pages/SafeChurchPage').then((m) => ({ default: m.SafeChurchPage }))
-);
-const SermonsPage = lazy(() =>
-  import('./pages/SermonsPage').then((m) => ({ default: m.SermonsPage }))
-);
-const SermonPage = lazy(() =>
-  import('./pages/SermonPage').then((m) => ({ default: m.SermonPage }))
-);
-const ContentPage = lazy(() =>
-  import('./pages/ContentPage').then((m) => ({ default: m.ContentPage }))
-);
-const NotFoundPage = lazy(() =>
-  import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage }))
-);
+type Loader = () => Promise<Record<string, unknown>>;
+const loaders = new Map<string, Loader>();
+
+/**
+ * A page loaded on demand. Once its code has arrived it renders straight away
+ * (no "Loading page" flash), which lets main.tsx load the current page's code
+ * before swapping in the live app over the pre-rendered HTML.
+ */
+function page<P extends object>(load: Loader, name: string) {
+  let Loaded: ComponentType<P> | null = null;
+  const loadPage = () =>
+    load().then((m) => {
+      Loaded = m[name] as ComponentType<P>;
+      return { default: Loaded };
+    });
+  const Lazy = lazy(loadPage);
+  loaders.set(name, loadPage);
+  return function Page(props: P) {
+    // Fixed for the life of this element, so it never remounts when the code arrives.
+    const [Component] = useState<ComponentType<P>>(() => Loaded ?? (Lazy as unknown as ComponentType<P>));
+    return <Component {...props} />;
+  };
+}
+
+const FindAChurchPage = page(() => import('./pages/FindAChurchPage'), 'FindAChurchPage');
+const VisionValuesPage = page(() => import('./pages/VisionValuesPage'), 'VisionValuesPage');
+const BeliefsPage = page(() => import('./pages/BeliefsPage'), 'BeliefsPage');
+const HistoryPage = page(() => import('./pages/HistoryPage'), 'HistoryPage');
+const MinistriesPage = page(() => import('./pages/MinistriesPage'), 'MinistriesPage');
+const MinistryPage = page<{ slug: string }>(() => import('./pages/ministries/MinistryPage'), 'MinistryPage');
+const MinistryNewsPage = page(() => import('./pages/ministries/MinistryPage'), 'MinistryNewsPage');
+const ForChurchesPage = page(() => import('./pages/ForChurchesPage'), 'ForChurchesPage');
+const FormsDocumentsPage = page(() => import('./pages/FormsDocumentsPage'), 'FormsDocumentsPage');
+const ContactPage = page(() => import('./pages/ContactPage'), 'ContactPage');
+const SafeChurchPage = page(() => import('./pages/SafeChurchPage'), 'SafeChurchPage');
+const SermonsPage = page(() => import('./pages/SermonsPage'), 'SermonsPage');
+const SermonPage = page(() => import('./pages/SermonPage'), 'SermonPage');
+const ContentPage = page(() => import('./pages/ContentPage'), 'ContentPage');
+const NotFoundPage = page(() => import('./pages/NotFoundPage'), 'NotFoundPage');
+
+/** Which page component each address uses (kept in step with <Routes> below). */
+const ROUTE_PAGES: [RegExp, string][] = [
+  [/^\/find-a-church$/, 'FindAChurchPage'],
+  [/^\/who-we-are\/vision-values$/, 'VisionValuesPage'],
+  [/^\/who-we-are\/beliefs$/, 'BeliefsPage'],
+  [/^\/who-we-are\/history$/, 'HistoryPage'],
+  [/^\/who-we-are\/[^/]+$/, 'ContentPage'],
+  [/^\/ministries$/, 'MinistriesPage'],
+  [/^\/ministries\/[^/]+\/news\/[^/]+$/, 'MinistryNewsPage'],
+  [/^\/ministries\/[^/]+$/, 'MinistryPage'],
+  [/^\/for-churches$/, 'ForChurchesPage'],
+  [/^\/for-churches\/forms-and-documents(\/.*)?$/, 'FormsDocumentsPage'],
+  [/^\/for-churches\/[^/]+$/, 'ContentPage'],
+  [/^\/contact$/, 'ContactPage'],
+  [/^\/safe-church(\/.*)?$/, 'SafeChurchPage'],
+  [/^\/sermons$/, 'SermonsPage'],
+  [/^\/sermons\/[^/]+$/, 'SermonPage'],
+];
+
+/** Loads the code for the page at this address (path without the deploy base). */
+export function preloadRoute(path: string): Promise<unknown> {
+  const p = path.replace(/\/$/, '') || '/';
+  if (p === '/') return Promise.resolve();
+  const name = ROUTE_PAGES.find(([re]) => re.test(p))?.[1] ?? 'NotFoundPage';
+  return loaders.get(name)?.() ?? Promise.resolve();
+}
 
 function PageLoadingFallback() {
   return (
     <div
       role="status"
       aria-live="polite"
-      className="flex min-h-[50vh] items-center justify-center bg-stone-50 px-4 py-16"
+      data-loading
+      className="flex min-h-screen items-start justify-center bg-stone-50 px-4 py-24"
     >
       <div className="flex items-center gap-3 text-sm font-medium text-stone-600">
         <span

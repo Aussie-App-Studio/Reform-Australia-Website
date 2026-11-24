@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Facebook,
   Globe,
@@ -16,7 +16,15 @@ import churchesRaw from '../data/churches.json';
 import { AuLocationsDataset, loadAuLocations } from '../data/locationHubs';
 import { searchChurches } from '../utils/churchSearch';
 import { handleTabListKeyDown } from '../utils/tablistKeyboard';
-import { AustraliaChurchMap, ChurchRecord, getDirectionsUrl } from './AustraliaChurchMap';
+import { getDirectionsUrl, type ChurchRecord } from '../utils/churchRecord';
+
+// The map library is large, so it loads only when the map is about to come into view.
+const AustraliaChurchMap = lazy(() => import('./AustraliaChurchMap').then((m) => ({ default: m.AustraliaChurchMap })));
+
+function MapPlaceholder() {
+  // Same size as the map (AustraliaChurchMap's default className), so nothing moves when it loads.
+  return <div className="h-[400px] w-full rounded-lg border border-stone-200 bg-stone-100 lg:h-[640px]" aria-hidden="true" />;
+}
 
 const MOBILE_LIST_LIMIT = 8;
 
@@ -73,9 +81,25 @@ export function ChurchDirectory({
 
   const cardRefs = useRef<Record<string, HTMLElement | null>>({});
   const mapWrapperRef = useRef<HTMLDivElement>(null);
+  // Load the map when it is within a screen of being seen (straight away on desktop).
+  const [showMap, setShowMap] = useState(false);
+  useEffect(() => {
+    const el = mapWrapperRef.current;
+    if (!el || showMap) return;
+    if (typeof IntersectionObserver === 'undefined') return setShowMap(true);
+    const io = new IntersectionObserver((entries) => entries.some((e) => e.isIntersecting) && setShowMap(true), { rootMargin: '600px 0px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [showMap]);
   const geoRequestIdRef = useRef(0);
 
+  // The suburb and postcode list is large: fetch it only once someone starts a search.
+  const [wantLocations, setWantLocations] = useState(false);
   useEffect(() => {
+    if (query.trim()) setWantLocations(true);
+  }, [query]);
+  useEffect(() => {
+    if (!wantLocations) return;
     let active = true;
     loadAuLocations()
       .then((data) => {
@@ -92,7 +116,7 @@ export function ChurchDirectory({
     return () => {
       active = false;
     };
-  }, []);
+  }, [wantLocations]);
 
   useEffect(() => {
     if (externalQuery !== undefined) {
@@ -251,6 +275,7 @@ export function ChurchDirectory({
                 type="search"
                 value={query}
                 onChange={(e) => handleQueryInput(e.target.value)}
+                onFocus={() => setWantLocations(true)}
                 placeholder="Suburb, postcode or church"
                 aria-label="Filter churches by name, suburb, city, postcode, or state"
                 className="w-full rounded-md border border-stone-300 bg-stone-50 py-2.5 pl-10 pr-10 text-sm text-navy-900 placeholder:text-stone-600 focus:border-teal-500 focus:bg-white focus:outline-none [&::-webkit-search-cancel-button]:hidden"
@@ -638,13 +663,19 @@ export function ChurchDirectory({
             className="lg:col-span-7 scroll-mt-[calc(var(--site-header-height,72px)+1rem)]"
           >
             <h2 className="mb-3 font-serif text-xl font-semibold text-navy-900 lg:sr-only">Map of CRCA churches</h2>
-            <AustraliaChurchMap
-              churches={mapChurches}
-              selectedChurchId={selectedChurchId}
-              selectionNonce={selectionNonce}
-              onSelectChurch={handleSelectFromMap}
-              totalChurchCount={allChurches.length}
-            />
+            {showMap ? (
+              <Suspense fallback={<MapPlaceholder />}>
+                <AustraliaChurchMap
+                  churches={mapChurches}
+                  selectedChurchId={selectedChurchId}
+                  selectionNonce={selectionNonce}
+                  onSelectChurch={handleSelectFromMap}
+                  totalChurchCount={allChurches.length}
+                />
+              </Suspense>
+            ) : (
+              <MapPlaceholder />
+            )}
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
     "sync-docs": "node scripts/sync-crca-docs.mjs",
     "build:au-locations": "node scripts/build-au-locations.mjs",
@@ -17,7 +17,10 @@
     "sync-safe-church": "node scripts/sync-safe-church.mjs",
     "sync-sermons": "node scripts/sync-sermons.mjs",
     "sync-all": "npm run sync-docs && npm run sync-safe-church && npm run sync-sermons",
-    "qa": "node scripts/qa-site.mjs"
+    "qa": "node scripts/qa-site.mjs",
+    "build:spa": "tsc -b && vite build",
+    "serve": "node scripts/serve-dist.mjs",
+    "images": "node scripts/optimise-images.mjs"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
@@ -35,6 +38,7 @@
     "@vitejs/plugin-react": "^4.5.0",
     "playwright": "^1.49.1",
     "sanitize-html": "^2.13.1",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.1.7",
     "typescript": "^5.8.3",
     "vite": "^6.3.5"

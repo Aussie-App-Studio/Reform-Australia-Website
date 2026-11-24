@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import dotsData from '../data/australiaDots.json';
-import type { ChurchRecord } from './AustraliaChurchMap';
+import type { ChurchRecord } from '../utils/churchRecord';
 
 interface Props {
   churches: ChurchRecord[];

@@ -8,7 +8,7 @@ import { StandardPage } from './ministries/MinistryPage';
 export function ContentPage() {
   const { pathname } = useLocation();
   const page = getContentPageByPath(pathname);
-  usePageTitle(page?.title ?? 'Page');
+  usePageTitle(page?.title ?? 'Page', page?.summary);
   if (!page) return <NotFoundPage />;
   const section = SECTION_LABELS[page.section];
   const related = contentPages

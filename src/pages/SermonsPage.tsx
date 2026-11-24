@@ -34,7 +34,10 @@ function SermonCard({ s, index }: { s: SermonIndexItem; index: SermonIndex }) {
 }
 
 export function SermonsPage() {
-  usePageTitle('Word of Salvation Sermons');
+  usePageTitle(
+    'Reading sermons',
+    'Over 2,000 reading sermons from the CRCA’s Word of Salvation archive, for reading aloud in church when no minister is available. Search by Bible book, passage, preacher or Lord’s Day.'
+  );
   const [index, setIndex] = useState<SermonIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [params, setParams] = useSearchParams();
@@ -208,7 +211,7 @@ export function SermonsPage() {
           </p>
         )}
         {!index && !error && (
-          <p role="status" className="mt-10 text-center text-sm text-stone-600">
+          <p role="status" data-loading className="mt-10 text-center text-sm text-stone-600">
             Loading sermon archive…
           </p>
         )}

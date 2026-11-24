@@ -414,7 +414,10 @@ export function SafeChurchPage() {
   }, []);
 
   const page = content && subPath ? content.pages[subPath] : null;
-  usePageTitle(content ? (page ? `${displayTitle(content, page.path)} · Safe Church` : subPath ? 'Not found' : 'Safe Church') : 'Safe Church');
+  usePageTitle(
+    content ? (page ? `${displayTitle(content, page.path)} · Safe Church` : subPath ? 'Not found' : 'Safe Church') : 'Safe Church',
+    page?.summary || content?.intro
+  );
 
   if (error) {
     return (
@@ -429,7 +432,7 @@ export function SafeChurchPage() {
   }
   if (!content) {
     return (
-      <div role="status" className="flex min-h-[50vh] items-center justify-center text-sm text-stone-600">
+      <div role="status" data-loading className="flex min-h-screen items-start justify-center py-24 text-sm text-stone-600">
         Loading Safe Church…
       </div>
     );
