@@ -30,7 +30,7 @@ const SPEAKERS: Record<string, { label: string; role: 'leader' | 'people' }> = {
 const SPEAKER_RE = /^\s*(?:(Minister|Congregation|Leader|People|All)(?=[\s ]*:)|(M|C|L)(?=[\s :]|$))/;
 
 const RUBRIC_RE =
-  /^(optional\b|if (desired|appropriate|there)|here (the|follows)|the (minister|congregation|parents|candidates?|elders?|people|bride|groom|couple)\b[^.]{0,80}\b(stands?|rises?|kneels?|comes?|come|says?|respond|responds|answer|answers|sit|sits|faces?)\b)|\b(is|are|may be) (sung|read|said|prayed|offered)\b/i;
+  /^(optional\b|if (desired|appropriate|there)|here (the|follows)|the (minister|congregation|parents|candidates?|elders?|deacons?|office ?bearers?|people|bride|groom|couple)\b[^.]{0,80}\b(stands?|rises?|kneels?|comes?|come|says?|respond|responds|answer|answers|sit|sits|faces?|sings?|is seated|are seated|remains?|remain|prays?|reads?)\b)|\b(is|are|may be) (sung|read|said|prayed|offered)\b/i;
 
 function startsWithSpeaker(p: HTMLElement): { speaker: string } | null {
   // Footnote refs can sit straight after the letter ("M[^1] O give thanks"), so test the
@@ -66,7 +66,142 @@ function isPlainParagraph(el: Element): el is HTMLParagraphElement {
   return el.tagName === 'P' && !el.classList.length;
 }
 
-export function formatLiturgyHtml(html: string): string {
+
+// ---------- Text clean-up (display only) ----------
+
+const SENTENCE_END_RE = /[.?!…:]["'”’)\]]*$/;
+const OPEN_END_RE = /[A-Za-z0-9]$/;
+const FUNCTION_WORD_END_RE = /\b(of|the|a|an|to|in|and|or|your|his|her|their|our|my|with|for|by|at|on|as|that|this|these)$/i;
+const DASH_ITEM_RE = /^[–—-]\s+/;
+const LABEL_RE = /^(either|or|and|then|prayer|to (elders|deacons|ministers|the congregation[^:]*)|regarding (elders|deacons)|charge|charges)\s*:$/i;
+const DIRECTION_END_RE = /\b(minister|congregation|elders?|deacons?|office ?bearers?|parents|candidates?|people|members|couple|bride|groom|reader|chairman)\b[^:]{0,80}\b(shall say|says|say|asks?|answers?|responds?|reads?|prays?|in unison)\b[^:]{0,40}:$|\b(individually|in unison|may be used)[^:]{0,40}:$/i;
+
+/** Text of a paragraph without footnote markers. */
+function lineText(p: Element): string {
+  const c = p.cloneNode(true) as Element;
+  c.querySelectorAll('sup, .fn-ref').forEach((s) => s.remove());
+  return (c.textContent ?? '').replace(/\s+/g, ' ').trim();
+}
+
+function firstText(p: Element): string {
+  return (p.textContent ?? '').trimStart();
+}
+
+/** Tidy footnote markers: "catholic*[1]" -> "catholic[1]", "them,"[9]calling" -> "them,"[9] calling". */
+function tidyFootnotes(root: Element) {
+  root.querySelectorAll('sup, .fn-ref').forEach((sup) => {
+    const node: Node = sup.parentElement?.tagName === 'A' && sup.parentElement.childNodes.length === 1 ? sup.parentElement : sup;
+    const prev = node.previousSibling;
+    if (prev && prev.nodeType === Node.TEXT_NODE && /\*$/.test(prev.textContent ?? '')) {
+      prev.textContent = (prev.textContent ?? '').replace(/\*+$/, '');
+    }
+    const next = node.nextSibling;
+    if (next && next.nodeType === Node.TEXT_NODE) {
+      let t = next.textContent ?? '';
+      t = t.replace(/^\d{1,2} (?=[a-z])/, ' '); // stray footnote digit left in the text ("[11]1 priests")
+      if (/^[A-Za-z(]/.test(t) && !/^[A-Z]$/.test(prev?.textContent?.trim() ?? '')) t = ' ' + t;
+      next.textContent = t;
+    }
+  });
+}
+
+/** Join a sentence that the source split over two paragraphs ("…mature in" / "the faith, whose…"). */
+function joinBrokenLines(root: Element, doc: Document) {
+  for (const a of Array.from(root.children)) {
+    if (!isPlainParagraph(a) || !a.isConnected) continue;
+    let b = a.nextElementSibling;
+    while (b && isPlainParagraph(b)) {
+      const at = lineText(a);
+      const bt = lineText(b);
+      if (!at || !bt || !OPEN_END_RE.test(at) || startsWithSpeaker(b as HTMLElement)) break;
+      const lower = /^[a-z]/.test(bt);
+      if (!((lower && bt.length > 110) || FUNCTION_WORD_END_RE.test(at))) break;
+      a.append(doc.createTextNode(' '), ...Array.from(b.childNodes));
+      const gone = b;
+      b = b.nextElementSibling;
+      gone.remove();
+    }
+  }
+}
+
+/** Paragraphs that start with an en dash become a list. */
+function dashLists(root: Element, doc: Document) {
+  let list: HTMLUListElement | null = null;
+  for (const el of Array.from(root.children)) {
+    const isItem = isPlainParagraph(el) && DASH_ITEM_RE.test(firstText(el));
+    if (!isItem) {
+      list = null;
+      continue;
+    }
+    if (!list) {
+      list = doc.createElement('ul');
+      list.className = 'dash-list';
+      el.before(list);
+    }
+    const first = el.firstChild;
+    if (first && first.nodeType === Node.TEXT_NODE) first.textContent = (first.textContent ?? '').replace(/^\s*[–—-]\s+/, '');
+    const li = doc.createElement('li');
+    li.append(...Array.from(el.childNodes));
+    list.appendChild(li);
+    el.remove();
+  }
+  // a single dash line is just a sentence
+  root.querySelectorAll(':scope > ul.dash-list').forEach((ul) => {
+    if (ul.children.length > 1) return;
+    const p = doc.createElement('p');
+    p.append('– ', ...Array.from(ul.firstElementChild!.childNodes));
+    ul.replaceWith(p);
+  });
+}
+
+/** Short cue lines: "EITHER:", "Prayer:", "To Elders:" as labels; "…the minister shall say:" as directions. */
+function labelsAndDirections(root: Element) {
+  for (const el of Array.from(root.children)) {
+    if (!isPlainParagraph(el) || startsWithSpeaker(el as HTMLElement)) continue;
+    const t = lineText(el);
+    if (t.length <= 40 && LABEL_RE.test(t)) {
+      el.classList.add('form-label');
+      el.textContent = t.replace(/:$/, '');
+    } else if (t.length < 200 && DIRECTION_END_RE.test(t) && !ADDRESSED_RE.test(t)) {
+      el.classList.add('rubric');
+    }
+  }
+}
+
+/**
+ * Runs of short lines (psalms, creeds, Scripture set out as verse) are one paragraph per line in
+ * the source, which spaces every line apart. Set them as verse: lines close together, a small gap
+ * after each sentence, and lines that continue a sentence indented.
+ */
+function verseBlocks(root: Element, doc: Document) {
+  const flush = (run: Element[]) => {
+    if (run.length < 3) return;
+    const texts = run.map(lineText);
+    if (!texts.slice(0, -1).some((t) => !SENTENCE_END_RE.test(t))) return; // prose, not verse
+    const wrap = doc.createElement('div');
+    wrap.className = 'verse';
+    run[0].before(wrap);
+    run.forEach((p, i) => {
+      if (i < run.length - 1 && SENTENCE_END_RE.test(texts[i])) p.classList.add('stanza-end');
+      if (/^[a-z]/.test(texts[i])) p.classList.add('cont');
+      wrap.appendChild(p);
+    });
+  };
+  let run: Element[] = [];
+  for (const el of Array.from(root.children)) {
+    if (isPlainParagraph(el) && lineText(el).length <= 90 && !el.querySelector('br')) run.push(el);
+    else {
+      flush(run);
+      run = [];
+    }
+  }
+  flush(run);
+}
+
+/** Directions are written about people ("the minister says"), never to them. */
+const ADDRESSED_RE = /\b(you|your|we|us|our)\b/i;
+
+export function formatLiturgyHtml(html: string, opts: { readings?: boolean } = {}): string {
   if (typeof DOMParser === 'undefined' || !html) return html;
   const doc = new DOMParser().parseFromString(`<div id="root">${html}</div>`, 'text/html');
   const root = doc.getElementById('root');
@@ -85,10 +220,14 @@ export function formatLiturgyHtml(html: string): string {
     }
   }
 
+  tidyFootnotes(root);
+  dashLists(root, doc);
+  joinBrokenLines(root, doc);
+  if (!opts.readings) labelsAndDirections(root);
+
   const children = Array.from(root.children);
   let group: HTMLElement | null = null;
   let lines: HTMLElement | null = null;
-  let groups = 0;
 
   for (const el of children) {
     if (!isPlainParagraph(el)) {
@@ -111,11 +250,10 @@ export function formatLiturgyHtml(html: string): string {
       group.append(label, lines);
       el.replaceWith(group);
       lines.appendChild(el);
-      groups++;
       continue;
     }
 
-    if (RUBRIC_RE.test(text) && text.length < 220) {
+    if (!opts.readings && RUBRIC_RE.test(text) && text.length < 220 && !ADDRESSED_RE.test(text)) {
       el.classList.add('rubric');
       group = null;
       continue;
@@ -123,10 +261,12 @@ export function formatLiturgyHtml(html: string): string {
 
     // Continuation line of the current speaker.
     if (group && lines) {
+      if (/^[a-z]/.test(text) && text.length <= 90) el.classList.add('cont');
       lines.appendChild(el);
     }
   }
 
-  // Only keep the changes if the document really is a responsive liturgy.
-  return groups >= 2 || root.querySelector('.form-subtitle, .rubric') ? root.innerHTML : html;
+  verseBlocks(root, doc);
+
+  return root.innerHTML;
 }

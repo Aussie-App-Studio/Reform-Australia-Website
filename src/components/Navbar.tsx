@@ -160,17 +160,17 @@ export function Navbar() {
       {current && (
         <div id="site-menu-panel" className="absolute inset-x-0 top-full hidden border-b border-stone-200 bg-white shadow-[0_12px_24px_-12px_rgba(0,34,76,0.18)] lg:block">
           <div className="mx-auto grid max-w-7xl grid-cols-12 gap-10 px-8 py-9">
-            <div className="col-span-3 border-r border-stone-200 pr-8">
+            <div className="col-span-3 pr-8">
               <p className="font-serif text-2xl font-semibold text-navy-900">{current.label}</p>
               <p className="mt-2 leading-relaxed text-stone-600">{current.overview.blurb}</p>
               <Link to={current.overview.to} className="mt-4 inline-flex items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
                 {current.overview.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
-            <div className={`col-span-9 grid gap-10 ${current.columns.length === 3 ? 'grid-cols-3' : 'grid-cols-3'}`}>
+            <div className={`col-span-9 grid grid-cols-3 gap-10`}>
               {current.columns.map((col) => (
                 <div key={col.heading}>
-                  <p className="border-b border-stone-200 pb-2 text-sm font-semibold uppercase tracking-[0.08em] text-stone-500">{col.heading}</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.08em] text-stone-500">{col.heading}</p>
                   <ul className="mt-2">
                     {col.items.map((item) => (
                       <li key={item.to}>

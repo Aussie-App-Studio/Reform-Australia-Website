@@ -1,60 +1,6 @@
 import { Link } from 'react-router-dom';
-import {
-  ArrowRight,
-  BookOpen,
-  Church,
-  Compass,
-  Globe2,
-  GraduationCap,
-  HandHeart,
-  Handshake,
-  HeartPulse,
-  Landmark,
-  type LucideIcon,
-  Map,
-  Route,
-  Scroll,
-  Sprout,
-  Users,
-} from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import identity from '../data/identity.json';
-
-const ICONS: Record<string, LucideIcon> = {
-  // core values
-  'contemporary-reformed': Scroll,
-  'word-based': BookOpen,
-  'gospel-focused': Globe2,
-  'local-church-empowering': Church,
-  'prayerful-urgency': HandHeart,
-  'historic-orthodoxy': Landmark,
-  // four-fold task
-  pray: HandHeart,
-  grow: Sprout,
-  train: GraduationCap,
-  align: Compass,
-  // strategies
-  mentoring: Users,
-  training: GraduationCap,
-  'ministry-pathways': Route,
-  'church-health': HeartPulse,
-  'church-planting': Sprout,
-  mission: Globe2,
-  'church-strategy': Map,
-  prayer: HandHeart,
-  partnerships: Handshake,
-};
-
-function IconBadge({ id, size = 'md' }: { id: string; size?: 'md' | 'lg' }) {
-  const Icon = ICONS[id] ?? BookOpen;
-  const box = size === 'lg' ? 'h-12 w-12' : 'h-10 w-10';
-  const icon = size === 'lg' ? 'h-6 w-6' : 'h-5 w-5';
-  return (
-    <span className={`flex ${box} shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-700`}>
-      <Icon className={icon} aria-hidden="true" />
-    </span>
-  );
-}
 
 function Section({ id, title, intro, tone = 'white', children }: { id: string; title: string; intro?: string; tone?: 'white' | 'paper'; children: React.ReactNode }) {
   return (
@@ -95,32 +41,23 @@ export function VisionValuesPage() {
       </section>
 
       <Section id="core-values" title="Our core values" intro={coreValues.intro}>
-        <ul className="grid gap-px overflow-hidden rounded-md border border-stone-200 bg-stone-200 md:grid-cols-2 lg:grid-cols-3">
+        <dl className="grid gap-x-12 border-t border-stone-200 md:grid-cols-2">
           {coreValues.items.map((v) => (
-            <li key={v.id} className="flex flex-col bg-white p-6">
-              <IconBadge id={v.id} size="lg" />
-              <h3 className="mt-4 font-serif text-xl font-semibold text-navy-900">{v.title}</h3>
-              <p className="mt-2 leading-relaxed text-stone-700">{v.summary}</p>
-              <p className="mt-auto pt-4 text-sm text-stone-500">{v.scriptures}</p>
-            </li>
+            <div key={v.id} className="border-b border-stone-200 py-6">
+              <dt className="font-serif text-xl font-semibold text-navy-900">{v.title}</dt>
+              <dd className="mt-1.5 leading-relaxed text-stone-700">{v.summary}</dd>
+              <dd className="mt-2 text-sm text-stone-500">{v.scriptures}</dd>
+            </div>
           ))}
-          {coreValues.items.length % 3 !== 0 && (
-            <li className="flex flex-col justify-between bg-navy-900 p-6 text-white">
-              <p className="font-serif text-2xl leading-snug">These values grow out of what we believe.</p>
-              <Link to="/who-we-are/beliefs" className="mt-6 inline-flex items-center gap-1.5 font-semibold text-teal-100 hover:text-white">
-                What we believe <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </li>
-          )}
-        </ul>
+        </dl>
       </Section>
 
       <Section id="four-fold-task" title="Our four-fold task" intro={fourFoldTask.intro} tone="paper">
-        <ol className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {fourFoldTask.items.map((t) => (
-            <li key={t.id}>
-              <IconBadge id={t.id} size="lg" />
-              <h3 className="mt-4 font-serif text-2xl font-semibold text-navy-900">{t.title}</h3>
+        <ol className="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
+          {fourFoldTask.items.map((t, i) => (
+            <li key={t.id} className="border-t-2 border-navy-900 pt-4">
+              <p className="font-serif text-lg text-teal-700">{i + 1}</p>
+              <h3 className="font-serif text-2xl font-semibold text-navy-900">{t.title}</h3>
               <p className="mt-2 leading-relaxed text-stone-700">{t.text}</p>
             </li>
           ))}
@@ -128,17 +65,21 @@ export function VisionValuesPage() {
       </Section>
 
       <Section id="strategies" title="Our strategies" intro={strategies.intro}>
-        <ul className="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
+        <dl className="grid gap-x-12 border-t border-stone-200 md:grid-cols-2">
           {strategies.items.map((s) => (
-            <li key={s.id} className="flex gap-4">
-              <IconBadge id={s.id} />
-              <div>
-                <h3 className="font-semibold text-navy-900">{s.title}</h3>
-                <p className="mt-1 text-[0.95rem] leading-relaxed text-stone-700">{s.text}</p>
-              </div>
-            </li>
+            <div key={s.id} className="border-b border-stone-200 py-5">
+              <dt className="font-semibold text-navy-900">{s.title}</dt>
+              <dd className="mt-1 leading-relaxed text-stone-700">{s.text}</dd>
+            </div>
           ))}
-        </ul>
+        </dl>
+        <p className="mt-8 text-lg text-stone-700">
+          These grow out of{' '}
+          <Link to="/who-we-are/beliefs" className="font-semibold text-teal-700 underline-offset-4 hover:underline">
+            what we believe
+          </Link>
+          .
+        </p>
       </Section>
     </>
   );

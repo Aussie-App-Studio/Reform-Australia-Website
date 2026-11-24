@@ -532,7 +532,7 @@ export function ChurchDirectory({
                 </button>
               </div>
             ) : (
-              <div className="relative lg:max-h-[42rem] lg:overflow-y-auto lg:pr-2">
+              <div className="relative space-y-3 lg:max-h-[42rem] lg:overflow-y-auto lg:p-0.5 lg:pr-2">
                 {filteredChurches.map(({ church, distanceKm }, i) => {
                   const isSelected = church.id === selectedChurchId;
                   const directionsUrl = getDirectionsUrl(church);
@@ -544,12 +544,12 @@ export function ChurchDirectory({
                         cardRefs.current[church.id] = el;
                       }}
                       onClick={() => handleSelectFromCard(church.id)}
-                      className={`cursor-pointer border-b border-stone-200 bg-white px-1 py-5 transition-colors first:border-t ${
+                      className={`cursor-pointer rounded-lg border bg-white px-4 py-4 transition-colors sm:px-5 ${
                         !showAllMobile && i >= MOBILE_LIST_LIMIT ? 'max-lg:hidden ' : ''
                       }${
                         isSelected
-                          ? 'border-l-4 border-l-teal-500 bg-teal-50/60 pl-4'
-                          : 'hover:bg-stone-50'
+                          ? 'border-teal-500 bg-teal-50/60 ring-1 ring-teal-500'
+                          : 'border-stone-200 hover:border-stone-300 hover:bg-stone-50'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-3">

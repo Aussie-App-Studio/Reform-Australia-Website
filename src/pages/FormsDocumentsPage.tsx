@@ -461,7 +461,7 @@ export function FormsDocumentsPage() {
       ? linkifyChurchOrderRefsHtml(withXrefs, coDoc)
       : withXrefs;
     // Liturgies and worship readings: speaker labels, verse-like lines, styled rubrics.
-    const finalHtml = isLiturgicalForm || isReadingsDoc ? formatLiturgyHtml(linkedHtml) : linkedHtml;
+    const finalHtml = isLiturgicalForm || isReadingsDoc ? formatLiturgyHtml(linkedHtml, { readings: isReadingsDoc }) : linkedHtml;
 
     return {
       html: finalHtml,
@@ -1176,8 +1176,8 @@ export function FormsDocumentsPage() {
             title="Forms & documents"
             description={`The CRCA’s ${docCount} liturgical forms, creeds and confessions, worship readings and Church Order. Read, search, copy or print, and prepare forms for a service.`}
             breadcrumbs={[
-              { label: 'For Churches', to: '/for-churches' },
-              { label: 'Forms & Documents' },
+              { label: 'For churches', to: '/for-churches' },
+              { label: 'Forms and documents' },
             ]}
             actions={
               <a
@@ -1228,7 +1228,7 @@ export function FormsDocumentsPage() {
                       <li className="flex items-center gap-1.5">
                         <ChevronRight className="h-3.5 w-3.5 text-stone-400" />
                         <Link to="/for-churches" className="hover:text-navy-900 transition-colors">
-                          For Churches
+                          For churches
                         </Link>
                       </li>
                       <li className="flex items-center gap-1.5">

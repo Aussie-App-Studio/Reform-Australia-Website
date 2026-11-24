@@ -42,17 +42,17 @@ export const forChurchesNavItems: NavLinkItem[] = [
 
 export const whoWeAreNavItems: NavLinkItem[] = [
   {
-    label: 'Vision & Values',
+    label: 'Vision and values',
     to: '/who-we-are/vision-values',
     description: 'Our mission, vision, core values, four-fold task and strategies.',
   },
   {
-    label: 'What We Believe',
+    label: 'What we believe',
     to: '/who-we-are/beliefs',
     description: 'Plain-English gospel summary plus the Ecumenical Creeds and Reformed Confessions.',
   },
   {
-    label: 'Our History',
+    label: 'Our history',
     to: '/who-we-are/history',
     description: 'How God established and grew the CRCA across Australia since 1951.',
   },
@@ -87,7 +87,7 @@ export const ministryMegaMenuColumns: MinistryMegaMenuColumn[] = [
     subtitle: 'Equipping leaders & multiplying churches',
     items: [
       {
-        label: 'Reformed Theological College (RTC)',
+        label: 'Reformed Theological College',
         to: 'https://rtc.edu.au/',
         description: 'The theological college where the CRCA encourages candidates for ordination to study.',
         isExternal: true,
@@ -147,9 +147,9 @@ export const footerColumns: { title: string; links: NavLinkItem[] }[] = [
   {
     title: 'About the CRCA',
     links: [
-      { label: 'Vision & Values', to: '/who-we-are/vision-values' },
-      { label: 'What We Believe', to: '/who-we-are/beliefs' },
-      { label: 'Our History', to: '/who-we-are/history' },
+      { label: 'Vision and values', to: '/who-we-are/vision-values' },
+      { label: 'What we believe', to: '/who-we-are/beliefs' },
+      { label: 'Our history', to: '/who-we-are/history' },
       { label: 'Find a Church', to: '/find-a-church' },
       { label: 'Contact Us', to: '/contact' },
     ],

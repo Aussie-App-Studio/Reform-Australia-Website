@@ -57,7 +57,7 @@ Both legacy WordPress sites are now part of this site and served as static JSON:
 
 ## 2. Swapping Photos & Official Logos
 
-- **Photography (`public/images/`):** Replace `hero-community.webp`, `heritage-sanctuary.webp`, or `ministry-fellowship.webp` with real congregation photographs using the same filenames (or update paths in `src/data/siteConfig.ts`).
+- **Photography (`public/images/`):** Use real photos of CRCA churches and ministries only (no AI-generated images). Ministry photos live in `public/images/ministries/<slug>/` and are set in each ministry page's JSON.
 - **Official CRCA Logos (`public/images/logos/`):** All three official logo variants are installed and configured via `src/data/siteConfig.ts` (`logos.landscapeWhite`, `logos.iconTeal`, and `logos.stackedColor`) and rendered cleanly by `src/components/CrcaLogo.tsx` across the navbar, deep navy footer, and favicon.
 
 ---

@@ -227,3 +227,44 @@
 
 /* Long unbroken runs (URLs, "_____" lines) wrap instead of widening the page on phones. */
 .crca-content, .crca-sermon { overflow-wrap: anywhere; }
+
+/* Verse set out one line per paragraph in the source (psalms, creeds, Scripture readings). */
+.crca-reader-article .verse {
+  margin: 1rem 0 1.25rem;
+}
+.crca-reader-article .verse p {
+  margin: 0;
+}
+.crca-reader-article .verse p.cont {
+  padding-left: 1.5rem;
+}
+.crca-reader-article .verse p.stanza-end {
+  margin-bottom: 0.7rem;
+}
+.crca-reader-article .resp-lines p.cont {
+  padding-left: 1.5rem;
+}
+.crca-reader-article ul.dash-list {
+  margin: 0.75rem 0 1rem;
+  padding-left: 1.5rem;
+  list-style: none;
+}
+.crca-reader-article ul.dash-list li {
+  position: relative;
+  margin: 0.2rem 0;
+}
+.crca-reader-article ul.dash-list li::before {
+  content: '–';
+  position: absolute;
+  left: -1.1rem;
+  color: var(--color-stone-500, #78716c);
+}
+.crca-reader-article p.form-label {
+  margin: 1.5rem 0 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-teal-700);
+}

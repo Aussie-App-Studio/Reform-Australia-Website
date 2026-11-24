@@ -64,22 +64,25 @@ function applyPinStyling(el: HTMLElement, isSelected: boolean): void {
   el.classList.toggle('crca-map-pin-selected', isSelected);
   el.classList.toggle('crca-map-pin', !isSelected);
 
-  if (isSelected) {
-    dot.style.width = '24px';
-    dot.style.height = '24px';
-    dot.style.borderRadius = '9999px';
-    dot.style.background = '#00224c';
-    dot.style.border = '3px solid #ffffff';
-    dot.style.boxShadow = '0 0 0 4px rgba(197,155,67,0.55), 0 4px 10px rgba(0,34,76,0.4)';
-    dot.style.transition = 'transform 150ms ease, background-color 150ms ease';
-  } else {
-    dot.style.width = '16px';
-    dot.style.height = '16px';
-    dot.style.borderRadius = '9999px';
-    dot.style.background = '#00a6ca';
-    dot.style.border = '2.5px solid #ffffff';
-    dot.style.boxShadow = '0 2px 6px rgba(0,34,76,0.35)';
-    dot.style.transition = 'transform 150ms ease, background-color 150ms ease';
+  const size = isSelected ? 36 : 26;
+  dot.style.width = `${size}px`;
+  dot.style.height = `${size}px`;
+  dot.style.borderRadius = '9999px';
+  dot.style.display = 'flex';
+  dot.style.alignItems = 'center';
+  dot.style.justifyContent = 'center';
+  dot.style.color = '#ffffff';
+  dot.style.background = isSelected ? '#00224c' : '#0b7f99';
+  dot.style.border = isSelected ? '3px solid #ffffff' : '2px solid #ffffff';
+  dot.style.boxShadow = isSelected
+    ? '0 0 0 4px rgba(197,155,67,0.55), 0 4px 10px rgba(0,34,76,0.4)'
+    : '0 2px 6px rgba(0,34,76,0.35)';
+  dot.style.transition = 'width 150ms ease, height 150ms ease, background-color 150ms ease';
+  const icon = dot.querySelector<SVGElement>('svg');
+  if (icon) {
+    const iconSize = String(isSelected ? 18 : 14);
+    icon.setAttribute('width', iconSize);
+    icon.setAttribute('height', iconSize);
   }
 }
 
@@ -99,6 +102,9 @@ function createPinElement(church: ChurchRecord, isSelected: boolean): HTMLElemen
 
   const dot = document.createElement('div');
   dot.setAttribute('data-pin-dot', 'true');
+  // Lucide "church" icon
+  dot.innerHTML =
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 9h4"/><path d="M12 7v5"/><path d="M14 22v-4a2 2 0 0 0-4 0v4"/><path d="M18 22V5.618a1 1 0 0 0-.553-.894l-4.553-2.277a2 2 0 0 0-1.788 0L6.553 4.724A1 1 0 0 0 6 5.618V22"/><path d="m18 7 3.447 1.724a1 1 0 0 1 .553.894V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.618a1 1 0 0 1 .553-.894L6 7"/></svg>';
   wrapper.appendChild(dot);
 
   applyPinStyling(wrapper, isSelected);

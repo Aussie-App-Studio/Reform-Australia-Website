@@ -17,9 +17,9 @@ export function usePageTitle(title: string | null | undefined) {
 export const ROUTE_TITLES: Record<string, string | null> = {
   '/': null,
   '/find-a-church': 'Find a Church',
-  '/who-we-are/vision-values': 'Vision & Values',
-  '/who-we-are/beliefs': 'What We Believe',
-  '/who-we-are/history': 'Our History',
+  '/who-we-are/vision-values': 'Vision and values',
+  '/who-we-are/beliefs': 'What we believe',
+  '/who-we-are/history': 'Our history',
   '/ministries': 'Ministries',
   '/ministries/cadets': 'Cadets',
   '/ministries/gems': 'GEMS Girls’ Clubs',
@@ -31,7 +31,7 @@ export const ROUTE_TITLES: Record<string, string | null> = {
   '/ministries/missional-explorations': 'Missional Explorations',
   '/ministries/church-planting-taskforce': 'Church Planting Taskforce',
   '/ministries/ecumenical-relations': 'Ecumenical Relations',
-  '/for-churches': 'For Churches',
-  '/for-churches/forms-and-documents': 'Forms & Documents',
+  '/for-churches': 'For churches',
+  '/for-churches/forms-and-documents': 'Forms and documents',
   '/contact': 'Contact Us',
 };

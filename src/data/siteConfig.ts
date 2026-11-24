@@ -37,11 +37,6 @@ export const siteConfig = {
     iconTeal: '/images/logos/crca-icon-teal.jpg',
     stackedColor: '/images/logos/crca-logo-stacked.jpg',
   },
-  images: {
-    heroCommunity: '/images/hero-community.webp',
-    heritageSanctuary: '/images/heritage-sanctuary.webp',
-    ministryFellowship: '/images/ministry-fellowship.webp',
-  },
   quickStats: [
     {
       label: '50+ Congregations Across Australia',

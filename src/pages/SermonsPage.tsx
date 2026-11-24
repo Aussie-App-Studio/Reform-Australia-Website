@@ -115,7 +115,7 @@ export function SermonsPage() {
         eyebrow="Word of Salvation"
         title="Reading sermons"
         description={`${total ? total.toLocaleString() : 'Over 2,000'} sermons by CRCA ministers, for reading services, personal devotion and further study. Search by book, passage, preacher or Lord’s Day.`}
-        breadcrumbs={[{ label: 'For Churches', to: '/for-churches' }, { label: 'Word of Salvation' }]}
+        breadcrumbs={[{ label: 'For churches', to: '/for-churches' }, { label: 'Word of Salvation' }]}
       />
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">

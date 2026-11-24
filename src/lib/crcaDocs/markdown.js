@@ -95,6 +95,28 @@ function extractFootnotes(rawText) {
   return { bodyText: bodyLines.join("\n"), defs };
 }
 
+
+const SMALL_WORDS = new Set(['a', 'an', 'and', 'as', 'at', 'by', 'for', 'in', 'of', 'on', 'or', 'the', 'to', 'with']);
+
+/** "THE OPENING OF THE SERVICE" -> "The Opening of the Service" (footnote markers untouched). */
+function titleCaseCaps(text) {
+  if (/[a-z]/.test(text.replace(/\[\^[^\]]+\]/g, ''))) return text;
+  let first = true;
+  return text
+    .split(/(\[\^[^\]]+\])/)
+    .map((part) =>
+      part.startsWith('[^')
+        ? part
+        : part.toLowerCase().replace(/[a-z][a-z'’]*/g, (w) => {
+            const isFirst = first;
+            first = false;
+            if (/^(i|ii|iii|iv|v|vi)$/.test(w)) return w.toUpperCase();
+            return isFirst || !SMALL_WORDS.has(w) ? w[0].toUpperCase() + w.slice(1) : w;
+          })
+    )
+    .join('');
+}
+
 const NUMBERED_READING_RE = /^\d+\.\s+(?:[1-3]\s+)?(?:Genesis|Exodus|Leviticus|Numbers|Deuteronomy|Joshua|Judges|Ruth|Samuel|Kings|Chronicles|Ezra|Nehemiah|Esther|Job|Psalms?|Proverbs|Ecclesiastes|Song|Isaiah|Jeremiah|Lamentations|Ezekiel|Daniel|Hosea|Joel|Amos|Obadiah|Jonah|Micah|Nahum|Habakkuk|Zephaniah|Haggai|Zechariah|Malachi|Matthew|Mark|Luke|John|Acts|Romans|Corinthians|Galatians|Ephesians|Philippians|Colossians|Thessalonians|Timothy|Titus|Philemon|Hebrews|James|Peter|Jude|Revelation)\s+\d+/i;
 
 const BAPTISM_CUE_RE = /^(?:Why do we baptise.*\?|(?:Question to Parents|Question to the congregation[^:]*|Baptism|Baptismal prayer|Address to Parents|Prayer of thanksgiving):)$/i;
@@ -450,13 +472,14 @@ export function parseMarkdown(mdText, options = {}) {
     const imp = checkImplicitAt(i);
     if (imp) {
       const slug = allocateSlug(imp.rawText);
-      const displayText = cleanHeadingDisplay(imp.rawText);
+      const shownText = imp.kind === "implicit" ? titleCaseCaps(imp.rawText) : imp.rawText;
+      const displayText = cleanHeadingDisplay(shownText);
       if (imp.tocLevel !== null) {
         headings.push({ level: imp.tocLevel, text: displayText, slug });
       }
       const cls = imp.kind === "reading" ? "reading-heading section-heading" : "implicit-heading section-heading";
       const actions = buildSectionActionsHtml(slug, displayText);
-      htmlParts.push(`<h${imp.htmlLevel} id="${escapeHtml(slug)}" class="${cls}">${renderInline(imp.rawText)}${actions}</h${imp.htmlLevel}>`);
+      htmlParts.push(`<h${imp.htmlLevel} id="${escapeHtml(slug)}" class="${cls}">${renderInline(shownText)}${actions}</h${imp.htmlLevel}>`);
       i += 1;
       continue;
     }

@@ -1,6 +1,6 @@
 import { FormEvent, ReactNode, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, BookOpen, Briefcase, FileText, Mail, Scale, ShieldCheck, Church, ExternalLink, Globe2, HandHeart, Landmark, LucideIcon, Scroll, Search } from 'lucide-react';
+import { ArrowRight, ExternalLink, Search } from 'lucide-react';
 import churchesRaw from '../data/churches.json';
 import identity from '../data/identity.json';
 import beliefs from '../data/beliefs.json';
@@ -28,15 +28,6 @@ const STATES: { code: ChurchRecord['state']; name: string }[] = [
 
 const DOCS = '/for-churches/forms-and-documents';
 
-const VALUE_ICONS: Record<string, LucideIcon> = {
-  'contemporary-reformed': Scroll,
-  'word-based': BookOpen,
-  'gospel-focused': Globe2,
-  'local-church-empowering': Church,
-  'prayerful-urgency': HandHeart,
-  'historic-orthodoxy': Landmark,
-};
-
 const STANDARDS = [
   { label: 'The Apostles’ Creed', to: `${DOCS}/creeds-and-confessions-01-ecumenical-creeds-01-the-apostles-creed` },
   { label: 'The Nicene Creed', to: `${DOCS}/creeds-and-confessions-01-ecumenical-creeds-02-the-nicene-creed` },
@@ -47,12 +38,12 @@ const STANDARDS = [
 ];
 
 const LEADER_LINKS = [
-  { icon: FileText, label: 'Forms & documents', detail: 'Liturgical forms, creeds and worship readings', to: DOCS },
-  { icon: Scale, label: 'Church Order (2022)', detail: 'Searchable, with cross-references', to: `${DOCS}/church-order-01-crca-church-order-2022` },
-  { icon: Landmark, label: 'Acts of Synod 2024', detail: 'Decisions and committee mandates', to: `${DOCS}/acts-of-synod-01-acts-of-synod-2024` },
-  { icon: BookOpen, label: 'Reading sermons', detail: 'Word of Salvation archive', to: '/sermons' },
-  { icon: ShieldCheck, label: 'Safe Church', detail: 'Policies, training and reporting', to: '/safe-church' },
-  { icon: Mail, label: 'Contact the office', detail: 'Find the right person', to: '/contact' },
+  { label: 'Forms & documents', detail: 'Liturgical forms, creeds and worship readings', to: DOCS },
+  { label: 'Church Order (2022)', detail: 'Searchable, with cross-references', to: `${DOCS}/church-order-01-crca-church-order-2022` },
+  { label: 'Acts of Synod 2024', detail: 'Decisions and committee mandates', to: `${DOCS}/acts-of-synod-01-acts-of-synod-2024` },
+  { label: 'Reading sermons', detail: 'Word of Salvation archive', to: '/sermons' },
+  { label: 'Safe Church', detail: 'Policies, training and reporting', to: '/safe-church' },
+  { label: 'Contact the office', detail: 'Find the right person', to: '/contact' },
 ];
 
 
@@ -159,8 +150,8 @@ export function HomePage() {
       {vacancies.length > 0 && (
         <section aria-labelledby="vacancies" className="border-b border-stone-200 bg-gold-50/60">
           <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-6 sm:px-6 md:flex-row md:items-start md:gap-8 lg:px-8">
-            <h2 id="vacancies" className="flex shrink-0 items-center gap-2 font-serif text-xl font-semibold text-navy-900">
-              <Briefcase className="h-5 w-5 text-teal-700" aria-hidden="true" /> Positions vacant
+            <h2 id="vacancies" className="shrink-0 font-serif text-xl font-semibold text-navy-900">
+              Positions vacant
             </h2>
             <ul className="flex-1 space-y-1.5 text-[0.98rem] text-stone-800">
               {vacancies.map((v) => (
@@ -202,22 +193,14 @@ export function HomePage() {
           {identity.missionAndVision.vision}
         </blockquote>
         <h3 className="mt-12 font-serif text-xl font-semibold text-navy-900">Our values</h3>
-        <ul className="mt-5 grid gap-px overflow-hidden rounded-md border border-stone-200 bg-stone-200 sm:grid-cols-2">
-          {identity.coreValues.items.map((v) => {
-            const Icon = VALUE_ICONS[v.id] ?? BookOpen;
-            return (
-              <li key={v.id} className="flex gap-4 bg-white p-5">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-700">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <span>
-                  <span className="block font-semibold text-navy-900">{v.title}</span>
-                  <span className="mt-1 block text-[0.95rem] leading-relaxed text-stone-600">{v.summary}</span>
-                </span>
-              </li>
-            );
-          })}
-        </ul>
+        <dl className="mt-4 grid gap-x-10 border-t border-stone-200 sm:grid-cols-2">
+          {identity.coreValues.items.map((v) => (
+            <div key={v.id} className="border-b border-stone-200 py-4">
+              <dt className="font-semibold text-navy-900">{v.title}</dt>
+              <dd className="mt-1 text-[0.95rem] leading-relaxed text-stone-600">{v.summary}</dd>
+            </div>
+          ))}
+        </dl>
         <Link to="/who-we-are/vision-values" className="mt-6 inline-flex items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
           Mission, vision and strategy <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
@@ -287,7 +270,6 @@ export function HomePage() {
             {LEADER_LINKS.map((l) => (
               <li key={l.to} className="border-b border-stone-300">
                 <Link to={l.to} className="group flex items-center gap-4 py-4">
-                  <l.icon className="h-5 w-5 shrink-0 text-teal-600" aria-hidden="true" />
                   <span className="flex-1">
                     <span className="block font-semibold text-navy-900 group-hover:text-teal-700">{l.label}</span>
                     <span className="block text-sm text-stone-600">{l.detail}</span>

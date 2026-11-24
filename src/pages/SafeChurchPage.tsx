@@ -4,15 +4,10 @@ import {
   AlertTriangle,
   ArrowLeft,
   ArrowRight,
-  Baby,
   ChevronRight,
-  FolderOpen,
-  HandHeart,
   Mail,
   Phone,
   Search,
-  ShieldCheck,
-  Users,
 } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import { RichHtml } from '../components/RichHtml';
@@ -28,12 +23,6 @@ import {
 import { NotFoundPage } from './NotFoundPage';
 import { usePageTitle } from '../utils/usePageTitle';
 
-const SECTION_ICONS = { ShieldCheck, Baby, Users, HandHeart, FolderOpen } as const;
-
-function SectionIcon({ name, className }: { name: string; className?: string }) {
-  const Icon = SECTION_ICONS[name as keyof typeof SECTION_ICONS] ?? ShieldCheck;
-  return <Icon className={className} aria-hidden="true" />;
-}
 
 const urgent = siteConfig.safeChurch.urgent;
 const tel = (n: string) => `tel:${n.replace(/\s+/g, '')}`;
@@ -129,10 +118,10 @@ function SafeChurchSearch({ content }: { content: SafeChurchContent }) {
               {results.map(({ page, snippet }) => (
                 <li key={page.path}>
                   <Link to={`/safe-church/${page.path}`} className="group block py-3">
-                    <span className="block text-xs font-semibold uppercase tracking-wide text-teal-700">
-                      {displayTitle(content, page.path.split('/')[0])}
+                    <span className="block font-semibold text-navy-900 group-hover:text-teal-700">
+                      {page.title}
+                      <span className="font-normal text-stone-500"> · {displayTitle(content, page.path.split('/')[0])}</span>
                     </span>
-                    <span className="block font-semibold text-navy-900 group-hover:text-teal-700">{page.title}</span>
                     <span className="mt-0.5 block text-sm leading-relaxed text-stone-600">{snippet}</span>
                   </Link>
                 </li>
@@ -163,7 +152,7 @@ function SafeChurchHub({ content }: { content: SafeChurchContent }) {
         eyebrow="Safe Church Unit"
         title="Safe Church"
         description={content.intro}
-        breadcrumbs={[{ label: 'For Churches', to: '/for-churches' }, { label: 'Safe Church' }]}
+        breadcrumbs={[{ label: 'For churches', to: '/for-churches' }, { label: 'Safe Church' }]}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
@@ -171,26 +160,18 @@ function SafeChurchHub({ content }: { content: SafeChurchContent }) {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-1">
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">Guidance & policy</p>
-          <h2 className="font-serif text-2xl font-bold text-navy-900 sm:text-3xl">Explore Safe Church</h2>
-        </div>
+        <h2 className="font-serif text-2xl font-semibold text-navy-900 sm:text-3xl">Guidance and policy</h2>
         <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {content.sections.map((s) => {
             const page = content.pages[s.path];
             const kids = page.children.map((c) => content.pages[c]).filter(Boolean);
             return (
               <article key={s.path} className="flex flex-col rounded-lg border border-stone-200 bg-white p-6 transition hover:border-teal-300">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-md bg-teal-50 text-teal-700">
-                    <SectionIcon name={s.icon} className="h-5 w-5" />
-                  </span>
-                  <h3 className="font-serif text-xl font-bold text-navy-900">
-                    <Link to={`/safe-church/${s.path}`} className="hover:text-teal-700">
-                      {s.title}
-                    </Link>
-                  </h3>
-                </div>
+                <h3 className="font-serif text-xl font-semibold text-navy-900">
+                  <Link to={`/safe-church/${s.path}`} className="hover:text-teal-700">
+                    {s.title}
+                  </Link>
+                </h3>
                 <p className="mt-3 text-sm leading-relaxed text-stone-600">{s.blurb}</p>
                 <ul className="mt-4 space-y-1.5 border-t border-stone-100 pt-4 text-sm">
                   {kids.slice(0, 6).map((k) => (
@@ -294,7 +275,7 @@ function SectionNav({ content, current }: { content: SafeChurchContent; current:
             .map((s) => (
               <li key={s.path}>
                 <Link to={`/safe-church/${s.path}`} className="flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-sm text-stone-700 hover:bg-stone-100 hover:text-navy-900">
-                  <SectionIcon name={s.icon} className="h-4 w-4 text-teal-600" /> {s.title}
+                  {s.title}
                 </Link>
               </li>
             ))}
