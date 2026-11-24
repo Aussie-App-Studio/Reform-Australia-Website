@@ -409,11 +409,17 @@ try {
 {
   const appText = fs.readFileSync(path.join(SRC_DIR, 'App.tsx'), 'utf8');
   const exact = new Set([...appText.matchAll(/path="([^"*:]+)"/g)].map((m) => m[1]));
+  const contentPaths = new Set(fs.readdirSync(path.join(SRC_DIR, 'data', 'pages')).filter((x) => x.endsWith('.json')).map((x) => readJson(`src/data/pages/${x}`).path));
+  for (const target of Object.values(readJson('src/data/legacyRedirects.json'))) {
+    const t = String(target).split('#')[0];
+    if (!exact.has(t) && !contentPaths.has(t) && !t.startsWith('/for-churches/forms-and-documents/') && !t.startsWith('/ministries/')) errors.push(`legacyRedirects.json: target ${target} is not a known page`);
+  }
   const isKnownRoute = (p) => {
     const clean = p.split(/[?#]/)[0].replace(/\/$/, '') || '/';
     if (exact.has(clean)) return true;
     if (clean.startsWith('/for-churches/forms-and-documents/')) return true; // validated above by doc ID
     if (clean === '/safe-church') return true;
+    if (contentPaths.has(clean)) return true;
     if (clean.startsWith('/safe-church/')) return safeChurchPaths.has(clean.slice('/safe-church/'.length));
     if (clean.startsWith('/sermons/')) return fs.existsSync(path.join(PUBLIC_DIR, 'data', 'sermons', 's', `${clean.slice(9)}.json`));
     return false;

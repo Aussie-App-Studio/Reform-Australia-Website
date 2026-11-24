@@ -13,6 +13,7 @@ This file provides context for Claude Code (and other AI coding assistants) when
 - **Install dependencies:** `npm install`
 - **Start local dev server (open in browser):** `npm run dev`
 - **Verify all data, assets & links:** `npm run verify`
+- **Full browser QA (every page, desktop + phone; fails on error screens, console errors, broken images/files, overflow):** `npm run build && npx vite preview --port 4174` then `npm run qa -- http://localhost:4174` (or pass the deployed preview URL). First time: `npx playwright install chromium`.
 - **Type-check and build production static files (`dist/`):** `npm run build`
 - **Preview production build locally:** `npm run preview`
 - **Publish live preview to GitHub Pages (`gh-pages` branch):** `npm run deploy:pages`
@@ -55,5 +56,6 @@ This file provides context for Claude Code (and other AI coding assistants) when
    - Migrated HTML is rendered with `components/RichHtml.tsx` (resolves `{{BASE}}` placeholders, routes in-site links through React Router).
    - Fixed routes get their browser-tab title from `ROUTE_TITLES` in `src/utils/usePageTitle.ts`; dynamic pages call `usePageTitle()`.
    - Contact form: set `siteConfig.contactForm.endpoint` (e.g. a Formspree URL) to send directly; empty = prepare an email in the visitor's mail app.
-   - Before finishing any change, run `npm run verify` and `npm run build` to ensure TypeScript types, internal routes, and asset references remain 100% valid.
+   - General content pages (Regional counsellors, Positions vacant, Trowel and Sword, etc.) are `src/data/pages/<slug>.json`, rendered by `src/pages/ContentPage.tsx` via the shared `StandardPage` template; old crca.org.au URLs redirect via `src/data/legacyRedirects.json`. The home page vacancies band reads the first list on the Positions vacant page.
+   - Before finishing any change, run `npm run verify`, `npm run build` and `npm run qa` to ensure TypeScript types, internal routes, and asset references remain 100% valid.
    - See `DROP_IN_GUIDE.md` for full deployment and content editing documentation.

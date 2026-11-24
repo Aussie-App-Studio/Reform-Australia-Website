@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
+  Facebook,
+  Globe,
+  Headphones,
+  Video,
+  Youtube,
   Clock,
   Loader2,
   MapPin,
@@ -591,31 +596,32 @@ export function ChurchDirectory({
                         </div>
                       </dl>
 
-                      <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm font-semibold">
-                        <a href={directionsUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-teal-700 underline-offset-4 hover:underline">
-                          Directions
+                      <div className="mt-3 flex flex-wrap items-center gap-2">
+                        <a href={directionsUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="inline-flex h-9 items-center gap-1.5 rounded-full bg-navy-900 px-3.5 text-sm font-semibold text-white hover:bg-navy-800">
+                          <Navigation className="h-4 w-4" aria-hidden="true" /> Directions
                         </a>
-                        {church.website && (
-                          <a href={church.website} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-teal-700 underline-offset-4 hover:underline">
-                            Website
-                          </a>
-                        )}
-                        {(church.youtube || church.videoUrl) && (
-                          <a href={church.youtube ?? church.videoUrl ?? ''} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-teal-700 underline-offset-4 hover:underline">
-                            {church.youtube ? 'YouTube' : 'Livestream'}
-                          </a>
-                        )}
-                        {church.facebook && (
-                          <a href={church.facebook} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-teal-700 underline-offset-4 hover:underline">
-                            {church.livestreamOnFacebook ? 'Facebook livestream' : 'Facebook'}
-                          </a>
-                        )}
-                        {church.podcast && (
-                          <a href={church.podcast} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-teal-700 underline-offset-4 hover:underline">
-                            Podcast
-                          </a>
-                        )}
-                      </p>
+                        {[
+                          church.website && { href: church.website, label: 'Website', Icon: Globe },
+                          (church.youtube || church.videoUrl) && { href: (church.youtube ?? church.videoUrl)!, label: church.youtube ? 'YouTube' : 'Livestream', Icon: church.youtube ? Youtube : Video },
+                          church.facebook && { href: church.facebook, label: church.livestreamOnFacebook ? 'Facebook livestream' : 'Facebook', Icon: Facebook },
+                          church.podcast && { href: church.podcast, label: 'Podcast', Icon: Headphones },
+                        ]
+                          .filter((x): x is { href: string; label: string; Icon: typeof Globe } => Boolean(x))
+                          .map(({ href, label, Icon }) => (
+                            <a
+                              key={label}
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              title={`${church.name} ${label}`}
+                              aria-label={`${church.name} ${label} (opens in a new tab)`}
+                              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 bg-white text-navy-800 hover:border-teal-600 hover:text-teal-700"
+                            >
+                              <Icon className="h-4 w-4" aria-hidden="true" />
+                            </a>
+                          ))}
+                      </div>
                     </article>
                   );
                 })}

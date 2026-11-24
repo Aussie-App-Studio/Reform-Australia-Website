@@ -211,6 +211,7 @@ export const navMenus: NavMenu[] = [
           { label: 'Strategies', to: '/who-we-are/vision-values#strategies' },
           { label: 'What we believe', to: '/who-we-are/beliefs' },
           { label: 'Our history', to: '/who-we-are/history' },
+          { label: 'Trowel and Sword', to: '/who-we-are/trowel-and-sword' },
         ],
       },
       {
@@ -257,7 +258,8 @@ export const navMenus: NavMenu[] = [
         items: [
           { label: 'Safe Church', to: '/safe-church' },
           { label: 'Candidacy', to: '/ministries/candidacy' },
-          { label: 'Shift coaching', to: '/ministries/shift-coaching' },
+          { label: 'Regional counsellors', to: '/for-churches/regional-counsellors' },
+          { label: 'Positions vacant', to: '/for-churches/positions-vacant' },
           { label: 'Contact the office', to: '/contact' },
         ],
       },

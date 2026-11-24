@@ -2,6 +2,15 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import {
   ArrowRight,
+  BookOpen,
+  Briefcase,
+  FileText,
+  GraduationCap,
+  HeartHandshake,
+  Landmark,
+  Mail,
+  Scale,
+  Users,
   ChevronDown,
   Download,
   ExternalLink,
@@ -38,14 +47,16 @@ const quickKeywords = [
 
 
 const MAIN_ENTRIES = [
-  { title: 'Forms & documents', detail: 'Liturgical forms, creeds and confessions, and worship readings, with a service-preparation tool.', to: '/for-churches/forms-and-documents' },
-  { title: 'Church Order', detail: 'The 2022 Book of Church Order, searchable and cross-referenced.', to: `/for-churches/forms-and-documents/${DOC_IDS.churchOrder2022}` },
-  { title: 'Acts of Synod', detail: 'Decisions of Synod 2024, committee mandates and resolutions.', to: `/for-churches/forms-and-documents/${DOC_IDS.actsOfSynod2024}` },
-  { title: 'Reading sermons', detail: 'The Word of Salvation archive: over 2,000 sermons for reading services.', to: '/sermons' },
-  { title: 'Safe Church', detail: 'Safeguarding policy, volunteer approval, training, forms and how to report a concern.', to: '/safe-church' },
-  { title: 'Candidacy', detail: 'The pathway to ordained ministry in the CRCA.', to: '/ministries/candidacy' },
-  { title: 'Shift coaching', detail: 'Coaching for pastors and church councils.', to: '/ministries/shift-coaching' },
-  { title: 'Contact the office', detail: 'Find the right committee or person for your question.', to: '/contact' },
+  { icon: FileText, title: 'Forms & documents', detail: 'Liturgical forms, creeds and confessions, and worship readings, with a service-preparation tool.', to: '/for-churches/forms-and-documents' },
+  { icon: Scale, title: 'Church Order', detail: 'The 2022 Book of Church Order, searchable and cross-referenced.', to: `/for-churches/forms-and-documents/${DOC_IDS.churchOrder2022}` },
+  { icon: Landmark, title: 'Acts of Synod', detail: 'Decisions of Synod 2024, committee mandates and resolutions.', to: `/for-churches/forms-and-documents/${DOC_IDS.actsOfSynod2024}` },
+  { icon: BookOpen, title: 'Reading sermons', detail: 'The Word of Salvation archive: over 2,000 sermons for reading services.', to: '/sermons' },
+  { icon: ShieldCheck, title: 'Safe Church', detail: 'Safeguarding policy, volunteer approval, training, forms and how to report a concern.', to: '/safe-church' },
+  { icon: GraduationCap, title: 'Candidacy', detail: 'The pathway to ordained ministry in the CRCA.', to: '/ministries/candidacy' },
+  { icon: Users, title: 'Shift coaching', detail: 'Coaching for pastors and church councils.', to: '/ministries/shift-coaching' },
+  { icon: Briefcase, title: 'Positions vacant', detail: 'Current vacancies in the CRCA and its churches.', to: '/for-churches/positions-vacant' },
+  { icon: HeartHandshake, title: 'Regional counsellors', detail: 'Confidential support for pastors, their families and church councils.', to: '/for-churches/regional-counsellors' },
+  { icon: Mail, title: 'Contact the office', detail: 'Find the right committee or person for your question.', to: '/contact' },
 ];
 
 export function ForChurchesPage() {
@@ -152,8 +163,11 @@ export function ForChurchesPage() {
           <ul className="grid gap-x-12 border-t border-stone-200 md:grid-cols-2">
             {MAIN_ENTRIES.map((e) => (
               <li key={e.to} className="border-b border-stone-200">
-                <Link to={e.to} className="group flex items-start justify-between gap-6 py-6">
-                  <span>
+                <Link to={e.to} className="group flex items-start gap-5 py-6">
+                  <span className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-700">
+                    <e.icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <span className="flex-1">
                     <span className="block font-serif text-2xl font-semibold text-navy-900 group-hover:text-teal-700">{e.title}</span>
                     <span className="mt-1 block max-w-md leading-relaxed text-stone-600">{e.detail}</span>
                   </span>
@@ -481,20 +495,12 @@ export function ForChurchesPage() {
                             <ExternalLink className="h-3.5 w-3.5" />
                           )}
                         </a>
-                      ) : res.id === 'regional-counsellors' ? (
-                        <Link
-                          to="/contact?topic=admin"
-                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-navy-900"
-                        >
-                          <span>Contact Classis / Admin for Regional Counsellors</span>
-                          <ArrowRight className="h-3.5 w-3.5" />
-                        </Link>
                       ) : (
                         <Link
                           to={res.url}
                           className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-navy-900"
                         >
-                          <span>Open {res.format}</span>
+                          <span>{res.format === 'Page' ? 'Read more' : `Open ${res.format}`}</span>
                           <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
                       )}

@@ -39,7 +39,7 @@ function Actions({ page }: { page: MinistryPageData }) {
           }
         >
           {a.label}
-          {isInternal(a.url) ? <ArrowRight className="h-4 w-4" aria-hidden="true" /> : <ExternalLink className="h-4 w-4" aria-hidden="true" />}
+          {isInternal(a.url) ? <ArrowRight className="h-4 w-4" aria-hidden="true" /> : /.(pdf|docx?)$/i.test(a.url) ? <Download className="h-4 w-4" aria-hidden="true" /> : <ExternalLink className="h-4 w-4" aria-hidden="true" />}
         </SmartLink>
       ))}
     </div>

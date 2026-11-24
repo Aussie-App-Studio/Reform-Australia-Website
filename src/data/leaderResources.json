@@ -8,7 +8,15 @@
       "url": "/sermons",
       "format": "Sermon Library",
       "isExternal": false,
-      "tags": ["word of salvation", "reading sermons", "sermons", "vacant", "pulpit supply", "elders", "worship"]
+      "tags": [
+        "word of salvation",
+        "reading sermons",
+        "sermons",
+        "vacant",
+        "pulpit supply",
+        "elders",
+        "worship"
+      ]
     },
     {
       "id": "safe-church-unit",
@@ -18,38 +26,68 @@
       "url": "/safe-church",
       "format": "Portal",
       "isExternal": false,
-      "tags": ["safe church", "safeguarding", "children", "compliance", "training", "abuse", "policy"]
+      "tags": [
+        "safe church",
+        "safeguarding",
+        "children",
+        "compliance",
+        "training",
+        "abuse",
+        "policy"
+      ]
     },
     {
       "id": "church-visitation-questions",
       "title": "Church Visitation Questions (Synod 2018)",
       "category": "Governance & Polity",
       "description": "Structured peer-review questions adopted by Synod 2018 to guide neighbouring church visitors in encouraging healthy doctrine, leadership care, and mission.",
-      "url": "/ministry-resources/governance/Church-Visitation-Questions-Update-from-Synod-2018.pdf",
-      "format": "PDF",
-      "isExternal": true,
-      "tags": ["visitation", "church visitation", "classis", "elders", "session", "review"]
+      "url": "/for-churches/church-visitation-questions",
+      "format": "Page",
+      "isExternal": false,
+      "tags": [
+        "visitation",
+        "church visitation",
+        "classis",
+        "elders",
+        "session",
+        "review"
+      ]
     },
     {
       "id": "church-health-check",
       "title": "Church Health Check (Ministry Formation & NCD-Australia)",
       "category": "Church Health & Coaching",
       "description": "Combines Belgic Confession church marks and CRCA Church Order distinctives with Natural Church Development (NCD) diagnostics across 8 characteristics of healthy churches.",
-      "url": "https://toolshed.ncd-australia.org/tools/ncd-church-survey",
-      "format": "Diagnostic Survey",
-      "isExternal": true,
+      "url": "/for-churches/church-health-check",
+      "format": "Page",
+      "isExternal": false,
       "videoEmbedUrl": "https://www.youtube-nocookie.com/embed/W8cGpr1590Q",
-      "tags": ["health check", "ncd", "natural church development", "diagnostic", "survey", "growth"]
+      "tags": [
+        "health check",
+        "ncd",
+        "natural church development",
+        "diagnostic",
+        "survey",
+        "growth"
+      ]
     },
     {
       "id": "regional-counsellors",
       "title": "Regional Counsellors Guide",
       "category": "Pastoral Support",
       "description": "Appointed by each Classis to provide confidential mentoring, pastoral consultation, conflict resolution assistance, and support for pastors, spouses, and Sessions.",
-      "url": "#regional-counsellors-details",
-      "format": "Role Guide",
+      "url": "/for-churches/regional-counsellors",
+      "format": "Page",
       "isExternal": false,
-      "tags": ["regional counsellors", "mentoring", "conflict", "pastors", "session", "classis", "counselling"],
+      "tags": [
+        "regional counsellors",
+        "mentoring",
+        "conflict",
+        "pastors",
+        "session",
+        "classis",
+        "counselling"
+      ],
       "keyDuties": [
         "Build supportive mentoring relationships with ministers and pastoral couples within the Classis.",
         "Offer confidential consultation to pastors navigating ministry pressures, transition, or family demands.",
@@ -66,20 +104,32 @@
       "title": "CRCA Public Statement on Marriage (6 Feb 2019)",
       "category": "Doctrinal & Public Statements",
       "description": "Reaffirms the CRCA's biblical conviction regarding marriage as a covenant between one man and one woman following Australia's federal redefinition of marriage.",
-      "url": "/ministry-resources/governance/CRCA-PUBLIC-STATEMENT-ON-MARRIAGE-6-Feb-2019.pdf",
-      "format": "PDF",
-      "isExternal": true,
-      "tags": ["marriage", "statement on marriage", "doctrine", "ethics", "public statement"]
+      "url": "/for-churches/statement-on-marriage",
+      "format": "Page",
+      "isExternal": false,
+      "tags": [
+        "marriage",
+        "statement on marriage",
+        "doctrine",
+        "ethics",
+        "public statement"
+      ]
     },
     {
       "id": "short-term-missions-code",
       "title": "Code of Best Practice for Short-Term Missions",
       "category": "Mission & Partnerships",
       "description": "Practical biblical standards developed by the CRCA to ensure short-term mission trips honour host communities, empower local leaders, and help rather than harm.",
-      "url": "/ministry-resources/governance/Mission-best-practice.pdf",
-      "format": "PDF",
-      "isExternal": true,
-      "tags": ["short-term missions", "missions", "swim", "world transform", "code of best practice"]
+      "url": "/for-churches/short-term-missions-best-practice",
+      "format": "Page",
+      "isExternal": false,
+      "tags": [
+        "short-term missions",
+        "missions",
+        "swim",
+        "world transform",
+        "code of best practice"
+      ]
     },
     {
       "id": "shift-brochure",
@@ -89,7 +139,14 @@
       "url": "/ministry-resources/shift/Shift-Brochure.pdf",
       "format": "PDF",
       "isExternal": true,
-      "tags": ["shift", "coaching", "mentoring", "candidacy", "pastors", "leadership"]
+      "tags": [
+        "shift",
+        "coaching",
+        "mentoring",
+        "candidacy",
+        "pastors",
+        "leadership"
+      ]
     },
     {
       "id": "missional-explorations-form",
@@ -99,7 +156,13 @@
       "url": "/ministry-resources/missional-explorations/Missional-Exploration-Application.pdf",
       "format": "PDF",
       "isExternal": true,
-      "tags": ["missional explorations", "church planting", "grant", "funding", "cpt"]
+      "tags": [
+        "missional explorations",
+        "church planting",
+        "grant",
+        "funding",
+        "cpt"
+      ]
     }
   ]
 }

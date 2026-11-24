@@ -51,43 +51,45 @@
   "history": {
     "heading": "History of the CRCA",
     "lead": "The Christian Reformed Churches of Australia (CRCA) includes over fifty congregations across Australia established since 1951 in just about every state and territory.",
-    "scriptureQuote": "All over the world this gospel is bearing fruit and growing...",
+    "scriptureQuote": "the gospel bearing fruit and growing throughout the whole world",
     "scriptureRef": "Colossians 1:6",
-    "reformedEmphasesIntro": "The CRCA stands within the Calvinist or Reformed stream of the Christian Church, which emphasises:",
+    "reformedEmphasesIntro": "The Calvinist or Reformed stream of the Christian Church emphasises:",
     "reformedEmphases": [
-      "God's honour, pre-eminence, and grace in all things",
+      "God’s honour, pre-eminence and grace in all things",
       "Reconciliation with God through Christ Jesus alone",
-      "The work of the Holy Spirit as essential for faith and spiritual growth",
-      "The Bible as the foundation of our faith's substance",
+      "The work of the Holy Spirit essential for faith and growth",
+      "The Bible as the foundation of our faith’s substance",
       "The church as a community in covenant with God"
     ],
     "foundingCommitments": [
-      "Embrace and uphold Biblical and Reformed theology as summarised in the Three Ecumenical Creeds (Apostles', Nicene, Athanasian) and Reformed Confessions (Belgic Confession, Heidelberg Catechism, Canons of Dort, Scottish Westminster Confession, and the Contemporary Testimony of the CRCNA).",
-      "Maintain a national profile able to enfold new settlers and seekers across every Australian state and capital city.",
-      "Be governed locally by elders chosen periodically by the congregation, linked with representative regional (Classis) and national (Synod) assemblies."
+      "Embraced and upheld Biblical and Reformed theology, as expressed in the ecumenical creeds and the Reformed confessions.",
+      "Had a national profile that could enfold new settlers and others interested in every state and capital city.",
+      "Was governed by a group of elders chosen periodically by the church and linked with representative state and national bodies."
     ],
     "milestones": [
       {
         "era": "1951",
-        "title": "Founding & Post-War Migration",
-        "description": "Formed following post-World War II migration of Dutch Christians to Australia, establishing the first CRCA congregation in 1951 with a strong commitment to biblical theology, elder-led governance, and church planting."
+        "title": "Formed after post-war migration",
+        "description": "The CRCA was formed as a result of the post-World War 2 migration of Dutch people to Australia. The desire to start a new denomination grew out of a commitment to establish churches that were Reformed, national in reach, and governed by elders."
       },
       {
-        "era": "1950s – 1980s",
-        "title": "Establishing National Roots & Theological Training",
-        "description": "New congregations were planted across major cities and regional towns in nearly every Australian state and territory, supported by denominational publications such as Trowel and Sword (launched October 1954) and Reformed theological education."
+        "era": "1954–2010",
+        "title": "Trowel and Sword",
+        "description": "The first edition of Trowel and Sword was published by and for the Reformed Churches of Australia and New Zealand in October 1954, with the final printed edition distributed in December 2010.",
+        "link": "/who-we-are/trowel-and-sword"
       },
       {
-        "era": "1990s",
-        "title": "Steady Growth Across Australia",
-        "description": "Through the 1990s the CRCA experienced steady numerical and geographical growth, expanding churches in local Australian communities and welcoming people from diverse cultural backgrounds."
+        "era": "To the 1990s",
+        "title": "Steady growth",
+        "description": "Up through the 1990s the CRCA experienced steady growth and saw churches established throughout Australia."
       },
       {
-        "era": "2000s – Present",
-        "title": "Reforming to Reach the Lost for Christ",
-        "description": "Since 2000 the denomination has renewed its missional commitment to planting new churches, reaching multicultural communities, equipping leaders, and partnering locally and globally to see the gospel bear fruit."
+        "era": "Since 2000",
+        "title": "Reforming to reach the lost for Christ",
+        "description": "Since 2000 the CRCA has renewed its commitment to be a church that is reforming to reach the lost for Christ. It adopted a fourfold task (Pray, Train, Grow, Align) as the framework to expand the CRCA’s gospel impact throughout Australia. In every state there are renewed efforts to continue the pattern of the first CRC churches in Australia: to plant many new churches and also welcome migrants who are making their home in Australia."
       }
-    ]
+    ],
+    "source": "https://crca.org.au/our-history/"
   },
   "fourFoldTask": {
     "intro": "As a denomination, we believe that we accomplish our mission and vision through four key tasks:",

@@ -193,3 +193,34 @@
     margin-top: 0;
   }
 }
+
+/* Per-section "Copy text" / "Copy as slides" buttons: only on hover or keyboard focus,
+   and not on touch screens (the toolbar's Copy menu covers those). */
+.crca-reader-article .section-actions,
+.crca-reader-article .qa-actions {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.crca-reader-article .section-heading:hover .section-actions,
+.crca-reader-article .qa-block:hover .qa-actions,
+.crca-reader-article .wcf-section-block:hover .qa-actions,
+.crca-reader-article .section-actions:focus-within,
+.crca-reader-article .qa-actions:focus-within {
+  opacity: 1;
+}
+.crca-reader-article .mini-copy-btn {
+  border-color: transparent;
+  background: transparent;
+  color: var(--color-teal-700);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.crca-reader-article .mini-copy-btn:hover {
+  background: var(--color-teal-50);
+}
+@media (hover: none) {
+  .crca-reader-article .section-actions,
+  .crca-reader-article .qa-actions {
+    display: none !important;
+  }
+}

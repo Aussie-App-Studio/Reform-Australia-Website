@@ -148,10 +148,7 @@ export function App() {
               {/* Clean Convenience Redirects from Legacy Paths */}
               <Route path="/about" element={<Navigate to="/who-we-are/vision-values" replace />} />
               <Route path="/resources" element={<Navigate to="/for-churches" replace />} />
-              <Route
-                path="/positions-vacant"
-                element={<Navigate to="/for-churches" replace />}
-              />
+              <Route path="/positions-vacant" element={<Navigate to="/for-churches/positions-vacant" replace />} />
               <Route
                 path="/forms"
                 element={<Navigate to="/for-churches/forms-and-documents" replace />}

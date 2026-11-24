@@ -280,7 +280,7 @@ function parseListBlock(lines, startIdx, renderInlineFn, shouldStopAt = null) {
 }
 
 function buildSectionActionsHtml(slug, title) {
-  return `<span class="section-actions no-print"><button type="button" class="mini-copy-btn" data-copy-section="${escapeHtml(slug)}" data-copy-format="clean" title="Copy ${escapeHtml(title)}">Copy</button><button type="button" class="mini-copy-btn" data-copy-section="${escapeHtml(slug)}" data-copy-format="slides" title="Copy ${escapeHtml(title)} for slides">Slides</button></span>`;
+  return `<span class="section-actions no-print"><button type="button" class="mini-copy-btn" data-copy-section="${escapeHtml(slug)}" data-copy-format="clean" title="Copy the text of this section" aria-label="Copy the text of ${escapeHtml(title)}">Copy text</button><button type="button" class="mini-copy-btn" data-copy-section="${escapeHtml(slug)}" data-copy-format="slides" title="Copy this section split into slide-sized parts, ready to paste into ProPresenter or PowerPoint" aria-label="Copy ${escapeHtml(title)} as slides">Copy as slides</button></span>`;
 }
 
 export function parseMarkdown(mdText, options = {}) {
@@ -523,7 +523,7 @@ export function parseMarkdown(mdText, options = {}) {
       const qaParts = [];
       const firstPara = parseParagraphAt(i);
       i = firstPara.nextIdx;
-      const qaActions = `<span class="qa-actions no-print"><button type="button" class="mini-copy-btn" data-copy-qa="${qNum}" data-copy-format="clean" title="Copy Q&amp;A ${qNum}">Copy</button><button type="button" class="mini-copy-btn" data-copy-qa="${qNum}" data-copy-format="slides" title="Copy Q&amp;A ${qNum} for slides">Slides</button></span>`;
+      const qaActions = `<span class="qa-actions no-print"><button type="button" class="mini-copy-btn" data-copy-qa="${qNum}" data-copy-format="clean" title="Copy the text of Q&amp;A ${qNum}">Copy text</button><button type="button" class="mini-copy-btn" data-copy-qa="${qNum}" data-copy-format="slides" title="Copy Q&amp;A ${qNum} split into slide-sized parts for ProPresenter or PowerPoint">Copy as slides</button></span>`;
       qaParts.push(firstPara.html.replace(/^<p>/, '<p class="qa-question">').replace(/<\/p>$/, `${qaActions}</p>`));
 
       // Collect answer paragraphs / blockquotes / lists up to next Q., heading, or hr
@@ -567,7 +567,7 @@ export function parseMarkdown(mdText, options = {}) {
       const secPara = parseParagraphAt(i);
       i = secPara.nextIdx;
       const wcfId = `${currentWcfChapter}-${secNum}`;
-      const wcfActions = `<span class="qa-actions no-print"><button type="button" class="mini-copy-btn" data-copy-wcf="${wcfId}" data-copy-format="clean" title="Copy WCF ${currentWcfChapter}:${secNum}">Copy</button><button type="button" class="mini-copy-btn" data-copy-wcf="${wcfId}" data-copy-format="slides" title="Copy WCF ${currentWcfChapter}:${secNum} for slides">Slides</button></span>`;
+      const wcfActions = `<span class="qa-actions no-print"><button type="button" class="mini-copy-btn" data-copy-wcf="${wcfId}" data-copy-format="clean" title="Copy the text of WCF ${currentWcfChapter}:${secNum}">Copy text</button><button type="button" class="mini-copy-btn" data-copy-wcf="${wcfId}" data-copy-format="slides" title="Copy WCF ${currentWcfChapter}:${secNum} split into slide-sized parts for ProPresenter or PowerPoint">Copy as slides</button></span>`;
       const innerHtml = secPara.html.replace(/<\/p>$/, `${wcfActions}</p>`);
       htmlParts.push(`<div class="wcf-section-block" id="wcf-${wcfId}" data-wcf-ch="${currentWcfChapter}" data-wcf-sec="${secNum}">${innerHtml}</div>`);
       continue;

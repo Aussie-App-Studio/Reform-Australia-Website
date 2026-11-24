@@ -55,7 +55,7 @@
   "contact": {
     "name": "KJ Tromp",
     "role": "CPT Convenor",
-    "email": "kj@southbarwon.org.au",
+    "email": "kj@openhouse.church",
     "topic": "church-planting"
   },
   "actions": [
@@ -90,7 +90,7 @@
     "src/data/contactTopics.json (church-planting)"
   ],
   "needsChecking": [
-    "KJ Tromp's email (kj@southbarwon.org.au) is only in the old data and contactTopics.json; the official page names KJ Tromp as CPT Convenor but shows no email.",
+    "KJ Tromp's email (kj@openhouse.church) is only in the old data and contactTopics.json; the official page names KJ Tromp as CPT Convenor but shows no email.",
     "The official page says the application is an online form; the site links the self-hosted PDF version instead. Check how applications should be submitted."
   ],
   "hero": {

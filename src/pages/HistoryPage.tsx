@@ -1,4 +1,5 @@
-import { BookOpen, CheckCircle2, ExternalLink, Quote } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { BookOpen, CheckCircle2, ExternalLink, Quote, ArrowRight } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import identity from '../data/identity.json';
 import { siteConfig } from '../data/siteConfig';
@@ -90,26 +91,21 @@ export function HistoryPage() {
             </h2>
           </div>
 
-          <div className="mt-10 space-y-6">
+          <ol className="relative mt-10 border-l-2 border-teal-500/40 pl-8">
             {history.milestones.map((milestone) => (
-              <div
-                key={milestone.era}
-                className="flex flex-col gap-3 rounded-lg border border-stone-200 bg-stone-50/70 p-6 sm:flex-row sm:items-start sm:gap-6"
-              >
-                <div className="shrink-0">
-                  <span className="inline-flex rounded-md bg-navy-900 px-4 py-1.5 font-serif text-sm font-bold text-teal-100">
-                    {milestone.era}
-                  </span>
-                </div>
-                <div>
-                  <h3 className="font-serif text-xl font-bold text-navy-900">{milestone.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-stone-700 sm:text-base">
-                    {milestone.description}
-                  </p>
-                </div>
-              </div>
+              <li key={milestone.era} className="relative pb-10 last:pb-0">
+                <span aria-hidden="true" className="absolute -left-[2.45rem] top-1.5 h-4 w-4 rounded-full border-4 border-stone-50 bg-teal-600" />
+                <p className="font-serif text-lg font-semibold text-teal-700">{milestone.era}</p>
+                <h3 className="mt-0.5 font-serif text-2xl font-semibold text-navy-900">{milestone.title}</h3>
+                <p className="mt-2 max-w-3xl leading-relaxed text-stone-700">{milestone.description}</p>
+                {'link' in milestone && milestone.link && (
+                  <Link to={milestone.link as string} className="mt-2 inline-flex items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
+                    Read more <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                )}
+              </li>
             ))}
-          </div>
+          </ol>
 
           {/* Historical Archive: Trowel and Sword (1954–2010) */}
           <div className="mt-12 rounded-lg border border-stone-200 bg-navy-900 p-7 text-white sm:p-8">

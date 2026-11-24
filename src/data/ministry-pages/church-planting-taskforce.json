@@ -37,7 +37,7 @@
   "contact": {
     "name": "Rev KJ Tromp",
     "role": "CPT Convenor",
-    "email": "kj@southbarwon.org.au",
+    "email": "kj@openhouse.church",
     "topic": "church-planting"
   },
   "actions": [
@@ -50,7 +50,7 @@
   "sources": [
     "https://crca.org.au/church-planting-taskforce/",
     "https://crca.org.au/missional-explorations/",
-    "crca-pages.txt church directory entry for South Barwon CRC (Rev KJ Tromp, kj@southbarwon.org.au)",
+    "crca-pages.txt church directory entry for South Barwon CRC (Rev KJ Tromp, kj@openhouse.church)",
     "src/data/internalMinistries.json",
     "src/data/contactTopics.json"
   ]
