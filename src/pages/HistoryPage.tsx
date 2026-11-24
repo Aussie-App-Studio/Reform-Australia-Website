@@ -49,13 +49,13 @@ export function HistoryPage() {
         <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:py-20">
           <h2 className="font-serif text-3xl font-semibold text-navy-900">How the CRCA began</h2>
           <p className="mt-4 text-lg leading-relaxed text-stone-700">
-            The CRCA was formed in 1951, after the post-war migration of Dutch people to Australia. The founders
-            wanted a church that:
+            The CRCA was formed in 1951, after the post-war migration of Dutch people to Australia. From the start, the new
+            denomination:
           </p>
           <ol className="mt-3 list-decimal space-y-3 pl-6 text-lg leading-relaxed text-stone-700 marker:font-semibold marker:text-navy-900">
             {history.foundingCommitments.map((goal) => (
               <li key={goal} className="pl-1">
-                {goal.charAt(0).toLowerCase() + goal.slice(1)}
+                {goal}
               </li>
             ))}
           </ol>
