@@ -9,6 +9,10 @@ This file provides context for Claude Code (and other AI coding assistants) when
 - **Maps:** MapLibre GL JS + Leaflet (`src/components/AustraliaChurchMap.tsx`, `src/components/ChurchDirectory.tsx`)
 - **Icons:** `lucide-react`
 
+## Where things live
+- **Code:** https://github.com/crca-web/crca-website (private; `main` publishes automatically). The original prototype is Jesse's repository, remote `jesse` (Aussie-App-Studio/Reform-Australia-Website); its `v2` branch and the GitHub Pages /v2/ preview are kept in step for review.
+- **Live (not indexed until launch):** https://crca-website.pages.dev (Cloudflare Pages project `crca-website`). `.github/workflows/deploy.yml` builds, pre-renders and publishes on every push to `main`.
+
 ## Quick Commands
 - **Install dependencies:** `npm install`
 - **Start local dev server (open in browser):** `npm run dev`

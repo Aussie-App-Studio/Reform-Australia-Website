@@ -37,9 +37,11 @@ writeFileSync(path.join(DIST, '.nojekyll'), '');
 // 2. Check out the current gh-pages branch in a temporary worktree.
 const branch = out('git rev-parse --abbrev-ref HEAD');
 const commit = out('git rev-parse --short HEAD');
-run('git fetch origin gh-pages');
+// The preview lives on Jesse's repository (remote "jesse" since the code moved to crca-web).
+const REMOTE = process.env.PAGES_REMOTE || (out('git remote').split(/\s+/).includes('jesse') ? 'jesse' : 'origin');
+run(`git fetch ${REMOTE} gh-pages`);
 const tmp = mkdtempSync(path.join(os.tmpdir(), 'gh-pages-'));
-run(`git worktree add --detach "${tmp}" origin/gh-pages`);
+run(`git worktree add --detach "${tmp}" ${REMOTE}/gh-pages`);
 
 try {
   // 3. Replace only the sub-folder.
@@ -66,9 +68,9 @@ try {
     console.log('Nothing changed on gh-pages.');
   } else {
     run(`git commit -q -m "Deploy ${branch}@${commit} preview to /${SUBDIR}/"`, tmp);
-    run('git push origin HEAD:gh-pages', tmp);
+    run(`git push ${REMOTE} HEAD:gh-pages`, tmp);
   }
-  const [owner, repo] = out('git remote get-url origin').replace(/\.git$/, '').split(/[/:]/).slice(-2);
+  const [owner, repo] = out(`git remote get-url ${REMOTE}`).replace(/\.git$/, '').split(/[/:]/).slice(-2);
   console.log(`\nPreview published: https://${owner.toLowerCase()}.github.io/${repo}/${SUBDIR}/`);
 } finally {
   run(`git worktree remove --force "${tmp}"`);
