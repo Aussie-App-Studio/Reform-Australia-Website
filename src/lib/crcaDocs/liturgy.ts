@@ -24,7 +24,10 @@ const SPEAKERS: Record<string, { label: string; role: 'leader' | 'people' }> = {
   People: { label: 'All', role: 'people' },
 };
 
-const SPEAKER_RE = /^\s*(Minister|Congregation|Leader|People|All|M|C|L)(?=[\s :]|$)/;
+// The forms mark speakers with a bare letter (M / C / L). Whole words only count with a colon
+// ("People:"), because forms also open lines with "People of God, dear friends",
+// "Congregation of our Lord Jesus Christ", "All members of…", which are not speaker cues.
+const SPEAKER_RE = /^\s*(?:(Minister|Congregation|Leader|People|All)(?=[\s ]*:)|(M|C|L)(?=[\s :]|$))/;
 
 const RUBRIC_RE =
   /^(optional\b|if (desired|appropriate|there)|here (the|follows)|the (minister|congregation|parents|candidates?|elders?|people|bride|groom|couple)\b[^.]{0,80}\b(stands?|rises?|kneels?|comes?|come|says?|respond|responds|answer|answers|sit|sits|faces?)\b)|\b(is|are|may be) (sung|read|said|prayed|offered)\b/i;
@@ -37,7 +40,7 @@ function startsWithSpeaker(p: HTMLElement): { speaker: string } | null {
   const m = (first.textContent ?? '').match(SPEAKER_RE);
   if (!m) return null;
   // A one-letter prefix must be followed by real text, not be a word like "C." on its own.
-  return { speaker: m[1] };
+  return { speaker: m[1] ?? m[2] };
 }
 
 function stripSpeaker(p: HTMLElement, speaker: string) {

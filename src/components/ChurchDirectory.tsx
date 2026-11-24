@@ -257,7 +257,7 @@ export function ChurchDirectory({
                 type="search"
                 value={query}
                 onChange={(e) => handleQueryInput(e.target.value)}
-                placeholder="Search church, suburb, city (e.g. Rockhampton), state (e.g. NSW), or any AU postcode..."
+                placeholder="Suburb, postcode or church"
                 aria-label="Filter churches by name, suburb, city, postcode, or state"
                 className="w-full rounded-md border border-stone-300 bg-stone-50 py-2.5 pl-10 pr-10 text-sm text-navy-900 placeholder:text-stone-600 focus:border-teal-500 focus:bg-white focus:outline-none [&::-webkit-search-cancel-button]:hidden"
               />
@@ -266,7 +266,7 @@ export function ChurchDirectory({
                   type="button"
                   onClick={() => handleQueryInput('')}
                   aria-label="Clear church search"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-stone-600 hover:bg-stone-200 hover:text-navy-900"
+                  className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-md p-2.5 text-stone-600 hover:bg-stone-200 hover:text-navy-900"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -280,7 +280,7 @@ export function ChurchDirectory({
                 disabled={locating}
                 aria-pressed={Boolean(userCoords)}
                 title={userCoords ? 'Turn off location sorting' : undefined}
-                className={`inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-xs font-semibold text-white transition-colors disabled:opacity-70 ${
+                className={`inline-flex min-h-11 items-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold text-white transition-colors disabled:opacity-70 ${
                   userCoords
                     ? 'bg-navy-900 hover:bg-navy-800'
                     : 'bg-teal-600 hover:bg-teal-700'
@@ -329,7 +329,7 @@ export function ChurchDirectory({
                         tabPrefix
                       )
                     }
-                    className={`rounded-full px-3.5 py-1 text-xs font-semibold transition-colors ${
+                    className={`min-h-10 rounded-full px-3.5 py-1 text-sm font-semibold transition-colors sm:min-h-0 sm:text-xs ${
                       active
                         ? 'bg-navy-900 text-white'
                         : 'bg-stone-100 text-navy-800 hover:bg-stone-200'

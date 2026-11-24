@@ -616,3 +616,6 @@
     color: #111111 !important;
   }
 }
+
+/* Signature lines ("_____") and long URLs must wrap instead of widening the page on phones. */
+.crca-reader-article { overflow-wrap: anywhere; }

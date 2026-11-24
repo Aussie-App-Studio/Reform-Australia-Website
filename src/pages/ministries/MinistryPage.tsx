@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowRight, Download, ExternalLink, Mail, Phone, PlayCircle } from 'lucide-react';
+import { ArrowRight, ChevronDown, Download, ExternalLink, Mail, Phone, PlayCircle } from 'lucide-react';
 import { PageHeader } from '../../components/PageHeader';
 import { YouTubeEmbedCard } from '../../components/YouTubeEmbedCard';
 import { ministryMegaMenuColumns } from '../../data/navigation';
@@ -51,7 +52,9 @@ type RelatedLink = { label: string; to: string; isExternal?: boolean };
 function Sidebar({ page, related, relatedTitle }: { page: MinistryPageData; related?: RelatedLink[]; relatedTitle: string }) {
   return (
     <div className="space-y-10">
-      <OnThisPage page={page} />
+      <div className="hidden lg:block">
+        <OnThisPage page={page} />
+      </div>
       {page.facts && page.facts.length > 0 && (
         <section aria-labelledby="facts">
           <h2 id="facts" className="text-sm font-semibold uppercase tracking-[0.08em] text-stone-500">
@@ -103,7 +106,7 @@ function Sidebar({ page, related, relatedTitle }: { page: MinistryPageData; rela
           <ul className="mt-2 divide-y divide-stone-200 border-y border-stone-200">
             {related.map((r) => (
               <li key={r.to}>
-                <SmartLink url={r.to} className="flex items-center justify-between gap-2 py-2.5 text-navy-900 hover:text-teal-700">
+                <SmartLink url={r.to} className="flex min-h-11 items-center justify-between gap-2 py-2.5 text-navy-900 hover:text-teal-700">
                   {r.label}
                   {r.isExternal ? <ExternalLink className="h-3.5 w-3.5 text-stone-400" aria-hidden="true" /> : <ArrowRight className="h-4 w-4 text-stone-400" aria-hidden="true" />}
                 </SmartLink>
@@ -133,8 +136,8 @@ function Figure({ img, className = '' }: { img: MinistryImage; className?: strin
   );
 }
 
-function OnThisPage({ page }: { page: MinistryPageData }) {
-  const items = [
+function contentsOf(page: MinistryPageData) {
+  return [
     ...page.body.filter((b) => b.id && b.heading).map((b) => ({ id: b.id!, label: b.heading! })),
     ...(page.steps ? [{ id: 'steps', label: page.steps.heading }] : []),
     ...(page.team?.length ? [{ id: 'team', label: 'Our team' }] : []),
@@ -142,6 +145,37 @@ function OnThisPage({ page }: { page: MinistryPageData }) {
     ...(page.gallery?.length ? [{ id: 'gallery', label: 'Photos' }] : []),
     ...(page.resources?.length ? [{ id: 'resources', label: 'Resources' }] : []),
   ];
+}
+
+/** Phones and tablets: a collapsed "On this page" menu above the article (the desktop list sits in the sidebar). */
+function MobileContents({ page }: { page: MinistryPageData }) {
+  const items = contentsOf(page);
+  if (items.length < 4) return null;
+  return (
+    <details className="group mb-10 rounded-md border border-stone-300 bg-white lg:hidden">
+      <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 font-semibold text-navy-900 [&::-webkit-details-marker]:hidden">
+        On this page
+        <ChevronDown className="h-5 w-5 text-stone-500 transition group-open:rotate-180" aria-hidden="true" />
+      </summary>
+      <ul className="border-t border-stone-200 py-1">
+        {items.map((i) => (
+          <li key={i.id}>
+            <a
+              href={`#${i.id}`}
+              onClick={(e) => (e.currentTarget.closest('details') as HTMLDetailsElement | null)?.removeAttribute('open')}
+              className="flex min-h-11 items-center px-4 text-navy-800 hover:bg-stone-50 hover:text-teal-700"
+            >
+              {i.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </details>
+  );
+}
+
+function OnThisPage({ page }: { page: MinistryPageData }) {
+  const items = contentsOf(page);
   if (items.length < 4) return null;
   return (
     <nav aria-labelledby="on-this-page">
@@ -151,7 +185,7 @@ function OnThisPage({ page }: { page: MinistryPageData }) {
       <ul className="mt-2 space-y-1.5 border-l-2 border-stone-200 pl-3">
         {items.map((i) => (
           <li key={i.id}>
-            <a href={`#${i.id}`} className="text-[0.95rem] text-navy-800 hover:text-teal-700">
+            <a href={`#${i.id}`} className="block py-0.5 text-[0.95rem] text-navy-800 hover:text-teal-700">
               {i.label}
             </a>
           </li>
@@ -231,6 +265,10 @@ export function StandardPage({
   relatedTitle?: string;
 }) {
   const resources = page.resources ?? [];
+  const [allNews, setAllNews] = useState(false);
+  const NEWS_LIMIT = 6;
+  const news = page.news ?? [];
+  const shownNews = allNews ? news : news.slice(0, NEWS_LIMIT);
 
   return (
     <>
@@ -258,6 +296,7 @@ export function StandardPage({
 
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-20 lg:px-8 lg:py-16">
         <article className="min-w-0 max-w-[70ch]">
+          <MobileContents page={page} />
           {page.body.map((sec, i) => (
             <section key={i} id={sec.id} className={`scroll-mt-28 ${i ? 'mt-12' : ''}`}>
               {sec.heading && <h2 className="font-serif text-2xl font-semibold text-navy-900">{sec.heading}</h2>}
@@ -316,7 +355,7 @@ export function StandardPage({
             <section id="news" className="mt-14 scroll-mt-28">
               <h2 className="font-serif text-2xl font-semibold text-navy-900">News</h2>
               <ul className="mt-4 divide-y divide-stone-200 border-y border-stone-200">
-                {page.news.map((n) => (
+                {shownNews.map((n) => (
                   <li key={n.id}>
                     <Link to={`/ministries/${page.slug}/news/${n.id}`} className="group flex gap-4 py-4">
                       {n.image && <img src={n.image} alt="" loading="lazy" className="hidden h-20 w-28 shrink-0 rounded object-cover sm:block" />}
@@ -329,6 +368,15 @@ export function StandardPage({
                   </li>
                 ))}
               </ul>
+              {news.length > NEWS_LIMIT && !allNews && (
+                <button
+                  type="button"
+                  onClick={() => setAllNews(true)}
+                  className="mt-4 inline-flex min-h-11 items-center gap-1.5 rounded-md border border-stone-300 bg-white px-4 font-semibold text-navy-900 hover:border-navy-900"
+                >
+                  Show all {news.length} news posts <ChevronDown className="h-4 w-4" aria-hidden="true" />
+                </button>
+              )}
             </section>
           )}
 

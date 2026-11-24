@@ -33,7 +33,7 @@ This file provides context for Claude Code (and other AI coding assistants) when
    - `src/data/ministries.json` — All 13 denominational ministries, descriptions, audience filters, and committee contacts.
    - `src/data/nextGenClubs.json` — CRCA Cadets & GEMS Girls' Clubs (`/ministries/cadets`, `/ministries/gems`).
    - `src/data/convention.json` — CRCA Youth Convention (`/ministries/youth-convention`).
-   - `src/data/swim.json` — Supporting Work in Ministry, Solomon Islands (`/ministries/swim`).
+   - `src/data/swim.json` — Supporting Work in Mission, Solomon Islands (`/ministries/swim`).
    - `src/data/internalMinistries.json` — Candidacy Committee, Shift Coaching, Local Church Outreach Training, Missional Explorations, Church Planting Taskforce, Ecumenical Relations (`/ministries/<slug>`).
    - `src/data/leaderResources.json` — `For Churches` resources (Word of Salvation reading sermons, Regional Counsellors, Church Health Check, searchable 2022 Church Order index).
    - `src/data/contactTopics.json` — Smart Contact Routing topics.

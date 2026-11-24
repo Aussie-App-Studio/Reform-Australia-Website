@@ -224,3 +224,6 @@
     display: none !important;
   }
 }
+
+/* Long unbroken runs (URLs, "_____" lines) wrap instead of widening the page on phones. */
+.crca-content, .crca-sermon { overflow-wrap: anywhere; }

@@ -112,10 +112,10 @@ export function HomePage() {
                 </button>
               </div>
             </form>
-            <ul className="mt-5 flex max-w-xl flex-wrap gap-x-4 gap-y-1.5 text-[0.95rem] text-navy-100">
+            <ul className="mt-4 flex max-w-xl flex-wrap gap-x-4 text-[0.95rem] text-navy-100">
               {STATES.map((s) => (
                 <li key={s.code}>
-                  <Link to={`/find-a-church?state=${s.code}`} className="underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white">
+                  <Link to={`/find-a-church?state=${s.code}`} className="inline-block py-2 underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white">
                     {s.code === 'ACT' ? 'ACT' : s.name}{' '}
                     <span className="tabular-nums text-navy-100/70">({allChurches.filter((c) => c.state === s.code).length})</span>
                   </Link>

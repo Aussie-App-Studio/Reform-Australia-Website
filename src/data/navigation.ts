@@ -132,7 +132,7 @@ export const ministryMegaMenuColumns: MinistryMegaMenuColumn[] = [
       {
         label: 'Solomon Islands SWIM',
         to: '/ministries/swim',
-        description: 'SWIM (Supporting Work in Ministry) is the CRCA’s mission base in Honiara, Solomon Islands, offering Bible teaching, leadership training and practical support.',
+        description: 'SWIM (Supporting Work in Mission) is the CRCA’s mission base in Honiara, Solomon Islands, offering Bible teaching, leadership training and practical support.',
       },
       {
         label: 'Ecumenical Relations',

@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { BackToTop } from './BackToTop';
 import { formatPageTitle, ROUTE_TITLES } from '../utils/usePageTitle';
 
 interface LayoutProps {
@@ -66,6 +67,7 @@ export function Layout({ children }: LayoutProps) {
       </main>
 
       <Footer />
+      <BackToTop />
     </div>
   );
 }

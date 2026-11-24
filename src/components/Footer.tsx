@@ -40,7 +40,7 @@ export function Footer() {
                 <h3 className="font-sans text-xs font-bold uppercase tracking-wider text-teal-100">
                   {col.title}
                 </h3>
-                <ul className="mt-4 space-y-2.5">
+                <ul className="mt-3 lg:mt-4 lg:space-y-2.5">
                   {col.links.map((link) => (
                     <li key={link.label}>
                       {link.isExternal ? (
@@ -48,7 +48,7 @@ export function Footer() {
                           href={link.to}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-sm text-navy-100/85 transition-colors hover:text-white"
+                          className="inline-flex items-center gap-1.5 py-2 text-sm text-navy-100/85 transition-colors hover:text-white lg:py-0"
                         >
                           <span>{link.label}</span>
                           <ExternalLink className="h-3 w-3 shrink-0 opacity-50" />
@@ -56,7 +56,7 @@ export function Footer() {
                       ) : (
                         <Link
                           to={link.to}
-                          className="text-sm text-navy-100/85 transition-colors hover:text-white"
+                          className="inline-block py-2 text-sm text-navy-100/85 transition-colors hover:text-white lg:py-0"
                         >
                           {link.label}
                         </Link>

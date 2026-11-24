@@ -75,14 +75,15 @@ async function visit(page, w, route) {
       window.scrollTo(0, 0);
     });
     await page.waitForTimeout(300);
-    const r = await page.evaluate(() => ({
+    const r = await page.evaluate((vw) => ({
       errorScreen: !!document.body.innerText.match(/Something went wrong displaying this page/),
       notFound: !!document.body.innerText.match(/We couldn.t find that page/),
-      overflow: document.documentElement.scrollWidth - window.innerWidth,
+      // phones zoom the page out instead of scrolling sideways, so compare with the real device width
+      overflow: Math.max(document.documentElement.scrollWidth, window.innerWidth) - vw,
       brokenImgs: [...document.images].filter((i) => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).map((i) => i.getAttribute('src')),
       links: [...document.querySelectorAll('a[href]')].map((a) => new URL(a.getAttribute('href'), location.href).href).filter((h) => h.startsWith(location.origin)),
       h1: document.querySelector('h1')?.textContent?.trim() ?? '',
-    }));
+    }), w);
     if (r.errorScreen) report(w, route, 'ERROR SCREEN');
     if (r.notFound) report(w, route, 'page not found');
     if (!r.h1) report(w, route, 'no <h1>');

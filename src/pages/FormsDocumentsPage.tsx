@@ -1184,7 +1184,7 @@ export function FormsDocumentsPage() {
                 href={EXTENSION_URLS.installGuide}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-500"
+                className="hidden items-center gap-2 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-500 lg:inline-flex"
               >
                 <Download className="h-4 w-4" />
                 <span>Get Offline Browser Extension</span>
@@ -1288,7 +1288,7 @@ export function FormsDocumentsPage() {
                         href={EXTENSION_URLS.installGuide}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-lg bg-teal-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-teal-500"
+                        className="hidden items-center gap-1.5 rounded-lg bg-teal-600 lg:inline-flex px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-teal-500"
                       >
                         <Download className="h-3.5 w-3.5" />
                         <span>Offline Extension</span>
@@ -1712,14 +1712,14 @@ export function FormsDocumentsPage() {
                   </div>
                 ) : (
                   /* Document Reader View */
-                  <div className="rounded-lg border border-stone-200 bg-white crca-reader-print-root">
+                  <div className="-mx-4 border-y border-stone-200 bg-white sm:mx-0 sm:rounded-lg sm:border-x crca-reader-print-root">
                     {/* Reader Toolbar */}
                     <div className="no-print border-b border-stone-200 bg-stone-50/70 px-4 py-3.5 sm:px-6 rounded-t-lg">
                       <div className="flex flex-wrap items-center justify-between gap-3">
                         <div className="flex flex-wrap items-center gap-2 text-xs">
                           <Link
                             to="/for-churches/forms-and-documents"
-                            className="inline-flex items-center gap-1 rounded-lg bg-white border border-stone-200 px-2.5 py-1 font-semibold text-navy-900 hover:border-teal-500 hover:text-teal-700"
+                            className="hidden items-center gap-1 rounded-lg bg-white border border-stone-200 px-2.5 py-1 font-semibold text-navy-900 hover:border-teal-500 hover:text-teal-700 lg:inline-flex"
                           >
                             <ArrowLeft className="h-3.5 w-3.5" />
                             <span>Library</span>
@@ -1885,7 +1885,7 @@ export function FormsDocumentsPage() {
                           <button
                             type="button"
                             onClick={() => window.print()}
-                            className="inline-flex items-center gap-1.5 rounded-lg bg-navy-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-navy-800"
+                            className="hidden items-center gap-1.5 rounded-lg bg-navy-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-navy-800 sm:inline-flex"
                           >
                             <Printer className="h-3.5 w-3.5" />
                             <span>Print / PDF</span>
@@ -1957,10 +1957,10 @@ export function FormsDocumentsPage() {
                     {renderedDocument.headings.length > 1 && (
                       <div className="no-print border-b border-stone-200 bg-white px-4 py-2.5 sm:px-6 xl:hidden">
                         <div className="flex flex-wrap items-center justify-between gap-2">
-                          <div className="flex items-center gap-2 flex-1 min-w-[220px]">
+                          <div className="flex min-w-0 flex-1 items-center gap-2">
                             <label
                               htmlFor="reader-toc-select"
-                              className="text-xs font-semibold text-stone-600 shrink-0"
+                              className="sr-only sm:not-sr-only sm:shrink-0 sm:text-xs sm:font-semibold sm:text-stone-600"
                             >
                               Jump to section:
                             </label>
@@ -1971,10 +1971,10 @@ export function FormsDocumentsPage() {
                                 jumpToHeading(e.target.value);
                                 e.target.value = '';
                               }}
-                              className="max-w-md flex-1 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-1 text-xs font-medium text-navy-900 focus:border-teal-500 focus:bg-white focus:outline-none"
+                              className="w-full min-w-0 max-w-md flex-1 rounded-lg border border-stone-300 bg-stone-50 px-3 py-2.5 text-sm font-medium text-navy-900 focus:border-teal-500 focus:bg-white focus:outline-none sm:py-1 sm:text-xs"
                             >
                               <option value="" disabled>
-                                Select section ({renderedDocument.headings.length})...
+                                Jump to a section ({renderedDocument.headings.length})…
                               </option>
                               {renderedDocument.headings.map((h) => (
                                 <option key={h.slug} value={h.slug}>
@@ -1989,7 +1989,7 @@ export function FormsDocumentsPage() {
                             aria-expanded={outlineOpen}
                             aria-controls="reader-document-outline"
                             onClick={() => setOutlineOpen((prev) => !prev)}
-                            className="inline-flex items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-1 text-xs font-semibold text-navy-800 hover:border-teal-500 hover:text-teal-700"
+                            className="hidden items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-1 text-xs font-semibold text-navy-800 hover:border-teal-500 hover:text-teal-700 sm:inline-flex"
                           >
                             <List className="h-3.5 w-3.5" />
                             <span>{outlineOpen ? 'Hide Outline' : 'Document Outline'}</span>
