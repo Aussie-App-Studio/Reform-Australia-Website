@@ -39,9 +39,18 @@
     }
   ],
   "facts": [
-    { "label": "Who it's for", "value": "CRCA churches with a local mission opportunity" },
-    { "label": "Funding", "value": "Matched with the local church, up to $2,500" },
-    { "label": "Run by", "value": "Church Planting Taskforce (CPT)" }
+    {
+      "label": "Who it's for",
+      "value": "CRCA churches with a local mission opportunity"
+    },
+    {
+      "label": "Funding",
+      "value": "Matched with the local church, up to $2,500"
+    },
+    {
+      "label": "Run by",
+      "value": "Church Planting Taskforce (CPT)"
+    }
   ],
   "contact": {
     "name": "KJ Tromp",
@@ -50,8 +59,16 @@
     "topic": "church-planting"
   },
   "actions": [
-    { "label": "Talk to the CPT", "url": "/contact?topic=church-planting", "kind": "primary" },
-    { "label": "Application form (PDF)", "url": "/ministry-resources/missional-explorations/Missional-Exploration-Application.pdf", "kind": "secondary" }
+    {
+      "label": "Talk to the CPT",
+      "url": "/contact?topic=church-planting",
+      "kind": "primary"
+    },
+    {
+      "label": "Application form (PDF)",
+      "url": "/ministry-resources/missional-explorations/Missional-Exploration-Application.pdf",
+      "kind": "secondary"
+    }
   ],
   "resources": [
     {
@@ -75,5 +92,10 @@
   "needsChecking": [
     "KJ Tromp's email (kj@southbarwon.org.au) is only in the old data and contactTopics.json; the official page names KJ Tromp as CPT Convenor but shows no email.",
     "The official page says the application is an online form; the site links the self-hosted PDF version instead. Check how applications should be submitted."
-  ]
+  ],
+  "hero": {
+    "src": "/images/stock/pexels-akilmazumder-1072824.webp",
+    "alt": "A seedling held in an open hand",
+    "credit": "Akil Mazumder, Pexels"
+  }
 }

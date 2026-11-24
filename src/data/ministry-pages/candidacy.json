@@ -122,5 +122,10 @@
     "https://crca.org.au/candidacy/",
     "src/data/internalMinistries.json (candidacy)",
     "src/data/contactTopics.json (candidacy)"
-  ]
+  ],
+  "hero": {
+    "src": "/images/stock/recharge.webp",
+    "alt": "People with open Bibles taking notes at a conference",
+    "credit": "CRCA image library"
+  }
 }

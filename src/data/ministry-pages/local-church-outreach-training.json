@@ -27,10 +27,22 @@
     }
   ],
   "facts": [
-    { "label": "Who it's for", "value": "CRCA churches and their members" },
-    { "label": "Program", "value": "Organic Outreach" },
-    { "label": "Partner", "value": "Organic Outreach International" },
-    { "label": "Support", "value": "Australian cohorts with ongoing coaching" }
+    {
+      "label": "Who it's for",
+      "value": "CRCA churches and their members"
+    },
+    {
+      "label": "Program",
+      "value": "Organic Outreach"
+    },
+    {
+      "label": "Partner",
+      "value": "Organic Outreach International"
+    },
+    {
+      "label": "Support",
+      "value": "Australian cohorts with ongoing coaching"
+    }
   ],
   "contact": {
     "name": "CRCA Administration",
@@ -38,12 +50,29 @@
     "topic": "outreach"
   },
   "actions": [
-    { "label": "Ask about Organic Outreach", "url": "/contact?topic=outreach", "kind": "primary" },
-    { "label": "Organic Outreach International", "url": "https://www.organicoutreach.org/", "kind": "secondary" }
+    {
+      "label": "Ask about Organic Outreach",
+      "url": "/contact?topic=outreach",
+      "kind": "primary"
+    },
+    {
+      "label": "Organic Outreach International",
+      "url": "https://www.organicoutreach.org/",
+      "kind": "secondary"
+    }
   ],
   "resources": [
-    { "label": "Organic Outreach International", "url": "https://www.organicoutreach.org/", "type": "link", "note": "Free downloadable resources for churches" },
-    { "label": "How Organic Outreach works", "url": "https://www.organicoutreach.org/how-it-works-2-0/", "type": "link" }
+    {
+      "label": "Organic Outreach International",
+      "url": "https://www.organicoutreach.org/",
+      "type": "link",
+      "note": "Free downloadable resources for churches"
+    },
+    {
+      "label": "How Organic Outreach works",
+      "url": "https://www.organicoutreach.org/how-it-works-2-0/",
+      "type": "link"
+    }
   ],
   "sources": [
     "https://crca.org.au/local-church-outreach-training/",
@@ -52,5 +81,10 @@
   "needsChecking": [
     "The 'How Organic Outreach works' link (https://www.organicoutreach.org/how-it-works-2-0/) is only in the old data; check it still works.",
     "The official page links to 'Previous Conference Sessions & Interviews', but that URL is not in the data, so it is mentioned without a link."
-  ]
+  ],
+  "hero": {
+    "src": "/images/stock/pexels-fauxels-3184418.webp",
+    "alt": "Hands joined together over a table",
+    "credit": "fauxels, Pexels"
+  }
 }

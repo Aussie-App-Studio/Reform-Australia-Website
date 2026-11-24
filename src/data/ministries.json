@@ -51,7 +51,9 @@
     "url": "/ministries/missional-explorations",
     "isExternal": false,
     "ctaLabel": "Explore Missional Explorations",
-    "highlights": ["Up to $2,500 matching seed funding from CPT"],
+    "highlights": [
+      "Up to $2,500 matching seed funding from CPT"
+    ],
     "contact": "KJ Tromp (CPT Convenor) — kj@southbarwon.org.au",
     "secondaryLinks": [
       {
@@ -90,7 +92,10 @@
     "url": "/ministries/candidacy",
     "isExternal": false,
     "ctaLabel": "View 11-Step Pathway",
-    "highlights": ["4 ordination tracks", "11-step pathway with 1-year vicariate"],
+    "highlights": [
+      "4 ordination tracks",
+      "11-step pathway with 1-year vicariate"
+    ],
     "contact": "Rev. Josh Hartog (Chair) — 0423 814 700 • joshhartog@outlook.com",
     "secondaryLinks": [
       {
@@ -167,9 +172,9 @@
     "megaMenuGroup": "global-mission",
     "homepageTab": "global",
     "iconName": "Globe2",
-    "url": "https://worldtransform.org.au/",
-    "isExternal": true,
-    "ctaLabel": "Visit worldtransform.org.au"
+    "url": "/ministries/world-transform",
+    "isExternal": false,
+    "ctaLabel": "Read about World Transform"
   },
   {
     "id": "swim-solomon-islands",

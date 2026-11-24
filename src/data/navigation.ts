@@ -126,9 +126,8 @@ export const ministryMegaMenuColumns: MinistryMegaMenuColumn[] = [
     items: [
       {
         label: 'World Transform',
-        to: 'https://worldtransform.org.au/',
+        to: '/ministries/world-transform',
         description: 'Christian development for the needy, through partners overseas.',
-        isExternal: true,
       },
       {
         label: 'Solomon Islands SWIM',
@@ -162,7 +161,7 @@ export const footerColumns: { title: string; links: NavLinkItem[] }[] = [
       { label: 'Church Planting Taskforce', to: '/ministries/church-planting-taskforce' },
       { label: 'Candidacy & Training', to: '/ministries/candidacy' },
       { label: 'Reformed Theological College', to: 'https://rtc.edu.au/', isExternal: true },
-      { label: 'World Transform', to: 'https://worldtransform.org.au/', isExternal: true },
+      { label: 'World Transform', to: '/ministries/world-transform' },
     ],
   },
   {

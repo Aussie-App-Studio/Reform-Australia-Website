@@ -114,5 +114,10 @@
     "The official page links to a 'Professional Development Process' page, but no URL for it is in the data, so it is not linked. Old data said to request the PDP guide from admin@crca.org.au; that instruction is not on the official page and was dropped.",
     "Author name 'William J McKay' (Me, an Evangelist?): the official page spells it 'Willian', which looks like a typo; old data has 'William J. McKay'.",
     "Shift brochure PDF has no extractable text, so its contents were not compared with this page."
-  ]
+  ],
+  "hero": {
+    "src": "/images/stock/mentoring.webp",
+    "alt": "A pastor on a video call with a coach",
+    "credit": "CRCA image library"
+  }
 }

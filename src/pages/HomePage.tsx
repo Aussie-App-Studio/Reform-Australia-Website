@@ -8,6 +8,7 @@ import { ministryMegaMenuColumns } from '../data/navigation';
 import type { ChurchRecord } from '../components/AustraliaChurchMap';
 import { loadAuLocations } from '../data/locationHubs';
 import { AustraliaDotMap } from '../components/AustraliaDotMap';
+import { getMinistryPage } from '../lib/ministryPages';
 
 const allChurches = churchesRaw as ChurchRecord[];
 
@@ -209,6 +210,10 @@ export function HomePage() {
           <div className="mt-10 grid gap-12 md:grid-cols-3 md:gap-10">
             {ministryMegaMenuColumns.map((col) => (
               <div key={col.id}>
+                {(() => {
+                  const photo = col.items.map((i) => getMinistryPage(i.to.split('/').pop() ?? '')?.hero).find(Boolean);
+                  return photo ? <img src={photo.src} alt={photo.alt} loading="lazy" className="mb-5 aspect-[3/2] w-full rounded-md object-cover" /> : null;
+                })()}
                 <h3 className="border-b-2 border-navy-900 pb-2 text-sm font-semibold uppercase tracking-[0.08em] text-navy-900">{col.heading}</h3>
                 <ul className="divide-y divide-stone-200">
                   {col.items.map((item) => {

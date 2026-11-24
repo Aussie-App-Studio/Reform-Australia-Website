@@ -23,9 +23,16 @@ export function MinistriesPage() {
             <ul className="divide-y divide-stone-200 border-y border-stone-200 lg:col-span-8">
               {col.items.map((item) => {
                 const slug = item.to.split('/').pop() ?? '';
-                const summary = getMinistryPage(slug)?.summary ?? item.description;
+                const mp = getMinistryPage(slug);
+                const summary = mp?.summary ?? item.description;
                 const inner = (
-                  <>
+                  <span className="flex gap-5">
+                    {mp?.hero ? (
+                      <img src={mp.hero.src} alt="" loading="lazy" className="hidden h-24 w-36 shrink-0 rounded-md object-cover sm:block" />
+                    ) : (
+                      <span className="hidden h-24 w-36 shrink-0 rounded-md bg-stone-100 sm:block" aria-hidden="true" />
+                    )}
+                    <span className="min-w-0 flex-1">
                     <span className="flex items-center justify-between gap-4">
                       <span className="font-serif text-xl font-semibold text-navy-900 group-hover:text-teal-700">{item.label}</span>
                       {item.isExternal ? (
@@ -35,7 +42,8 @@ export function MinistriesPage() {
                       )}
                     </span>
                     {summary && <span className="mt-1 block max-w-2xl leading-relaxed text-stone-600">{summary}</span>}
-                  </>
+                    </span>
+                  </span>
                 );
                 return (
                   <li key={item.to}>
