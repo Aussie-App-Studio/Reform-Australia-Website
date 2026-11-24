@@ -2,6 +2,20 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import identity from '../data/identity.json';
+import churchHistory from '../data/churchHistory.json';
+import churchesRaw from '../data/churches.json';
+
+const churchById = new Map((churchesRaw as { id: string; name: string; suburb: string; state: string }[]).map((c) => [c.id, c]));
+
+/** Congregations grouped by the decade they began. */
+const DECADES = (() => {
+  const groups = new Map<string, typeof churchHistory.congregations>();
+  for (const c of [...churchHistory.congregations].sort((a, b) => a.sort - b.sort)) {
+    const decade = `${Math.floor(c.sort / 10) * 10}s`;
+    groups.set(decade, [...(groups.get(decade) ?? []), c]);
+  }
+  return [...groups.entries()];
+})();
 
 const img = (name: string) => `${import.meta.env.BASE_URL}images/history/${name}.webp`;
 const CC_BY_SA_3 = 'https://creativecommons.org/licenses/by-sa/3.0/';
@@ -108,8 +122,8 @@ export function HistoryPage() {
           <div className="mt-10 grid gap-8 sm:grid-cols-2">
             <Photo
               src={img('geelong-reformed-church')}
-              alt="A bluestone Gothic-style church building with a rose window behind a low fence"
-              caption="Geelong Reformed Church, Newtown, Victoria."
+              alt="A stone Gothic-style church building with a rose window behind a low fence"
+              caption="Geelong Christian Reformed Church, Pakington Street, Geelong West, Victoria."
               credit="Mattinbgn, CC BY-SA 3.0"
               creditUrl={CC_BY_SA_3}
             />
@@ -121,6 +135,49 @@ export function HistoryPage() {
               creditUrl={CC_BY_SA_3}
             />
           </div>
+        </div>
+      </section>
+
+      <section className="border-t border-stone-200 bg-white">
+        <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:py-20">
+          <h2 className="font-serif text-3xl font-semibold text-navy-900">Our congregations</h2>
+          <p className="mt-4 text-lg leading-relaxed text-stone-700">{churchHistory.intro}</p>
+          {DECADES.map(([decade, list]) => (
+            <div key={decade} className="mt-10">
+              <h3 className="font-serif text-2xl font-semibold text-teal-700">{decade}</h3>
+              <ul className="mt-3 divide-y divide-stone-200 border-y border-stone-200">
+                {list.map((c) => {
+                  const church = churchById.get(c.id);
+                  if (!church) return null;
+                  return (
+                    <li key={c.id} className="grid gap-1 py-3 sm:grid-cols-[4.5rem_1fr] sm:gap-4">
+                      <span className="font-semibold tabular-nums text-navy-900">{c.year}</span>
+                      <span>
+                        <Link
+                          to={`/find-a-church?q=${encodeURIComponent(church.name)}`}
+                          className="font-semibold text-navy-900 underline-offset-4 hover:text-teal-700 hover:underline"
+                        >
+                          {church.name}
+                        </Link>
+                        <span className="text-stone-600">
+                          , {church.suburb} {church.state}
+                        </span>
+                        {'note' in c && c.note && <span className="mt-0.5 block text-[0.95rem] leading-snug text-stone-600">{c.note}.</span>}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
+          <p className="mt-10 leading-relaxed text-stone-600">
+            Dates come from congregations’ own websites, the Dutch Australian Cultural Centre and other published sources, and a few
+            are still being confirmed. If you can correct or add to this list, please{' '}
+            <Link to="/contact" className="font-semibold text-teal-700 underline-offset-4 hover:underline">
+              let the office know
+            </Link>
+            .
+          </p>
         </div>
       </section>
     </>
