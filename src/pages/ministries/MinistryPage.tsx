@@ -197,6 +197,12 @@ function OnThisPage({ page }: { page: MinistryPageData }) {
 }
 
 /** Full text of one news post: /ministries/:slug/news/:newsId */
+/** The alt text already written for this photo elsewhere on the ministry page, if any. */
+function altFor(page: MinistryPageData, src: string): string | undefined {
+  const images = [page.hero, ...(page.gallery ?? []), ...page.body.map((b) => b.image)];
+  return images.find((i) => i?.src === src && i.alt)?.alt;
+}
+
 export function MinistryNewsPage() {
   const { slug = '', newsId = '' } = useParams();
   const page = getMinistryPage(slug);
@@ -216,7 +222,7 @@ export function MinistryNewsPage() {
       />
       <article className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="max-w-[70ch]">
-          {item.image && <img src={item.image} {...responsive(item.image, '(min-width: 800px) 768px, 100vw')} alt="" className="mb-8 w-full rounded-md object-cover" />}
+          {item.image && <img src={item.image} {...responsive(item.image, '(min-width: 800px) 768px, 100vw')} alt={altFor(page, item.image) ?? item.title} className="mb-8 w-full rounded-md object-cover" />}
           {(item.paragraphs ?? [item.summary ?? '']).map((p, i) => (
             <p key={i} className="mt-4 text-[1.06rem] leading-relaxed text-stone-700 first:mt-0">
               {p}
@@ -341,7 +347,7 @@ export function StandardPage({
               <ul className="mt-5 grid gap-6 sm:grid-cols-2">
                 {page.team.map((t) => (
                   <li key={t.name} className="flex gap-4">
-                    {t.photo && <img src={t.photo} alt="" loading="lazy" className="h-20 w-20 shrink-0 rounded-full object-cover" />}
+                    {t.photo && <img src={t.photo} alt={t.name} loading="lazy" className="h-20 w-20 shrink-0 rounded-full object-cover" />}
                     <div>
                       <p className="font-semibold text-navy-900">{t.name}</p>
                       {t.role && <p className="text-sm text-teal-700">{t.role}</p>}

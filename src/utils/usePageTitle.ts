@@ -9,7 +9,8 @@ export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://crca.org.au')
 const DEFAULT_IMAGE = '/images/og/crca-default.jpg';
 
 export function formatPageTitle(title: string | null | undefined): string {
-  return title ? `${title} | ${SITE_TITLE_SUFFIX}` : `${SITE_TITLE_SUFFIX} | Reforming to Reach the Lost for Christ`;
+  // Short suffix: Google shows about 60 characters of a title.
+  return title ? `${title} | CRCA` : `${SITE_TITLE_SUFFIX} | Reforming to Reach the Lost for Christ`;
 }
 
 function setMeta(attr: 'name' | 'property', key: string, content: string) {

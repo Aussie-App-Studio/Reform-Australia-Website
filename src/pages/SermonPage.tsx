@@ -64,9 +64,9 @@ export function SermonPage() {
   }, [fontIdx]);
 
   usePageTitle(
-    sermon ? `${sermon.title} · Reading sermons` : 'Reading sermons',
+    sermon ? (sermon.ref ? `${sermon.title} (${sermon.ref})` : sermon.title) : 'Reading sermons',
     sermon
-      ? `A reading sermon on ${sermon.ref}${sermon.preacher ? ` by ${sermon.preacher}` : ''}, for reading aloud in church when no minister is available. From the CRCA’s Word of Salvation archive.`
+      ? `“${sermon.title}”: a reading sermon${sermon.ref ? ` on ${sermon.ref}` : ''}${sermon.preacher ? ` by ${sermon.preacher}` : ''}, for reading aloud in church when no minister is available. From the CRCA’s Word of Salvation archive.`
       : null
   );
 

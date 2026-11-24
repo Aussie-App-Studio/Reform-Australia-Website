@@ -28,6 +28,22 @@ const urgent = siteConfig.safeChurch.urgent;
 const tel = (n: string) => `tel:${n.replace(/\s+/g, '')}`;
 
 /** Always-visible "need help now" panel. */
+/** "How to report · Adult conduct" (section named, so pages with the same title stay distinct). */
+function safeChurchTitle(content: SafeChurchContent, page: ScPage): string {
+  const section = ancestorsOf(content, page.path)[0];
+  return `${displayTitle(content, page.path)} · ${section ? displayTitle(content, section.path) : 'Safe Church'}`;
+}
+
+/** The summary, or the page's opening text when the summary is short or only a lead-in ("must have:"). */
+function safeChurchDescription(page: ScPage): string {
+  const summary = page.summary?.trim() ?? '';
+  if (summary.length >= 90 && !/[:,]$/.test(summary)) return summary;
+  const text = page.html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  if (text.length < summary.length) return summary;
+  const cut = text.slice(0, 160);
+  return cut.length < text.length ? `${cut.slice(0, cut.lastIndexOf(' '))}…` : cut;
+}
+
 function UrgentHelpPanel({ compact = false }: { compact?: boolean }) {
   return (
     <aside
@@ -415,8 +431,8 @@ export function SafeChurchPage() {
 
   const page = content && subPath ? content.pages[subPath] : null;
   usePageTitle(
-    content ? (page ? `${displayTitle(content, page.path)} · Safe Church` : subPath ? 'Not found' : 'Safe Church') : 'Safe Church',
-    page?.summary || content?.intro
+    content ? (page ? safeChurchTitle(content, page) : subPath ? 'Not found' : 'Safe Church') : 'Safe Church',
+    page ? safeChurchDescription(page) : content?.intro
   );
 
   if (error) {
