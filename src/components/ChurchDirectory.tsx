@@ -217,13 +217,7 @@ export function ChurchDirectory({
   function handleSelectFromCard(churchId: string) {
     setSelectedChurchId(churchId);
     setSelectionNonce((n) => n + 1);
-    if (typeof window !== 'undefined' && !window.matchMedia('(min-width: 1024px)').matches) {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      mapWrapperRef.current?.scrollIntoView({
-        behavior: prefersReducedMotion ? 'auto' : 'smooth',
-        block: 'start',
-      });
-    }
+    // On phones the list comes first and the map sits below it, so don't pull the reader away from the list.
   }
 
   function resetAllFilters() {
@@ -467,7 +461,7 @@ export function ChurchDirectory({
           className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-12"
         >
           {/* Left: Filterable Church Cards */}
-          <div className="lg:col-span-5 order-2 lg:order-1">
+          <div className="lg:col-span-5">
             {searchResult.isLoadingLocations ? (
               <div className="rounded-lg border border-stone-200 bg-white p-10 text-center">
                 <Loader2 className="mx-auto h-8 w-8 animate-spin text-teal-600" />
@@ -641,8 +635,9 @@ export function ChurchDirectory({
           {/* Right: Interactive Australian Map */}
           <div
             ref={mapWrapperRef}
-            className="lg:col-span-7 order-1 lg:order-2 scroll-mt-[calc(var(--site-header-height,72px)+1rem)]"
+            className="lg:col-span-7 scroll-mt-[calc(var(--site-header-height,72px)+1rem)]"
           >
+            <h2 className="mb-3 font-serif text-xl font-semibold text-navy-900 lg:sr-only">Map of CRCA churches</h2>
             <AustraliaChurchMap
               churches={mapChurches}
               selectedChurchId={selectedChurchId}

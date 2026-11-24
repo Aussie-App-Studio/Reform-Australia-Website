@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ArrowRight, ChevronDown, ExternalLink, MapPin, Menu, X } from 'lucide-react';
+import { ArrowRight, ChevronDown, ExternalLink, Mail, MapPin, Menu, X } from 'lucide-react';
 import { CrcaLogo } from './CrcaLogo';
 import { navMenus, type NavLinkItem, type NavMenu } from '../data/navigation';
 
@@ -25,6 +25,7 @@ function MenuLink({ item, className, onNavigate }: { item: NavLinkItem; classNam
 export function Navbar() {
   const [openMenu, setOpenMenu] = useState<MenuId>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileSection, setMobileSection] = useState<MenuId>(null);
   const headerRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<number | null>(null);
   const location = useLocation();
@@ -134,16 +135,20 @@ export function Navbar() {
 
           {/* Mobile */}
           <div className="flex shrink-0 items-center gap-2 lg:hidden">
-            <Link to="/find-a-church" className="inline-flex items-center gap-1.5 rounded-md bg-navy-900 px-3 py-2 text-sm font-semibold text-white">
+            <Link to="/find-a-church" className="inline-flex h-11 items-center gap-1.5 rounded-md bg-navy-900 px-3 text-sm font-semibold text-white">
               <MapPin className="h-4 w-4 text-teal-400" aria-hidden="true" />
               Find a church
             </Link>
             <button
               type="button"
-              onClick={() => setMobileOpen((v) => !v)}
+              onClick={() => {
+                // open on the section for the current page
+                if (!mobileOpen) setMobileSection(navMenus.find((m) => isActive(m))?.id ?? null);
+                setMobileOpen((v) => !v);
+              }}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileOpen}
-              className="inline-flex items-center justify-center rounded-md border border-stone-300 p-2 text-navy-900"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-stone-300 text-navy-900"
             >
               {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -180,30 +185,58 @@ export function Navbar() {
         </div>
       )}
 
-      {/* Mobile menu */}
+      {/* Mobile menu: one tap-to-open section per menu */}
       {mobileOpen && (
-        <nav aria-label="Main" className="max-h-[calc(100dvh-5.5rem)] overflow-y-auto border-b border-stone-200 bg-white lg:hidden">
-          <div className="space-y-7 px-4 py-6 sm:px-6">
-            {navMenus.map((m) => (
-              <div key={m.id}>
-                <Link to={m.overview.to} className="font-serif text-xl font-semibold text-navy-900">
-                  {m.label}
-                </Link>
-                {m.columns.map((col) => (
-                  <ul key={col.heading} className="mt-2 border-t border-stone-200">
-                    {col.items.map((item) => (
-                      <li key={item.to} className="border-b border-stone-100">
-                        <MenuLink item={item} className="block py-2.5 text-navy-800" />
-                      </li>
-                    ))}
-                  </ul>
-                ))}
-              </div>
-            ))}
-            <Link to="/contact" className="block font-serif text-xl font-semibold text-navy-900">
-              Contact
-            </Link>
-          </div>
+        <nav aria-label="Main" className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto overscroll-contain border-b border-stone-200 bg-white lg:hidden">
+          <ul className="px-4 sm:px-6">
+            {navMenus.map((m) => {
+              const open = mobileSection === m.id;
+              const panelId = `mobile-menu-${m.id}`;
+              return (
+                <li key={m.id} className="border-b border-stone-200">
+                  <button
+                    type="button"
+                    aria-expanded={open}
+                    aria-controls={panelId}
+                    onClick={() => setMobileSection(open ? null : m.id)}
+                    className="flex min-h-14 w-full items-center justify-between gap-3 text-left font-serif text-xl font-semibold text-navy-900"
+                  >
+                    <span className="flex items-center gap-2.5">
+                      {isActive(m) && <span aria-hidden="true" className="h-2 w-2 rounded-full bg-teal-500" />}
+                      {m.label}
+                    </span>
+                    <ChevronDown className={`h-5 w-5 text-stone-500 transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
+                  </button>
+                  {open && (
+                    <div id={panelId} className="pb-5">
+                      <Link to={m.overview.to} className="mb-1 flex min-h-11 items-center gap-1.5 font-semibold text-teal-700">
+                        {m.overview.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      </Link>
+                      {m.columns.map((col) => (
+                        <div key={col.heading} className="mt-3">
+                          {m.columns.length > 1 && (
+                            <p className="pb-1 text-xs font-semibold uppercase tracking-[0.08em] text-stone-500">{col.heading}</p>
+                          )}
+                          <ul className="border-t border-stone-100">
+                            {col.items.map((item) => (
+                              <li key={item.to} className="border-b border-stone-100">
+                                <MenuLink item={item} className="flex min-h-11 items-center text-navy-800" />
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+            <li>
+              <NavLink to="/contact" className="flex min-h-14 items-center gap-2.5 font-serif text-xl font-semibold text-navy-900">
+                <Mail className="h-5 w-5 text-teal-600" aria-hidden="true" /> Contact
+              </NavLink>
+            </li>
+          </ul>
         </nav>
       )}
     </header>

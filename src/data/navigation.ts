@@ -240,7 +240,7 @@ export const navMenus: NavMenu[] = [
     activePrefixes: ['/for-churches', '/sermons', '/safe-church'],
     overview: {
       to: '/for-churches',
-      label: 'For churches',
+      label: 'All church resources',
       blurb: 'For ministers, elders, deacons and church administrators.',
     },
     columns: [
