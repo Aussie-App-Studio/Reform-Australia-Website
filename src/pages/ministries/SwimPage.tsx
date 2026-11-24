@@ -37,7 +37,7 @@ export function SwimPage() {
           <div className="flex flex-wrap gap-3">
             <Link
               to="/contact?topic=swim"
-              className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-500"
+              className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-500"
             >
               <span>Enquire About SWIM</span>
               <ArrowRight className="h-4 w-4" />
@@ -72,8 +72,8 @@ export function SwimPage() {
           {/* 1. Overview & Biblical Values */}
           <section id="swim-overview" className="scroll-mt-32 space-y-8">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
-              <div className="lg:col-span-6 rounded-2xl bg-navy-900 p-7 text-white shadow-sm sm:p-8">
-                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold-400">
+              <div className="lg:col-span-6 rounded-lg bg-navy-900 p-7 text-white sm:p-8">
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-100">
                   <Anchor className="h-4 w-4" />
                   <span>About SWIM</span>
                 </div>
@@ -92,7 +92,7 @@ export function SwimPage() {
                     <p className="mt-1 text-sm font-medium text-white">{swim.mission}</p>
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-gold-400">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-teal-100">
                       Our Vision
                     </span>
                     <p className="mt-1 text-sm leading-relaxed text-navy-100">{swim.vision}</p>
@@ -110,8 +110,8 @@ export function SwimPage() {
             </div>
 
             {/* Key Ministry Areas */}
-            <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs sm:p-8">
-              <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+            <div className="rounded-lg border border-stone-200 bg-white p-6 sm:p-8">
+              <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
                 Scope of Ministry
               </span>
               <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900">
@@ -121,7 +121,7 @@ export function SwimPage() {
                 {swim.keyMinistryAreas.map((area) => (
                   <span
                     key={area}
-                    className="rounded-xl border border-stone-200 bg-stone-50 px-3.5 py-2 text-xs font-semibold text-navy-900 sm:text-sm"
+                    className="rounded-md border border-stone-200 bg-stone-50 px-3.5 py-2 text-xs font-semibold text-navy-900 sm:text-sm"
                   >
                     {area}
                   </span>
@@ -132,7 +132,7 @@ export function SwimPage() {
             {/* 8 Core Biblical Values */}
             <div>
               <div className="max-w-2xl">
-                <span className="text-xs font-bold uppercase tracking-[0.14em] text-teal-700">
+                <span className="text-xs font-bold uppercase tracking-[0.08em] text-teal-700">
                   Foundations
                 </span>
                 <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900 sm:text-3xl">
@@ -148,7 +148,7 @@ export function SwimPage() {
                 {swim.coreValues.map((val, idx) => (
                   <article
                     key={val.title}
-                    className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs"
+                    className="rounded-lg border border-stone-200 bg-white p-6"
                   >
                     <div className="flex items-center justify-between gap-2">
                       <h3 className="font-serif text-lg font-bold text-navy-900">
@@ -170,7 +170,7 @@ export function SwimPage() {
           {/* 2. The Honiara Base */}
           <section
             id="swim-base"
-            className="scroll-mt-32 rounded-2xl border border-stone-200 bg-white p-7 shadow-xs sm:p-8"
+            className="scroll-mt-32 rounded-lg border border-stone-200 bg-white p-7 sm:p-8"
           >
             <div className="flex flex-col gap-4 border-b border-stone-200 pb-6 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-3xl">
@@ -198,7 +198,7 @@ export function SwimPage() {
               {swim.theBase.highlights.map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-xl border border-stone-200 bg-stone-50/70 p-5"
+                  className="rounded-md border border-stone-200 bg-stone-50/70 p-5"
                 >
                   <h3 className="font-serif text-base font-bold text-navy-900">{item.label}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-stone-700">{item.detail}</p>
@@ -206,7 +206,7 @@ export function SwimPage() {
               ))}
             </div>
 
-            <p className="mt-5 rounded-xl border border-teal-500/25 bg-teal-50/60 p-4 text-xs leading-relaxed text-navy-900 sm:text-sm">
+            <p className="mt-5 rounded-md border border-teal-500/25 bg-teal-50/60 p-4 text-xs leading-relaxed text-navy-900 sm:text-sm">
               {swim.theBase.bookingNote}
             </p>
           </section>
@@ -214,7 +214,7 @@ export function SwimPage() {
           {/* 3. Mission Opportunities */}
           <section id="swim-opportunities" className="scroll-mt-32 space-y-6">
             <div className="max-w-2xl">
-              <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+              <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
                 Serving Together
               </span>
               <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900 sm:text-3xl">
@@ -226,10 +226,10 @@ export function SwimPage() {
               {swim.opportunities.map((opp) => (
                 <article
                   key={opp.id}
-                  className="flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-6 shadow-xs"
+                  className="flex flex-col justify-between rounded-lg border border-stone-200 bg-white p-6"
                 >
                   <div>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-100 bg-teal-50 text-teal-700">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-md border border-teal-100 bg-teal-50 text-teal-700">
                       <HeartHandshake className="h-5 w-5" />
                     </div>
                     <h3 className="mt-4 font-serif text-lg font-bold text-navy-900">{opp.title}</h3>
@@ -253,7 +253,7 @@ export function SwimPage() {
               ))}
             </div>
 
-            <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs sm:p-7">
+            <div className="rounded-lg border border-stone-200 bg-white p-6 sm:p-7">
               <div className="flex items-start gap-3">
                 <Compass className="mt-1 h-5 w-5 shrink-0 text-teal-600" />
                 <div>
@@ -270,8 +270,8 @@ export function SwimPage() {
 
           {/* 4. Newsletters & Policies */}
           <section id="swim-resources" className="scroll-mt-32 grid grid-cols-1 gap-8 lg:grid-cols-12">
-            <div className="lg:col-span-7 rounded-2xl border border-stone-200 bg-white p-6 shadow-xs sm:p-7">
-              <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+            <div className="lg:col-span-7 rounded-lg border border-stone-200 bg-white p-6 sm:p-7">
+              <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
                 Updates & Field Reports
               </span>
               <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900">
@@ -284,7 +284,7 @@ export function SwimPage() {
                     href={nl.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between gap-3 rounded-xl border border-stone-200 bg-stone-50/70 px-4 py-3 text-sm font-semibold text-navy-900 transition-colors hover:border-teal-500 hover:bg-white"
+                    className="flex items-center justify-between gap-3 rounded-md border border-stone-200 bg-stone-50/70 px-4 py-3 text-sm font-semibold text-navy-900 transition-colors hover:border-teal-500 hover:bg-white"
                   >
                     <span className="flex items-center gap-2.5">
                       <FileText className="h-4 w-4 shrink-0 text-teal-700" />
@@ -296,7 +296,7 @@ export function SwimPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-6 shadow-xs sm:p-7">
+            <div className="lg:col-span-5 flex flex-col justify-between rounded-lg border border-stone-200 bg-white p-6 sm:p-7">
               <div>
                 <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
                   <ShieldCheck className="h-4 w-4" />
@@ -313,7 +313,7 @@ export function SwimPage() {
                       href={pol.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block rounded-xl border border-stone-200 bg-stone-50/70 p-4 transition-colors hover:border-teal-500 hover:bg-white"
+                      className="block rounded-md border border-stone-200 bg-stone-50/70 p-4 transition-colors hover:border-teal-500 hover:bg-white"
                     >
                       <div className="flex items-center justify-between gap-2 text-sm font-bold text-navy-900">
                         <span>{pol.title}</span>

@@ -122,7 +122,7 @@ export function ContactPage() {
             {/* Step 1: Topic Selector Grid */}
             <div className="lg:col-span-6 space-y-4">
               <div>
-                <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+                <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
                   Step 1 — Select Topic
                 </span>
                 <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900">
@@ -138,14 +138,14 @@ export function ContactPage() {
                       key={topic.id}
                       type="button"
                       onClick={() => handleSelectTopic(topic.id)}
-                      className={`flex items-start gap-4 rounded-2xl border p-4 text-left transition-all ${
+                      className={`flex items-start gap-4 rounded-lg border p-4 text-left transition-all ${
                         selected
-                          ? 'border-teal-600 bg-white shadow-md ring-2 ring-teal-500/20'
+                          ? 'border-teal-600 bg-white ring-2 ring-teal-500/20'
                           : 'border-stone-200 bg-white/80 hover:border-stone-300 hover:bg-white'
                       }`}
                     >
                       <div
-                        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border ${
+                        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-md border ${
                           selected
                             ? 'bg-teal-600 border-teal-600 text-white'
                             : 'bg-teal-50 border-teal-100 text-teal-700'
@@ -170,8 +170,8 @@ export function ContactPage() {
             {/* Step 2: Routed Contact Card + Form */}
             <div className="lg:col-span-6 space-y-6">
               {/* Direct Routing Card */}
-              <div className="rounded-2xl bg-navy-900 p-6 text-white shadow-sm sm:p-7">
-                <div className="text-xs font-bold uppercase tracking-[0.14em] text-gold-400">
+              <div className="rounded-lg bg-navy-900 p-6 text-white sm:p-7">
+                <div className="text-xs font-bold uppercase tracking-[0.08em] text-teal-100">
                   Direct Contact
                 </div>
                 <h3 className="mt-1.5 font-serif text-2xl font-bold text-white">
@@ -214,7 +214,7 @@ export function ContactPage() {
                       href={`tel:${activeTopic.phone.replace(/\s+/g, '')}`}
                       className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-3.5 py-2 font-semibold text-white hover:bg-white/20"
                     >
-                      <Phone className="h-4 w-4 text-gold-400" />
+                      <Phone className="h-4 w-4 text-teal-100" />
                       <span>{activeTopic.phone}</span>
                     </a>
                   )}
@@ -243,8 +243,8 @@ export function ContactPage() {
               </div>
 
               {/* Enquiry Form */}
-              <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs sm:p-7">
-                <div className="text-xs font-bold uppercase tracking-[0.14em] text-teal-700">
+              <div className="rounded-lg border border-stone-200 bg-white p-6 sm:p-7">
+                <div className="text-xs font-bold uppercase tracking-[0.08em] text-teal-700">
                   Step 2 — Send an Enquiry
                 </div>
                 <h3 className="mt-1 font-serif text-xl font-bold text-navy-900">
@@ -252,7 +252,7 @@ export function ContactPage() {
                 </h3>
 
                 {submittedTo ? (
-                  <div className="mt-5 rounded-xl border border-teal-500/40 bg-teal-50 p-5">
+                  <div className="mt-5 rounded-md border border-teal-500/40 bg-teal-50 p-5">
                     <div className="flex items-start gap-3">
                       <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" />
                       <div>
@@ -340,7 +340,7 @@ export function ContactPage() {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           placeholder="Full name"
-                          className="mt-1.5 w-full rounded-xl border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
+                          className="mt-1.5 w-full rounded-md border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
                         />
                       </div>
                       <div>
@@ -357,7 +357,7 @@ export function ContactPage() {
                           value={senderEmail}
                           onChange={(e) => setSenderEmail(e.target.value)}
                           placeholder="you@example.com.au"
-                          className="mt-1.5 w-full rounded-xl border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
+                          className="mt-1.5 w-full rounded-md border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
                         />
                       </div>
                     </div>
@@ -375,7 +375,7 @@ export function ContactPage() {
                         value={churchOrSuburb}
                         onChange={(e) => setChurchOrSuburb(e.target.value)}
                         placeholder="e.g., Scoresby, VIC or visiting enquiry"
-                        className="mt-1.5 w-full rounded-xl border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
+                        className="mt-1.5 w-full rounded-md border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
                       />
                     </div>
 
@@ -393,14 +393,14 @@ export function ContactPage() {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder={`Write your enquiry for ${activeTopic.routeToLabel}...`}
-                        className="mt-1.5 w-full rounded-xl border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
+                        className="mt-1.5 w-full rounded-md border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
                       />
                     </div>
 
                     <button
                       type="submit"
                       disabled={sending}
-                      className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-teal-700 disabled:opacity-60"
+                      className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-60"
                     >
                       <Send className="h-4 w-4" />
                       <span>Send Enquiry to {activeTopic.routeToLabel}</span>

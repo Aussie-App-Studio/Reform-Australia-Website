@@ -15,7 +15,7 @@ export function YouTubeEmbedCard({ youtubeId, title, subtitle }: YouTubeEmbedCar
   const [playing, setPlaying] = useState(false);
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-xs">
+    <div className="overflow-hidden rounded-lg border border-stone-200 bg-white">
       <div className="relative aspect-video bg-navy-950">
         {playing ? (
           <iframe

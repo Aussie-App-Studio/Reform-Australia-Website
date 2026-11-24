@@ -250,7 +250,7 @@ export function ChurchDirectory({
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Filter Controls Card */}
-        <div className="rounded-2xl border border-stone-200 bg-white p-4 shadow-xs sm:p-6">
+        <div className="rounded-lg border border-stone-200 bg-white p-4 sm:p-6">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
             <div className="relative flex-1">
               <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-teal-600" />
@@ -260,7 +260,7 @@ export function ChurchDirectory({
                 onChange={(e) => handleQueryInput(e.target.value)}
                 placeholder="Search church, suburb, city (e.g. Rockhampton), state (e.g. NSW), or any AU postcode..."
                 aria-label="Filter churches by name, suburb, city, postcode, or state"
-                className="w-full rounded-xl border border-stone-300 bg-stone-50 py-2.5 pl-10 pr-10 text-sm text-navy-900 placeholder:text-stone-600 focus:border-teal-500 focus:bg-white focus:outline-none [&::-webkit-search-cancel-button]:hidden"
+                className="w-full rounded-md border border-stone-300 bg-stone-50 py-2.5 pl-10 pr-10 text-sm text-navy-900 placeholder:text-stone-600 focus:border-teal-500 focus:bg-white focus:outline-none [&::-webkit-search-cancel-button]:hidden"
               />
               {query && (
                 <button
@@ -281,7 +281,7 @@ export function ChurchDirectory({
                 disabled={locating}
                 aria-pressed={Boolean(userCoords)}
                 title={userCoords ? 'Turn off location sorting' : undefined}
-                className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold text-white shadow-xs transition-colors disabled:opacity-70 ${
+                className={`inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-xs font-semibold text-white transition-colors disabled:opacity-70 ${
                   userCoords
                     ? 'bg-navy-900 hover:bg-navy-800'
                     : 'bg-teal-600 hover:bg-teal-700'
@@ -470,7 +470,7 @@ export function ChurchDirectory({
           {/* Left: Filterable Church Cards */}
           <div className="lg:col-span-5 order-2 lg:order-1">
             {searchResult.isLoadingLocations ? (
-              <div className="rounded-2xl border border-stone-200 bg-white p-10 text-center">
+              <div className="rounded-lg border border-stone-200 bg-white p-10 text-center">
                 <Loader2 className="mx-auto h-8 w-8 animate-spin text-teal-600" />
                 <h3 className="mt-3 font-serif text-lg font-bold text-navy-900">
                   Looking up Australian location...
@@ -480,7 +480,7 @@ export function ChurchDirectory({
                 </p>
               </div>
             ) : filteredChurches.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-stone-300 bg-white p-8 text-center sm:p-10">
+              <div className="rounded-lg border border-dashed border-stone-300 bg-white p-8 text-center sm:p-10">
                 <MapPin className="mx-auto h-8 w-8 text-stone-600" />
                 <h3 className="mt-3 font-serif text-lg font-bold text-navy-900">
                   {searchResult.bannerKind === 'invalid-postcode'
@@ -551,12 +551,12 @@ export function ChurchDirectory({
                         cardRefs.current[church.id] = el;
                       }}
                       onClick={() => handleSelectFromCard(church.id)}
-                      className={`cursor-pointer rounded-2xl border bg-white p-5 transition-all ${
+                      className={`cursor-pointer rounded-lg border bg-white p-5 transition-all ${
                         !showAllMobile && i >= MOBILE_LIST_LIMIT ? 'max-lg:hidden ' : ''
                       }${
                         isSelected
-                          ? 'border-teal-600 shadow-md ring-2 ring-teal-500/25'
-                          : 'border-stone-200 hover:border-teal-500/40 hover:shadow-sm'
+                          ? 'border-teal-600 ring-2 ring-teal-500/25'
+                          : 'border-stone-200 hover:border-teal-500/40'
                       }`}
                     >
                       <div className="flex flex-wrap items-start justify-between gap-2">
@@ -580,7 +580,7 @@ export function ChurchDirectory({
                         </div>
 
                         {distanceKm !== null && (
-                          <span className="shrink-0 rounded-full bg-gold-50 border border-gold-400/50 px-2.5 py-0.5 text-[11px] font-bold text-gold-600">
+                          <span className="shrink-0 rounded-full bg-gold-50 border border-gold-400/50 px-2.5 py-0.5 text-[11px] font-bold text-stone-600">
                             {distanceKm < 1
                               ? '< 1 km'
                               : `${distanceKm < 10 ? distanceKm.toFixed(1) : Math.round(distanceKm)} km`}
@@ -590,7 +590,7 @@ export function ChurchDirectory({
 
                       <div className="mt-2.5 space-y-1.5 text-xs text-stone-700">
                         <div className="flex items-start gap-2">
-                          <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-600" />
+                          <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-stone-600" />
                           <span>
                             {church.address}{' '}
                             <a
@@ -696,7 +696,7 @@ export function ChurchDirectory({
                   <button
                     type="button"
                     onClick={() => setShowAllMobile(true)}
-                    className="w-full rounded-2xl border border-dashed border-teal-500/50 bg-teal-50 px-5 py-4 text-sm font-semibold text-teal-800 hover:bg-teal-100 lg:hidden"
+                    className="w-full rounded-lg border border-dashed border-teal-500/50 bg-teal-50 px-5 py-4 text-sm font-semibold text-teal-800 hover:bg-teal-100 lg:hidden"
                   >
                     Show all {filteredChurches.length} churches
                   </button>

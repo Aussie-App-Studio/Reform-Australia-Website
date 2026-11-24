@@ -72,7 +72,7 @@ export function BeliefsPage() {
       <section className="bg-stone-50 py-14 sm:py-18">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
-            <div className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+            <div className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
               In Plain English
             </div>
             <h2 className="mt-1.5 font-serif text-3xl font-bold text-navy-900">
@@ -88,7 +88,7 @@ export function BeliefsPage() {
             {beliefsData.gospelSummary.map((point) => (
               <div
                 key={point.number}
-                className="flex flex-col rounded-2xl border border-stone-200 bg-white p-6 shadow-xs"
+                className="flex flex-col rounded-lg border border-stone-200 bg-white p-6"
               >
                 <span className="font-serif text-2xl font-bold text-teal-600">{point.number}</span>
                 <h3 className="mt-3 font-serif text-lg font-bold text-navy-900">{point.title}</h3>
@@ -104,7 +104,7 @@ export function BeliefsPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-teal-700">
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.08em] text-teal-700">
                 <BookOpen className="h-4 w-4" />
                 <span>Confessional Standards</span>
               </div>
@@ -124,7 +124,7 @@ export function BeliefsPage() {
                 onChange={(e) => setFilterQuery(e.target.value)}
                 placeholder="Search creeds & confessions..."
                 aria-label="Filter creeds or confession articles"
-                className="w-full rounded-xl border border-stone-300 bg-stone-50 py-2 pl-9 pr-3 text-sm text-navy-900 placeholder:text-stone-600 focus:border-teal-500 focus:bg-white focus:outline-none"
+                className="w-full rounded-md border border-stone-300 bg-stone-50 py-2 pl-9 pr-3 text-sm text-navy-900 placeholder:text-stone-600 focus:border-teal-500 focus:bg-white focus:outline-none"
               />
             </div>
           </div>
@@ -156,7 +156,7 @@ export function BeliefsPage() {
                       'beliefs'
                     )
                   }
-                  className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors ${
+                  className={`rounded-md px-4 py-2.5 text-sm font-semibold transition-colors ${
                     selected
                       ? 'bg-navy-900 text-white'
                       : 'bg-stone-100 text-navy-800 hover:bg-stone-200'
@@ -177,7 +177,7 @@ export function BeliefsPage() {
           >
             {activeTab === 'creeds' ? (
               filteredCreeds.length === 0 ? (
-                <p className="rounded-xl border border-stone-200 bg-stone-50 p-6 text-sm text-stone-600">
+                <p className="rounded-md border border-stone-200 bg-stone-50 p-6 text-sm text-stone-600">
                   No creed text matched “{filterQuery}”.
                 </p>
               ) : (
@@ -186,7 +186,7 @@ export function BeliefsPage() {
                   return (
                     <div
                       key={creed.id}
-                      className="rounded-2xl border border-stone-200 bg-stone-50/70 overflow-hidden"
+                      className="rounded-lg border border-stone-200 bg-stone-50/70 overflow-hidden"
                     >
                       <button
                         type="button"
@@ -229,12 +229,12 @@ export function BeliefsPage() {
             ) : (
               activeConfession && (
                 <div className="space-y-5">
-                  <div className="flex flex-col gap-4 rounded-2xl border border-stone-200 bg-stone-50 p-6 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex flex-col gap-4 rounded-lg border border-stone-200 bg-stone-50 p-6 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                       <h3 className="font-serif text-2xl font-bold text-navy-900">
                         {activeConfession.title}
                       </h3>
-                      <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-gold-600">
+                      <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-stone-600">
                         Authored / Adopted: {activeConfession.author}
                       </p>
                       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-stone-700">
@@ -244,7 +244,7 @@ export function BeliefsPage() {
                     <div className="flex flex-wrap items-center gap-2.5 shrink-0">
                       <Link
                         to={`/for-churches/forms-and-documents/${activeConfession.readerDocId}`}
-                        className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-4 py-2.5 text-xs font-semibold text-white hover:bg-teal-700"
+                        className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-4 py-2.5 text-xs font-semibold text-white hover:bg-teal-700"
                       >
                         <BookOpen className="h-4 w-4" />
                         <span>Read Full Text</span>
@@ -254,7 +254,7 @@ export function BeliefsPage() {
                         href={activeConfession.pdfUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-xl bg-navy-900 px-4 py-2.5 text-xs font-semibold text-white hover:bg-navy-800"
+                        className="inline-flex items-center gap-2 rounded-md bg-navy-900 px-4 py-2.5 text-xs font-semibold text-white hover:bg-navy-800"
                       >
                         <Download className="h-4 w-4 text-teal-400" />
                         <span>Download Official PDF</span>
@@ -263,7 +263,7 @@ export function BeliefsPage() {
                   </div>
 
                   {filteredSections.length === 0 ? (
-                    <p className="rounded-xl border border-stone-200 bg-stone-50 p-6 text-sm text-stone-600">
+                    <p className="rounded-md border border-stone-200 bg-stone-50 p-6 text-sm text-stone-600">
                       No confession summary section matched “{filterQuery}”.
                     </p>
                   ) : (
@@ -272,7 +272,7 @@ export function BeliefsPage() {
                       return (
                         <div
                           key={sec.heading}
-                          className="rounded-2xl border border-stone-200 bg-stone-50/70 overflow-hidden"
+                          className="rounded-lg border border-stone-200 bg-stone-50/70 overflow-hidden"
                         >
                           <button
                             type="button"
@@ -303,7 +303,7 @@ export function BeliefsPage() {
             )}
           </div>
 
-          <div className="mt-8 rounded-2xl border border-gold-400/40 bg-gold-50 p-5 text-sm leading-relaxed text-navy-900">
+          <div className="mt-8 rounded-lg border border-gold-400/40 bg-gold-50 p-5 text-sm leading-relaxed text-navy-900">
             <div>
               <strong>Additional Reformed Standards:</strong> {beliefsData.additionalNote}
             </div>

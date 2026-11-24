@@ -40,7 +40,7 @@ export function FootnotePopover({
       tabIndex={-1}
       role="dialog"
       aria-label={`Footnote ${footnote.listLabel}`}
-      className="no-print fixed bottom-4 right-4 z-50 w-[min(92vw,26rem)] rounded-2xl border border-stone-300 bg-white p-4 shadow-2xl ring-1 ring-navy-900/10 focus:outline-none"
+      className="no-print fixed bottom-4 right-4 z-50 w-[min(92vw,26rem)] rounded-lg border border-stone-300 bg-white p-4 shadow-2xl ring-1 ring-navy-900/10 focus:outline-none"
     >
       <div className="flex items-center justify-between gap-2 border-b border-stone-200 pb-2">
         <span className="text-xs font-bold uppercase tracking-wider text-teal-700">

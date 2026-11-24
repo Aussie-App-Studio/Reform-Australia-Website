@@ -101,53 +101,53 @@ export function SermonPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white print:bg-none print:text-black">
-        <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-teal-500/15 blur-3xl print:hidden" />
+      <section className="border-b border-stone-200 bg-stone-50 text-navy-900">
+        <div aria-hidden="true" className="hidden" />
         <div className="relative mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:py-14">
           <nav aria-label="Breadcrumb" className="mb-5 print:hidden">
-            <ol className="flex flex-wrap items-center gap-1.5 text-xs font-medium text-navy-100">
+            <ol className="flex flex-wrap items-center gap-1.5 text-sm text-stone-600">
               <li>
-                <Link to="/sermons" className="hover:text-white">
+                <Link to="/sermons" className="hover:text-navy-900 hover:underline underline-offset-4">
                   Word of Salvation
                 </Link>
               </li>
               {sermon?.book && (
                 <li className="flex items-center gap-1.5">
-                  <ChevronRight className="h-3.5 w-3.5 text-teal-400" aria-hidden="true" />
-                  <Link to={`/sermons?book=${encodeURIComponent(sermon.book)}${sermon.group ? `&g=${sermon.group}` : ''}`} className="hover:text-white">
+                  <ChevronRight className="h-3.5 w-3.5 text-stone-400" aria-hidden="true" />
+                  <Link to={`/sermons?book=${encodeURIComponent(sermon.book)}${sermon.group ? `&g=${sermon.group}` : ''}`} className="hover:text-navy-900 hover:underline underline-offset-4">
                     {sermon.book}
                   </Link>
                 </li>
               )}
             </ol>
           </nav>
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold-400 print:text-black">
+          <p className="text-sm font-semibold text-teal-700">
             {sermon?.group ? GROUP_LABELS[sermon.group] : 'Reading sermon'}
             {sermon?.lordsDay ? ` · Lord’s Day ${sermon.lordsDay}` : ''}
           </p>
-          <h1 className="mt-3 font-serif text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem]">
-            {sermon?.title ?? <span className="inline-block h-10 w-2/3 animate-pulse rounded bg-white/10" />}
+          <h1 className="mt-3 font-serif text-4xl font-semibold leading-[1.1] sm:text-5xl">
+            {sermon?.title ?? <span className="inline-block h-10 w-2/3 animate-pulse rounded bg-stone-200" />}
           </h1>
           {sermon && (
             <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 text-sm sm:gap-x-8">
               {sermon.passage && (
                 <div>
-                  <dt className="text-xs font-semibold uppercase tracking-wider text-navy-100/80 print:text-black">Text</dt>
+                  <dt className="text-xs font-semibold uppercase tracking-wider text-stone-500">Text</dt>
                   <dd className="mt-0.5 font-semibold">{sermon.passage}</dd>
                 </div>
               )}
               {sermon.readings && sermon.readings !== sermon.passage && (
                 <div>
-                  <dt className="text-xs font-semibold uppercase tracking-wider text-navy-100/80 print:text-black">Readings</dt>
+                  <dt className="text-xs font-semibold uppercase tracking-wider text-stone-500">Readings</dt>
                   <dd className="mt-0.5 font-semibold">{sermon.readings}</dd>
                 </div>
               )}
               {sermon.preacher && (
                 <div>
-                  <dt className="text-xs font-semibold uppercase tracking-wider text-navy-100/80 print:text-black">Preacher</dt>
+                  <dt className="text-xs font-semibold uppercase tracking-wider text-stone-500">Preacher</dt>
                   <dd className="mt-0.5 font-semibold">
                     {preacherKey ? (
-                      <Link to={`/sermons?preacher=${encodeURIComponent(preacherKey)}`} className="underline decoration-white/30 underline-offset-4 hover:decoration-white print:no-underline">
+                      <Link to={`/sermons?preacher=${encodeURIComponent(preacherKey)}`} className="underline decoration-teal-500 underline-offset-4 hover:decoration-navy-900 print:no-underline">
                         {sermon.preacher}
                       </Link>
                     ) : (
@@ -158,24 +158,24 @@ export function SermonPage() {
               )}
               {sermon.series && (
                 <div>
-                  <dt className="text-xs font-semibold uppercase tracking-wider text-navy-100/80 print:text-black">Series</dt>
+                  <dt className="text-xs font-semibold uppercase tracking-wider text-stone-500">Series</dt>
                   <dd className="mt-0.5 font-semibold">{sermon.series}</dd>
                 </div>
               )}
               <div>
-                <dt className="text-xs font-semibold uppercase tracking-wider text-navy-100/80 print:text-black">Published</dt>
+                <dt className="text-xs font-semibold uppercase tracking-wider text-stone-500">Published</dt>
                 <dd className="mt-0.5 font-semibold">Word of Salvation · {sermon.issue ?? issueLabel(sermon.year, sermon.month)}</dd>
               </div>
               <div className="print:hidden">
-                <dt className="text-xs font-semibold uppercase tracking-wider text-navy-100/80">Length</dt>
+                <dt className="text-xs font-semibold uppercase tracking-wider text-stone-500">Length</dt>
                 <dd className="mt-0.5 inline-flex items-center gap-1.5 font-semibold">
-                  <Clock className="h-4 w-4 text-teal-400" aria-hidden="true" /> ~{readAloudMinutes(sermon.words)} minutes read aloud
+                  <Clock className="h-4 w-4 text-teal-600" aria-hidden="true" /> ~{readAloudMinutes(sermon.words)} minutes read aloud
                 </dd>
               </div>
             </dl>
           )}
         </div>
-        <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 via-gold-500 to-teal-500 print:hidden" />
+        <div aria-hidden="true" className="hidden" />
       </section>
 
       {/* Reading toolbar */}
@@ -246,7 +246,7 @@ export function SermonPage() {
                 </p>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {prev ? (
-                    <Link to={`/sermons/${prev.id}`} className="group rounded-xl border border-stone-200 bg-white p-4 hover:border-teal-300">
+                    <Link to={`/sermons/${prev.id}`} className="group rounded-md border border-stone-200 bg-white p-4 hover:border-teal-300">
                       <span className="flex items-center gap-1 text-xs font-semibold text-stone-500">
                         <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /> {prev.r}
                       </span>
@@ -256,7 +256,7 @@ export function SermonPage() {
                     <span className="hidden sm:block" />
                   )}
                   {next && (
-                    <Link to={`/sermons/${next.id}`} className="group rounded-xl border border-stone-200 bg-white p-4 text-right hover:border-teal-300">
+                    <Link to={`/sermons/${next.id}`} className="group rounded-md border border-stone-200 bg-white p-4 text-right hover:border-teal-300">
                       <span className="flex items-center justify-end gap-1 text-xs font-semibold text-stone-500">
                         {next.r} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                       </span>
@@ -266,7 +266,7 @@ export function SermonPage() {
                 </div>
               </nav>
             )}
-            <div className="flex flex-col gap-3 rounded-2xl bg-teal-50 p-5 text-sm text-teal-900 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-3 rounded-lg bg-teal-50 p-5 text-sm text-teal-900 sm:flex-row sm:items-center sm:justify-between">
               <p className="flex items-start gap-2">
                 <BookOpen className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                 Leading a reading service? Use <strong className="mx-1">Print</strong> for a clean copy without the website around it.

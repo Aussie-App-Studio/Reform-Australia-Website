@@ -19,8 +19,8 @@ export function VisionValuesPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <div className="rounded-2xl bg-navy-900 p-8 text-white shadow-sm">
-              <div className="text-xs font-bold uppercase tracking-[0.14em] text-gold-400">
+            <div className="rounded-lg bg-navy-900 p-8 text-white">
+              <div className="text-xs font-bold uppercase tracking-[0.08em] text-teal-100">
                 {identity.missionAndVision.missionLabel}
               </div>
               <h2 className="mt-3 font-serif text-3xl font-bold leading-snug text-white">
@@ -32,8 +32,8 @@ export function VisionValuesPage() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-stone-200 bg-white p-8 shadow-xs">
-              <div className="text-xs font-bold uppercase tracking-[0.14em] text-teal-700">
+            <div className="rounded-lg border border-stone-200 bg-white p-8">
+              <div className="text-xs font-bold uppercase tracking-[0.08em] text-teal-700">
                 {identity.missionAndVision.visionLabel}
               </div>
               <h2 className="mt-3 font-serif text-2xl font-bold leading-snug text-navy-900 sm:text-3xl">
@@ -55,7 +55,7 @@ export function VisionValuesPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+            <div className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
               Our Core Values
             </div>
             <h2 className="mt-1.5 font-serif text-3xl font-bold text-navy-900">
@@ -68,11 +68,11 @@ export function VisionValuesPage() {
             {identity.coreValues.items.map((value, idx) => (
               <article
                 key={value.id}
-                className="flex flex-col justify-between rounded-2xl border border-stone-200 bg-stone-50/70 p-6"
+                className="flex flex-col justify-between rounded-lg border border-stone-200 bg-stone-50/70 p-6"
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="font-serif text-sm font-bold text-gold-600">
+                    <span className="font-serif text-sm font-bold text-stone-600">
                       0{idx + 1}
                     </span>
                     <BookOpen className="h-4 w-4 text-teal-600" />

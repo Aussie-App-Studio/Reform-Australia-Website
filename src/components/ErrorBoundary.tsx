@@ -31,8 +31,8 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     if (this.state.hasError) {
       return (
         <section className="bg-stone-50 py-20 px-4 sm:px-6">
-          <div className="mx-auto max-w-xl rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-sm">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl border border-gold-400/50 bg-gold-50 text-gold-600">
+          <div className="mx-auto max-w-xl rounded-lg border border-stone-200 bg-white p-8 text-center">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-md border border-gold-400/50 bg-gold-50 text-stone-600">
               <AlertTriangle className="h-6 w-6" />
             </div>
             <h1 className="mt-4 font-serif text-2xl font-bold text-navy-900 sm:text-3xl">
@@ -46,14 +46,14 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
               <button
                 type="button"
                 onClick={() => window.location.reload()}
-                className="inline-flex items-center gap-2 rounded-xl bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-navy-800"
+                className="inline-flex items-center gap-2 rounded-md bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-navy-800"
               >
                 <RotateCw className="h-4 w-4" />
                 <span>Reload Page</span>
               </button>
               <a
                 href={import.meta.env.BASE_URL}
-                className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-stone-50"
+                className="inline-flex items-center gap-2 rounded-md border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-stone-50"
               >
                 <ArrowLeft className="h-4 w-4 text-teal-600" />
                 <span>Back to Home</span>

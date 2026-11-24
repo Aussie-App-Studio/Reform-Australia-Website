@@ -21,7 +21,7 @@ export function CadetsPage() {
         actions={
           <Link
             to="/find-a-church"
-            className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-500"
+            className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-500"
           >
             <MapPin className="h-4 w-4" />
             <span>Find a Local Church</span>
@@ -52,7 +52,7 @@ export function CadetsPage() {
       <section className="bg-stone-50 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            <div className="lg:col-span-7 rounded-2xl border border-stone-200 bg-white p-7 shadow-xs sm:p-8">
+            <div className="lg:col-span-7 rounded-lg border border-stone-200 bg-white p-7 sm:p-8">
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
                 <Trees className="h-4 w-4" />
                 <span>Who We Are</span>
@@ -68,8 +68,8 @@ export function CadetsPage() {
             </div>
 
             <div className="lg:col-span-5 space-y-6">
-              <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs">
-                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold-600">
+              <div className="rounded-lg border border-stone-200 bg-white p-6">
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-600">
                   <Compass className="h-4 w-4" />
                   <span>What Happens at Cadets</span>
                 </div>
@@ -83,7 +83,7 @@ export function CadetsPage() {
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs">
+              <div className="rounded-lg border border-stone-200 bg-white p-6">
                 <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
                   <BookOpen className="h-4 w-4" />
                   <span>What We Believe</span>
@@ -105,9 +105,9 @@ export function CadetsPage() {
           </div>
 
           {/* Luke 2:52 Four Growth Pillars */}
-          <div className="rounded-2xl border border-stone-200 bg-white p-7 shadow-xs sm:p-8">
+          <div className="rounded-lg border border-stone-200 bg-white p-7 sm:p-8">
             <div className="max-w-3xl">
-              <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+              <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
                 Our Goal
               </span>
               <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900">
@@ -122,7 +122,7 @@ export function CadetsPage() {
               {cadets.growthPillars.map((pillar, idx) => (
                 <div
                   key={pillar.title}
-                  className="rounded-xl border border-stone-200 bg-stone-50/80 p-5"
+                  className="rounded-md border border-stone-200 bg-stone-50/80 p-5"
                 >
                   <span className="text-xs font-bold text-teal-700">0{idx + 1}</span>
                   <h3 className="mt-1 font-serif text-lg font-bold text-navy-900">

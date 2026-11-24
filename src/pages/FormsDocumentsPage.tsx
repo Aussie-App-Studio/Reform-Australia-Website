@@ -892,7 +892,7 @@ export function FormsDocumentsPage() {
   );
 
   const sidebarContent = (
-    <div className="flex flex-col rounded-2xl border border-stone-200 bg-white shadow-xs overflow-hidden">
+    <div className="flex flex-col rounded-lg border border-stone-200 bg-white overflow-hidden">
       {/* Search Box */}
       <div className="border-b border-stone-200 bg-stone-50/70 p-4">
         <label htmlFor="crca-library-search" className="sr-only">
@@ -908,7 +908,7 @@ export function FormsDocumentsPage() {
             onFocus={ensureSearchIndex}
             onChange={(e) => updateQuery(e.target.value)}
             placeholder="Search or jump (LD 1, BC 29, CO 52)..."
-            className="w-full rounded-xl border border-stone-300 bg-white py-2.5 pl-9 pr-9 text-sm text-navy-900 placeholder:text-stone-600/80 focus:border-teal-500 focus:outline-none [&::-webkit-search-cancel-button]:hidden"
+            className="w-full rounded-md border border-stone-300 bg-white py-2.5 pl-9 pr-9 text-sm text-navy-900 placeholder:text-stone-600/80 focus:border-teal-500 focus:outline-none [&::-webkit-search-cancel-button]:hidden"
           />
           {query && (
             <button
@@ -935,7 +935,7 @@ export function FormsDocumentsPage() {
           </div>
 
           {searchResults.length === 0 ? (
-            <div className="rounded-xl border border-stone-200 bg-stone-50 p-4 text-center text-xs text-stone-700">
+            <div className="rounded-md border border-stone-200 bg-stone-50 p-4 text-center text-xs text-stone-700">
               No matching documents or passages found. Try a keyword like{' '}
               <strong>baptism</strong>, <strong>LD 1</strong>, or <strong>CO 52</strong>.
             </div>
@@ -947,14 +947,14 @@ export function FormsDocumentsPage() {
                   key={`${res.doc.id}-${anchor || 'root'}-${idx}`}
                   type="button"
                   onClick={() => openDoc(res.doc.id, anchor)}
-                  className="w-full rounded-xl border border-stone-200 bg-white p-3 text-left transition-colors hover:border-teal-500 hover:bg-teal-50/40"
+                  className="w-full rounded-md border border-stone-200 bg-white p-3 text-left transition-colors hover:border-teal-500 hover:bg-teal-50/40"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-teal-700">
                       {res.doc.groupTitle}
                     </span>
                     {res.badge && (
-                      <span className="rounded-full bg-gold-50 border border-gold-400/50 px-2 py-0.5 text-[10px] font-bold text-gold-600">
+                      <span className="rounded-full bg-gold-50 border border-gold-400/50 px-2 py-0.5 text-[10px] font-bold text-stone-600">
                         {res.badge}
                       </span>
                     )}
@@ -1019,7 +1019,7 @@ export function FormsDocumentsPage() {
                   Recently Opened
                 </div>
                 {recentDocItems.length === 0 ? (
-                  <p className="mt-2 rounded-xl border border-stone-200 bg-stone-50 p-3 text-xs text-stone-700">
+                  <p className="mt-2 rounded-md border border-stone-200 bg-stone-50 p-3 text-xs text-stone-700">
                     No recently opened documents yet. Open any form, confession, or Church Order
                     section to keep it handy here.
                   </p>
@@ -1056,14 +1056,14 @@ export function FormsDocumentsPage() {
                 )}
               </div>
             ) : activeCategory === 'saved' && visibleCategories.length === 0 ? (
-              <p className="rounded-xl border border-stone-200 bg-stone-50 p-3 text-xs text-stone-700">
+              <p className="rounded-md border border-stone-200 bg-stone-50 p-3 text-xs text-stone-700">
                 No saved bookmarks yet. Click the star icon while reading any document to save it
                 here.
               </p>
             ) : (
               visibleCategories.map((cat) => (
                 <div key={cat.id}>
-                  <div className="px-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-gold-600">
+                  <div className="px-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-stone-600">
                     {cat.title}
                   </div>
                   <div className="mt-1.5 space-y-1.5">
@@ -1182,7 +1182,7 @@ export function FormsDocumentsPage() {
                 href={EXTENSION_URLS.installGuide}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-500"
+                className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-500"
               >
                 <Download className="h-4 w-4" />
                 <span>Get Offline Browser Extension</span>
@@ -1191,7 +1191,7 @@ export function FormsDocumentsPage() {
             }
           />
         ) : (
-          <section className="bg-gradient-to-r from-navy-950 via-navy-900 to-navy-800 text-white border-b-2 border-teal-500/70">
+          <section className="bg-navy-900 text-white border-b-2 border-teal-500/70">
             <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-5 lg:px-8">
               <nav aria-label="Breadcrumb">
                 <ol className="flex flex-wrap items-center gap-1.5 text-xs font-medium text-navy-100">
@@ -1249,7 +1249,7 @@ export function FormsDocumentsPage() {
 
               <div className="mt-2.5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="min-w-0">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-gold-400">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-teal-100">
                     {isPublicConfession
                       ? 'Who We Are • Creeds & Confessions'
                       : `CRCA Forms & Documents • ${currentDoc.categoryTitle}`}
@@ -1314,7 +1314,7 @@ export function FormsDocumentsPage() {
               aria-expanded={mobileDrawerOpen}
               aria-controls="crca-library-sidebar"
               onClick={() => setMobileDrawerOpen((prev) => !prev)}
-              className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-semibold text-navy-900 shadow-xs hover:border-teal-500"
+              className="inline-flex items-center gap-2 rounded-md border border-stone-300 bg-white px-4 py-2.5 text-sm font-semibold text-navy-900 hover:border-teal-500"
             >
               <Menu className="h-4 w-4 text-teal-600" />
               <span>{mobileDrawerOpen ? 'Hide Library Catalogue' : `Browse All ${docCount} Documents`}</span>
@@ -1332,7 +1332,7 @@ export function FormsDocumentsPage() {
           </div>
 
           {indexError ? (
-            <div className="rounded-2xl border border-stone-200 bg-white p-8 text-center">
+            <div className="rounded-lg border border-stone-200 bg-white p-8 text-center">
               <p className="font-serif text-lg font-bold text-navy-900">
                 Could not load the CRCA document library
               </p>
@@ -1355,7 +1355,7 @@ export function FormsDocumentsPage() {
               <div className="lg:col-span-8 xl:col-span-9 crca-reader-print-root">
                 {docId && !currentDoc && docsIndex ? (
                   /* Unknown :docId fallback */
-                  <div className="rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-xs">
+                  <div className="rounded-lg border border-stone-200 bg-white p-8 text-center">
                     <h2 className="font-serif text-2xl font-bold text-navy-900">
                       Document not found
                     </h2>
@@ -1365,7 +1365,7 @@ export function FormsDocumentsPage() {
                     </p>
                     <Link
                       to="/for-churches/forms-and-documents"
-                      className="mt-5 inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-700"
+                      className="mt-5 inline-flex items-center gap-2 rounded-md bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-700"
                     >
                       <span>Return to Library Overview</span>
                     </Link>
@@ -1374,8 +1374,8 @@ export function FormsDocumentsPage() {
                   /* Library Overview (when no :docId is selected) */
                   <div className="space-y-6">
                     {/* Quick-Jump Shortcuts */}
-                    <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs">
-                      <div className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+                    <div className="rounded-lg border border-stone-200 bg-white p-6">
+                      <div className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
                         Quick Reference Lookup
                       </div>
                       <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900">
@@ -1406,7 +1406,7 @@ export function FormsDocumentsPage() {
                                 searchInputRef.current?.focus();
                               });
                             }}
-                            className="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-stone-50 px-3.5 py-2 text-xs font-semibold text-navy-900 transition-colors hover:border-teal-500 hover:bg-teal-50 hover:text-teal-700"
+                            className="inline-flex items-center gap-2 rounded-md border border-stone-200 bg-stone-50 px-3.5 py-2 text-xs font-semibold text-navy-900 transition-colors hover:border-teal-500 hover:bg-teal-50 hover:text-teal-700"
                           >
                             <span className="font-mono text-teal-700">{chip.label}</span>
                             <span className="text-stone-600">• {chip.hint}</span>
@@ -1419,8 +1419,8 @@ export function FormsDocumentsPage() {
                     {(bookmarkedDocItems.length > 0 || recentDocItems.length > 0) && (
                       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         {bookmarkedDocItems.length > 0 && (
-                          <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-xs">
-                            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold-600">
+                          <div className="rounded-lg border border-stone-200 bg-white p-5">
+                            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-600">
                               <Star className="h-3.5 w-3.5 fill-gold-500 text-gold-500" />
                               <span>Saved Bookmarks</span>
                             </div>
@@ -1442,7 +1442,7 @@ export function FormsDocumentsPage() {
                         )}
 
                         {recentDocItems.length > 0 && (
-                          <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-xs">
+                          <div className="rounded-lg border border-stone-200 bg-white p-5">
                             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
                               <History className="h-3.5 w-3.5" />
                               <span>Recently Opened</span>
@@ -1469,7 +1469,7 @@ export function FormsDocumentsPage() {
                     {/* 4 Category Showcase Cards */}
                     <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                       {/* Liturgical Forms */}
-                      <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs">
+                      <div className="rounded-lg border border-stone-200 bg-white p-6">
                         <div className="flex items-center justify-between">
                           <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
                             25 Forms
@@ -1507,7 +1507,7 @@ export function FormsDocumentsPage() {
                       </div>
 
                       {/* Creeds & Confessions */}
-                      <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs">
+                      <div className="rounded-lg border border-stone-200 bg-white p-6">
                         <div className="flex items-center justify-between">
                           <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
                             9 Documents
@@ -1546,9 +1546,9 @@ export function FormsDocumentsPage() {
                       </div>
 
                       {/* CRCA Church Order 2022 & Examination Rules */}
-                      <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs">
+                      <div className="rounded-lg border border-stone-200 bg-white p-6">
                         <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold uppercase tracking-wider text-gold-600">
+                          <span className="text-xs font-bold uppercase tracking-wider text-stone-600">
                             Polity &amp; Candidacy • 2022 / 2024
                           </span>
                           <FileText className="h-4 w-4 text-teal-600" />
@@ -1599,7 +1599,7 @@ export function FormsDocumentsPage() {
                       </div>
 
                       {/* Worship Readings */}
-                      <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs">
+                      <div className="rounded-lg border border-stone-200 bg-white p-6">
                         <div className="flex items-center justify-between">
                           <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
                             6 Resources
@@ -1637,10 +1637,10 @@ export function FormsDocumentsPage() {
                       </div>
 
                       {/* Acts of Synod (2024) */}
-                      <div className="md:col-span-2 rounded-2xl border border-stone-200 bg-white p-6 shadow-xs">
+                      <div className="md:col-span-2 rounded-lg border border-stone-200 bg-white p-6">
                         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                           <div className="max-w-2xl">
-                            <span className="text-xs font-bold uppercase tracking-wider text-gold-600">
+                            <span className="text-xs font-bold uppercase tracking-wider text-stone-600">
                               Synod Decisions &amp; Resolutions
                             </span>
                             <h3 className="mt-1.5 font-serif text-xl font-bold text-navy-900">
@@ -1674,10 +1674,10 @@ export function FormsDocumentsPage() {
                     </div>
 
                     {/* Offline Browser Extension Banner */}
-                    <div className="rounded-2xl border border-teal-500/30 bg-gradient-to-br from-navy-900 to-navy-800 p-6 text-white shadow-sm sm:p-8">
+                    <div className="rounded-lg border border-teal-500/30 bg-navy-900 p-6 text-white sm:p-8">
                       <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
                         <div className="max-w-2xl">
-                          <div className="text-xs font-bold uppercase tracking-[0.14em] text-gold-400">
+                          <div className="text-xs font-bold uppercase tracking-[0.08em] text-teal-100">
                             Offline Browser Extension
                           </div>
                           <h3 className="mt-1.5 font-serif text-2xl font-bold text-white">
@@ -1695,7 +1695,7 @@ export function FormsDocumentsPage() {
                             href={EXTENSION_URLS.downloadZip}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-teal-500"
+                            className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-teal-500"
                           >
                             <Download className="h-4 w-4" />
                             <span>Download Extension (.zip)</span>
@@ -1704,7 +1704,7 @@ export function FormsDocumentsPage() {
                             href={EXTENSION_URLS.installGuide}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/20"
+                            className="inline-flex items-center gap-2 rounded-md border border-white/25 bg-white/10 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/20"
                           >
                             <span>2-Min Setup Guide</span>
                             <ExternalLink className="h-3.5 w-3.5" />
@@ -1715,9 +1715,9 @@ export function FormsDocumentsPage() {
                   </div>
                 ) : (
                   /* Document Reader View */
-                  <div className="rounded-2xl border border-stone-200 bg-white shadow-xs crca-reader-print-root">
+                  <div className="rounded-lg border border-stone-200 bg-white crca-reader-print-root">
                     {/* Reader Toolbar */}
-                    <div className="no-print border-b border-stone-200 bg-stone-50/70 px-4 py-3.5 sm:px-6 rounded-t-2xl">
+                    <div className="no-print border-b border-stone-200 bg-stone-50/70 px-4 py-3.5 sm:px-6 rounded-t-lg">
                       <div className="flex flex-wrap items-center justify-between gap-3">
                         <div className="flex flex-wrap items-center gap-2 text-xs">
                           <Link
@@ -1837,7 +1837,7 @@ export function FormsDocumentsPage() {
                               <ChevronDown className="h-3 w-3" />
                             </button>
                             {copyMenuOpen && (
-                              <div className="absolute right-0 top-full z-30 mt-1.5 w-60 rounded-xl border border-stone-200 bg-white p-1.5 shadow-xl ring-1 ring-navy-900/5">
+                              <div className="absolute right-0 top-full z-30 mt-1.5 w-60 rounded-md border border-stone-200 bg-white p-1.5 shadow-xl ring-1 ring-navy-900/5">
                                 <button
                                   type="button"
                                   onClick={() => void handleCopyDoc('rich')}
@@ -1912,7 +1912,7 @@ export function FormsDocumentsPage() {
                             aria-label={isBookmarked ? 'Remove bookmark' : 'Bookmark document'}
                             className={`rounded-lg border p-1.5 transition-colors ${
                               isBookmarked
-                                ? 'border-gold-400 bg-gold-50 text-gold-600'
+                                ? 'border-gold-400 bg-gold-50 text-stone-600'
                                 : 'border-stone-300 bg-white text-stone-600 hover:text-navy-900'
                             }`}
                           >
@@ -2002,7 +2002,7 @@ export function FormsDocumentsPage() {
                         {outlineOpen && (
                           <div
                             id="reader-document-outline"
-                            className="mt-3 max-h-60 overflow-y-auto rounded-xl border border-stone-200 bg-stone-50 p-3"
+                            className="mt-3 max-h-60 overflow-y-auto rounded-md border border-stone-200 bg-stone-50 p-3"
                           >
                             <ul className="grid grid-cols-1 gap-1 sm:grid-cols-2">
                               {renderedDocument.headings.map((h) => (
@@ -2036,7 +2036,7 @@ export function FormsDocumentsPage() {
                           Loading {currentDoc.title}...
                         </div>
                       ) : docError ? (
-                        <div className="rounded-xl border border-stone-200 bg-stone-50 p-6 text-center">
+                        <div className="rounded-md border border-stone-200 bg-stone-50 p-6 text-center">
                           <p className="text-sm font-semibold text-navy-900">{docError}</p>
                         </div>
                       ) : (
@@ -2104,7 +2104,7 @@ export function FormsDocumentsPage() {
         <div
           role="status"
           aria-live="polite"
-          className="no-print fixed bottom-5 left-1/2 z-50 -translate-x-1/2 rounded-xl bg-navy-900 px-4 py-2.5 text-xs font-semibold text-white shadow-xl"
+          className="no-print fixed bottom-5 left-1/2 z-50 -translate-x-1/2 rounded-md bg-navy-900 px-4 py-2.5 text-xs font-semibold text-white shadow-xl"
         >
           {toastMsg}
         </div>

@@ -87,7 +87,7 @@ export function MinistryDetailPage({ slug }: MinistryDetailPageProps) {
           <div className="flex flex-wrap gap-3">
             <Link
               to={`/contact?topic=${page.contact.topicParam}`}
-              className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-500"
+              className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-500"
             >
               <span>{page.contact.ctaLabel}</span>
               <ArrowRight className="h-4 w-4" />
@@ -97,7 +97,7 @@ export function MinistryDetailPage({ slug }: MinistryDetailPageProps) {
                 href={primaryPdf.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-4 py-3 text-sm font-semibold text-white hover:bg-white/20"
+                className="inline-flex items-center gap-2 rounded-md border border-white/25 bg-white/10 px-4 py-3 text-sm font-semibold text-white hover:bg-white/20"
               >
                 <Download className="h-4 w-4" />
                 <span>Download PDF</span>
@@ -111,7 +111,7 @@ export function MinistryDetailPage({ slug }: MinistryDetailPageProps) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Editorial Overview + Highlight Callout */}
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            <div className="lg:col-span-7 rounded-2xl border border-stone-200 bg-white p-7 shadow-xs sm:p-8">
+            <div className="lg:col-span-7 rounded-lg border border-stone-200 bg-white p-7 sm:p-8">
               <h2 className="font-serif text-2xl font-bold text-navy-900 sm:text-3xl">
                 {page.overviewHeading}
               </h2>
@@ -123,8 +123,8 @@ export function MinistryDetailPage({ slug }: MinistryDetailPageProps) {
             </div>
 
             <div className="lg:col-span-5 space-y-6">
-              <div className="rounded-2xl bg-navy-900 p-6 text-white shadow-sm sm:p-7">
-                <span className="text-xs font-bold uppercase tracking-wider text-gold-400">
+              <div className="rounded-lg bg-navy-900 p-6 text-white sm:p-7">
+                <span className="text-xs font-bold uppercase tracking-wider text-teal-100">
                   Ministry Focus
                 </span>
                 <h3 className="mt-1.5 font-serif text-xl font-bold text-white">
@@ -150,7 +150,7 @@ export function MinistryDetailPage({ slug }: MinistryDetailPageProps) {
                 )}
               </div>
 
-              <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs">
+              <div className="rounded-lg border border-stone-200 bg-white p-6">
                 <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
                   Direct Contact
                 </span>
@@ -191,7 +191,7 @@ export function MinistryDetailPage({ slug }: MinistryDetailPageProps) {
           </div>
 
           {/* Highlights / Mandate List */}
-          <div className="rounded-2xl border border-stone-200 bg-white p-7 shadow-xs sm:p-8">
+          <div className="rounded-lg border border-stone-200 bg-white p-7 sm:p-8">
             <h2 className="font-serif text-2xl font-bold text-navy-900">
               {page.highlightsHeading}
             </h2>
@@ -199,7 +199,7 @@ export function MinistryDetailPage({ slug }: MinistryDetailPageProps) {
               {page.highlights.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-2.5 rounded-xl border border-stone-200 bg-stone-50/70 p-4 text-sm text-navy-900"
+                  className="flex items-start gap-2.5 rounded-md border border-stone-200 bg-stone-50/70 p-4 text-sm text-navy-900"
                 >
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
                   <span>{item}</span>
@@ -211,7 +211,7 @@ export function MinistryDetailPage({ slug }: MinistryDetailPageProps) {
           {/* Ecumenical Sister Churches & Contacts (when present) */}
           {page.sisterChurches && (
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs sm:p-7">
+              <div className="rounded-lg border border-stone-200 bg-white p-6 sm:p-7">
                 <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
                   <Handshake className="h-4 w-4" />
                   <span>Formal Fellowship</span>
@@ -223,7 +223,7 @@ export function MinistryDetailPage({ slug }: MinistryDetailPageProps) {
                   {page.sisterChurches.inFellowship.map((church) => (
                     <li
                       key={church}
-                      className="flex items-start gap-2.5 rounded-xl border border-stone-200 bg-stone-50 p-3.5"
+                      className="flex items-start gap-2.5 rounded-md border border-stone-200 bg-stone-50 p-3.5"
                     >
                       <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600" />
                       <span className="font-medium">{church}</span>
@@ -232,8 +232,8 @@ export function MinistryDetailPage({ slug }: MinistryDetailPageProps) {
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs sm:p-7">
-                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold-600">
+              <div className="rounded-lg border border-stone-200 bg-white p-6 sm:p-7">
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-600">
                   <Globe2 className="h-4 w-4" />
                   <span>Broader Reformed Contacts</span>
                 </div>
@@ -244,7 +244,7 @@ export function MinistryDetailPage({ slug }: MinistryDetailPageProps) {
                   {page.sisterChurches.inContact.map((church) => (
                     <li
                       key={church}
-                      className="flex items-start gap-2.5 rounded-xl border border-stone-200 bg-stone-50 p-3.5"
+                      className="flex items-start gap-2.5 rounded-md border border-stone-200 bg-stone-50 p-3.5"
                     >
                       <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" />
                       <span className="font-medium">{church}</span>
@@ -261,7 +261,7 @@ export function MinistryDetailPage({ slug }: MinistryDetailPageProps) {
               {page.pdfs.map((doc) => (
                 <article
                   key={doc.url}
-                  className="flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-6 shadow-xs"
+                  className="flex flex-col justify-between rounded-lg border border-stone-200 bg-white p-6"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2">
@@ -292,7 +292,7 @@ export function MinistryDetailPage({ slug }: MinistryDetailPageProps) {
               {page.partnerLinks.map((partner) => (
                 <article
                   key={partner.url}
-                  className="flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-6 shadow-xs"
+                  className="flex flex-col justify-between rounded-lg border border-stone-200 bg-white p-6"
                 >
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-wider text-teal-700">

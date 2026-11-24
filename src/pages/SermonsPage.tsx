@@ -23,11 +23,11 @@ function SermonCard({ s, index }: { s: SermonIndexItem; index: SermonIndex }) {
     <li>
       <Link
         to={`/sermons/${s.id}`}
-        className="group flex h-full flex-col rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 hover:shadow-md"
+        className="group flex h-full flex-col rounded-lg border border-stone-200 bg-white p-5 transition hover:border-teal-300"
       >
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-semibold">
           {s.r && <span className="rounded-md bg-teal-50 px-2 py-0.5 text-teal-800">{s.r}</span>}
-          {s.ld && !/lord/i.test(s.r ?? '') && <span className="rounded-md bg-gold-50 px-2 py-0.5 text-gold-600">Lord’s Day {s.ld}</span>}
+          {s.ld && !/lord/i.test(s.r ?? '') && <span className="rounded-md bg-gold-50 px-2 py-0.5 text-stone-600">Lord’s Day {s.ld}</span>}
         </div>
         <h3 className="mt-2.5 font-serif text-lg font-bold leading-snug text-navy-900 group-hover:text-teal-700">{s.t}</h3>
         {s.s && <p className="mt-1 text-xs font-medium text-stone-500">Series: {s.s}</p>}
@@ -120,7 +120,7 @@ export function SermonsPage() {
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
         {/* Search + filters */}
-        <div className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
+        <div className="rounded-lg border border-stone-200 bg-white p-4 sm:p-6">
           <div className="relative">
             <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-stone-500" aria-hidden="true" />
             <label htmlFor="sermon-search" className="sr-only">
@@ -132,7 +132,7 @@ export function SermonsPage() {
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
               placeholder='Search title, passage, preacher or topic — e.g. "Romans 8", "grace", "LD 12"'
-              className="w-full rounded-xl border border-stone-300 bg-stone-50 py-3.5 pl-12 pr-4 text-base text-navy-900 placeholder:text-stone-500 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/30"
+              className="w-full rounded-md border border-stone-300 bg-stone-50 py-3.5 pl-12 pr-4 text-base text-navy-900 placeholder:text-stone-500 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/30"
             />
           </div>
 
@@ -220,7 +220,7 @@ export function SermonsPage() {
         </div>
 
         {error && (
-          <p className="mt-8 rounded-xl bg-rose-50 p-4 text-sm text-rose-900">
+          <p className="mt-8 rounded-md bg-rose-50 p-4 text-sm text-rose-900">
             Sorry — the sermon archive could not be loaded ({error}).
           </p>
         )}
@@ -253,7 +253,7 @@ export function SermonsPage() {
                       <li key={b.name}>
                         <button
                           onClick={() => update({ book: b.name, g })}
-                          className="flex w-full items-center justify-between gap-2 rounded-xl border border-stone-200 bg-white px-3.5 py-2.5 text-left text-sm font-semibold text-navy-900 transition hover:border-teal-300 hover:text-teal-700"
+                          className="flex w-full items-center justify-between gap-2 rounded-md border border-stone-200 bg-white px-3.5 py-2.5 text-left text-sm font-semibold text-navy-900 transition hover:border-teal-300 hover:text-teal-700"
                         >
                           <span className="leading-snug">{b.name}</span>
                           <span className="shrink-0 rounded-full bg-stone-100 px-2 py-0.5 text-xs font-medium tabular-nums text-stone-600">{b.count}</span>
@@ -287,7 +287,7 @@ export function SermonsPage() {
               </button>
             </div>
             {results.length === 0 ? (
-              <div className="mt-6 rounded-2xl border border-dashed border-stone-300 bg-white p-10 text-center">
+              <div className="mt-6 rounded-lg border border-dashed border-stone-300 bg-white p-10 text-center">
                 <BookOpen className="mx-auto h-8 w-8 text-stone-400" aria-hidden="true" />
                 <p className="mt-3 font-semibold text-navy-900">No sermons match those filters.</p>
                 <p className="mt-1 text-sm text-stone-600">Try a broader search, or clear a filter.</p>
@@ -303,7 +303,7 @@ export function SermonsPage() {
                   <div className="mt-8 text-center">
                     <button
                       onClick={() => setShown((n) => n + PAGE_SIZE)}
-                      className="inline-flex items-center gap-2 rounded-xl bg-navy-900 px-5 py-3 text-sm font-semibold text-white hover:bg-navy-800"
+                      className="inline-flex items-center gap-2 rounded-md bg-navy-900 px-5 py-3 text-sm font-semibold text-white hover:bg-navy-800"
                     >
                       Show more ({(results.length - shown).toLocaleString()} remaining) <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </button>

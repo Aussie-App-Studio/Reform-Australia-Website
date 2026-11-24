@@ -20,10 +20,10 @@ export function NextGenClubResources({ clubName, enquiryLabel }: NextGenClubReso
       {/* Annual Theme Highlight */}
       <section className="bg-white py-12 sm:py-14 border-t border-stone-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl bg-navy-900 p-7 text-white shadow-sm sm:p-10">
+          <div className="rounded-lg bg-navy-900 p-7 text-white sm:p-10">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
               <div className="lg:col-span-7">
-                <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold-400">
+                <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-teal-100">
                   <Sparkles className="h-3.5 w-3.5" />
                   <span>{themeHighlight.yearLabel}</span>
                 </div>
@@ -41,8 +41,8 @@ export function NextGenClubResources({ clubName, enquiryLabel }: NextGenClubReso
                 </p>
               </div>
 
-              <div className="lg:col-span-5 rounded-xl border border-white/15 bg-white/5 p-6">
-                <h3 className="font-serif text-lg font-bold text-gold-400">
+              <div className="lg:col-span-5 rounded-md border border-white/15 bg-white/5 p-6">
+                <h3 className="font-serif text-lg font-bold text-teal-100">
                   Three Key Reminders for Clubs
                 </h3>
                 <ul className="mt-4 space-y-3">
@@ -67,7 +67,7 @@ export function NextGenClubResources({ clubName, enquiryLabel }: NextGenClubReso
           <div>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+                <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
                   Club Leader Downloads
                 </span>
                 <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900 sm:text-3xl">
@@ -84,11 +84,11 @@ export function NextGenClubResources({ clubName, enquiryLabel }: NextGenClubReso
               {sharedResources.map((doc) => (
                 <article
                   key={doc.url}
-                  className="flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-6 shadow-xs"
+                  className="flex flex-col justify-between rounded-lg border border-stone-200 bg-white p-6"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-100 bg-teal-50 text-teal-700">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-md border border-teal-100 bg-teal-50 text-teal-700">
                         <FileText className="h-5 w-5" />
                       </div>
                       <span className="rounded bg-stone-100 px-2.5 py-0.5 text-[11px] font-semibold text-navy-800 border border-stone-200">
@@ -121,9 +121,9 @@ export function NextGenClubResources({ clubName, enquiryLabel }: NextGenClubReso
 
           {/* Safe Church + Connect Strip */}
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="lg:col-span-7 flex flex-col justify-between rounded-2xl border border-teal-500/30 bg-teal-50/70 p-6 sm:p-7">
+            <div className="lg:col-span-7 flex flex-col justify-between rounded-lg border border-teal-500/30 bg-teal-50/70 p-6 sm:p-7">
               <div className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-teal-200 bg-white text-teal-700">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-teal-200 bg-white text-teal-700">
                   <ShieldCheck className="h-6 w-6" />
                 </div>
                 <div>
@@ -150,9 +150,9 @@ export function NextGenClubResources({ clubName, enquiryLabel }: NextGenClubReso
               </div>
             </div>
 
-            <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-6 sm:p-7 shadow-xs">
+            <div className="lg:col-span-5 flex flex-col justify-between rounded-lg border border-stone-200 bg-white p-6 sm:p-7">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-gold-600">
+                <span className="text-xs font-bold uppercase tracking-wider text-stone-600">
                   Start or Find a Club
                 </span>
                 <h3 className="mt-1 font-serif text-xl font-bold text-navy-900">

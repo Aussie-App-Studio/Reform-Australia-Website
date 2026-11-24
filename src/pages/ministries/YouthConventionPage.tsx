@@ -35,7 +35,7 @@ export function YouthConventionPage() {
             href={statusBanner.registrationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-500"
+            className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-500"
           >
             <span>{statusBanner.ctaLabel}</span>
             <ExternalLink className="h-4 w-4" />
@@ -47,7 +47,7 @@ export function YouthConventionPage() {
       <section className="border-b border-gold-400/50 bg-gold-50">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <div className="flex items-start gap-3">
-            <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-gold-600" />
+            <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-stone-600" />
             <div>
               <span className="inline-flex rounded-full bg-gold-100 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-navy-900">
                 {statusBanner.badge}
@@ -73,7 +73,7 @@ export function YouthConventionPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
           {/* 4-Card Event Snapshot Strip */}
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-xs">
+            <div className="rounded-lg border border-stone-200 bg-white p-5">
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
                 <Calendar className="h-4 w-4" />
                 <span>Dates</span>
@@ -86,7 +86,7 @@ export function YouthConventionPage() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-xs">
+            <div className="rounded-lg border border-stone-200 bg-white p-5">
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
                 <MapPin className="h-4 w-4" />
                 <span>Location</span>
@@ -96,12 +96,12 @@ export function YouthConventionPage() {
               </div>
               <p className="mt-1.5 text-xs leading-relaxed text-stone-700">{convention.venue}</p>
               <div className="mt-2.5 flex items-start gap-1.5 rounded-lg bg-stone-50 p-2.5 text-[11px] text-stone-700 border border-stone-200">
-                <Bus className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-600" />
+                <Bus className="mt-0.5 h-3.5 w-3.5 shrink-0 text-stone-600" />
                 <span>{convention.transportNote}</span>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-xs">
+            <div className="rounded-lg border border-stone-200 bg-white p-5">
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
                 <Users className="h-4 w-4" />
                 <span>Ages</span>
@@ -114,7 +114,7 @@ export function YouthConventionPage() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-xs">
+            <div className="rounded-lg border border-stone-200 bg-white p-5">
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
                 <Ticket className="h-4 w-4" />
                 <span>Cost & Inclusions</span>
@@ -137,8 +137,8 @@ export function YouthConventionPage() {
 
           {/* 2027 Theme + Keynote Speaker */}
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            <div className="lg:col-span-7 rounded-2xl bg-navy-900 p-7 text-white shadow-sm sm:p-8">
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold-400">
+            <div className="lg:col-span-7 rounded-lg bg-navy-900 p-7 text-white sm:p-8">
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-100">
                 <Flame className="h-4 w-4" />
                 <span>Convention {convention.year} Theme • {theme.scripture}</span>
               </div>
@@ -152,7 +152,7 @@ export function YouthConventionPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-7 shadow-xs sm:p-8">
+            <div className="lg:col-span-5 flex flex-col justify-between rounded-lg border border-stone-200 bg-white p-7 sm:p-8">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
                   Keynote Speaker
@@ -174,8 +174,8 @@ export function YouthConventionPage() {
 
           {/* What is Convention + Promo Video */}
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-6 rounded-2xl border border-stone-200 bg-white p-7 shadow-xs sm:p-8">
-              <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+            <div className="lg:col-span-6 rounded-lg border border-stone-200 bg-white p-7 sm:p-8">
+              <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
                 About the Week
               </span>
               <h2 className="mt-1.5 font-serif text-2xl font-bold text-navy-900">
@@ -202,7 +202,7 @@ export function YouthConventionPage() {
             <div className="lg:col-span-8">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+                  <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
                     Downloads & Forms
                   </span>
                   <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900">
@@ -218,7 +218,7 @@ export function YouthConventionPage() {
                 {resources.map((doc) => (
                   <article
                     key={doc.url}
-                    className="flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-5 shadow-xs"
+                    className="flex flex-col justify-between rounded-lg border border-stone-200 bg-white p-5"
                   >
                     <div>
                       <div className="flex items-center justify-between">
@@ -250,7 +250,7 @@ export function YouthConventionPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-6 shadow-xs">
+            <div className="lg:col-span-4 flex flex-col justify-between rounded-lg border border-stone-200 bg-white p-6">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
                   Committee & Updates
@@ -311,7 +311,7 @@ export function YouthConventionPage() {
           {/* Previous Convention Recordings */}
           <div>
             <div className="max-w-2xl">
-              <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+              <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
                 Watch Past Sessions
               </span>
               <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900 sm:text-3xl">

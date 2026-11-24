@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
 
 interface BreadcrumbItem {
   label: string;
@@ -8,49 +7,43 @@ interface BreadcrumbItem {
 }
 
 interface PageHeaderProps {
-  eyebrow: string;
+  /** Small section label shown above the title (e.g. "Who we are"). */
+  eyebrow?: string;
   title: string;
   description?: string;
   breadcrumbs?: BreadcrumbItem[];
   actions?: ReactNode;
 }
 
-export function PageHeader({
-  eyebrow,
-  title,
-  description,
-  breadcrumbs,
-  actions,
-}: PageHeaderProps) {
+/**
+ * Quiet, editorial page header: paper background, breadcrumb trail,
+ * a large serif title and a short standfirst, closed by a thin rule.
+ */
+export function PageHeader({ eyebrow, title, description, breadcrumbs, actions }: PageHeaderProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-teal-500/15 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 via-gold-500 to-teal-500"
-      />
-
-      <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-18">
+    <header className="border-b border-stone-200 bg-stone-50">
+      <div className="mx-auto max-w-7xl px-4 pb-10 pt-8 sm:px-6 lg:px-8 lg:pb-14 lg:pt-10">
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <nav aria-label="Breadcrumb" className="mb-5">
-            <ol className="flex flex-wrap items-center gap-1.5 text-xs font-medium text-navy-100">
+          <nav aria-label="Breadcrumb" className="mb-8">
+            <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-stone-600">
               <li>
-                <Link to="/" className="hover:text-white transition-colors">
+                <Link to="/" className="hover:text-navy-900 hover:underline underline-offset-4">
                   Home
                 </Link>
               </li>
               {breadcrumbs.map((crumb) => (
-                <li key={crumb.label} className="flex items-center gap-1.5">
-                  <ChevronRight className="h-3.5 w-3.5 text-teal-400" />
+                <li key={crumb.label} className="flex items-center gap-2">
+                  <span aria-hidden="true" className="text-stone-400">
+                    /
+                  </span>
                   {crumb.to ? (
-                    <Link to={crumb.to} className="hover:text-white transition-colors">
+                    <Link to={crumb.to} className="hover:text-navy-900 hover:underline underline-offset-4">
                       {crumb.label}
                     </Link>
                   ) : (
-                    <span className="text-white">{crumb.label}</span>
+                    <span aria-current="page" className="text-navy-900">
+                      {crumb.label}
+                    </span>
                   )}
                 </li>
               ))}
@@ -60,23 +53,14 @@ export function PageHeader({
 
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-gold-400">
-              <span className="inline-block h-px w-6 bg-gold-400" />
-              <span>{eyebrow}</span>
-            </div>
-            <h1 className="mt-3 font-serif text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              {title}
-            </h1>
-            {description && (
-              <p className="mt-4 text-base leading-relaxed text-navy-100 sm:text-lg">
-                {description}
-              </p>
-            )}
+            {eyebrow && <p className="text-sm font-semibold text-teal-700">{eyebrow}</p>}
+            <h1 className="mt-1 font-serif text-4xl font-semibold leading-[1.1] text-navy-900 sm:text-5xl">{title}</h1>
+            {description && <p className="mt-5 text-lg leading-relaxed text-stone-700">{description}</p>}
           </div>
 
-          {actions && <div className="shrink-0">{actions}</div>}
+          {actions && <div className="page-header-actions shrink-0">{actions}</div>}
         </div>
       </div>
-    </section>
+    </header>
   );
 }

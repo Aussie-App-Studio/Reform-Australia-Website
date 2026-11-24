@@ -124,9 +124,9 @@ export function Navbar() {
   const isForChurchesActive = location.pathname.startsWith('/for-churches');
 
   return (
-    <header ref={headerRef} className="sticky top-0 z-40 shadow-sm print:hidden">
+    <header ref={headerRef} className="sticky top-0 z-40 print:hidden">
       {/* Main Navigation Bar */}
-      <div className="bg-white/95 backdrop-blur-md border-b border-stone-200">
+      <div className="bg-white/95 border-b border-stone-200">
         <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3.5 sm:px-6 lg:px-8">
           {/* Brand Logo (Home link — removes redundant "Home" text nav item) */}
           <Link
@@ -165,7 +165,7 @@ export function Navbar() {
 
               {openMenu === 'who-we-are' && (
                 <div className="absolute left-0 top-full pt-2 w-80">
-                  <div className="rounded-xl border border-stone-200 bg-white p-2 shadow-xl ring-1 ring-navy-900/5">
+                  <div className="rounded-md border border-stone-200 bg-white p-2 shadow-xl ring-1 ring-navy-900/5">
                     {whoWeAreNavItems.map((item) => (
                       <Link
                         key={item.to}
@@ -213,7 +213,7 @@ export function Navbar() {
 
               {openMenu === 'ministries' && (
                 <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 w-[min(94vw,64rem)] pt-2">
-                  <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-2xl ring-1 ring-navy-900/5">
+                  <div className="rounded-lg border border-stone-200 bg-white p-6 shadow-2xl ring-1 ring-navy-900/5">
                     <div className="mb-4 flex items-center justify-between border-b border-stone-200 pb-3">
                       <div>
                         <h3 className="font-serif text-base font-bold text-navy-900">
@@ -312,7 +312,7 @@ export function Navbar() {
 
               {openMenu === 'for-churches' && (
                 <div className="absolute right-0 top-full z-50 pt-2 w-96">
-                  <div className="rounded-xl border border-stone-200 bg-white p-2 shadow-xl ring-1 ring-navy-900/5">
+                  <div className="rounded-md border border-stone-200 bg-white p-2 shadow-xl ring-1 ring-navy-900/5">
                     <Link
                       to="/for-churches"
                       className="mb-1.5 flex items-center justify-between gap-3 rounded-lg border-b border-stone-200 px-3.5 pb-3 pt-2.5 transition-colors hover:bg-stone-50 group"
@@ -389,7 +389,7 @@ export function Navbar() {
             <div className="pl-3">
               <Link
                 to="/find-a-church"
-                className="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-teal-700 hover:shadow focus-visible:ring-2 focus-visible:ring-teal-500"
+                className="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-teal-700 hover:shadow focus-visible:ring-2 focus-visible:ring-teal-500"
               >
                 <MapPin className="h-4 w-4" />
                 <span>Find a Church</span>
@@ -401,7 +401,7 @@ export function Navbar() {
           <div className="flex shrink-0 items-center gap-2 lg:hidden">
             <Link
               to="/find-a-church"
-              className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg bg-teal-600 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-teal-700"
+              className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg bg-teal-600 px-3 py-2 text-xs font-semibold text-white hover:bg-teal-700"
             >
               <MapPin className="h-3.5 w-3.5" />
               <span>Find a Church</span>
@@ -424,7 +424,7 @@ export function Navbar() {
         <div className="lg:hidden border-b border-stone-200 bg-white shadow-xl max-h-[calc(100vh-var(--site-header-height,72px))] overflow-y-auto">
           <div className="space-y-3 px-4 py-5">
             {/* Who We Are Accordion */}
-            <div className="rounded-xl border border-stone-200 bg-stone-50/70">
+            <div className="rounded-md border border-stone-200 bg-stone-50/70">
               <button
                 type="button"
                 aria-expanded={mobileSection === 'who-we-are'}
@@ -456,7 +456,7 @@ export function Navbar() {
             </div>
 
             {/* Ministries Accordion */}
-            <div className="rounded-xl border border-stone-200 bg-stone-50/70">
+            <div className="rounded-md border border-stone-200 bg-stone-50/70">
               <button
                 type="button"
                 aria-expanded={mobileSection === 'ministries'}
@@ -516,7 +516,7 @@ export function Navbar() {
             </div>
 
             {/* For Churches Accordion */}
-            <div className="rounded-xl border border-stone-200 bg-stone-50/70">
+            <div className="rounded-md border border-stone-200 bg-stone-50/70">
               <button
                 type="button"
                 aria-expanded={mobileSection === 'for-churches'}
@@ -569,7 +569,7 @@ export function Navbar() {
             <div className="grid grid-cols-1 gap-2">
               <Link
                 to="/contact"
-                className="rounded-xl border border-stone-200 px-4 py-3 text-sm font-semibold text-navy-900 hover:bg-stone-50"
+                className="rounded-md border border-stone-200 px-4 py-3 text-sm font-semibold text-navy-900 hover:bg-stone-50"
               >
                 Contact &amp; Enquiries
               </Link>

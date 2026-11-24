@@ -20,7 +20,7 @@ export function HistoryPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-6 space-y-6">
-              <div className="overflow-hidden rounded-2xl border border-stone-200 shadow-sm">
+              <div className="overflow-hidden rounded-lg border border-stone-200">
                 <img
                   src={siteConfig.images.heritageSanctuary}
                   alt="Warm sunlit timber sanctuary inside an Australian Christian Reformed church"
@@ -31,8 +31,8 @@ export function HistoryPage() {
                   className="h-72 w-full object-cover sm:h-88"
                 />
               </div>
-              <blockquote className="rounded-2xl bg-navy-900 p-6 text-white">
-                <Quote className="h-6 w-6 text-gold-400" />
+              <blockquote className="rounded-lg bg-navy-900 p-6 text-white">
+                <Quote className="h-6 w-6 text-teal-100" />
                 <p className="mt-3 font-serif text-xl italic leading-relaxed text-white">
                   “{history.scriptureQuote}”
                 </p>
@@ -58,7 +58,7 @@ export function HistoryPage() {
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-stone-200 bg-white p-6">
+              <div className="rounded-lg border border-stone-200 bg-white p-6">
                 <h3 className="font-serif text-lg font-bold text-navy-900">
                   Founding commitments from 1951
                 </h3>
@@ -83,7 +83,7 @@ export function HistoryPage() {
       <section className="bg-white py-14 sm:py-18 border-t border-stone-200">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+            <div className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
               Timeline
             </div>
             <h2 className="mt-1.5 font-serif text-3xl font-bold text-navy-900">
@@ -95,10 +95,10 @@ export function HistoryPage() {
             {history.milestones.map((milestone) => (
               <div
                 key={milestone.era}
-                className="flex flex-col gap-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-6 sm:flex-row sm:items-start sm:gap-6"
+                className="flex flex-col gap-3 rounded-lg border border-stone-200 bg-stone-50/70 p-6 sm:flex-row sm:items-start sm:gap-6"
               >
                 <div className="shrink-0">
-                  <span className="inline-flex rounded-xl bg-navy-900 px-4 py-1.5 font-serif text-sm font-bold text-gold-400">
+                  <span className="inline-flex rounded-md bg-navy-900 px-4 py-1.5 font-serif text-sm font-bold text-teal-100">
                     {milestone.era}
                   </span>
                 </div>
@@ -113,10 +113,10 @@ export function HistoryPage() {
           </div>
 
           {/* Historical Archive: Trowel and Sword (1954–2010) */}
-          <div className="mt-12 rounded-2xl border border-stone-200 bg-navy-900 p-7 text-white shadow-sm sm:p-8">
+          <div className="mt-12 rounded-lg border border-stone-200 bg-navy-900 p-7 text-white sm:p-8">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div className="max-w-xl">
-                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-gold-400">
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.08em] text-teal-100">
                   <BookOpen className="h-4 w-4" />
                   <span>Historical Archive (1954–2010)</span>
                 </div>
@@ -134,7 +134,7 @@ export function HistoryPage() {
                 href="https://tsrevisited.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500 self-start sm:self-center"
+                className="inline-flex shrink-0 items-center gap-2 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500 self-start sm:self-center"
               >
                 <span>Browse Archive (tsrevisited.com)</span>
                 <ExternalLink className="h-4 w-4" />

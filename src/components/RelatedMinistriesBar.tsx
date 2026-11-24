@@ -44,7 +44,7 @@ export function RelatedMinistriesBar({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+            <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
               Continue Exploring
             </span>
             <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900">{heading}</h2>
@@ -62,10 +62,10 @@ export function RelatedMinistriesBar({
           {related.map((item) => (
             <article
               key={item.id}
-              className="flex flex-col justify-between rounded-2xl border border-stone-200 bg-stone-50/80 p-5 transition-all hover:border-teal-500/40 hover:bg-white hover:shadow-sm"
+              className="flex flex-col justify-between rounded-lg border border-stone-200 bg-stone-50/80 p-5 transition-all hover:border-teal-500/40 hover:bg-white"
             >
               <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-100 bg-teal-50 text-teal-700">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md border border-teal-100 bg-teal-50 text-teal-700">
                   <MinistryIcon name={item.iconName} className="h-5 w-5" />
                 </div>
                 <h3 className="mt-3 font-serif text-lg font-bold text-navy-900">{item.name}</h3>

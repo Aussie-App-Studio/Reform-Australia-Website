@@ -59,7 +59,7 @@ export function MinistriesPage() {
       {/* Editorial Fellowship Banner */}
       <section className="bg-stone-50 pt-12 pb-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-xs lg:grid-cols-12">
+          <div className="grid grid-cols-1 overflow-hidden rounded-lg border border-stone-200 bg-white lg:grid-cols-12">
             <div className="lg:col-span-5 min-h-[220px]">
               <img
                 src={siteConfig.images.ministryFellowship}
@@ -72,7 +72,7 @@ export function MinistriesPage() {
               />
             </div>
             <div className="lg:col-span-7 flex flex-col justify-center p-7 sm:p-9">
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gold-600">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-stone-600">
                 <Sparkles className="h-4 w-4" />
                 <span>Local Church Empowering</span>
               </span>
@@ -130,7 +130,7 @@ export function MinistriesPage() {
                         'ministries'
                       )
                     }
-                    className={`rounded-xl px-4 py-2 text-sm font-semibold transition-colors ${
+                    className={`rounded-md px-4 py-2 text-sm font-semibold transition-colors ${
                       active
                         ? 'bg-navy-900 text-white'
                         : 'bg-white border border-stone-200 text-navy-800 hover:bg-stone-100'
@@ -156,11 +156,11 @@ export function MinistriesPage() {
               <article
                 key={ministry.id}
                 id={ministry.id}
-                className="scroll-mt-32 flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-6 shadow-xs transition-shadow hover:shadow-md"
+                className="scroll-mt-32 flex flex-col justify-between rounded-lg border border-stone-200 bg-white p-6 transition-shadow"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-teal-50 text-teal-700 border border-teal-100">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-md bg-teal-50 text-teal-700 border border-teal-100">
                       <MinistryIcon name={ministry.iconName} className="h-5 w-5" />
                     </div>
                     <span className="rounded-full bg-stone-100 px-3 py-1 text-[11px] font-semibold text-navy-800">
@@ -182,7 +182,7 @@ export function MinistriesPage() {
                   </p>
 
                   {ministry.highlights && ministry.highlights.length > 0 && (
-                    <ul className="mt-4 space-y-1.5 rounded-xl bg-stone-50 p-3.5 border border-stone-200 text-xs text-navy-900">
+                    <ul className="mt-4 space-y-1.5 rounded-md bg-stone-50 p-3.5 border border-stone-200 text-xs text-navy-900">
                       {ministry.highlights.map((note) => (
                         <li key={note} className="flex items-start gap-2">
                           <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" />

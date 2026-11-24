@@ -31,14 +31,14 @@ export function ShiftCoachingPage() {
               href={shiftCoaching.brochureUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-500"
+              className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-500"
             >
               <Download className="h-4 w-4" />
               <span>Download Shift Brochure (PDF)</span>
             </a>
             <Link
               to="/contact?topic=outreach"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-4 py-3 text-sm font-semibold text-white hover:bg-white/20"
+              className="inline-flex items-center gap-2 rounded-md border border-white/25 bg-white/10 px-4 py-3 text-sm font-semibold text-white hover:bg-white/20"
             >
               <span>Connect with Ministry Development</span>
             </Link>
@@ -50,7 +50,7 @@ export function ShiftCoachingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Framing & Intro */}
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            <div className="lg:col-span-7 rounded-2xl border border-stone-200 bg-white p-7 shadow-xs sm:p-8">
+            <div className="lg:col-span-7 rounded-lg border border-stone-200 bg-white p-7 sm:p-8">
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
                 <Compass className="h-4 w-4" />
                 <span>Why Shift Coaching</span>
@@ -65,15 +65,15 @@ export function ShiftCoachingPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl bg-navy-900 p-7 text-white shadow-sm sm:p-8">
+            <div className="lg:col-span-5 flex flex-col justify-between rounded-lg bg-navy-900 p-7 text-white sm:p-8">
               <div className="space-y-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-gold-400">
+                <span className="text-xs font-bold uppercase tracking-wider text-teal-100">
                   Scripture Foundation
                 </span>
-                <blockquote className="rounded-xl border border-white/15 bg-white/5 p-4 font-serif text-base font-semibold text-white">
+                <blockquote className="rounded-md border border-white/15 bg-white/5 p-4 font-serif text-base font-semibold text-white">
                   {shiftCoaching.openingVerse}
                 </blockquote>
-                <blockquote className="rounded-xl border border-white/15 bg-white/5 p-4 font-serif text-base font-semibold text-teal-100">
+                <blockquote className="rounded-md border border-white/15 bg-white/5 p-4 font-serif text-base font-semibold text-teal-100">
                   {shiftCoaching.proverbVerse}
                 </blockquote>
               </div>
@@ -85,10 +85,10 @@ export function ShiftCoachingPage() {
           </div>
 
           {/* Interactive 5 Coaching Rhythms */}
-          <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs sm:p-8">
+          <div className="rounded-lg border border-stone-200 bg-white p-6 sm:p-8">
             <div className="flex flex-col gap-4 border-b border-stone-200 pb-5 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+                <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
                   Coaching Framework (Scale of 1–10)
                 </span>
                 <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900 sm:text-3xl">
@@ -132,7 +132,7 @@ export function ShiftCoachingPage() {
                           'shift-rhythm'
                         )
                       }
-                      className={`rounded-xl px-4 py-2 text-xs font-semibold transition-colors sm:text-sm ${
+                      className={`rounded-md px-4 py-2 text-xs font-semibold transition-colors sm:text-sm ${
                         active
                           ? 'bg-navy-900 text-white'
                           : 'border border-stone-200 bg-stone-50 text-navy-800 hover:bg-stone-100'
@@ -154,7 +154,7 @@ export function ShiftCoachingPage() {
               {visibleRhythms.map((rhythm) => (
                 <article
                   key={rhythm.id}
-                  className="rounded-2xl border border-stone-200 bg-stone-50/70 p-6 sm:p-7"
+                  className="rounded-lg border border-stone-200 bg-stone-50/70 p-6 sm:p-7"
                 >
                   <h3 className="font-serif text-xl font-bold text-navy-900 sm:text-2xl">
                     {rhythm.title}
@@ -167,13 +167,13 @@ export function ShiftCoachingPage() {
 
                   <div className="mt-5 grid grid-cols-1 gap-6 lg:grid-cols-12">
                     <div className="lg:col-span-7 space-y-3">
-                      <div className="text-xs font-bold uppercase tracking-wider text-gold-600">
+                      <div className="text-xs font-bold uppercase tracking-wider text-stone-600">
                         Coaching Questions (1–10)
                       </div>
                       {rhythm.questions.map((q, idx) => (
                         <div
                           key={q}
-                          className="rounded-xl border border-stone-200 bg-white p-4 text-sm leading-relaxed text-navy-900"
+                          className="rounded-md border border-stone-200 bg-white p-4 text-sm leading-relaxed text-navy-900"
                         >
                           <span className="mr-2 font-bold text-teal-700">Q{idx + 1}.</span>
                           <span>{q}</span>
@@ -181,7 +181,7 @@ export function ShiftCoachingPage() {
                       ))}
                     </div>
 
-                    <div className="lg:col-span-5 rounded-xl border border-stone-200 bg-white p-5">
+                    <div className="lg:col-span-5 rounded-md border border-stone-200 bg-white p-5">
                       <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
                         <BookOpen className="h-4 w-4" />
                         <span>Suggested Resources</span>
@@ -203,7 +203,7 @@ export function ShiftCoachingPage() {
 
           {/* Bottom Brochure & Support Band */}
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="lg:col-span-6 flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-6 shadow-xs sm:p-7">
+            <div className="lg:col-span-6 flex flex-col justify-between rounded-lg border border-stone-200 bg-white p-6 sm:p-7">
               <div>
                 <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
                   <FileText className="h-4 w-4" />
@@ -229,9 +229,9 @@ export function ShiftCoachingPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-6 flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-6 shadow-xs sm:p-7">
+            <div className="lg:col-span-6 flex flex-col justify-between rounded-lg border border-stone-200 bg-white p-6 sm:p-7">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-gold-600">
+                <span className="text-xs font-bold uppercase tracking-wider text-stone-600">
                   Ministry Support
                 </span>
                 <h3 className="mt-1.5 font-serif text-xl font-bold text-navy-900">

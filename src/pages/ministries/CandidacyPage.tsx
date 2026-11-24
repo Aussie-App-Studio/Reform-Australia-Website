@@ -29,7 +29,7 @@ export function CandidacyPage() {
         actions={
           <Link
             to="/contact?topic=candidacy"
-            className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-500"
+            className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-500"
           >
             <span>Enquire About Candidacy</span>
             <ArrowRight className="h-4 w-4" />
@@ -41,7 +41,7 @@ export function CandidacyPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Overview + Chair Contact & RTC Card */}
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            <div className="lg:col-span-7 rounded-2xl border border-stone-200 bg-white p-7 shadow-xs sm:p-8">
+            <div className="lg:col-span-7 rounded-lg border border-stone-200 bg-white p-7 sm:p-8">
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
                 <GraduationCap className="h-4 w-4" />
                 <span>Ordained Ministry Pathway</span>
@@ -57,8 +57,8 @@ export function CandidacyPage() {
             </div>
 
             <div className="lg:col-span-5 space-y-5">
-              <div className="rounded-2xl bg-navy-900 p-6 text-white shadow-sm">
-                <span className="text-xs font-bold uppercase tracking-wider text-gold-400">
+              <div className="rounded-lg bg-navy-900 p-6 text-white">
+                <span className="text-xs font-bold uppercase tracking-wider text-teal-100">
                   National Committee Contact
                 </span>
                 <h3 className="mt-1.5 font-serif text-xl font-bold text-white">
@@ -73,7 +73,7 @@ export function CandidacyPage() {
                     href={`tel:${candidacy.contact.phone.replace(/\s+/g, '')}`}
                     className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-3.5 py-2 font-semibold text-white hover:bg-white/20"
                   >
-                    <Phone className="h-4 w-4 text-gold-400" />
+                    <Phone className="h-4 w-4 text-teal-100" />
                     <span>{candidacy.contact.phone}</span>
                   </a>
                   <a
@@ -86,7 +86,7 @@ export function CandidacyPage() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs">
+              <div className="rounded-lg border border-stone-200 bg-white p-6">
                 <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
                   Primary Theological Partner
                 </span>
@@ -108,8 +108,8 @@ export function CandidacyPage() {
                 </a>
               </div>
 
-              <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-xs">
-                <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gold-600">
+              <div className="rounded-lg border border-stone-200 bg-white p-6">
+                <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-stone-600">
                   <BookOpen className="h-3.5 w-3.5" />
                   <span>Polity &amp; Governance</span>
                 </div>
@@ -158,7 +158,7 @@ export function CandidacyPage() {
           {/* 4 Ordination Tracks */}
           <div>
             <div className="max-w-2xl">
-              <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+              <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
                 Training Options
               </span>
               <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900 sm:text-3xl">
@@ -170,7 +170,7 @@ export function CandidacyPage() {
               {candidacy.tracks.map((track) => (
                 <article
                   key={track.number}
-                  className={`rounded-2xl border p-6 shadow-xs ${
+                  className={`rounded-lg border p-6 ${
                     track.number === 1
                       ? 'border-teal-500/50 bg-teal-50/50'
                       : 'border-stone-200 bg-white'
@@ -196,9 +196,9 @@ export function CandidacyPage() {
           </div>
 
           {/* 11-Step Pathway */}
-          <div className="rounded-2xl border border-stone-200 bg-white p-7 shadow-xs sm:p-9">
+          <div className="rounded-lg border border-stone-200 bg-white p-7 sm:p-9">
             <div className="max-w-2xl">
-              <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+              <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
                 Step-by-Step Approval
               </span>
               <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900 sm:text-3xl">
@@ -214,9 +214,9 @@ export function CandidacyPage() {
               {candidacy.steps.map((item) => (
                 <li
                   key={item.step}
-                  className="flex flex-col gap-3 rounded-xl border border-stone-200 bg-stone-50/70 p-5 sm:flex-row sm:items-start sm:gap-5"
+                  className="flex flex-col gap-3 rounded-md border border-stone-200 bg-stone-50/70 p-5 sm:flex-row sm:items-start sm:gap-5"
                 >
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-navy-900 font-serif text-sm font-bold text-gold-400">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-navy-900 font-serif text-sm font-bold text-teal-100">
                     {item.step}
                   </div>
                   <div>
@@ -235,7 +235,7 @@ export function CandidacyPage() {
               </p>
               <Link
                 to="/contact?topic=candidacy"
-                className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-700"
+                className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-700"
               >
                 <span>Message the Candidacy Committee</span>
                 <ArrowRight className="h-4 w-4" />

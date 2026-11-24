@@ -45,7 +45,7 @@ function UrgentHelpPanel({ compact = false }: { compact?: boolean }) {
   return (
     <aside
       aria-label="Report a concern"
-      className={`rounded-2xl border border-rose-200 bg-rose-50 text-rose-950 ${compact ? 'p-5' : 'p-6 sm:p-7'}`}
+      className={`rounded-lg border border-rose-200 bg-rose-50 text-rose-950 ${compact ? 'p-5' : 'p-6 sm:p-7'}`}
     >
       <div className="flex items-start gap-3">
         <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-rose-600 text-white">
@@ -66,7 +66,7 @@ function UrgentHelpPanel({ compact = false }: { compact?: boolean }) {
         <li>
           <a
             href={tel(urgent.primaryPhone)}
-            className="flex items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-sm ring-1 ring-rose-200 transition hover:ring-rose-400"
+            className="flex items-center gap-3 rounded-md bg-white px-4 py-3 ring-1 ring-rose-200 transition hover:ring-rose-400"
           >
             <Phone className="h-4 w-4 shrink-0 text-rose-600" aria-hidden="true" />
             <span className="min-w-0">
@@ -78,7 +78,7 @@ function UrgentHelpPanel({ compact = false }: { compact?: boolean }) {
         <li>
           <a
             href={tel(urgent.backupPhone)}
-            className="flex items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-sm ring-1 ring-rose-200 transition hover:ring-rose-400"
+            className="flex items-center gap-3 rounded-md bg-white px-4 py-3 ring-1 ring-rose-200 transition hover:ring-rose-400"
           >
             <Phone className="h-4 w-4 shrink-0 text-rose-600" aria-hidden="true" />
             <span className="min-w-0">
@@ -107,7 +107,7 @@ function SafeChurchSearch({ content }: { content: SafeChurchContent }) {
   const [q, setQ] = useState('');
   const results = useMemo(() => searchSafeChurch(content, q), [content, q]);
   return (
-    <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6">
+    <div className="rounded-lg border border-stone-200 bg-white p-5 sm:p-6">
       <label htmlFor="sc-search" className="font-serif text-lg font-bold text-navy-900">
         Search Safe Church guidance
       </label>
@@ -119,7 +119,7 @@ function SafeChurchSearch({ content }: { content: SafeChurchContent }) {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder='Try "working with children check", "grooming", "volunteer", "first aid"…'
-          className="w-full rounded-xl border border-stone-300 bg-stone-50 py-3 pl-10 pr-4 text-base text-navy-900 placeholder:text-stone-500 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/30 sm:text-sm"
+          className="w-full rounded-md border border-stone-300 bg-stone-50 py-3 pl-10 pr-4 text-base text-navy-900 placeholder:text-stone-500 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/30 sm:text-sm"
         />
       </div>
       {q.trim().length > 1 && (
@@ -174,7 +174,7 @@ function SafeChurchHub({ content }: { content: SafeChurchContent }) {
 
       <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-1">
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold-600">Guidance & policy</p>
+          <p className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">Guidance & policy</p>
           <h2 className="font-serif text-2xl font-bold text-navy-900 sm:text-3xl">Explore Safe Church</h2>
         </div>
         <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -182,9 +182,9 @@ function SafeChurchHub({ content }: { content: SafeChurchContent }) {
             const page = content.pages[s.path];
             const kids = page.children.map((c) => content.pages[c]).filter(Boolean);
             return (
-              <article key={s.path} className="flex flex-col rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-teal-300 hover:shadow-md">
+              <article key={s.path} className="flex flex-col rounded-lg border border-stone-200 bg-white p-6 transition hover:border-teal-300">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-50 text-teal-700">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-md bg-teal-50 text-teal-700">
                     <SectionIcon name={s.icon} className="h-5 w-5" />
                   </span>
                   <h3 className="font-serif text-xl font-bold text-navy-900">
@@ -213,13 +213,13 @@ function SafeChurchHub({ content }: { content: SafeChurchContent }) {
               </article>
             );
           })}
-          <article className="flex flex-col rounded-2xl border border-navy-800 bg-navy-900 p-6 text-white shadow-sm">
+          <article className="flex flex-col rounded-lg border border-navy-800 bg-navy-900 p-6 text-white">
             <h3 className="font-serif text-xl font-bold">Quick links</h3>
             <ul className="mt-4 space-y-2 text-sm">
               {quickLinks.map((l) => (
                 <li key={l.path}>
                   <Link to={`/safe-church/${l.path}`} className="inline-flex items-center gap-1.5 text-navy-100 hover:text-white">
-                    <ChevronRight className="h-4 w-4 text-gold-400" aria-hidden="true" /> {l.label}
+                    <ChevronRight className="h-4 w-4 text-teal-100" aria-hidden="true" /> {l.label}
                   </Link>
                 </li>
               ))}
@@ -341,7 +341,7 @@ function SafeChurchArticle({ content, page }: { content: SafeChurchContent; page
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-10 lg:px-8 lg:py-14 xl:grid-cols-[18rem_minmax(0,1fr)]">
         {/* Section navigation: sidebar on desktop, collapsible on mobile */}
         <div className="space-y-6 lg:sticky lg:top-[calc(var(--site-header-height,72px)+1.5rem)] lg:max-h-[calc(100vh-var(--site-header-height,72px)-3rem)] lg:self-start lg:overflow-y-auto lg:pb-2">
-          <details className="group rounded-2xl border border-stone-200 bg-white p-3 shadow-sm lg:hidden">
+          <details className="group rounded-lg border border-stone-200 bg-white p-3 lg:hidden">
             <summary className="flex cursor-pointer list-none items-center justify-between px-2 py-1 text-sm font-semibold text-navy-900">
               In this section
               <ChevronRight className="h-4 w-4 transition group-open:rotate-90" aria-hidden="true" />
@@ -360,7 +360,7 @@ function SafeChurchArticle({ content, page }: { content: SafeChurchContent; page
 
         <article className="min-w-0">
           {/* Mobile: slim always-visible reporting strip */}
-          <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-950 lg:hidden">
+          <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-md border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-950 lg:hidden">
             <AlertTriangle className="h-4 w-4 shrink-0 text-rose-600" aria-hidden="true" />
             <span className="font-semibold">Need to report?</span>
             <a href={tel(urgent.primaryPhone)} className="font-bold tabular-nums underline underline-offset-2">
@@ -368,7 +368,7 @@ function SafeChurchArticle({ content, page }: { content: SafeChurchContent; page
             </a>
             <span className="basis-full pl-7 text-xs text-rose-800">If anyone is in immediate danger, call {urgent.emergency}.</span>
           </div>
-          <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+          <div className="rounded-lg border border-stone-200 bg-white p-6 sm:p-8 lg:p-10">
             {hasBody ? (
               <RichHtml html={page.html} className="max-w-[72ch]" />
             ) : (
@@ -383,7 +383,7 @@ function SafeChurchArticle({ content, page }: { content: SafeChurchContent; page
                     <li key={c.path}>
                       <Link
                         to={`/safe-church/${c.path}`}
-                        className="group flex h-full flex-col rounded-xl border border-stone-200 bg-stone-50 p-4 transition hover:border-teal-300 hover:bg-white hover:shadow-sm"
+                        className="group flex h-full flex-col rounded-md border border-stone-200 bg-stone-50 p-4 transition hover:border-teal-300 hover:bg-white"
                       >
                         <span className="flex items-center justify-between gap-2 font-semibold text-navy-900 group-hover:text-teal-700">
                           {c.title}
@@ -401,7 +401,7 @@ function SafeChurchArticle({ content, page }: { content: SafeChurchContent; page
           {(prev || next) && (
             <nav aria-label="Previous and next topic" className="mt-6 grid gap-3 sm:grid-cols-2">
               {prev ? (
-                <Link to={`/safe-church/${prev.path}`} className="group rounded-xl border border-stone-200 bg-white p-4 hover:border-teal-300">
+                <Link to={`/safe-church/${prev.path}`} className="group rounded-md border border-stone-200 bg-white p-4 hover:border-teal-300">
                   <span className="flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-stone-500">
                     <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /> Previous
                   </span>
@@ -411,7 +411,7 @@ function SafeChurchArticle({ content, page }: { content: SafeChurchContent; page
                 <span className="hidden sm:block" />
               )}
               {next && (
-                <Link to={`/safe-church/${next.path}`} className="group rounded-xl border border-stone-200 bg-white p-4 text-right hover:border-teal-300">
+                <Link to={`/safe-church/${next.path}`} className="group rounded-md border border-stone-200 bg-white p-4 text-right hover:border-teal-300">
                   <span className="flex items-center justify-end gap-1 text-xs font-semibold uppercase tracking-wide text-stone-500">
                     Next <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>

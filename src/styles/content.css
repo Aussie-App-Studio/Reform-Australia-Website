@@ -103,3 +103,19 @@
     line-height: 1.6 !important;
   }
 }
+
+/* Header action buttons were designed for a dark banner; restyle the "ghost"
+   variant (white text on translucent white) for the light page header. */
+.page-header-actions .bg-white\/10 {
+  background: #fff;
+  border-color: var(--color-stone-300);
+  color: var(--color-navy-900);
+}
+
+.page-header-actions .bg-white\/10:hover {
+  border-color: var(--color-navy-900);
+}
+
+.page-header-actions .bg-white\/10 svg {
+  color: var(--color-teal-700);
+}
