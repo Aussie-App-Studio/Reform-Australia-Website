@@ -9,7 +9,12 @@
       "paragraphs": [
         "Missional Explorations are designed to identify local missional contexts that might one day become future church plants. They are a stepping-stone between a congregation's regular outreach and something that might take on a life of its own.",
         "Under the supervision of the local church, a Missional Exploration might develop its own identity and, as a new congregation, lead to a formal church plant."
-      ]
+      ],
+      "image": {
+        "src": "/images/ministries/food-relief-drive.webp",
+        "alt": "Volunteers sorting boxes of donated food outside a brick church building",
+        "caption": "A food relief drive run by a local Reformed church"
+      }
     },
     {
       "heading": "Why we fund them",
@@ -87,7 +92,8 @@
     "https://crca.org.au/church-planting-taskforce/",
     "public/ministry-resources/missional-explorations/Missional-Exploration-Application.pdf",
     "src/data/internalMinistries.json (detailPages.missional-explorations)",
-    "src/data/contactTopics.json (church-planting)"
+    "src/data/contactTopics.json (church-planting)",
+    "Photo: crca.org.au (archived 2023), https://web.archive.org/web/20230303112518/https://crca.org.au/images/Resized_20230218_091824.JPEG"
   ],
   "needsChecking": [
     "KJ Tromp's email (kj@openhouse.church) is only in the old data and contactTopics.json; the official page names KJ Tromp as CPT Convenor but shows no email.",

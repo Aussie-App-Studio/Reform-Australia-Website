@@ -26,6 +26,15 @@ export function VisionValuesPage() {
         breadcrumbs={[{ label: 'Who we are' }, { label: 'Vision and values' }]}
       />
 
+      <figure className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <img
+          src={`${import.meta.env.BASE_URL}images/crca/synod-2022.webp`}
+          alt="Synod delegates seated at tables facing the front of a hall, with a large screen and the chair's table"
+          className="aspect-[4/1] w-full rounded-md object-cover max-sm:aspect-[2/1]"
+        />
+        <figcaption className="mt-2 text-sm text-stone-600">Delegates at a CRCA Synod.</figcaption>
+      </figure>
+
       {/* Mission and vision */}
       <section className="bg-navy-900 text-white">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-20">

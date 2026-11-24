@@ -76,15 +76,16 @@
   ],
   "sources": [
     "https://crca.org.au/local-church-outreach-training/",
-    "src/data/internalMinistries.json (detailPages.local-church-outreach-training)"
+    "src/data/internalMinistries.json (detailPages.local-church-outreach-training)",
+    "Photo: crca.org.au (archived 2019), https://web.archive.org/web/20190228110037/http://www.crca.org.au/images/P1040803.jpg"
   ],
   "needsChecking": [
     "The 'How Organic Outreach works' link (https://www.organicoutreach.org/how-it-works-2-0/) is only in the old data; check it still works.",
     "The official page links to 'Previous Conference Sessions & Interviews', but that URL is not in the data, so it is mentioned without a link."
   ],
   "hero": {
-    "src": "/images/stock/pexels-fauxels-3184418.webp",
-    "alt": "Hands joined together over a table",
-    "credit": "fauxels, Pexels"
+    "src": "/images/ministries/community-meal.webp",
+    "alt": "Church volunteers in aprons preparing food together in a church kitchen",
+    "caption": "Church members preparing a community meal"
   }
 }
