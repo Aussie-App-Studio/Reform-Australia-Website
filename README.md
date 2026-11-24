@@ -4,6 +4,10 @@ A modern, fast, data-driven website prototype for the **Christian Reformed Churc
 
 🌐 **Live Preview (GitHub Pages):** **[https://aussie-app-studio.github.io/Reform-Australia-Website/](https://aussie-app-studio.github.io/Reform-Australia-Website/)**
 
+🧪 **v2 Preview (Safe Church + Sermon Archive + fixes, branch `v2`):** **[https://aussie-app-studio.github.io/Reform-Australia-Website/v2/](https://aussie-app-studio.github.io/Reform-Australia-Website/v2/)**
+
+The original prototype is preserved as the git tag `jesse-v1` and branch `jesse-original`.
+
 ---
 
 ## Getting Started (Viewing Locally or Editing with Claude Code)

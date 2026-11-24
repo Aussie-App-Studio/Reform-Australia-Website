@@ -366,7 +366,7 @@ function SafeChurchArticle({ content, page }: { content: SafeChurchContent; page
             <a href={tel(urgent.primaryPhone)} className="font-bold tabular-nums underline underline-offset-2">
               {urgent.primaryPhone}
             </a>
-            <span className="text-rose-800">· Danger: call {urgent.emergency}</span>
+            <span className="basis-full pl-7 text-xs text-rose-800">If anyone is in immediate danger, call {urgent.emergency}.</span>
           </div>
           <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
             {hasBody ? (

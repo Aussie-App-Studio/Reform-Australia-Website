@@ -33,7 +33,25 @@ The `/for-churches/forms-and-documents` library renders self-hosted Markdown, JS
 
 - **Manual refresh:** Run `npm run sync-docs` (or `node scripts/sync-crca-docs.mjs --force` to bypass commit SHA short-circuiting) to pull updated liturgical forms, creeds, confessions, worship readings, and the 2022 Church Order into `public/documents/`.
 - **Build with sync:** Run `npm run build:with-sync` to refresh documents immediately before building `dist/`.
-- **Periodic automatic sync:** [`.github/workflows/sync-crca-docs.yml`](.github/workflows/sync-crca-docs.yml) runs on a weekly GitHub Actions schedule (and supports manual `workflow_dispatch` triggers), verifies `npm run build`, and commits updated files in `public/documents/` so static hosts automatically redeploy.
+- **Periodic automatic sync:** the workflow template [`scripts/github-workflows/sync-crca-docs.yml`](scripts/github-workflows/sync-crca-docs.yml) runs on a weekly GitHub Actions schedule (and supports manual `workflow_dispatch` triggers), verifies `npm run build`, and commits updated files in `public/documents/` so static hosts automatically redeploy.
+
+> **Enabling the GitHub Actions workflows:** the templates live in `scripts/github-workflows/` (`.github/workflows/` is git-ignored because pushing workflow files needs a token with the `workflow` scope). To turn them on, run `gh auth refresh -s workflow`, copy the files into `.github/workflows/`, remove that line from `.gitignore`, and push.
+
+---
+
+## 1c. Safe Church & Word of Salvation (formerly separate websites)
+
+Both legacy WordPress sites are now part of this site and served as static JSON:
+
+| Section | Route | Data | Refresh |
+| :--- | :--- | :--- | :--- |
+| Safe Church Unit (72 pages, 88 documents) | `/safe-church` | `public/data/safe-church/` | `npm run sync-safe-church` |
+| Word of Salvation reading sermons (2,186) | `/sermons` | `public/data/sermons/` | `npm run sync-sermons` |
+
+- The sync scripts read the public WordPress REST API, strip page-builder markup, rewrite links to the new routes, and self-host linked PDFs/Word documents. `npm run sync-all` refreshes forms, Safe Church and sermons together.
+- The weekly workflow template `scripts/github-workflows/sync-legacy-sites.yml` keeps both current once enabled (see note above).
+- Urgent Safe Church phone numbers shown on every Safe Church page are set in `src/data/siteConfig.ts` (`safeChurch.urgent`).
+- Once the old sites are retired, point `safechurch.crca.org.au` and `wordofsalvation.crca.org.au` at this site — old sermon URLs (`/word-of-salvation/<slug>/`) already redirect to `/sermons/<slug>`.
 
 ---
 
@@ -62,7 +80,7 @@ This outputs pure static files into `dist/`, ready to upload to:
 If `crca.org.au` stays on WordPress as a backend CMS:
 1. Install WPGraphQL or expose custom REST endpoints (e.g., `/wp-json/wp/v2/churches`).
 2. Replace the static JSON import in `FindAChurchPage.tsx` with a tiny `fetch()` hook falling back to the local JSON file.
-3. Connect `ContactPage.tsx` form submission to Netlify Forms, Formspree, or a WordPress Contact Form 7 / Gravity Forms REST endpoint.
+3. Contact form delivery: paste a Formspree / Web3Forms (or similar) POST URL into `siteConfig.contactForm.endpoint`. The form then sends JSON (`topic, to, cc, name, email, church, message`) and falls back to the email-app flow if sending fails.
 
 ---
 
