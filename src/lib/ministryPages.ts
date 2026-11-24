@@ -4,12 +4,32 @@
 
 export type MinistryGroup = 'next-gen' | 'training-planting' | 'global-mission';
 
+export interface MinistryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+  credit?: string;
+}
+
+export interface MinistryNewsItem {
+  id: string;
+  title: string;
+  date: string; // YYYY-MM-DD
+  summary?: string;
+  image?: string;
+  paragraphs?: string[];
+}
+
 export interface MinistryPageData {
   slug: string;
   name: string;
   group: MinistryGroup;
   summary: string;
-  body: { heading?: string; paragraphs?: string[]; list?: string[] }[];
+  hero?: MinistryImage;
+  body: { id?: string; heading?: string; paragraphs?: string[]; list?: string[]; image?: MinistryImage }[];
+  team?: { name: string; role?: string; text?: string; photo?: string }[];
+  gallery?: MinistryImage[];
+  news?: MinistryNewsItem[];
   steps?: { heading: string; items: { title: string; text: string }[] };
   facts?: { label: string; value: string }[];
   contact?: { name?: string; role?: string; email?: string; phone?: string; topic?: string };

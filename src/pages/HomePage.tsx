@@ -1,6 +1,6 @@
 import { FormEvent, ReactNode, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, ExternalLink, Search } from 'lucide-react';
+import { ArrowRight, BookOpen, Church, ExternalLink, Globe2, HandHeart, LucideIcon, Scroll, Search } from 'lucide-react';
 import churchesRaw from '../data/churches.json';
 import identity from '../data/identity.json';
 import beliefs from '../data/beliefs.json';
@@ -22,6 +22,14 @@ const STATES: { code: ChurchRecord['state']; name: string }[] = [
 ];
 
 const DOCS = '/for-churches/forms-and-documents';
+
+const VALUE_ICONS: Record<string, LucideIcon> = {
+  'contemporary-reformed': Scroll,
+  'word-based': BookOpen,
+  'gospel-focused': Globe2,
+  'local-church-empowering': Church,
+  'prayerful-urgency': HandHeart,
+};
 
 const STANDARDS = [
   { label: 'The Apostles’ Creed', to: `${DOCS}/creeds-and-confessions-01-ecumenical-creeds-01-the-apostles-creed` },
@@ -166,14 +174,22 @@ export function HomePage() {
           {identity.missionAndVision.vision}
         </blockquote>
         <h3 className="mt-12 font-serif text-xl font-semibold text-navy-900">Our values</h3>
-        <dl className="mt-4 divide-y divide-stone-200 border-y border-stone-200">
-          {identity.coreValues.items.map((v) => (
-            <div key={v.id} className="grid gap-1 py-4 sm:grid-cols-[13rem_1fr] sm:gap-6">
-              <dt className="font-semibold text-navy-900">{v.title}</dt>
-              <dd className="leading-relaxed text-stone-700">{v.summary}</dd>
-            </div>
-          ))}
-        </dl>
+        <ul className="mt-5 grid gap-px overflow-hidden rounded-md border border-stone-200 bg-stone-200 sm:grid-cols-2">
+          {identity.coreValues.items.map((v) => {
+            const Icon = VALUE_ICONS[v.id] ?? BookOpen;
+            return (
+              <li key={v.id} className="flex gap-4 bg-white p-5">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-700">
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <span>
+                  <span className="block font-semibold text-navy-900">{v.title}</span>
+                  <span className="mt-1 block text-[0.95rem] leading-relaxed text-stone-600">{v.summary}</span>
+                </span>
+              </li>
+            );
+          })}
+        </ul>
         <Link to="/who-we-are/vision-values" className="mt-6 inline-flex items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
           Mission, vision and strategy <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>

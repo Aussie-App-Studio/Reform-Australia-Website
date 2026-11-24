@@ -79,9 +79,13 @@ function churchMatchesQuery(
   normalizedQuery: string,
   rawLowerQuery: string
 ): boolean {
-  const raw = `${church.name} ${church.suburb} ${church.classis} ${church.address} ${church.postcode}`;
+  const raw = `${church.name} ${church.suburb} ${church.classis} ${church.address} ${church.postcode} ${church.serviceTimes ?? ''}`;
   if (raw.toLowerCase().includes(rawLowerQuery)) return true;
-  return normalizeLocationText(raw).includes(normalizedQuery);
+  const haystack = normalizeLocationText(raw);
+  if (haystack.includes(normalizedQuery)) return true;
+  // Word-by-word: "canberra reformed" or "hobart crc" match even when words aren't adjacent.
+  const words = normalizedQuery.split(' ').filter((w) => w.length > 1);
+  return words.length > 1 && words.every((w) => haystack.includes(w));
 }
 
 function attachUserDistance(
@@ -96,6 +100,9 @@ function attachUserDistance(
   }));
   if (userCoords) {
     list.sort((a, b) => (a.distanceKm ?? 0) - (b.distanceKm ?? 0));
+  } else {
+    // No location to sort by: list churches alphabetically.
+    list.sort((a, b) => a.church.name.localeCompare(b.church.name, 'en-AU'));
   }
   return list;
 }

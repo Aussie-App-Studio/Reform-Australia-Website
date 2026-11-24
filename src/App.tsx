@@ -22,6 +22,9 @@ const MinistriesPage = lazy(() =>
 const MinistryPage = lazy(() =>
   import('./pages/ministries/MinistryPage').then((m) => ({ default: m.MinistryPage }))
 );
+const MinistryNewsPage = lazy(() =>
+  import('./pages/ministries/MinistryPage').then((m) => ({ default: m.MinistryNewsPage }))
+);
 const ForChurchesPage = lazy(() =>
   import('./pages/ForChurchesPage').then((m) => ({ default: m.ForChurchesPage }))
 );
@@ -101,6 +104,7 @@ export function App() {
               <Route path="/ministries/missional-explorations" element={<MinistryPage slug="missional-explorations" />} />
               <Route path="/ministries/church-planting-taskforce" element={<MinistryPage slug="church-planting-taskforce" />} />
               <Route path="/ministries/ecumenical-relations" element={<MinistryPage slug="ecumenical-relations" />} />
+              <Route path="/ministries/:slug/news/:newsId" element={<MinistryNewsPage />} />
               <Route path="/for-churches" element={<ForChurchesPage />} />
               <Route
                 path="/for-churches/forms-and-documents"

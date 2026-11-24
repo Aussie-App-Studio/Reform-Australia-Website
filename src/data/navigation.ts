@@ -44,7 +44,7 @@ export const whoWeAreNavItems: NavLinkItem[] = [
   {
     label: 'Vision & Values',
     to: '/who-we-are/vision-values',
-    description: 'Our mission, vision, and the six biblical core values shaping our churches.',
+    description: 'Our mission, vision, core values, four-fold task and strategies.',
   },
   {
     label: 'What We Believe',
@@ -208,6 +208,8 @@ export const navMenus: NavMenu[] = [
         heading: 'About us',
         items: [
           { label: 'Vision & values', to: '/who-we-are/vision-values' },
+          { label: 'Four-fold task', to: '/who-we-are/vision-values#four-fold-task' },
+          { label: 'Strategies', to: '/who-we-are/vision-values#strategies' },
           { label: 'What we believe', to: '/who-we-are/beliefs' },
           { label: 'Our history', to: '/who-we-are/history' },
         ],

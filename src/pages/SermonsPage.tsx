@@ -316,12 +316,7 @@ export function SermonsPage() {
 
         {index && (
           <p className="mt-12 text-xs text-stone-500">
-            Sermons submitted by CRCA ministers for use as reading services, personal devotion and further study. Brought across
-            from{' '}
-            <a href={index.source} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-navy-900">
-              wordofsalvation.crca.org.au
-            </a>{' '}
-            · last synced {new Date(index.syncedAt).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}
+            Sermons submitted by CRCA ministers for use as reading services, personal devotion and further study. Last updated {new Date(index.syncedAt).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}
           </p>
         )}
       </div>

@@ -37,6 +37,13 @@ const SKIP_PATHS = new Set([
   'resource-overview/forms-and-posters', // titled "Forms and Posters – do not use"
 ]);
 
+// Links to the even older safechurchcrca.org.au domain, mapped to content we host ourselves.
+const LEGACY_LINKS = {
+  'https://safechurchcrca.org.au/images/CRCA_Sexual_Abuse_Apology_-_Members_July_2022.pdf':
+    'https://safechurch.crca.org.au/wp-content/uploads/CRCA-Sexual-Abuse-Apology-Members-July-2022.pdf',
+  'https://safechurchcrca.org.au/safe-church-documents/safe-church-related': 'https://safechurch.crca.org.au/resource-overview/reports-documents-forms/',
+};
+
 // Section order and short blurbs for the hub page.
 const SECTIONS = [
   { legacy: 'safe-church-overview', title: 'About Safe Church', icon: 'ShieldCheck', blurb: 'Who the Safe Church Unit is, our policy commitments, training and the role of Safe Church Representatives.' },
@@ -58,6 +65,7 @@ async function main() {
   const knownLegacy = new Set(pages.map((p) => legacyPathOf(p.link)));
 
   function rewriteHref(href) {
+    href = LEGACY_LINKS[href] ?? href;
     let url;
     try {
       url = new URL(href, `https://${HOST}/`);

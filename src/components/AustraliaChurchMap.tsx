@@ -36,7 +36,7 @@ interface AustraliaChurchMapProps {
 const OPENFREEMAP_STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
 const AUSTRALIA_CENTER: [number, number] = [133.8, -28.2];
 const AUSTRALIA_DEFAULT_ZOOM = 3.15;
-const AUSTRALIA_MIN_ZOOM = 3.0;
+const AUSTRALIA_MIN_ZOOM = 2.2;
 // Southwest [lng, lat] to Northeast [lng, lat] bounding box around Australia with ocean buffer
 const AUSTRALIA_MAX_BOUNDS: [[number, number], [number, number]] = [
   [95.0, -52.0],
@@ -447,7 +447,7 @@ export function AustraliaChurchMap({
       for (const coord of coords) {
         bounds.extend(coord);
       }
-      map.fitBounds(bounds, { padding: 48, maxZoom: 11.5, duration: 0 });
+      map.fitBounds(bounds, { padding: { top: 40, bottom: 56, left: 40, right: 40 }, maxZoom: 11.5, duration: 0 });
     }
 
     layoutColocatedMarkers(

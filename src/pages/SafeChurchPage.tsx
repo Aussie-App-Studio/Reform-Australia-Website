@@ -6,8 +6,6 @@ import {
   ArrowRight,
   Baby,
   ChevronRight,
-  ExternalLink,
-  FileText,
   FolderOpen,
   HandHeart,
   Mail,
@@ -241,11 +239,7 @@ function SafeChurchHub({ content }: { content: SafeChurchContent }) {
 function SyncNote({ content }: { content: SafeChurchContent }) {
   return (
     <p className="mt-6 text-xs text-stone-500">
-      Content brought across from{' '}
-      <a href={content.source} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-navy-900">
-        safechurch.crca.org.au
-      </a>{' '}
-      · last synced {new Date(content.syncedAt).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}
+Last updated {new Date(content.syncedAt).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}
     </p>
   );
 }
@@ -421,12 +415,6 @@ function SafeChurchArticle({ content, page }: { content: SafeChurchContent; page
             </nav>
           )}
 
-          <p className="mt-6 flex flex-wrap items-center gap-x-1 text-xs text-stone-500">
-            <FileText className="h-3.5 w-3.5" aria-hidden="true" /> Originally published at{' '}
-            <a href={page.legacyUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 underline underline-offset-2 hover:text-navy-900">
-              safechurch.crca.org.au <ExternalLink className="h-3 w-3" aria-hidden="true" />
-            </a>
-          </p>
         </article>
 
       </div>
@@ -452,9 +440,9 @@ export function SafeChurchPage() {
       <div className="mx-auto max-w-3xl px-4 py-20 text-center">
         <p className="font-semibold text-navy-900">Sorry — Safe Church content could not be loaded.</p>
         <p className="mt-2 text-sm text-stone-600">{error}</p>
-        <a href={siteConfig.safeChurch.legacyUrl} className="mt-4 inline-block text-teal-700 underline">
-          Visit safechurch.crca.org.au instead
-        </a>
+        <p className="mt-4 text-sm text-stone-600">
+          For urgent help call the Safe Church Unit on {siteConfig.safeChurch.urgent.primaryPhone}.
+        </p>
       </div>
     );
   }

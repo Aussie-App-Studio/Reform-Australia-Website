@@ -8,7 +8,6 @@ export const siteConfig = {
     name: 'Safe Church Unit',
     /** Internal route — the full Safe Church site now lives inside this site. */
     url: '/safe-church',
-    legacyUrl: 'https://safechurch.crca.org.au/',
     summary:
       'Dedicated safeguarding, compliance training, and pastoral care support so every CRCA congregation remains a safe place for children and vulnerable people.',
     /** Shown in the "Need help now?" panel on every Safe Church page. */
@@ -33,7 +32,6 @@ export const siteConfig = {
   contactForm: {
     endpoint: '',
   },
-  liveDirectoryUrl: 'https://crca.org.au/find-a-church/',
   logos: {
     landscapeWhite: '/images/logos/crca-logo-landscape-white.png',
     iconTeal: '/images/logos/crca-icon-teal.jpg',

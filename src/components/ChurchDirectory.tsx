@@ -1,17 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Clock,
-  ExternalLink,
-  Facebook,
-  Globe,
-  Headphones,
   Loader2,
   MapPin,
   Navigation,
   Search,
-  Video,
   X,
-  Youtube,
 } from 'lucide-react';
 import churchesRaw from '../data/churches.json';
 import { AuLocationsDataset, loadAuLocations } from '../data/locationHubs';
@@ -539,7 +533,7 @@ export function ChurchDirectory({
                 </button>
               </div>
             ) : (
-              <div className="space-y-3 lg:max-h-[640px] lg:overflow-y-auto lg:pr-1">
+              <div className="relative lg:max-h-[42rem] lg:overflow-y-auto lg:pr-2">
                 {filteredChurches.map(({ church, distanceKm }, i) => {
                   const isSelected = church.id === selectedChurchId;
                   const directionsUrl = getDirectionsUrl(church);
@@ -551,144 +545,77 @@ export function ChurchDirectory({
                         cardRefs.current[church.id] = el;
                       }}
                       onClick={() => handleSelectFromCard(church.id)}
-                      className={`cursor-pointer rounded-lg border bg-white p-5 transition-all ${
+                      className={`cursor-pointer border-b border-stone-200 bg-white px-1 py-5 transition-colors first:border-t ${
                         !showAllMobile && i >= MOBILE_LIST_LIMIT ? 'max-lg:hidden ' : ''
                       }${
                         isSelected
-                          ? 'border-teal-600 ring-2 ring-teal-500/25'
-                          : 'border-stone-200 hover:border-teal-500/40'
+                          ? 'border-l-4 border-l-teal-500 bg-teal-50/60 pl-4'
+                          : 'hover:bg-stone-50'
                       }`}
                     >
-                      <div className="flex flex-wrap items-start justify-between gap-2">
-                        <div>
-                          <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-teal-700">
-                            {church.state}
-                          </span>
-                          <h3 className="mt-0.5 font-serif text-lg font-bold text-navy-900">
-                            <button
-                              type="button"
-                              aria-pressed={isSelected}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleSelectFromCard(church.id);
-                              }}
-                              className="text-left transition-colors hover:text-teal-700 focus-visible:underline"
-                            >
-                              {church.name}
-                            </button>
-                          </h3>
-                        </div>
-
-                        {distanceKm !== null && (
-                          <span className="shrink-0 rounded-full bg-gold-50 border border-gold-400/50 px-2.5 py-0.5 text-[11px] font-bold text-stone-600">
-                            {distanceKm < 1
+                      <div className="flex items-start justify-between gap-3">
+                        <h3 className="font-serif text-xl font-semibold leading-snug text-navy-900">
+                          <button
+                            type="button"
+                            aria-pressed={isSelected}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleSelectFromCard(church.id);
+                            }}
+                            className="text-left hover:text-teal-700 focus-visible:underline"
+                          >
+                            {church.name}
+                          </button>
+                        </h3>
+                        <span className="shrink-0 pt-1 text-sm text-stone-500">
+                          {distanceKm !== null
+                            ? distanceKm < 1
                               ? '< 1 km'
-                              : `${distanceKm < 10 ? distanceKm.toFixed(1) : Math.round(distanceKm)} km`}
-                          </span>
-                        )}
+                              : `${distanceKm < 10 ? distanceKm.toFixed(1) : Math.round(distanceKm)} km`
+                            : church.state}
+                        </span>
                       </div>
 
-                      <div className="mt-2.5 space-y-1.5 text-xs text-stone-700">
-                        <div className="flex items-start gap-2">
-                          <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-stone-600" />
-                          <span>
-                            {church.address}{' '}
-                            <a
-                              href={directionsUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="ml-1 font-semibold text-teal-700 underline decoration-teal-500/40 hover:text-navy-900"
-                            >
-                              Directions
-                            </a>
-                          </span>
-                        </div>
-
+                      <dl className="mt-2 space-y-1 text-[0.95rem] text-stone-700">
                         {church.serviceTimes && (
-                          <div className="flex items-start gap-2 font-medium text-navy-900">
-                            <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-teal-600" />
-                            <span>Sundays: {church.serviceTimes}</span>
+                          <div className="flex gap-2">
+                            <dt className="sr-only">Sunday services</dt>
+                            <Clock className="mt-1 h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />
+                            <dd className="font-medium text-navy-900">Sundays {church.serviceTimes}</dd>
                           </div>
                         )}
-                      </div>
-
-                      {/* Visitor Preview Media & Website Buttons */}
-                      {(church.website ||
-                        church.youtube ||
-                        church.videoUrl ||
-                        church.facebook ||
-                        church.podcast) && (
-                        <div className="mt-4 flex flex-wrap gap-2 border-t border-stone-100 pt-3">
-                          {church.website && (
-                            <a
-                              href={church.website}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-1.5 rounded-lg bg-navy-900 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-navy-800"
-                            >
-                              <Globe className="h-3.5 w-3.5 text-teal-400" />
-                              <span>Website</span>
-                              <ExternalLink className="h-3 w-3 opacity-70" />
-                            </a>
-                          )}
-
-                          {church.youtube ? (
-                            <a
-                              href={church.youtube}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-700 transition-colors hover:bg-red-100"
-                            >
-                              <Youtube className="h-3.5 w-3.5" />
-                              <span>YouTube</span>
-                            </a>
-                          ) : (
-                            church.videoUrl && (
-                              <a
-                                href={church.videoUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={(e) => e.stopPropagation()}
-                                className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-700 transition-colors hover:bg-red-100"
-                              >
-                                <Video className="h-3.5 w-3.5" />
-                                <span>Livestream</span>
-                              </a>
-                            )
-                          )}
-
-                          {church.facebook && (
-                            <a
-                              href={church.facebook}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-1.5 rounded-lg border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700 transition-colors hover:bg-blue-100"
-                            >
-                              <Facebook className="h-3.5 w-3.5" />
-                              <span>
-                                {church.livestreamOnFacebook ? 'Facebook Livestream' : 'Facebook'}
-                              </span>
-                            </a>
-                          )}
-
-                          {church.podcast && (
-                            <a
-                              href={church.podcast}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-1.5 rounded-lg border border-teal-200 bg-teal-50 px-3 py-1.5 text-xs font-semibold text-teal-700 transition-colors hover:bg-teal-100"
-                            >
-                              <Headphones className="h-3.5 w-3.5" />
-                              <span>Podcast</span>
-                            </a>
-                          )}
+                        <div className="flex gap-2">
+                          <dt className="sr-only">Address</dt>
+                          <MapPin className="mt-1 h-4 w-4 shrink-0 text-stone-400" aria-hidden="true" />
+                          <dd>{church.address}</dd>
                         </div>
-                      )}
+                      </dl>
+
+                      <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm font-semibold">
+                        <a href={directionsUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-teal-700 underline-offset-4 hover:underline">
+                          Directions
+                        </a>
+                        {church.website && (
+                          <a href={church.website} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-teal-700 underline-offset-4 hover:underline">
+                            Website
+                          </a>
+                        )}
+                        {(church.youtube || church.videoUrl) && (
+                          <a href={church.youtube ?? church.videoUrl ?? ''} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-teal-700 underline-offset-4 hover:underline">
+                            {church.youtube ? 'YouTube' : 'Livestream'}
+                          </a>
+                        )}
+                        {church.facebook && (
+                          <a href={church.facebook} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-teal-700 underline-offset-4 hover:underline">
+                            {church.livestreamOnFacebook ? 'Facebook livestream' : 'Facebook'}
+                          </a>
+                        )}
+                        {church.podcast && (
+                          <a href={church.podcast} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-teal-700 underline-offset-4 hover:underline">
+                            Podcast
+                          </a>
+                        )}
+                      </p>
                     </article>
                   );
                 })}

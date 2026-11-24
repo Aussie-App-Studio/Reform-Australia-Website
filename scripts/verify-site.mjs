@@ -102,6 +102,13 @@ for (const cat of docsIndex.categories || []) {
 
 const srcFiles = walkFiles(SRC_DIR);
 
+/** File text to scan for links. In JSON data, ignore reviewer-only notes ("source", "sources", "needsChecking"). */
+function scannableText(file) {
+  const txt = fs.readFileSync(file, "utf8");
+  if (!file.endsWith(".json")) return txt;
+  return JSON.stringify(JSON.parse(txt), (key, value) => (["source", "sources", "needsChecking"].includes(key) ? undefined : value));
+}
+
 // Check DOC_IDS in src/lib/crcaDocs/client.ts
 const clientText = fs.readFileSync(path.join(SRC_DIR, 'lib/crcaDocs/client.ts'), 'utf8');
 const docIdsBlock = clientText.match(/export const DOC_IDS = \{([\s\S]*?)\} as const;/);
@@ -150,26 +157,45 @@ for (const file of srcFiles) {
   }
 }
 
-// 4. Validate RelatedMinistriesBar slugs & MinistryIcon names
+// 4. Ministry pages (src/data/ministry-pages/*.json) + "one platform" rule
 const ministries = readJson('src/data/ministries.json');
-const ministryIds = new Set(ministries.map((m) => m.id));
-const internalMinistries = readJson('src/data/internalMinistries.json');
-
-for (const file of srcFiles) {
-  const txt = fs.readFileSync(file, 'utf8');
-  for (const m of txt.matchAll(/slugs=\{\[([^\]]+)\]\}/g)) {
-    for (const s of m[1].matchAll(/'([^']+)'/g)) {
-      if (!ministryIds.has(s[1])) {
-        errors.push(`Unknown RelatedMinistriesBar slug "${s[1]}" in ${path.relative(ROOT, file)}`);
-      }
-    }
+const MINISTRY_DIR = path.join(SRC_DIR, 'data', 'ministry-pages');
+let ministryPageCount = 0;
+for (const file of fs.readdirSync(MINISTRY_DIR).filter((x) => x.endsWith('.json'))) {
+  const rel = `src/data/ministry-pages/${file}`;
+  const page = readJson(rel);
+  ministryPageCount++;
+  for (const key of ['slug', 'name', 'group', 'summary', 'body']) {
+    if (!page[key]) errors.push(`${rel}: missing "${key}"`);
+  }
+  if (page.slug && `${page.slug}.json` !== file) errors.push(`${rel}: slug "${page.slug}" does not match file name`);
+  const images = [
+    page.hero?.src,
+    ...(page.body || []).map((x) => x.image?.src),
+    ...(page.gallery || []).map((g) => g.src),
+    ...(page.team || []).map((t) => t.photo),
+    ...(page.news || []).map((n) => n.image),
+  ].filter(Boolean);
+  for (const src of images) {
+    if (!fs.existsSync(path.join(PUBLIC_DIR, decodeURIComponent(src)))) errors.push(`${rel}: missing image ${src}`);
+  }
+  const ids = new Set();
+  for (const n of page.news || []) {
+    if (ids.has(n.id)) errors.push(`${rel}: duplicate news id ${n.id}`);
+    ids.add(n.id);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(n.date || '')) errors.push(`${rel}: news "${n.id}" has invalid date "${n.date}"`);
   }
 }
-for (const [slug, page] of Object.entries(internalMinistries.detailPages || {})) {
-  for (const rel of page.relatedSlugs || []) {
-    if (!ministryIds.has(rel)) {
-      errors.push(`Unknown relatedSlug "${rel}" in internalMinistries.json (${slug})`);
-    }
+
+// One platform: no links to other CRCA websites (their content now lives here).
+// Congregations' own websites (churches.json) and email addresses are fine.
+const CRCA_SITE_RE = /https?:\/\/(?:[a-z0-9-]+\.)*(?:crca\.org\.au|crcaconvention\.au|safechurchcrca\.org\.au|ministryformation\.com\.au|gospel\.net\.au)\b[^"'\s)]*/gi;
+for (const file of srcFiles) {
+  const relPath = path.relative(ROOT, file);
+  if (/churches\.json$/.test(relPath)) continue;
+  const txt = scannableText(file);
+  for (const m of txt.matchAll(CRCA_SITE_RE)) {
+    errors.push(`Link to another CRCA website (${m[0]}) in ${relPath}: bring that content into this site instead`);
   }
 }
 
@@ -297,7 +323,7 @@ for (const m of ministries) {
 }
 
 for (const file of srcFiles) {
-  const txt = fs.readFileSync(file, 'utf8');
+  const txt = scannableText(file);
   if (txt.includes('crca.org.au/wp-content/uploads/')) {
     errors.push(`Legacy WordPress upload URL found in ${path.relative(ROOT, file)}`);
   }
@@ -490,7 +516,7 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `Verification passed: ${docMap.size} documents, ${churches.length} churches, ${ministries.length} ministries, ${safeChurchPageCount} Safe Church pages, ${sermonCount} sermons, 0 errors` +
+  `Verification passed: ${docMap.size} documents, ${churches.length} churches, ${ministryPageCount} ministry pages, ${safeChurchPageCount} Safe Church pages, ${sermonCount} sermons, 0 errors` +
     (warnings.length > 0 ? `, ${warnings.length} warning(s).` : '.')
 );
 process.exit(0);

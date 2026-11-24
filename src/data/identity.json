@@ -7,51 +7,40 @@
     "vision": "We will multiply Bible-based churches which equip and nurture their members and grow throughout Australia and the world."
   },
   "coreValues": {
-    "intro": "As a denomination that is firmly rooted in Scripture, our core values stem from the Bible and shape the culture of a contemporary, Reformed, gospel-focused denomination.",
+    "intro": "Biblical values that shape the culture of a contemporary, Reformed, gospel-focused denomination.",
     "items": [
       {
         "id": "contemporary-reformed",
         "title": "Contemporary Reformed",
         "summary": "We are confessional and contextual.",
-        "detail": "Anchored in the historic Reformed confessions while engaging contemporary Australian communities with clarity, warmth, and cultural understanding.",
         "scriptures": "Eph. 4:3–6; 1 Cor. 11:2; 2 Thess. 2:15; 1 Cor. 9:19–23; Acts 14:8–18; 17:16–31"
       },
       {
         "id": "word-based",
         "title": "Word Based",
         "summary": "We are committed to biblical preaching, teaching, training, equipping.",
-        "detail": "We hold the Bible as God's inspired Word and the final authority for faith, worship, doctrine, and every area of Christian life.",
         "scriptures": "Rom. 10:14–17; 2 Tim. 2:1–2; 3:16–17; Deut. 4:9–14; Col. 3:16; Eph. 4:11–16"
       },
       {
         "id": "gospel-focused",
-        "title": "Gospel Focused",
+        "title": "Gospel Focussed",
         "summary": "We are on mission in word and deed, both locally and globally: kingdom-oriented, outward looking, evangelistic, disciple-making, community-hearted.",
-        "detail": "The good news of Jesus Christ moves our congregations outward in sacrificial love, mercy, and faithful witness.",
-        "scriptures": "Micah 6:8; Isa. 1:17; 61:1–11; Luke 4:18–19; Matt. 5:13–16; 6:33; 28:18–20; Phil. 1:14; Acts 1:6–8; Col. 4:5–6; 1 Pet. 2:9–12; Rev. 5:9–10"
+        "scriptures": "Micah 6:8; Isa. 1:17; 61:1–11; Luke 4:18–19; Matt. 5:13–16; 6:33; 25:31–46; 28:18–20; Phil. 1:14; Acts 1:6–8; 4:31; Col. 4:5–6; 1 Pet. 2:9–12; 3:15–16; Rev. 5:9–10"
       },
       {
         "id": "local-church-empowering",
         "title": "Local Church Empowering",
         "summary": "We are light on structures and hierarchy, high on support, partnership, mutual accountability and encouragement.",
-        "detail": "Denominational workgroups and committees exist to serve, equip, and strengthen the ministry of local congregations and their elders.",
         "scriptures": "Matt. 20:24–28; 25:14–30; Heb. 13:17; 1 Thess. 5:11; 2 Cor. 1:24; 8:23; Phil. 1:5; 4:15; 3 John 1:5–8; 1 Pet. 5:3"
       },
       {
         "id": "prayerful-urgency",
         "title": "Prayerful Urgency",
         "summary": "We are humbly dependent upon God and filled with prayerful, sacrificial compassion for the lost in all the world.",
-        "detail": "Recognising that only God gives growth, we cultivate earnest, persevering prayer across our churches for spiritual renewal and gospel harvest.",
         "scriptures": "Isa. 62:6; Acts 2:42; Matt. 6:5–13; Rom. 10:1; Eph. 6:10–20; 1 Tim. 2:1–4; 1 Thess. 5:17; Jude 20"
-      },
-      {
-        "id": "historic-orthodoxy",
-        "title": "Historic Orthodoxy",
-        "summary": "We are complementarian, Scripture-regulated in worship, and unashamedly anchored in unchanging truth rather than cultural trends.",
-        "detail": "Upholding God's design for male and female, lifelong marriage, and the sanctity of life, we gather for expository, Christ-centred preaching and theologically rich singing.",
-        "scriptures": "Gen. 1:27–28; 2:24; Deut. 12:32; Ps. 139:13–16; Matt. 19:4–6; Luke 24:27; Eph. 5:19–33; 1 Tim. 2:11–3:7; 2 Tim. 4:2; Heb. 12:28"
       }
-    ]
+    ],
+    "source": "https://crca.org.au/our-core-values/"
   },
   "history": {
     "heading": "History of the CRCA",
@@ -91,6 +80,83 @@
         "era": "2000s – Present",
         "title": "Reforming to Reach the Lost for Christ",
         "description": "Since 2000 the denomination has renewed its missional commitment to planting new churches, reaching multicultural communities, equipping leaders, and partnering locally and globally to see the gospel bear fruit."
+      }
+    ]
+  },
+  "fourFoldTask": {
+    "intro": "As a denomination, we believe that we accomplish our mission and vision through four key tasks:",
+    "source": "https://crca.org.au/four-fold-task/",
+    "items": [
+      {
+        "id": "pray",
+        "title": "Pray",
+        "text": "Pray for such an outpouring of the Holy Spirit that we will be assured of God’s love through his Word, seek to please the Saviour in all things, live holy lives, and be filled with compassion for the lost."
+      },
+      {
+        "id": "grow",
+        "title": "Grow",
+        "text": "Grow healthy churches which nurture and equip their members and, by God’s grace, expand numerically, plant new churches, and embody the Kingdom of God."
+      },
+      {
+        "id": "train",
+        "title": "Train",
+        "text": "Equip all members to be disciples of Christ and multiply the number of well-trained leaders who are actively engaged with God’s mission."
+      },
+      {
+        "id": "align",
+        "title": "Align",
+        "text": "Reform continually the life of the denomination to advance our mission and vision."
+      }
+    ]
+  },
+  "strategies": {
+    "intro": "Strategies to advance our mission and vision in our work in Australia and around the world will be advanced through the various committees of our denomination. Specifically we:",
+    "source": "https://crca.org.au/our-strategies/",
+    "items": [
+      {
+        "id": "mentoring",
+        "title": "Mentoring",
+        "text": "We ensure regular and ongoing mentoring/coaching for all pastors in line with the emphases of our Four Fold task."
+      },
+      {
+        "id": "training",
+        "title": "Training",
+        "text": "The CRCA trains people strategically for evangelism, disciple-making, and leadership development using both internal and external resources."
+      },
+      {
+        "id": "ministry-pathways",
+        "title": "Ministry Pathways",
+        "text": "We resource churches and pastors to develop multiple ministry and leadership development pathways."
+      },
+      {
+        "id": "church-health",
+        "title": "Church Health Analyses",
+        "text": "We provide churches with diagnostic tools to help churches analyse their health, help them plan for the future and strategically put things in place to grow more healthy."
+      },
+      {
+        "id": "church-planting",
+        "title": "Resource Church Planting",
+        "text": "We resource ongoing church planting throughout the country. This includes re-planting churches and church revitalisation efforts."
+      },
+      {
+        "id": "mission",
+        "title": "Mission",
+        "text": "We invest in cross-cultural mission, both locally and globally, which integrates gospel impact and kingdom transformation."
+      },
+      {
+        "id": "church-strategy",
+        "title": "Church Strategy Support",
+        "text": "We cultivate and refine models of effective local churches which are proven examples of distinctly reformed and kingdom oriented churches for others to learn from."
+      },
+      {
+        "id": "prayer",
+        "title": "Prayer",
+        "text": "We support churches to increase a church-wide commitment to earnest prayer for gospel workers and gospel growth."
+      },
+      {
+        "id": "partnerships",
+        "title": "Strategic Partnerships",
+        "text": "We build and nurture strategic partnerships that serve to support the cause of the gospel in local settings and regions."
       }
     ]
   }

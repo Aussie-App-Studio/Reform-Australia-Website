@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Check, ExternalLink, Link2, Minus, Plus, Printer } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Link2, Minus, Plus, Printer } from 'lucide-react';
 import { RichHtml } from '../components/RichHtml';
 import { NotFoundPage } from './NotFoundPage';
 import {
@@ -259,10 +259,7 @@ export function SermonPage() {
             <div className="mt-12 max-w-[68ch] space-y-8 border-t border-stone-200 pt-8 print:hidden">
               <div className="lg:hidden">{moreInBook}</div>
               <p className="text-sm text-stone-600">
-                From the Word of Salvation archive of sermons by CRCA ministers.{' '}
-                <a href={sermon.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 underline underline-offset-4 hover:text-navy-900">
-                  Original page <ExternalLink className="h-3 w-3" aria-hidden="true" />
-                </a>
+                From the Word of Salvation archive of sermons by CRCA ministers.
               </p>
             </div>
           )}
