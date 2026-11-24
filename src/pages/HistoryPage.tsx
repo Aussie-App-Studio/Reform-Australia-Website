@@ -77,6 +77,22 @@ export function HistoryPage() {
             credit="Carel L. de Vogel / Anefo, Nationaal Archief (public domain)"
             creditUrl="https://commons.wikimedia.org/wiki/File:M.S._Sibajak_met_emigranten_naar_Australi%C3%AB,_Bestanddeelnr_904-4177.jpg"
           />
+          <div className="mt-8 grid gap-8 sm:grid-cols-2">
+            <Photo
+              src={img('1958-zevenbergen-family')}
+              alt="A man and a woman look at a large map on a table with a smiling man in glasses, in black and white"
+              caption="Mr and Mrs Zevenbergen, Australia’s 100,000th Dutch emigrants, look at a map with the Australian ambassador, 17 September 1958."
+              credit="Harry Pot / Anefo, Nationaal Archief (public domain)"
+              creditUrl="https://commons.wikimedia.org/wiki/File:100.000ste_Nederlandse_emigrant_naar_Australie_fam._Zevenbergen_met_ambassadeur_,_Bestanddeelnr_909-8559.jpg"
+            />
+            <Photo
+              src={img('1960-emigrants-by-plane')}
+              alt="Dutch families with children and travel bags standing in front of a KLM aeroplane, in black and white"
+              caption="Emigrant families about to fly from the Netherlands to Australia, 28 December 1960."
+              credit="Joop van Bilsen / Anefo, Nationaal Archief (public domain)"
+              creditUrl="https://commons.wikimedia.org/wiki/File:Vertrek_van_emigranten_naar_Australie,_groep_voor_het_vliegtuig,_Bestanddeelnr_911-9175.jpg"
+            />
+          </div>
 
           <h2 className="mt-14 font-serif text-3xl font-semibold text-navy-900">The Reformed tradition</h2>
           <p className="mt-4 text-lg leading-relaxed text-stone-700">{history.reformedEmphasesIntro}</p>
