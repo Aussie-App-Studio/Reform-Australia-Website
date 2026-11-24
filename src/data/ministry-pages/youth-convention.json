@@ -3,6 +3,10 @@
   "name": "Youth Convention",
   "group": "next-gen",
   "summary": "A week in God's Word, worship and community for CRCA young adults aged 16 to 28. Convention 2027 is sold out, with a waitlist open.",
+  "logo": {
+    "src": "/images/logos/ministries/youth-convention.webp",
+    "alt": "CRCA Youth Convention 2027 logo"
+  },
   "hero": {
     "src": "/images/ministries/youth-convention/hero.webp",
     "alt": "Several hundred young adults gathered on the grass among trees for a group photo at a previous CRCA Youth Convention"
@@ -248,7 +252,8 @@
     "crcaconvention.au media: 2026/02/Code-of-conduct-Convention.pdf, 2026/03/Fund-Raising-Ideas-for-Convention.pdf, 2026/03/Promo_slide_info-1.pdf, 2023/02/2-Post-convention-questions.pdf, 2022/10/conventionTimetable.jpg, 2022/04/CRCA-Youth-Convention-Slides.pptx, past Convention logos (2012 to 2025), 2024/03/EJ.pdf (Convention 2025 logo)",
     "YouTube oEmbed titles for yTxwQ9AvCLA, 6gVS10udKjQ, t6L9hTKgREI, XR0WcPRUN3c, DxH5kJe_1sY",
     "src/data/convention.json",
-    "src/data/contactTopics.json"
+    "src/data/contactTopics.json",
+    "Logo: https://www.crcaconvention.au/wp-content/uploads/2026/02/622598497_2108331229705723_2594030633697082857_n.png"
   ],
   "needsChecking": [
     "Registrations close 30 November 2026. After that date the waitlist action and 'sold out' wording will need updating, and the page will need refreshing for the next Convention.",
@@ -261,6 +266,7 @@
     "The 'typical week' text summarises the 2023 timetable image; the 2027 program has not been published.",
     "'Leaders Guide (TBC)' is listed on the website with no file yet. Add it when published.",
     "Hero and gallery photos are the only real event photos on crcaconvention.au (four in total). Ask the Convention team for more recent photos (worship, small groups, camp life) to bring the page up to the target of 10 or more images.",
-    "Not migrated: ten MP3 recordings of the 2023 talks and electives (about 70 to 130 MB each, roughly 1 GB in total) in the crcaconvention.au media library. They are too large for the website repo; the four main talks are already on YouTube. Decide whether to move the electives to YouTube or podcast hosting."
+    "Not migrated: ten MP3 recordings of the 2023 talks and electives (about 70 to 130 MB each, roughly 1 GB in total) in the crcaconvention.au media library. They are too large for the website repo; the four main talks are already on YouTube. Decide whether to move the electives to YouTube or podcast hosting.",
+    "Logo is the 2027 Convention artwork (there is no general Convention logo). Swap it for each new Convention."
   ]
 }

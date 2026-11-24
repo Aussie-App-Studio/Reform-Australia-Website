@@ -3,6 +3,10 @@
   "name": "World Transform",
   "group": "global-mission",
   "summary": "The CRCA's ministry of mercy overseas: showing mercy in Christ's name through development, relief and gospel ministry with partners in India, the Solomon Islands and Papua New Guinea.",
+  "logo": {
+    "src": "/images/logos/ministries/world-transform.webp",
+    "alt": "World Transform logo"
+  },
   "hero": {
     "src": "/images/ministries/world-transform/hero.webp",
     "alt": "Village women in colourful saris standing with water pots around a new hand pump on a rocky hillside in India"
@@ -476,7 +480,8 @@
     "https://wt.crca.org.au/wp-json/wp/v2/pages and /posts (home/about, our mandate, development projects, Heart Project, Peniel Community College, King Project, Community Health Project, emergency relief, compassionate catalogue, IndiWay, contact; fetched 24 Nov 2026)",
     "Wayback Machine copies of worldtransform.org.au/pages/about-us, donate, relief-projects, nepal-flood-response, kathmandu-earthquake-response (2024; these pages now return 404)",
     "cdn.shopify.com World Transform files: 18_10_King_Project_Proposal_Udaipur.pdf, Heart_Project_-_EFICOR.pdf, Annual-Report-_Heart-Tribal-Development-Project-2019-20-1.docx",
-    "YouTube oEmbed titles for cZPlfZhcTMQ, aVpMs029ZDk, 4fmk7S3EOkM, MqFxV40bpCc; Vimeo oEmbed for 1242190870"
+    "YouTube oEmbed titles for cZPlfZhcTMQ, aVpMs029ZDk, 4fmk7S3EOkM, MqFxV40bpCc; Vimeo oEmbed for 1242190870",
+    "Logo: https://wt.crca.org.au/wp-content/uploads/2024/09/checkout_logo_2.png"
   ],
   "needsChecking": [
     "Bethesda DTSC: the catalogue never says where Bethesda is or what DTSC stands for (it mentions 'students living with disabilities'). Confirm its location and full name, and whether it belongs under SWIM or is a separate partner.",

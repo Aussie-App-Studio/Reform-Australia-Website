@@ -3,6 +3,10 @@
   "name": "Solomon Islands SWIM",
   "group": "global-mission",
   "summary": "SWIM (Supporting Work in Mission) is the CRCA's mission base in Honiara, Solomon Islands. It offers Bible teaching, leadership training, weekly community ministries, prison ministry and practical support, and hosts short-term mission teams.",
+  "logo": {
+    "src": "/images/logos/ministries/swim.webp",
+    "alt": "SWIM Solomon Islands logo"
+  },
   "hero": {
     "src": "/images/ministries/swim/hero.webp",
     "alt": "A coastal road beside calm blue sea in the Solomon Islands, with a house on stilts at the water's edge and hills across the bay."
@@ -771,7 +775,8 @@
     "public/ministry-resources/swim/SWIM-STM-Agreement-Form.pdf",
     "https://crca.org.au/short-term-missions-best-practice/",
     "src/data/swim.json",
-    "src/data/contactTopics.json"
+    "src/data/contactTopics.json",
+    "Logo: https://web.archive.org/web/20170418001348/http://www.swim.crca.org.au/images/logo_new.png"
   ],
   "needsChecking": [
     "What SWIM stands for: the owner chose 'Supporting Work in Mission', which the newer newsletters use (the third quarter 2024 bulletin and the 2026 newsletter). The About page and the mission/values PDF on swim.crca.org.au say 'Supporting Work in Ministry', and the third quarter 2024 bulletin's heading also says 'Supporting Workers in Mission'. CLAUDE.md says 'Solomon Islands Work & Instruction in Mission' and should probably be corrected. The page 'name' was left as 'Solomon Islands SWIM'.",

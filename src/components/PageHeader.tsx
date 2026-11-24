@@ -13,13 +13,15 @@ interface PageHeaderProps {
   description?: string;
   breadcrumbs?: BreadcrumbItem[];
   actions?: ReactNode;
+  /** Optional logo (e.g. a ministry's own logo) shown beside the title. */
+  logo?: { src: string; alt: string };
 }
 
 /**
  * Quiet, editorial page header: paper background, breadcrumb trail,
  * a large serif title and a short standfirst, closed by a thin rule.
  */
-export function PageHeader({ eyebrow, title, description, breadcrumbs, actions }: PageHeaderProps) {
+export function PageHeader({ eyebrow, title, description, breadcrumbs, actions, logo }: PageHeaderProps) {
   return (
     <header className="border-b border-stone-200 bg-stone-50">
       <div className="mx-auto max-w-7xl px-4 pb-10 pt-8 sm:px-6 lg:px-8 lg:pb-14 lg:pt-10">
@@ -53,6 +55,9 @@ export function PageHeader({ eyebrow, title, description, breadcrumbs, actions }
 
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
+            {logo && (
+              <img src={logo.src} alt={logo.alt} className="mb-5 h-16 w-auto max-w-[12rem] object-contain object-left sm:h-20" />
+            )}
             {eyebrow && <p className="text-sm font-semibold text-teal-700">{eyebrow}</p>}
             <h1 className="mt-1 font-serif text-4xl font-semibold leading-[1.1] text-navy-900 sm:text-5xl">{title}</h1>
             {description && <p className="mt-5 text-lg leading-relaxed text-stone-700">{description}</p>}

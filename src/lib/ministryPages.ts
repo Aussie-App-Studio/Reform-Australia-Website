@@ -26,6 +26,8 @@ export interface MinistryPageData {
   group: MinistryGroup;
   summary: string;
   hero?: MinistryImage;
+  /** The ministry's own logo, shown in the page header and the Ministries list. */
+  logo?: { src: string; alt: string };
   body: { id?: string; heading?: string; paragraphs?: string[]; list?: string[]; image?: MinistryImage }[];
   team?: { name: string; role?: string; text?: string; photo?: string }[];
   gallery?: MinistryImage[];

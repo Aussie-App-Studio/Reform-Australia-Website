@@ -3,6 +3,10 @@
   "name": "GEMS",
   "group": "next-gen",
   "summary": "Christian girls' clubs for girls aged 9 to 15, run by women volunteers from CRCA churches, with Busy Bees for girls aged 6 to 8.",
+  "logo": {
+    "src": "/images/logos/ministries/gems.webp",
+    "alt": "GEMS Girls' Clubs badge"
+  },
   "hero": {
     "src": "/images/ministries/gems/hero.webp",
     "alt": "A line of girls wearing red headbands link arms and walk together across a grassy camp field during an outdoor game, with more girls and a red flag behind them",
@@ -165,7 +169,8 @@
     "https://gems.crca.org.au/wp-content/uploads/2024/09/gems-photos-3.jpg",
     "https://crca.org.au/ (Our Ministries menu links GEMS to www.gems.crca.org.au)",
     "src/data/nextGenClubs.json",
-    "src/data/contactTopics.json"
+    "src/data/contactTopics.json",
+    "Logo: https://gems.crca.org.au/wp-content/uploads/2024/09/gems-badge.png"
   ],
   "needsChecking": [
     "The three resources are Cadets materials from the Calvinist Cadet Corps (they talk about boys, cadets and counsellors). gems.crca.org.au links the same files, so they are kept here, but confirm GEMS wants them or has its own materials.",
@@ -173,6 +178,7 @@
     "The crca.org.au menu links to https://www.gems.crca.org.au/, which does not resolve. Once this page is live, that menu link and any other links to gems.crca.org.au should point here.",
     "No named GEMS contact appears on any source. Enquiries route to CRCA Administration (admin@crca.org.au) via the next-gen contact topic, as in contactTopics.json. Confirm, or supply a GEMS coordinator.",
     "Photos: the old site had only three real GEMS photos, each 938x342px, so they will look soft as a full-width hero. The rest of the media library is website-template stock and CRCA logos. Newer, larger photos of club nights and camps would help, and no separate gallery was added because there were no further photos to use.",
-    "The 'Finding a club' section and the 'Find a church near you' action replace the old site's external link. There is no list of which churches run GEMS groups. Consider adding one."
+    "The 'Finding a club' section and the 'Find a church near you' action replace the old site's external link. There is no list of which churches run GEMS groups. Consider adding one.",
+    "The only logo file online is small (about 100 to 130px wide). Ask the ministry for the original artwork."
   ]
 }

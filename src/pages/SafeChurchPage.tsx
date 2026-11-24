@@ -151,6 +151,7 @@ function SafeChurchHub({ content }: { content: SafeChurchContent }) {
       <PageHeader
         title="Safe Church"
         description={content.intro}
+        logo={{ src: `${import.meta.env.BASE_URL}images/logos/ministries/safe-church.webp`, alt: 'CRCA Safe Church logo' }}
         breadcrumbs={[{ label: 'For churches', to: '/for-churches' }, { label: 'Safe Church' }]}
       />
 

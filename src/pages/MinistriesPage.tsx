@@ -4,6 +4,10 @@ import { PageHeader } from '../components/PageHeader';
 import { ministryMegaMenuColumns } from '../data/navigation';
 import { GROUP_LABELS, getMinistryPage, type MinistryGroup } from '../lib/ministryPages';
 
+const EXTERNAL_LOGOS: Record<string, string> = {
+  'https://rtc.edu.au/': `${import.meta.env.BASE_URL}images/logos/ministries/rtc.webp`,
+};
+
 /** Overview of every ministry, grouped the same way as the Ministries menu. */
 export function MinistriesPage() {
   return (
@@ -30,7 +34,7 @@ export function MinistriesPage() {
                     {mp?.hero ? (
                       <img src={mp.hero.src} alt="" loading="lazy" className="hidden h-24 w-36 shrink-0 rounded-md object-cover sm:block" />
                     ) : (
-                      <span className="hidden h-24 w-36 shrink-0 items-center justify-center rounded-md border border-stone-200 bg-white px-2 text-center font-serif text-sm text-navy-900 sm:flex" aria-hidden="true">{item.isExternal ? new URL(item.to).hostname.replace(/^www./, '') : item.label}</span>
+                      <span className="hidden h-24 w-36 shrink-0 items-center justify-center rounded-md border border-stone-200 bg-white p-3 sm:flex" aria-hidden="true">{EXTERNAL_LOGOS[item.to] ? <img src={EXTERNAL_LOGOS[item.to]} alt="" className="max-h-full max-w-full object-contain" /> : <span className="text-center font-serif text-sm text-navy-900">{item.label}</span>}</span>
                     )}
                     <span className="min-w-0 flex-1">
                     <span className="flex items-center justify-between gap-4">

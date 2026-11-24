@@ -278,6 +278,7 @@ export function StandardPage({
         description={page.summary}
         breadcrumbs={breadcrumbs}
         actions={<Actions page={page} />}
+        logo={page.logo}
       />
 
       {page.hero && (

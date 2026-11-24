@@ -3,6 +3,10 @@
   "name": "Cadets",
   "group": "next-gen",
   "summary": "A club program run by volunteers in local churches for primary school boys aged 9 to 14.",
+  "logo": {
+    "src": "/images/logos/ministries/cadets.webp",
+    "alt": "Christian Cadet Corps logo"
+  },
   "hero": {
     "src": "/images/ministries/cadets/hero.webp",
     "alt": "A large group of cadets in grey uniform shirts, blue caps and yellow neckerchiefs sit on a log in the bush with Bibles open, with counsellors standing around them",
@@ -147,7 +151,8 @@
     "https://cadets.crca.org.au/wp-content/uploads/2024/09/Cadets-Old.png",
     "https://crca.org.au/ (Our Ministries menu links Cadets to cadets.crca.org.au)",
     "src/data/nextGenClubs.json",
-    "src/data/contactTopics.json"
+    "src/data/contactTopics.json",
+    "Logo: https://cadets.crca.org.au/wp-content/uploads/2024/09/Logo2.png"
   ],
   "needsChecking": [
     "Club numbers (15 clubs, about 180 cadets and 70 counsellors) come from cadets.crca.org.au, which was last updated in 2024. Confirm they are still current.",
@@ -155,6 +160,7 @@
     "Name of the organisation: cadets.crca.org.au says 'Christian Cadet Corps', while the PDFs are published by the 'Calvinist Cadet Corps' (Grand Rapids, USA) and describe Australian clubs as partner clubs. Confirm which name to use.",
     "No named Cadets contact appears on any source. The page routes enquiries to CRCA Administration (admin@crca.org.au) via the next-gen contact topic, as in contactTopics.json. Confirm this is the right contact, or supply a Cadets coordinator.",
     "Photos: the old site had only two real Cadets photos (a camp group shot and an older photo of counsellors). Both are about 900px wide, so they will look soft as a full-width hero. The rest of the media library is website-template stock and CRCA logos. Newer, larger photos of club nights and camps would help, and no gallery was added because there were no further photos to use.",
-    "The 'Finding a club' section and the 'Find a church near you' action replace the old site's external link. There is no list of which churches run Cadets clubs. Consider adding one."
+    "The 'Finding a club' section and the 'Find a church near you' action replace the old site's external link. There is no list of which churches run Cadets clubs. Consider adding one.",
+    "The only logo file online is small (about 100 to 130px wide). Ask the ministry for the original artwork."
   ]
 }
