@@ -26,22 +26,15 @@ export function CrcaLogo({ variant = 'dark', className = '' }: CrcaLogoProps) {
     );
   }
 
+  // The official full-name landscape logo (artwork from crca.org.au, coloured teal and navy
+  // to match the official stacked logo).
   return (
-    <span className={`inline-flex items-center gap-2.5 sm:gap-3 select-none ${className}`}>
-      <img
-        src={siteConfig.logos.iconTeal}
-        alt=""
-        aria-hidden="true"
-        className="h-8 sm:h-10 w-auto shrink-0 object-contain mix-blend-multiply"
-      />
-      <span className="flex flex-col leading-none">
-        <span className="whitespace-nowrap text-[11px] font-bold tracking-[0.05em] uppercase text-navy-900 sm:tracking-[0.08em]">
-          Christian Reformed
-        </span>
-        <span className="mt-0.5 whitespace-nowrap text-[11px] font-semibold tracking-[0.03em] uppercase text-navy-900 sm:text-[13px] sm:tracking-[0.08em]">
-          Churches of Australia
-        </span>
-      </span>
-    </span>
+    <img
+      src={siteConfig.logos.landscapeColour}
+      alt={siteConfig.brandName}
+      width={633}
+      height={128}
+      className={`h-10 w-auto select-none sm:h-11 lg:h-12 ${className}`}
+    />
   );
 }
