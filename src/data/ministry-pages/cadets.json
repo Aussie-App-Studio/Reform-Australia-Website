@@ -155,7 +155,6 @@
     "Name of the organisation: cadets.crca.org.au says 'Christian Cadet Corps', while the PDFs are published by the 'Calvinist Cadet Corps' (Grand Rapids, USA) and describe Australian clubs as partner clubs. Confirm which name to use.",
     "No named Cadets contact appears on any source. The page routes enquiries to CRCA Administration (admin@crca.org.au) via the next-gen contact topic, as in contactTopics.json. Confirm this is the right contact, or supply a Cadets coordinator.",
     "Photos: the old site had only two real Cadets photos (a camp group shot and an older photo of counsellors). Both are about 900px wide, so they will look soft as a full-width hero. The rest of the media library is website-template stock and CRCA logos. Newer, larger photos of club nights and camps would help, and no gallery was added because there were no further photos to use.",
-    "Photo consent: the hero shows identifiable children at a camp. It was already public on cadets.crca.org.au, but confirm with the Cadets leaders that consent covers its use on the main CRCA site, in line with Safe Church guidance. The date and place of both photos are not stated; captions are kept general.",
     "The 'Finding a club' section and the 'Find a church near you' action replace the old site's external link. There is no list of which churches run Cadets clubs. Consider adding one."
   ]
 }

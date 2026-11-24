@@ -250,6 +250,18 @@
       ]
     },
     {
+      "id": "ways-to-give",
+      "heading": "Other ways to give",
+      "paragraphs": [
+        "You can also give to the general work of World Transform, or to IndiWay, online or by bank transfer."
+      ],
+      "list": [
+        "Online, to World Transform: give.tithe.ly (World Transform donation form)",
+        "Online, to IndiWay: give.tithe.ly (IndiWay donation form)",
+        "Bank transfer: World Transform, Commonwealth Bank, BSB 062 668, account 1019 5522"
+      ]
+    },
+    {
       "id": "faqs",
       "heading": "Common questions",
       "list": [
@@ -292,29 +304,93 @@
   "steps": {
     "heading": "How giving through the catalogue works",
     "items": [
-      { "title": "Choose a gift", "text": "Pick an education, health, clean water, livelihoods or ministry project you would like to support." },
-      { "title": "Select an amount", "text": "Some projects offer different amounts or periods of support. Every option is a one-time gift." },
-      { "title": "Give towards the work", "text": "Your contribution supports the work described on the gift page. No physical item is shipped to you." }
+      {
+        "title": "Choose a gift",
+        "text": "Pick an education, health, clean water, livelihoods or ministry project you would like to support."
+      },
+      {
+        "title": "Select an amount",
+        "text": "Some projects offer different amounts or periods of support. Every option is a one-time gift."
+      },
+      {
+        "title": "Give towards the work",
+        "text": "Your contribution supports the work described on the gift page. No physical item is shipped to you."
+      }
     ]
   },
   "facts": [
-    { "label": "Established", "value": "1965 (formerly WD&R)" },
-    { "label": "Part of", "value": "CRCA, a subcommittee under GROW" },
-    { "label": "Works in", "value": "India, Solomon Islands, Papua New Guinea" },
-    { "label": "Contact", "value": "Ben Peletier, 0400 784 323" },
-    { "label": "Post", "value": "PO Box 323, Dee Why NSW 2099" }
+    {
+      "label": "Established",
+      "value": "1965 (formerly WD&R)"
+    },
+    {
+      "label": "Part of",
+      "value": "CRCA, a subcommittee under GROW"
+    },
+    {
+      "label": "Works in",
+      "value": "India, Solomon Islands, Papua New Guinea"
+    },
+    {
+      "label": "Contact",
+      "value": "Ben Peletier, 0400 784 323"
+    },
+    {
+      "label": "Post",
+      "value": "PO Box 323, Dee Why NSW 2099"
+    }
   ],
   "gallery": [
-    { "src": "/images/ministries/world-transform/gal-01.webp", "alt": "The two-storey building in Bangalore that Peniel Community College currently uses, with its sign above the gate", "caption": "Peniel's current premises" },
-    { "src": "/images/ministries/world-transform/gal-02.webp", "alt": "The concrete frame of Peniel's new building under construction, with workers and bamboo supports", "caption": "Building a permanent home for Peniel" },
-    { "src": "/images/ministries/world-transform/gal-03.webp", "alt": "A long line of women and men each holding a goat in a green field in India", "caption": "Goats help families earn a steady income" },
-    { "src": "/images/ministries/world-transform/gal-04.webp", "alt": "A teacher sitting on a mat with a circle of primary school children holding learning cards", "caption": "A tuition centre class" },
-    { "src": "/images/ministries/world-transform/gal-05.webp", "alt": "A Community Health Program nurse giving medicine to an older village woman", "caption": "A nurse visiting a village" },
-    { "src": "/images/ministries/world-transform/gal-06.webp", "alt": "Rows of uniformed school children sitting on a classroom floor with new backpacks and exercise books", "caption": "Backpacks and school supplies" },
-    { "src": "/images/ministries/world-transform/gal-07.webp", "alt": "Evangelists in matching shirts seated on red chairs listening to a lecturer in a decorated hall", "caption": "Training leaders to plant churches" },
-    { "src": "/images/ministries/world-transform/gal-08.webp", "alt": "An evangelist and his wife riding a motorbike along a dirt road through trees", "caption": "Motorbikes help evangelists reach remote villages" },
-    { "src": "/images/ministries/world-transform/gal-09.webp", "alt": "The open-sided chicken house at Bethesda with a corrugated iron roof", "caption": "Bethesda's chicken house" },
-    { "src": "/images/ministries/world-transform/gal-10.webp", "alt": "A large group of Solomon Islands children waving with their leaders in front of tropical gardens", "caption": "Children's ministry with SWIM" }
+    {
+      "src": "/images/ministries/world-transform/gal-01.webp",
+      "alt": "The two-storey building in Bangalore that Peniel Community College currently uses, with its sign above the gate",
+      "caption": "Peniel's current premises"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-02.webp",
+      "alt": "The concrete frame of Peniel's new building under construction, with workers and bamboo supports",
+      "caption": "Building a permanent home for Peniel"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-03.webp",
+      "alt": "A long line of women and men each holding a goat in a green field in India",
+      "caption": "Goats help families earn a steady income"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-04.webp",
+      "alt": "A teacher sitting on a mat with a circle of primary school children holding learning cards",
+      "caption": "A tuition centre class"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-05.webp",
+      "alt": "A Community Health Program nurse giving medicine to an older village woman",
+      "caption": "A nurse visiting a village"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-06.webp",
+      "alt": "Rows of uniformed school children sitting on a classroom floor with new backpacks and exercise books",
+      "caption": "Backpacks and school supplies"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-07.webp",
+      "alt": "Evangelists in matching shirts seated on red chairs listening to a lecturer in a decorated hall",
+      "caption": "Training leaders to plant churches"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-08.webp",
+      "alt": "An evangelist and his wife riding a motorbike along a dirt road through trees",
+      "caption": "Motorbikes help evangelists reach remote villages"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-09.webp",
+      "alt": "The open-sided chicken house at Bethesda with a corrugated iron roof",
+      "caption": "Bethesda's chicken house"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-10.webp",
+      "alt": "A large group of Solomon Islands children waving with their leaders in front of tropical gardens",
+      "caption": "Children's ministry with SWIM"
+    }
   ],
   "contact": {
     "name": "Ben Peletier",
@@ -323,9 +399,23 @@
     "phone": "0400 784 323"
   },
   "actions": [
-    { "label": "Give through the World Transform gift catalogue", "url": "https://worldtransform.org.au/", "kind": "primary" }
+    {
+      "label": "Give through the World Transform gift catalogue",
+      "url": "https://worldtransform.org.au/",
+      "kind": "primary"
+    }
   ],
   "resources": [
+    {
+      "label": "Give to IndiWay online (Tithe.ly)",
+      "url": "https://give.tithe.ly/?formId=750baa0e-a23a-4b2d-b8b3-004afa98c3ac",
+      "type": "link"
+    },
+    {
+      "label": "Give to World Transform online (Tithe.ly)",
+      "url": "https://give.tithe.ly/?formId=20dea74c-76a0-46d3-a8fd-cd4a2298f9bf",
+      "type": "link"
+    },
     {
       "label": "King Project proposal, 2018 (PDF)",
       "url": "/ministry-resources/world-transform/king-project-proposal-2018.pdf",
@@ -344,14 +434,42 @@
       "type": "link",
       "note": "EFICOR's full report on year five"
     },
-    { "label": "World Transform introduction, May 2025", "url": "https://vimeo.com/1242190870", "type": "video" },
-    { "label": "Peniel College and sewing machines", "url": "https://www.youtube.com/watch?v=aVpMs029ZDk", "type": "video" },
-    { "label": "Introducing World Transform's King Project", "url": "https://www.youtube.com/watch?v=4fmk7S3EOkM", "type": "video" },
-    { "label": "Community Health Program", "url": "https://www.youtube.com/watch?v=MqFxV40bpCc", "type": "video" },
-    { "label": "IndiWay mailing list", "url": "https://docs.google.com/forms/d/e/1FAIpQLScvdgg-h45mw_slvLqSwpEuYZ4KGaC_5HF-paARG2et20nrBQ/viewform", "type": "link", "note": "Sign up for news and prayer updates from IndiWay" },
-    { "label": "World Transform on Facebook", "url": "https://www.facebook.com/WorldTransform", "type": "link" }
+    {
+      "label": "World Transform introduction, May 2025",
+      "url": "https://vimeo.com/1242190870",
+      "type": "video"
+    },
+    {
+      "label": "Peniel College and sewing machines",
+      "url": "https://www.youtube.com/watch?v=aVpMs029ZDk",
+      "type": "video"
+    },
+    {
+      "label": "Introducing World Transform's King Project",
+      "url": "https://www.youtube.com/watch?v=4fmk7S3EOkM",
+      "type": "video"
+    },
+    {
+      "label": "Community Health Program",
+      "url": "https://www.youtube.com/watch?v=MqFxV40bpCc",
+      "type": "video"
+    },
+    {
+      "label": "IndiWay mailing list",
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScvdgg-h45mw_slvLqSwpEuYZ4KGaC_5HF-paARG2et20nrBQ/viewform",
+      "type": "link",
+      "note": "Sign up for news and prayer updates from IndiWay"
+    },
+    {
+      "label": "World Transform on Facebook",
+      "url": "https://www.facebook.com/WorldTransform",
+      "type": "link"
+    }
   ],
-  "video": { "youtubeId": "cZPlfZhcTMQ", "title": "Heart Project: after 5 years" },
+  "video": {
+    "youtubeId": "cZPlfZhcTMQ",
+    "title": "Heart Project: after 5 years"
+  },
   "sources": [
     "https://worldtransform.org.au/ (Shopify gift catalogue home page: how it works, FAQs, 2026 gifts; fetched 24 Nov 2026)",
     "https://worldtransform.org.au/products.json (2026 gift descriptions and photos; older catalogue items CC17 to CC25 for history)",
@@ -366,12 +484,10 @@
     "The Community Health Program text names two village women (Santaben and Sampi) in its stories; only Santaben's story is kept. Confirm World Transform is happy for her name to appear.",
     "The King Project proposal PDF includes the names and phone numbers of CRFI staff. It was public on World Transform's site, but confirm it is still fine to republish.",
     "Tax receipts: the catalogue FAQ says World Transform 'will confirm the wording for the live catalogue'. The Heart Project and SWIM water project rules are taken from the gift pages. The project page says TEAR Australia; the 2026 catalogue says Tearfund Australia.",
-    "An archived 2024 donate page gave bank transfer details (World Transform, CBA, BSB 062 668, account 1019 5522). Not published here because it could be out of date. Add it if World Transform confirms it is current.",
-    "Not linked: the general 'Donate to World Transform' and 'IndiWay donate' Tithe.ly checkout links on wt.crca.org.au. The brief allows one external giving action (the catalogue). Decide whether to add the Tithe.ly links.",
     "Ben Peletier is named as 'Publicity Officer' on the catalogue page and as the contact on the contact page; IndiWay uses indiway@crca.org.au with the same phone number.",
     "The page's intro video is on Vimeo (World Transform Intro Video May 2025), which the template cannot embed, so a YouTube video is embedded instead and the Vimeo video is listed under resources.",
     "Past emergency responses (Kathmandu earthquake, 2017 Nepal floods with World Renew, 2019 bushfire appeal) come from old catalogue pages and product names. Dates for the Kathmandu response are not given in the sources.",
     "The only post on wt.crca.org.au is a June 2024 SWIM base manager vacancy. It belongs to SWIM and is out of date, so it was not added as news.",
-    "src/data/ministries.json and navigation.ts still point World Transform to https://worldtransform.org.au/; they need updating to /ministries/world-transform (outside this task's files)."
+    "Bank details (CBA, BSB 062 668, account 1019 5522) come from an archived 2024 World Transform donate page; added at the owner’s request. Confirm they are still current."
   ]
 }

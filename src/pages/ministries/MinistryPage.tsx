@@ -46,10 +46,9 @@ function Actions({ page }: { page: MinistryPageData }) {
   );
 }
 
-function Sidebar({ page }: { page: MinistryPageData }) {
-  const related = ministryMegaMenuColumns
-    .find((c) => c.id === page.group)
-    ?.items.filter((i) => !i.to.endsWith(`/${page.slug}`));
+type RelatedLink = { label: string; to: string; isExternal?: boolean };
+
+function Sidebar({ page, related, relatedTitle }: { page: MinistryPageData; related?: RelatedLink[]; relatedTitle: string }) {
   return (
     <div className="space-y-10">
       <OnThisPage page={page} />
@@ -99,7 +98,7 @@ function Sidebar({ page }: { page: MinistryPageData }) {
       {related && related.length > 0 && (
         <section aria-labelledby="related">
           <h2 id="related" className="text-sm font-semibold uppercase tracking-[0.08em] text-stone-500">
-            Related ministries
+            {relatedTitle}
           </h2>
           <ul className="mt-2 divide-y divide-stone-200 border-y border-stone-200">
             {related.map((r) => (
@@ -201,16 +200,45 @@ export function MinistryPage({ slug }: { slug: string }) {
   const page = getMinistryPage(slug);
   usePageTitle(page?.name ?? 'Ministry');
   if (!page) return <NotFoundPage />;
+  const related = ministryMegaMenuColumns.find((c) => c.id === page.group)?.items.filter((i) => !i.to.endsWith(`/${page.slug}`));
+  return (
+    <StandardPage
+      page={page}
+      eyebrow={GROUP_LABELS[page.group]}
+      breadcrumbs={[{ label: 'Ministries', to: '/ministries' }, { label: page.name }]}
+      related={related}
+      relatedTitle="Related ministries"
+    />
+  );
+}
 
+/**
+ * The shared page template: header, optional hero photo, article sections (with images, steps,
+ * team, news, gallery, video, resources) and a sidebar (contents, facts, contact, related links).
+ * Used by ministry pages and by general content pages (src/data/pages/*.json).
+ */
+export function StandardPage({
+  page,
+  eyebrow,
+  breadcrumbs,
+  related,
+  relatedTitle = 'Related pages',
+}: {
+  page: MinistryPageData;
+  eyebrow?: string;
+  breadcrumbs: { label: string; to?: string }[];
+  related?: RelatedLink[];
+  relatedTitle?: string;
+}) {
   const resources = page.resources ?? [];
 
   return (
     <>
       <PageHeader
-        eyebrow={GROUP_LABELS[page.group]}
+        eyebrow={eyebrow}
         title={page.name}
         description={page.summary}
-        breadcrumbs={[{ label: 'Ministries', to: '/ministries' }, { label: page.name }]}
+        breadcrumbs={breadcrumbs}
         actions={<Actions page={page} />}
       />
 
@@ -353,7 +381,7 @@ export function MinistryPage({ slug }: { slug: string }) {
         </article>
 
         <aside className="lg:sticky lg:top-[calc(var(--site-header-height,72px)+2rem)] lg:self-start">
-          <Sidebar page={page} />
+          <Sidebar page={page} related={related} relatedTitle={relatedTitle} />
         </aside>
       </div>
     </>

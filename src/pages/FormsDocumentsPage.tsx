@@ -1252,9 +1252,9 @@ export function FormsDocumentsPage() {
               <div className="mt-2.5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="min-w-0">
                   
-                  <p className="font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">
+                  <h1 className="font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">
                     {currentDoc.title}
-                  </p>
+                  </h1>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2 shrink-0">

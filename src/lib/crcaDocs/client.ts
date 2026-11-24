@@ -39,7 +39,8 @@ export function encodeDocUrl(relPath: string): string {
     relPath
       .split('/')
       .filter((s) => s.length > 0)
-      .map((segment) => encodeURIComponent(segment))
+      // Commas are valid in a URL path; some static servers fail to decode %2C.
+      .map((segment) => encodeURIComponent(segment).replace(/%2C/gi, ','))
       .join('/')
   );
 }
@@ -146,7 +147,12 @@ export function fetchDocMarkdown(docPath: string): Promise<string> {
       if (!res.ok) {
         throw new Error(`Unable to load document (HTTP ${res.status})`);
       }
-      return res.text();
+      const text = await res.text();
+      // A missing file on a single-page-app host returns the site's index.html with HTTP 200.
+      if (/^s*<!doctype html|^s*<html/i.test(text)) {
+        throw new Error('Unable to load document (file not found)');
+      }
+      return text;
     })
     .catch((err) => {
       markdownCache.delete(docPath);

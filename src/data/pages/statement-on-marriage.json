@@ -1,0 +1,50 @@
+{
+  "slug": "statement-on-marriage",
+  "path": "/for-churches/statement-on-marriage",
+  "section": "for-churches",
+  "title": "Statement on marriage",
+  "summary": "The CRCA's public statement on what we believe about marriage, as taught in the Bible.",
+  "icon": "Heart",
+  "body": [
+    {
+      "id": "about",
+      "heading": "Why we made this statement",
+      "paragraphs": [
+        "Over the past several years our nation has been involved in debating the very nature and definition of marriage. The result of this debate, which included a plebiscite, was the redefinition of marriage by federal parliament to include same-sex partners. While this legal change of definition has been made, the Christian Reformed Churches of Australia (CRCA) believe that it is important to continue to uphold and defend marriage as being between one man and one woman, as taught in the Bible.",
+        "As a result we have drafted the following public statement about what we believe about marriage. You can download the full statement below."
+      ]
+    },
+    {
+      "id": "summary",
+      "heading": "In summary",
+      "paragraphs": [
+        "From the statement: \"In summary, marriage is designed and instituted by God. It is a life-long relationship between one man and one woman who are called to selflessly love each other in their different roles. It models, in some mysterious way, Christ's relationship with His Church. It is the relationship in which sex is to be enjoyed. These things are in the very nature of God's intention and design for marriage. It cannot be redefined whether to include multiple partners or partners of the same gender.\"",
+        "The statement also says: \"Although we may disagree with their practice, we wholeheartedly condemn any hatred of or violence toward those whose sexual practice is different.\" and \"Sexual sin is not the unforgivable sin (Mark 3:28-30). We all stand as sinners in need of forgiveness in many areas of our lives but through the grace of God, seen in the work of Jesus, forgiveness and renewal are offered to all through faith in Him.\""
+      ]
+    }
+  ],
+  "facts": [
+    { "label": "Issued by", "value": "Synodical Interim Committee" },
+    { "label": "Updated", "value": "February 2019" }
+  ],
+  "contact": {
+    "name": "Synodical Administrator",
+    "email": "admin@crca.org.au",
+    "topic": "admin"
+  },
+  "actions": [
+    { "label": "Download the statement (PDF)", "url": "/ministry-resources/governance/CRCA-PUBLIC-STATEMENT-ON-MARRIAGE-6-Feb-2019.pdf", "kind": "primary" },
+    { "label": "What we believe", "url": "/who-we-are/beliefs", "kind": "secondary" }
+  ],
+  "resources": [
+    { "label": "CRCA public statement on marriage, February 2019 (PDF)", "url": "/ministry-resources/governance/CRCA-PUBLIC-STATEMENT-ON-MARRIAGE-6-Feb-2019.pdf", "type": "pdf" }
+  ],
+  "sources": [
+    "https://crca.org.au/statement-on-marriage/",
+    "public/ministry-resources/governance/CRCA-PUBLIC-STATEMENT-ON-MARRIAGE-6-Feb-2019.pdf (byte-identical to the crca.org.au upload)"
+  ],
+  "needsChecking": [
+    "The 'In summary' quotes come from the PDF (pages 2 and 3), not from the web page. They are quoted word for word; check the CRCA is happy for these extracts to appear on the page.",
+    "The PDF gives a postal address (Synodical Administrator, PO Box 323, Dee Why NSW 2099). It is not shown here; confirm whether it is still current before adding it anywhere."
+  ]
+}

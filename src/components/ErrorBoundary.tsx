@@ -18,6 +18,24 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
+    // After a new deployment, a tab that was already open still references the old,
+    // now-deleted page bundles. Reload once to pick up the new version instead of
+    // showing an error. The timestamp guard prevents a reload loop.
+    const isStaleChunk = /dynamically imported module|Importing a module script failed|Loading chunk|ChunkLoadError|error loading dynamically/i.test(
+      `${error?.name ?? ''} ${error?.message ?? ''}`
+    );
+    if (isStaleChunk) {
+      try {
+        const last = Number(sessionStorage.getItem('crca-chunk-reload') ?? 0);
+        if (Date.now() - last > 30_000) {
+          sessionStorage.setItem('crca-chunk-reload', String(Date.now()));
+          window.location.reload();
+          return;
+        }
+      } catch {
+        /* storage unavailable: fall through to the error screen */
+      }
+    }
     console.error('CRCA Website rendering error:', error, info);
   }
 

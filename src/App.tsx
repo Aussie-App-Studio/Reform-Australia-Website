@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation, useParams } from '
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
+import legacyRedirects from './data/legacyRedirects.json';
 
 const FindAChurchPage = lazy(() =>
   import('./pages/FindAChurchPage').then((m) => ({ default: m.FindAChurchPage }))
@@ -43,6 +44,9 @@ const SermonsPage = lazy(() =>
 const SermonPage = lazy(() =>
   import('./pages/SermonPage').then((m) => ({ default: m.SermonPage }))
 );
+const ContentPage = lazy(() =>
+  import('./pages/ContentPage').then((m) => ({ default: m.ContentPage }))
+);
 const NotFoundPage = lazy(() =>
   import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage }))
 );
@@ -69,6 +73,18 @@ function PageLoadingFallback() {
 function LegacySermonRedirect() {
   const { sermonId } = useParams();
   return <Navigate to={`/sermons/${sermonId ?? ''}`} replace />;
+}
+
+/**
+ * Old crca.org.au addresses (e.g. /our-history/) redirect to their new pages
+ * (map in src/data/legacyRedirects.json); anything else is a genuine 404.
+ */
+function LegacyRedirectOrNotFound() {
+  const { pathname, hash } = useLocation();
+  const key = pathname.endsWith('/') ? pathname : `${pathname}/`;
+  const target = (legacyRedirects as Record<string, string>)[key] ?? (legacyRedirects as Record<string, string>)[pathname];
+  if (target) return <Navigate to={`${target}${hash}`} replace />;
+  return <NotFoundPage />;
 }
 
 function RouteErrorBoundary({ children }: { children: ReactNode }) {
@@ -176,7 +192,11 @@ export function App() {
                 element={<Navigate to="/ministries/ecumenical-relations" replace />}
               />
 
-              <Route path="*" element={<NotFoundPage />} />
+              {/* General content pages (src/data/pages/*.json) */}
+              <Route path="/who-we-are/:pageSlug" element={<ContentPage />} />
+              <Route path="/for-churches/:pageSlug" element={<ContentPage />} />
+
+              <Route path="*" element={<LegacyRedirectOrNotFound />} />
             </Routes>
           </Suspense>
         </RouteErrorBoundary>

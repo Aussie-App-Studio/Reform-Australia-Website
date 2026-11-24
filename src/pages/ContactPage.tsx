@@ -1,8 +1,7 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { ArrowRight, Check, CheckCircle2, Copy, ExternalLink, Mail, Phone, Send } from 'lucide-react';
+import { AlertTriangle, Check, CheckCircle2, Copy, Mail, Phone, Send } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
-import { MinistryIcon } from '../components/MinistryIcon';
 import contactTopics from '../data/contactTopics.json';
 import { siteConfig } from '../data/siteConfig';
 
@@ -23,48 +22,41 @@ interface ContactTopic {
   iconName: string;
 }
 
-export function ContactPage() {
-  const topics = contactTopics as ContactTopic[];
-  const [searchParams, setSearchParams] = useSearchParams();
-  const initialTopic = searchParams.get('topic') ?? topics[0].id;
-  const [selectedId, setSelectedId] = useState<string>(
-    topics.some((t) => t.id === initialTopic) ? initialTopic : topics[0].id
-  );
+const topics = contactTopics as ContactTopic[];
+const tel = (n: string) => `tel:${n.replace(/\s+/g, '')}`;
+const field =
+  'mt-1.5 w-full rounded-md border border-stone-300 bg-white px-3.5 py-2.5 text-base text-navy-900 placeholder:text-stone-400 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500/25';
 
+export function ContactPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initial = searchParams.get('topic');
+  const [topicId, setTopicId] = useState(topics.some((t) => t.id === initial) ? initial! : topics[0].id);
   const [name, setName] = useState('');
   const [senderEmail, setSenderEmail] = useState('');
-  const [churchOrSuburb, setChurchOrSuburb] = useState('');
+  const [church, setChurch] = useState('');
   const [message, setMessage] = useState('');
-  const [submittedTo, setSubmittedTo] = useState<ContactTopic | null>(null);
-  const [copied, setCopied] = useState(false);
   const [sending, setSending] = useState(false);
-  // 'sent' = delivered by the form service; 'prepared' = visitor sends via their email app.
-  const [delivery, setDelivery] = useState<'sent' | 'prepared'>('prepared');
-  const [sendError, setSendError] = useState<string | null>(null);
+  const [result, setResult] = useState<null | { topic: ContactTopic; delivery: 'sent' | 'prepared'; error?: string }>(null);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const param = searchParams.get('topic');
-    if (param && topics.some((t) => t.id === param)) {
-      setSelectedId(param);
-    }
-  }, [searchParams, topics]);
+    const t = searchParams.get('topic');
+    if (t && topics.some((x) => x.id === t)) setTopicId(t);
+  }, [searchParams]);
 
-  const activeTopic = topics.find((t) => t.id === selectedId) ?? topics[0];
+  const topic = topics.find((t) => t.id === topicId) ?? topics[0];
+  const urgent = siteConfig.safeChurch.urgent;
 
-  function handleSelectTopic(id: string) {
-    setSelectedId(id);
-    setSubmittedTo(null);
-    setCopied(false);
+  function chooseTopic(id: string) {
+    setTopicId(id);
+    setResult(null);
     setSearchParams({ topic: id }, { replace: true });
   }
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setCopied(false);
-    setSendError(null);
     if (!FORM_ENDPOINT) {
-      setDelivery('prepared');
-      setSubmittedTo(activeTopic);
+      setResult({ topic, delivery: 'prepared' });
       return;
     }
     setSending(true);
@@ -73,342 +65,217 @@ export function ContactPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          topic: activeTopic.title,
-          to: activeTopic.email,
-          cc: activeTopic.secondaryEmail ?? '',
+          topic: topic.title,
+          to: topic.email,
+          cc: topic.secondaryEmail ?? '',
           name,
           email: senderEmail,
-          church: churchOrSuburb,
+          church,
           message,
-          _subject: `[${activeTopic.title}] Enquiry from ${name}`,
+          _subject: `[${topic.title}] Enquiry from ${name}`,
         }),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      setDelivery('sent');
+      setResult({ topic, delivery: 'sent' });
     } catch {
-      // Fall back to the email-app flow so the enquiry is never lost.
-      setDelivery('prepared');
-      setSendError('We couldn’t send your message automatically, but you can still send it from your email app below.');
+      setResult({ topic, delivery: 'prepared', error: 'We couldn’t send your message automatically, but you can send it from your email app below.' });
     } finally {
       setSending(false);
-      setSubmittedTo(activeTopic);
     }
   }
 
-  async function handleCopyEnquiry(topic: ContactTopic) {
-    const ccLine = topic.secondaryEmail ? `\nCC: ${topic.secondaryEmail}` : '';
-    const payload = `To: ${topic.routeToLabel} <${topic.email}>${ccLine}\nSubject: [${topic.title}] Enquiry from ${name}\nFrom: ${name} (${senderEmail})\nCongregation / Suburb: ${churchOrSuburb || 'Not specified'}\n\n${message}`;
+  const mailto = (t: ContactTopic) =>
+    `mailto:${t.email}?${t.secondaryEmail ? `cc=${encodeURIComponent(t.secondaryEmail)}&` : ''}subject=${encodeURIComponent(
+      `[${t.title}] Enquiry from ${name}`
+    )}&body=${encodeURIComponent(`From: ${name} (${senderEmail})\nChurch / suburb: ${church || 'Not given'}\n\n${message}`)}`;
+
+  async function copyMessage(t: ContactTopic) {
+    const text = `To: ${t.email}${t.secondaryEmail ? `\nCC: ${t.secondaryEmail}` : ''}\nSubject: [${t.title}] Enquiry from ${name}\nFrom: ${name} (${senderEmail})\nChurch / suburb: ${church || 'Not given'}\n\n${message}`;
     try {
-      await navigator.clipboard.writeText(payload);
+      await navigator.clipboard.writeText(text);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Clipboard API unavailable
+      /* clipboard unavailable */
     }
   }
 
   return (
     <>
-      <PageHeader
-        title="Contact us"
-        description="Choose a topic so your message reaches the right person or committee."
-        breadcrumbs={[{ label: 'Contact' }]}
-      />
+      <PageHeader title="Contact us" description="Send us a message, or contact the right person directly." breadcrumbs={[{ label: 'Contact' }]} />
 
-      <section className="bg-stone-50 py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            {/* Step 1: Topic Selector Grid */}
-            <div className="lg:col-span-6 space-y-4">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-[0.08em] text-stone-600">
-                  Step 1 — Select Topic
-                </span>
-                <h2 className="mt-1 font-serif text-2xl font-bold text-navy-900">
-                  How can we help you?
-                </h2>
-              </div>
+      {/* Urgent safeguarding line */}
+      <div className="border-b border-rose-200 bg-rose-50">
+        <p className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-2 gap-y-1 px-4 py-3 text-[0.95rem] text-rose-950 sm:px-6 lg:px-8">
+          <AlertTriangle className="h-4 w-4 shrink-0 text-rose-600" aria-hidden="true" />
+          <span className="font-semibold">Reporting abuse or a safeguarding concern?</span>
+          <span>
+            Call the Safe Church Unit on{' '}
+            <a href={tel(urgent.primaryPhone)} className="font-semibold underline underline-offset-2">
+              {urgent.primaryPhone}
+            </a>{' '}
+            at any time. If someone is in immediate danger, call {urgent.emergency}.
+          </span>
+        </p>
+      </div>
 
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                {topics.map((topic) => {
-                  const selected = topic.id === activeTopic.id;
-                  return (
-                    <button
-                      key={topic.id}
-                      type="button"
-                      onClick={() => handleSelectTopic(topic.id)}
-                      className={`flex items-start gap-4 rounded-lg border p-4 text-left transition-all ${
-                        selected
-                          ? 'border-teal-600 bg-white ring-2 ring-teal-500/20'
-                          : 'border-stone-200 bg-white/80 hover:border-stone-300 hover:bg-white'
-                      }`}
-                    >
-                      <div
-                        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-md border ${
-                          selected
-                            ? 'bg-teal-600 border-teal-600 text-white'
-                            : 'bg-teal-50 border-teal-100 text-teal-700'
-                        }`}
-                      >
-                        <MinistryIcon name={topic.iconName} className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <div className="font-serif text-base font-bold text-navy-900">
-                          {topic.title}
-                        </div>
-                        <p className="mt-0.5 text-xs leading-relaxed text-stone-600">
-                          {topic.subtitle}
-                        </p>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8 lg:py-16">
+        {/* Form */}
+        <section aria-labelledby="send" className="scroll-mt-28 lg:col-span-7">
+          <h2 id="send" className="font-serif text-2xl font-semibold text-navy-900">
+            Send a message
+          </h2>
 
-            {/* Step 2: Routed Contact Card + Form */}
-            <div className="lg:col-span-6 space-y-6">
-              {/* Direct Routing Card */}
-              <div className="rounded-lg bg-navy-900 p-6 text-white sm:p-7">
-                <div className="text-xs font-bold uppercase tracking-[0.08em] text-teal-100">
-                  Direct Contact
-                </div>
-                <h3 className="mt-1.5 font-serif text-2xl font-bold text-white">
-                  {activeTopic.routeToLabel}
-                </h3>
-                {activeTopic.contactName && (
-                  <p className="mt-1 text-sm font-semibold text-teal-100">
-                    {activeTopic.contactName}
+          {result ? (
+            <div className="mt-6 border-l-4 border-teal-500 bg-teal-50 p-5" role="status">
+              <p className="flex items-center gap-2 font-semibold text-navy-900">
+                <CheckCircle2 className="h-5 w-5 shrink-0 text-teal-700" aria-hidden="true" />
+                {result.delivery === 'sent' ? `Thank you. Your message was sent to ${result.topic.routeToLabel}.` : 'Your message is ready to send.'}
+              </p>
+              {result.error && <p className="mt-2 text-rose-800">{result.error}</p>}
+              {result.delivery === 'sent' ? (
+                <p className="mt-2 text-stone-700">We’ll reply to {senderEmail}.</p>
+              ) : (
+                <>
+                  <p className="mt-2 text-stone-700">
+                    Open it in your email app to send it to <strong className="font-semibold text-navy-900">{result.topic.email}</strong>, or copy
+                    it into any email.
                   </p>
-                )}
-                <p className="mt-2 text-sm leading-relaxed text-navy-100">
-                  {activeTopic.responseNote}
-                </p>
-
-                <div className="mt-5 flex flex-wrap gap-3 border-t border-white/15 pt-4 text-sm">
-                  <a
-                    href={`mailto:${activeTopic.email}?subject=${encodeURIComponent(
-                      `[CRCA Website] ${activeTopic.title}`
-                    )}`}
-                    className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-3.5 py-2 font-semibold text-white hover:bg-white/20"
-                  >
-                    <Mail className="h-4 w-4 text-teal-400" />
-                    <span>{activeTopic.email}</span>
-                  </a>
-
-                  {activeTopic.secondaryEmail && (
-                    <a
-                      href={`mailto:${activeTopic.secondaryEmail}?subject=${encodeURIComponent(
-                        `[CRCA Website] ${activeTopic.title}`
-                      )}`}
-                      className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-3.5 py-2 font-semibold text-white hover:bg-white/20"
-                    >
-                      <Mail className="h-4 w-4 text-teal-400" />
-                      <span>{activeTopic.secondaryEmail}</span>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    <a href={mailto(result.topic)} className="inline-flex items-center gap-2 rounded-md bg-navy-900 px-4 py-2.5 font-semibold text-white hover:bg-navy-800">
+                      <Mail className="h-4 w-4" aria-hidden="true" /> Open in email app
                     </a>
-                  )}
-
-                  {activeTopic.phone && (
-                    <a
-                      href={`tel:${activeTopic.phone.replace(/\s+/g, '')}`}
-                      className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-3.5 py-2 font-semibold text-white hover:bg-white/20"
-                    >
-                      <Phone className="h-4 w-4 text-teal-100" />
-                      <span>{activeTopic.phone}</span>
-                    </a>
-                  )}
-
-                  {activeTopic.externalUrl && activeTopic.externalUrl.startsWith('/') && (
-                    <Link
-                      to={activeTopic.externalUrl}
-                      className="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-3.5 py-2 font-semibold text-white hover:bg-teal-500"
-                    >
-                      <span>{activeTopic.externalLabel ?? 'Open'}</span>
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  )}
-                  {activeTopic.externalUrl && !activeTopic.externalUrl.startsWith('/') && (
-                    <a
-                      href={activeTopic.externalUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-3.5 py-2 font-semibold text-white hover:bg-teal-500"
-                    >
-                      <span>{activeTopic.externalLabel ?? 'Open Portal'}</span>
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
-                  )}
-                </div>
-              </div>
-
-              {/* Enquiry Form */}
-              <div className="rounded-lg border border-stone-200 bg-white p-6 sm:p-7">
-                <div className="text-xs font-bold uppercase tracking-[0.08em] text-teal-700">
-                  Step 2 — Send an Enquiry
-                </div>
-                <h3 className="mt-1 font-serif text-xl font-bold text-navy-900">
-                  Message {activeTopic.routeToLabel}
-                </h3>
-
-                {submittedTo ? (
-                  <div className="mt-5 rounded-md border border-teal-500/40 bg-teal-50 p-5">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" />
-                      <div>
-                        <h4 className="font-serif text-base font-bold text-navy-900">
-                          {delivery === 'sent' ? `Thank you — your message was sent to ${submittedTo.routeToLabel}` : `Enquiry Prepared for ${submittedTo.routeToLabel}`}
-                        </h4>
-                        {sendError && <p className="mt-1 text-sm font-medium text-rose-800">{sendError}</p>}
-                        {delivery === 'sent' ? (
-                          <p className="mt-1 text-sm text-stone-700">
-                            We’ll reply to <strong>{senderEmail}</strong>. {submittedTo.responseNote}
-                          </p>
-                        ) : (
-                        <p className="mt-1 text-sm text-stone-700">
-                          Your enquiry details are formatted and ready to send directly to{' '}
-                          <strong>{submittedTo.email}</strong>
-                          {submittedTo.secondaryEmail
-                            ? ` (cc ${submittedTo.secondaryEmail})`
-                            : ''}
-                          . Open your email client below or copy the message details to paste into
-                          any webmail service.
-                        </p>
-                        )}
-                        <div className="mt-4 flex flex-wrap gap-3">
-                          {delivery === 'prepared' && (
-                          <>
-                          <a
-                            href={`mailto:${submittedTo.email}?${
-                              submittedTo.secondaryEmail
-                                ? `cc=${encodeURIComponent(submittedTo.secondaryEmail)}&`
-                                : ''
-                            }subject=${encodeURIComponent(
-                              `[${submittedTo.title}] Enquiry from ${name}`
-                            )}&body=${encodeURIComponent(
-                              `From: ${name} (${senderEmail})\nChurch/Suburb: ${churchOrSuburb}\n\n${message}`
-                            )}`}
-                            className="inline-flex items-center gap-1.5 rounded-lg bg-navy-900 px-4 py-2 text-xs font-semibold text-white hover:bg-navy-800"
-                          >
-                            <Mail className="h-3.5 w-3.5" />
-                            <span>Open in Email Client</span>
-                          </a>
-                          <button
-                            type="button"
-                            onClick={() => void handleCopyEnquiry(submittedTo)}
-                            className="inline-flex items-center gap-1.5 rounded-lg border border-stone-300 bg-white px-4 py-2 text-xs font-semibold text-navy-900 hover:bg-stone-50"
-                          >
-                            {copied ? (
-                              <Check className="h-3.5 w-3.5 text-teal-600" />
-                            ) : (
-                              <Copy className="h-3.5 w-3.5 text-teal-600" />
-                            )}
-                            <span>{copied ? 'Copied' : 'Copy Message Details'}</span>
-                          </button>
-                          </>
-                          )}
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setSendError(null);
-                              setSubmittedTo(null);
-                              setCopied(false);
-                              setMessage('');
-                            }}
-                            className="rounded-lg border border-stone-300 bg-white px-4 py-2 text-xs font-semibold text-navy-900 hover:bg-stone-50"
-                          >
-                            Send Another Message
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="mt-5 space-y-4">
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                      <div>
-                        <label
-                          htmlFor="contact-name"
-                          className="block text-xs font-semibold text-navy-900"
-                        >
-                          Your Name *
-                        </label>
-                        <input
-                          id="contact-name"
-                          type="text"
-                          required
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          placeholder="Full name"
-                          className="mt-1.5 w-full rounded-md border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="contact-email"
-                          className="block text-xs font-semibold text-navy-900"
-                        >
-                          Email Address *
-                        </label>
-                        <input
-                          id="contact-email"
-                          type="email"
-                          required
-                          value={senderEmail}
-                          onChange={(e) => setSenderEmail(e.target.value)}
-                          placeholder="you@example.com.au"
-                          className="mt-1.5 w-full rounded-md border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="contact-church"
-                        className="block text-xs font-semibold text-navy-900"
-                      >
-                        Local Congregation / Suburb (Optional)
-                      </label>
-                      <input
-                        id="contact-church"
-                        type="text"
-                        value={churchOrSuburb}
-                        onChange={(e) => setChurchOrSuburb(e.target.value)}
-                        placeholder="e.g., Scoresby, VIC or visiting enquiry"
-                        className="mt-1.5 w-full rounded-md border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="contact-message"
-                        className="block text-xs font-semibold text-navy-900"
-                      >
-                        Message *
-                      </label>
-                      <textarea
-                        id="contact-message"
-                        required
-                        rows={4}
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder={`Write your enquiry for ${activeTopic.routeToLabel}...`}
-                        className="mt-1.5 w-full rounded-md border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-base text-navy-900 sm:text-sm focus:border-teal-500 focus:bg-white focus:outline-none"
-                      />
-                    </div>
-
                     <button
-                      type="submit"
-                      disabled={sending}
-                      className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-60"
+                      type="button"
+                      onClick={() => void copyMessage(result.topic)}
+                      className="inline-flex items-center gap-2 rounded-md border border-stone-300 bg-white px-4 py-2.5 font-semibold text-navy-900 hover:border-navy-900"
                     >
-                      <Send className="h-4 w-4" />
-                      <span>Send Enquiry to {activeTopic.routeToLabel}</span>
+                      {copied ? <Check className="h-4 w-4 text-teal-600" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}
+                      {copied ? 'Copied' : 'Copy message'}
                     </button>
-                  </form>
-                )}
-              </div>
+                  </div>
+                </>
+              )}
+              <button
+                type="button"
+                onClick={() => {
+                  setResult(null);
+                  setMessage('');
+                }}
+                className="mt-4 text-sm font-semibold text-teal-700 underline underline-offset-4"
+              >
+                Write another message
+              </button>
             </div>
-          </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+              <div>
+                <label htmlFor="c-topic" className="font-semibold text-navy-900">
+                  What is it about?
+                </label>
+                <select id="c-topic" value={topicId} onChange={(e) => chooseTopic(e.target.value)} className={field}>
+                  {topics.map((t) => (
+                    <option key={t.id} value={t.id}>
+                      {t.title}
+                    </option>
+                  ))}
+                </select>
+                <p className="mt-1.5 text-sm leading-relaxed text-stone-600">
+                  Goes to {topic.contactName ?? topic.routeToLabel}. {topic.responseNote}
+                </p>
+              </div>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="c-name" className="font-semibold text-navy-900">
+                    Your name
+                  </label>
+                  <input id="c-name" required autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} className={field} />
+                </div>
+                <div>
+                  <label htmlFor="c-email" className="font-semibold text-navy-900">
+                    Your email
+                  </label>
+                  <input id="c-email" type="email" required autoComplete="email" value={senderEmail} onChange={(e) => setSenderEmail(e.target.value)} className={field} />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="c-church" className="font-semibold text-navy-900">
+                  Your church or suburb <span className="font-normal text-stone-500">(optional)</span>
+                </label>
+                <input id="c-church" value={church} onChange={(e) => setChurch(e.target.value)} className={field} />
+              </div>
+              <div>
+                <label htmlFor="c-message" className="font-semibold text-navy-900">
+                  Message
+                </label>
+                <textarea id="c-message" required rows={6} value={message} onChange={(e) => setMessage(e.target.value)} className={field} />
+              </div>
+              <button
+                type="submit"
+                disabled={sending}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-navy-900 px-5 py-3 font-semibold text-white hover:bg-navy-800 disabled:opacity-60 sm:w-auto"
+              >
+                <Send className="h-4 w-4" aria-hidden="true" /> {sending ? 'Sending…' : 'Send message'}
+              </button>
+            </form>
+          )}
+        </section>
+
+        {/* Office */}
+        <aside aria-labelledby="office" className="lg:col-span-5">
+          <h2 id="office" className="font-serif text-2xl font-semibold text-navy-900">
+            National office
+          </h2>
+          <p className="mt-3 leading-relaxed text-stone-700">
+            For general enquiries, Synod matters, church directory corrections and anything you’re not sure about.
+          </p>
+          <a href={`mailto:${siteConfig.adminEmail}`} className="mt-4 inline-flex items-center gap-2 text-lg font-semibold text-teal-700 underline-offset-4 hover:underline">
+            <Mail className="h-5 w-5" aria-hidden="true" /> {siteConfig.adminEmail}
+          </a>
+          <p className="mt-6 text-stone-700">
+            Looking for a local church?{' '}
+            <Link to="/find-a-church" className="font-semibold text-teal-700 underline-offset-4 hover:underline">
+              Find a church near you
+            </Link>
+            .
+          </p>
+        </aside>
+      </div>
+
+      {/* Directory */}
+      <section aria-labelledby="directory" className="border-t border-stone-200 bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+          <h2 id="directory" className="font-serif text-2xl font-semibold text-navy-900">
+            Who to contact
+          </h2>
+          <ul className="mt-6 grid gap-x-12 border-t border-stone-200 md:grid-cols-2">
+            {topics.map((t) => (
+              <li key={t.id} className="border-b border-stone-200 py-5">
+                <p className="font-semibold text-navy-900">{t.title}</p>
+                <p className="text-sm text-stone-600">{t.contactName ?? t.routeToLabel}</p>
+                <p className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+                  <a href={`mailto:${t.email}`} className="inline-flex items-center gap-1.5 break-all text-teal-700 underline-offset-4 hover:underline">
+                    <Mail className="h-4 w-4 shrink-0" aria-hidden="true" /> {t.email}
+                  </a>
+                  {t.phone && (
+                    <a href={tel(t.phone)} className="inline-flex items-center gap-1.5 text-teal-700 underline-offset-4 hover:underline">
+                      <Phone className="h-4 w-4 shrink-0" aria-hidden="true" /> {t.phone}
+                    </a>
+                  )}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    chooseTopic(t.id);
+                    document.getElementById('send')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="mt-2 text-sm font-semibold text-navy-800 hover:text-teal-700"
+                >
+                  Write to {t.contactName ? 'them' : 'this team'} using the form →
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </>

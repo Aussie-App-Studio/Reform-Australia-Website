@@ -9,6 +9,7 @@ import {
   HandHeart,
   Handshake,
   HeartPulse,
+  Landmark,
   type LucideIcon,
   Map,
   Route,
@@ -26,6 +27,7 @@ const ICONS: Record<string, LucideIcon> = {
   'gospel-focused': Globe2,
   'local-church-empowering': Church,
   'prayerful-urgency': HandHeart,
+  'historic-orthodoxy': Landmark,
   // four-fold task
   pray: HandHeart,
   grow: Sprout,

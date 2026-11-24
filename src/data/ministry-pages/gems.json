@@ -24,7 +24,11 @@
         "G.E.M.S. stands for Girls Everywhere Meeting the Saviour. The name represents both the mission and the vision of G.E.M.S. Girls' Clubs.",
         "Mission: \"To help bring girls into a living, dynamic relationship with Jesus Christ.\"",
         "Vision: \"To see girls actively and enthusiastically expressing love for God and others by equipping and encouraging them to live out their faith.\""
-      ]
+      ],
+      "image": {
+        "src": "/images/ministries/gems/friends.webp",
+        "alt": "Four smiling girls in jumpers and beanies standing together outdoors at a GEMS camp"
+      }
     },
     {
       "id": "the-bible",
@@ -169,7 +173,6 @@
     "The crca.org.au menu links to https://www.gems.crca.org.au/, which does not resolve. Once this page is live, that menu link and any other links to gems.crca.org.au should point here.",
     "No named GEMS contact appears on any source. Enquiries route to CRCA Administration (admin@crca.org.au) via the next-gen contact topic, as in contactTopics.json. Confirm, or supply a GEMS coordinator.",
     "Photos: the old site had only three real GEMS photos, each 938x342px, so they will look soft as a full-width hero. The rest of the media library is website-template stock and CRCA logos. Newer, larger photos of club nights and camps would help, and no separate gallery was added because there were no further photos to use.",
-    "Photo consent: all three photos show identifiable girls, and one (g-01) is a close-up of six girls' faces. They were already public on gems.crca.org.au, but confirm with GEMS leaders that consent covers their use on the main CRCA site, in line with Safe Church guidance. The close-up (g-01) has been left out.",
     "The 'Finding a club' section and the 'Find a church near you' action replace the old site's external link. There is no list of which churches run GEMS groups. Consider adding one."
   ]
 }

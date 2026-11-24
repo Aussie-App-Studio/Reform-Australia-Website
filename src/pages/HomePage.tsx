@@ -1,6 +1,6 @@
 import { FormEvent, ReactNode, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, BookOpen, Church, ExternalLink, Globe2, HandHeart, LucideIcon, Scroll, Search } from 'lucide-react';
+import { ArrowRight, BookOpen, Church, ExternalLink, Globe2, HandHeart, Landmark, LucideIcon, Scroll, Search } from 'lucide-react';
 import churchesRaw from '../data/churches.json';
 import identity from '../data/identity.json';
 import beliefs from '../data/beliefs.json';
@@ -30,6 +30,7 @@ const VALUE_ICONS: Record<string, LucideIcon> = {
   'gospel-focused': Globe2,
   'local-church-empowering': Church,
   'prayerful-urgency': HandHeart,
+  'historic-orthodoxy': Landmark,
 };
 
 const STANDARDS = [
