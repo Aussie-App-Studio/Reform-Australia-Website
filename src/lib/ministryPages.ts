@@ -42,8 +42,8 @@ export interface MinistryPageData {
 
 export const GROUP_LABELS: Record<MinistryGroup, string> = {
   'next-gen': 'Next generation',
-  'training-planting': 'Training & church planting',
-  'global-mission': 'Mission & partnerships',
+  'training-planting': 'Training and church planting',
+  'global-mission': 'Mission and partnerships',
 };
 
 const modules = import.meta.glob<MinistryPageData>('../data/ministry-pages/*.json', { eager: true, import: 'default' });

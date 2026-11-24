@@ -57,10 +57,22 @@
     }
   ],
   "facts": [
-    { "label": "Appointed by", "value": "Synod of the CRCA" },
-    { "label": "Members", "value": "Three, from around Australia" },
-    { "label": "Meets", "value": "Several times a year, usually by Zoom" },
-    { "label": "Member of", "value": "International Conference of Reformed Churches (ICRC)" }
+    {
+      "label": "Appointed by",
+      "value": "Synod of the CRCA"
+    },
+    {
+      "label": "Members",
+      "value": "Three, from around Australia"
+    },
+    {
+      "label": "Meets",
+      "value": "Several times a year, usually by Zoom"
+    },
+    {
+      "label": "Member of",
+      "value": "International Conference of Reformed Churches (ICRC)"
+    }
   ],
   "contact": {
     "name": "CRCA Administration Office",
@@ -68,16 +80,30 @@
     "topic": "admin"
   },
   "actions": [
-    { "label": "Contact the committee", "url": "/contact?topic=admin", "kind": "primary" },
-    { "label": "Read Church Order Article 52", "url": "/for-churches/forms-and-documents/church-order-01-crca-church-order-2022#article-52-inter-church-relations", "kind": "secondary" }
+    {
+      "label": "Contact the committee",
+      "url": "/contact?topic=admin",
+      "kind": "primary"
+    },
+    {
+      "label": "Read Church Order Article 52",
+      "url": "/for-churches/forms-and-documents/church-order-01-crca-church-order-2022#article-52-inter-church-relations",
+      "kind": "secondary"
+    }
   ],
   "sources": [
     "https://crca.org.au/ecumenical-relations/",
     "src/data/internalMinistries.json",
-    "src/data/contactTopics.json"
+    "src/data/contactTopics.json",
+    "Hero photo: crca.org.au (archived 2022), images/Synod.jpg"
   ],
   "needsChecking": [
     "Contact route: crca.org.au/ecumenical-relations gives no contact. The old internalMinistries.json sends enquiries to admin@crca.org.au (topic 'admin'); kept that. Confirm the office forwards these to the committee.",
     "Church Order link and its #article-52-inter-church-relations anchor: copied from internalMinistries.json. Article 52 itself is named on the source page."
-  ]
+  ],
+  "hero": {
+    "src": "/images/crca/synod-2022.webp",
+    "alt": "Synod delegates seated at tables facing the front of a hall",
+    "credit": "CRCA"
+  }
 }

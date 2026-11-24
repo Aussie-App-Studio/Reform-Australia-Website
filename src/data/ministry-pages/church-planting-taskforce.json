@@ -30,9 +30,18 @@
     }
   ],
   "facts": [
-    { "label": "Who it's for", "value": "CRCA churches thinking about planting or renewal" },
-    { "label": "Seed funding", "value": "Matched up to $2,500 with the local church" },
-    { "label": "Convenor", "value": "Rev KJ Tromp" }
+    {
+      "label": "Who it's for",
+      "value": "CRCA churches thinking about planting or renewal"
+    },
+    {
+      "label": "Seed funding",
+      "value": "Matched up to $2,500 with the local church"
+    },
+    {
+      "label": "Convenor",
+      "value": "Rev KJ Tromp"
+    }
   ],
   "contact": {
     "name": "Rev KJ Tromp",
@@ -41,17 +50,35 @@
     "topic": "church-planting"
   },
   "actions": [
-    { "label": "About Missional Explorations", "url": "/ministries/missional-explorations", "kind": "primary" },
-    { "label": "Contact the CPT convenor", "url": "/contact?topic=church-planting", "kind": "secondary" }
+    {
+      "label": "About Missional Explorations",
+      "url": "/ministries/missional-explorations",
+      "kind": "primary"
+    },
+    {
+      "label": "Contact the CPT convenor",
+      "url": "/contact?topic=church-planting",
+      "kind": "secondary"
+    }
   ],
   "resources": [
-    { "label": "Missional Exploration application (PDF)", "url": "/ministry-resources/missional-explorations/Missional-Exploration-Application.pdf", "type": "pdf" }
+    {
+      "label": "Missional Exploration application (PDF)",
+      "url": "/ministry-resources/missional-explorations/Missional-Exploration-Application.pdf",
+      "type": "pdf"
+    }
   ],
   "sources": [
     "https://crca.org.au/church-planting-taskforce/",
     "https://crca.org.au/missional-explorations/",
     "crca-pages.txt church directory entry for South Barwon CRC (Rev KJ Tromp, kj@openhouse.church)",
     "src/data/internalMinistries.json",
-    "src/data/contactTopics.json"
-  ]
+    "src/data/contactTopics.json",
+    "Hero photo: Wikimedia Commons, File:(1)Christian_Reformed_Church_Colyton-1.jpg, CC BY-SA 3.0, Sardaka"
+  ],
+  "hero": {
+    "src": "/images/history/st-marys-crc-colyton.webp",
+    "alt": "A brick church with a white tower bearing a cross, and a sign reading St Marys Christian Reformed Church",
+    "credit": "Sardaka, CC BY-SA 3.0 (St Marys Christian Reformed Church, Colyton NSW)"
+  }
 }

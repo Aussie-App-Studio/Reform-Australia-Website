@@ -20,7 +20,7 @@ export function MinistriesPage() {
             <h2 id={`grp-${col.id}`} className="font-serif text-2xl font-semibold text-navy-900 lg:col-span-4">
               {GROUP_LABELS[col.id as MinistryGroup]}
             </h2>
-            <ul className="divide-y divide-stone-200 border-y border-stone-200 lg:col-span-8">
+            <ul className="divide-y divide-stone-200 border-b border-stone-200 lg:col-span-8">
               {col.items.map((item) => {
                 const slug = item.to.split('/').pop() ?? '';
                 const mp = getMinistryPage(slug);
@@ -30,7 +30,7 @@ export function MinistriesPage() {
                     {mp?.hero ? (
                       <img src={mp.hero.src} alt="" loading="lazy" className="hidden h-24 w-36 shrink-0 rounded-md object-cover sm:block" />
                     ) : (
-                      <span className="hidden h-24 w-36 shrink-0 rounded-md bg-stone-100 sm:block" aria-hidden="true" />
+                      <span className="hidden h-24 w-36 shrink-0 items-center justify-center rounded-md border border-stone-200 bg-white px-2 text-center font-serif text-sm text-navy-900 sm:flex" aria-hidden="true">{item.isExternal ? new URL(item.to).hostname.replace(/^www./, '') : item.label}</span>
                     )}
                     <span className="min-w-0 flex-1">
                     <span className="flex items-center justify-between gap-4">
@@ -65,7 +65,7 @@ export function MinistriesPage() {
 
         <section className="mt-6 grid gap-6 border-t border-stone-200 pt-10 lg:grid-cols-12 lg:gap-16">
           <h2 className="font-serif text-2xl font-semibold text-navy-900 lg:col-span-4">Serving the churches</h2>
-          <ul className="divide-y divide-stone-200 border-y border-stone-200 lg:col-span-8">
+          <ul className="divide-y divide-stone-200 border-b border-stone-200 lg:col-span-8">
             {[
               { label: 'Safe Church Unit', to: '/safe-church', text: 'Helps churches understand and prevent abuse, and respond with compassion and justice where abuse has occurred.' },
               { label: 'Reading sermons', to: '/sermons', text: 'The Word of Salvation archive of sermons by CRCA ministers, for reading services and study.' },

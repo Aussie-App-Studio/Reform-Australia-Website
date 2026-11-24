@@ -61,7 +61,7 @@ export const whoWeAreNavItems: NavLinkItem[] = [
 export const ministryMegaMenuColumns: MinistryMegaMenuColumn[] = [
   {
     id: 'next-gen',
-    heading: 'Next Gen',
+    heading: 'Next generation',
     subtitle: 'Children, youth and young adults',
     items: [
       {
@@ -83,8 +83,8 @@ export const ministryMegaMenuColumns: MinistryMegaMenuColumn[] = [
   },
   {
     id: 'training-planting',
-    heading: 'Training & Planting',
-    subtitle: 'Equipping leaders & multiplying churches',
+    heading: 'Training and church planting',
+    subtitle: 'Equipping leaders and multiplying churches',
     items: [
       {
         label: 'Reformed Theological College',
@@ -121,8 +121,8 @@ export const ministryMegaMenuColumns: MinistryMegaMenuColumn[] = [
   },
   {
     id: 'global-mission',
-    heading: 'Global Mission',
-    subtitle: 'Partnering across cultures & denominations',
+    heading: 'Mission and partnerships',
+    subtitle: 'Partnering across cultures and denominations',
     items: [
       {
         label: 'World Transform',
