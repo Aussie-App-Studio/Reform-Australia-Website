@@ -287,6 +287,34 @@ window.CMS_CONFIG = {
       ],
     },
     {
+      name: 'sermons',
+      label: 'Reading sermons',
+      description: 'Hide or show a preacher’s sermons on the website.',
+      files: [
+        {
+          name: 'sermon-settings',
+          label: 'Hide or show sermons',
+          file: 'src/data/sermonSettings.json',
+          format: 'json',
+          fields: [
+            {
+              label: 'Preachers',
+              label_singular: 'preacher',
+              name: 'preachers',
+              widget: 'list',
+              required: false,
+              summary: '{{preacher}}',
+              hint: 'Sermons are only hidden, never deleted. Switch “Hide” off to show them again. The website updates about 10 minutes after you save.',
+              fields: [
+                { label: 'Preacher', name: 'preacher', widget: 'select', options: window.SERMON_PREACHERS },
+                { label: 'Hide all of this preacher’s sermons', name: 'hidden', widget: 'boolean', default: true, required: false },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: 'churches',
       label: 'Churches',
       description: 'Public details only: never add membership numbers or pastors’ personal details.',
