@@ -151,6 +151,25 @@ export function HistoryPage() {
               credit="Sardaka, CC BY-SA 3.0"
               creditUrl={CC_BY_SA_3}
             />
+            <Photo
+              src={img('penguin-crc')}
+              alt="A red-brick church with a tall pointed bell tower, on a grassy rise under a blue sky"
+              caption="The Christian Reformed Church of Penguin, Tasmania. Penguin was one of the first two congregations, instituted in October 1951."
+              credit="Duncan Grant, Churches of Tasmania (used with permission)"
+            />
+            <Photo
+              src={img('kingston-reformed-church-1956')}
+              alt="A low brick church with a long row of windows, in black and white"
+              caption="The first Reformed church building in Kingston, Tasmania, opened in 1956."
+              credit="Dutch Australian Cultural Centre (used with permission)"
+            />
+            <Photo
+              className="sm:col-span-2"
+              src={img('rtc-geelong-grammar-building')}
+              alt="A two-storey Gothic Revival stone building with steep gables, behind a large rounded shrub"
+              caption="The Reformed Theological College, founded by the Synod in 1954, was based for almost 40 years in this wing of the former Geelong Grammar School (built 1857)."
+              credit="Reformed Theological College (used with permission)"
+            />
           </div>
         </div>
       </section>

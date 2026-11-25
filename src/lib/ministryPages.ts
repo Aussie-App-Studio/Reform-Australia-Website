@@ -1,6 +1,7 @@
 // One JSON file per ministry in src/data/ministry-pages/, all rendered by the
 // same template (src/pages/ministries/MinistryPage.tsx). This is the
 // "standardised template" pattern Synod 2024 asked for (Acts Art. 10).
+import { newsFor } from './news';
 
 export type MinistryGroup = 'next-gen' | 'training-planting' | 'global-mission';
 
@@ -50,7 +51,13 @@ export const GROUP_LABELS: Record<MinistryGroup, string> = {
 
 const modules = import.meta.glob<MinistryPageData>('../data/ministry-pages/*.json', { eager: true, import: 'default' });
 
-export const ministryPages: MinistryPageData[] = Object.values(modules).sort((a, b) => a.name.localeCompare(b.name));
+// News lives in its own files (src/data/news/) and is attached to each page here.
+export const ministryPages: MinistryPageData[] = Object.values(modules)
+  .map((p) => {
+    const news = newsFor(p.slug);
+    return news.length ? { ...p, news } : p;
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
 
 export function getMinistryPage(slug: string): MinistryPageData | undefined {
   return ministryPages.find((m) => m.slug === slug);

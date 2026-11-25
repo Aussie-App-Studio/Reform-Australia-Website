@@ -515,8 +515,25 @@ for (const w of warnings) {
   console.warn(`WARN: ${w}`);
 }
 
-// Vacancies and contact topics are edited in /admin: check the essentials so a bad save
+// Vacancies, news and contact topics are edited in /admin: check the essentials so a bad save
 // stops the publish instead of breaking the site.
+{
+  const newsDir = path.join(ROOT, 'src/data/news');
+  const slugs = new Set(fs.readdirSync(MINISTRY_DIR).filter((x) => x.endsWith('.json')).map((x) => x.replace(/\.json$/, '')));
+  for (const f of fs.existsSync(newsDir) ? fs.readdirSync(newsDir).filter((n) => n.endsWith('.json')) : []) {
+    let n;
+    try {
+      n = JSON.parse(fs.readFileSync(path.join(newsDir, f), 'utf8'));
+    } catch (e) {
+      errors.push(`News ${f}: not valid JSON (${e.message})`);
+      continue;
+    }
+    if (!slugs.has(n.ministry)) errors.push(`News ${f}: unknown ministry "${n.ministry}"`);
+    if (!String(n.title ?? '').trim()) errors.push(`News ${f}: "title" is empty`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(n.date ?? ''))) errors.push(`News ${f}: date "${n.date}" should look like 2027-01-29`);
+    if (n.image && !fs.existsSync(path.join(PUBLIC_DIR, decodeURIComponent(n.image)))) errors.push(`News ${f}: missing image ${n.image}`);
+  }
+}
 {
   const dir = path.join(ROOT, 'src/data/vacancies');
   for (const f of fs.existsSync(dir) ? fs.readdirSync(dir).filter((n) => n.endsWith('.json')) : []) {

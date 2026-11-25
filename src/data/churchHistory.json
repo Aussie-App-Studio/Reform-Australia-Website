@@ -1,62 +1,376 @@
 {
   "intro": "When each congregation began, as far as we know. Most dates are the year a congregation was instituted (formally constituted as a church); some are the year services began.",
   "congregations": [
-    { "id": "christian-reformed-church-of-penguin", "year": "1951", "sort": 1951.1, "note": "Instituted 13 October 1951; often called the first Reformed church in Australia", "source": "https://dacc.net.au/archive/dutch-australian-history/dutch-migration/christian-reformed-churches-of-australia/" },
-    { "id": "ulverstone-crc", "year": "1951", "sort": 1951.1, "note": "Instituted 13 October 1951 as Ulverstone Reformed Church", "source": "https://ucrc.org.au/our-story" },
-    { "id": "christian-reformed-church-of-sydney", "year": "1951", "sort": 1951.2, "note": "Instituted 16 December 1951 as the Reformed Church of Sydney", "source": "https://www.sydneyreformed.org.au/our-history" },
-    { "id": "wollongong-crc", "year": "1951", "sort": 1951.2, "note": "Instituted 16 December 1951", "source": "DACC (as above); one other listing gives 1954", "check": true },
-    { "id": "kingston-christian-reformed-church", "year": "1952", "sort": 1952, "note": "Started with help from Penguin; mother church of Bay, One Way, Summerleas and Redeemer", "source": "DACC" },
-    { "id": "new-life-christian-church", "year": "1953", "sort": 1953, "note": "Formerly Blacktown Reformed Church", "source": "https://www.newlifechristianchurch.org.au/about.html" },
-    { "id": "mt-evelyn-crc", "year": "1953", "sort": 1953, "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "hope-christian-community-church", "year": "1950s", "sort": 1953.5, "note": "Formerly St Marys Reformed Church; mother church of Blaxland", "source": "https://www.hopeccc.org.au/about-us (Wikipedia gives 1965)", "check": true },
-    { "id": "oasis-church", "year": "1950s", "sort": 1953.6, "note": "Began as the First Reformed Church of Brisbane", "source": "https://oasischurch.com.au/about/ ('over 70 years ago'; Wikipedia gives 1980)", "check": true },
-    { "id": "northern-beaches-crc", "year": "1954", "sort": 1954, "note": "Formerly the CRC of Dee Why", "source": "https://deewhy.crca.org.au/about-us.html" },
-    { "id": "riverbank-christian-church", "year": "1954", "sort": 1954, "note": "In Launceston since 1954", "source": "https://www.riverbankcc.org.au/pages/about-us" },
-    { "id": "newcastle-crc-lake-macquarie", "year": "1955", "sort": 1955, "source": "http://newcastlecrc.org/about/" },
-    { "id": "geelong-crc", "year": "1955", "sort": 1955, "note": "Mother church of South Barwon", "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "box-hill-reformed-church", "year": "1957", "sort": 1957, "note": "Mother church of One Hope", "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "south-gippsland-crc", "year": "1957", "sort": 1957, "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "pathway-to-life", "year": "1958", "sort": 1958, "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "australind-crc", "year": "1959", "sort": 1959, "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "sutherland-crc", "year": "1960", "sort": 1960, "note": "Began as the Reformed Church of Sutherland", "source": "https://www.sutherlandreformed.com.au/our-history/" },
-    { "id": "good-news-christian-church", "year": "1960", "sort": 1960, "note": "Formerly Hobart CRC", "source": "https://www.goodnewscrc.org/about" },
-    { "id": "dandenong-crc", "year": "1963", "sort": 1963, "source": "https://dcrc.org.au/about-us/ (Wikipedia gives 1953)", "check": true },
-    { "id": "christian-reformation-community-church", "year": "1965", "sort": 1965, "source": "https://www.inalacrcc.org.au/who-we-are" },
-    { "id": "grace-christian-church-langwarrin", "year": "1968", "sort": 1968, "note": "Began as Frankston Reformed Church", "source": "https://gracecc.au/about" },
-    { "id": "toowoomba-crc", "year": "1969", "sort": 1969, "note": "The Reformed Church of Toowoomba until about 2001", "source": "https://toowoombacrc.com/homepage/welcome/" },
-    { "id": "casey-christian-reformed-church", "year": "1969", "sort": 1969, "source": "https://caseycrc.org.au/who-we-are/" },
-    { "id": "gosnells-crc", "year": "1974", "sort": 1974, "source": "https://gosnellsreformed.church/about/ ('planted in the 1970s'); Wikipedia" },
-    { "id": "macarthur-crc", "year": "1974", "sort": 1974, "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "reformed-church-of-canberra", "year": "1975", "sort": 1975, "source": "https://reformed.org.au/" },
-    { "id": "wamberal-crc", "year": "1976", "sort": 1976, "note": "Instituted as the Reformed Church of Gosford; services in homes from 1953", "source": "https://www.churchesaustralia.org/list-of-churches/denominations/christian-reformed-churches-of-australia/directory/8000-christian-reformed-church-of-wamberal" },
-    { "id": "cobden-crc", "year": "1978", "sort": 1978, "note": "Church building opened", "source": "https://www.churchesaustralia.org/list-of-churches/locations/victoria/all-towns/directory/744-christian-reformed-church-of-cobden", "check": true },
-    { "id": "wonga-park-crc", "year": "1980", "sort": 1980, "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "blaxland-crc", "year": "1980", "sort": 1980, "note": "Started by members from St Marys", "source": "https://blaxlandreformed.org.au/about-us/" },
-    { "id": "wishart-community-church", "year": "1980", "sort": 1980, "note": "Formerly Mansfield CRC", "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "willetton-christian-church", "year": "1984", "sort": 1984, "note": "A daughter of Perth CRC; mother church of Gateway, Grace and Connect", "source": "https://www.willo.org.au/aboutus" },
-    { "id": "south-barwon-crc", "year": "1989", "sort": 1989, "note": "Planted from Geelong CRC", "source": "https://www.southbarwon.org.au/im-new/who-we-are" },
-    { "id": "christian-chinese-reformed-church", "year": "1989", "sort": 1989, "note": "Founded in Dandenong", "source": "https://ccrchurch.com.au/2024English/" },
-    { "id": "tivoli-crc", "year": "1991", "sort": 1991, "note": "Meets in the former Tivoli Congregational Church (1873)", "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "one-hope-christian-church", "year": "1995", "sort": 1995, "note": "Began in 1992 as Wantirna Christian Community Church, a Box Hill plant", "source": "https://www.ohcc.com.au/about" },
-    { "id": "redlands-christian-church", "year": "1999", "sort": 1999, "source": "https://redlandscrc.org.au/about" },
-    { "id": "open-house-crc", "year": "2000", "sort": 2000, "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "gateway-crc", "year": "2002", "sort": 2002, "note": "Planted by Willetton as the CRC of Yangebup", "source": "https://www.willo.org.au/aboutus (Wikipedia gives 2003)", "check": true },
-    { "id": "one-way-christian-church", "year": "2002", "sort": 2002, "note": "Began from Kingston; instituted 2010", "source": "https://www.onewaymargate.org/about" },
-    { "id": "indonesian-reformed-church", "year": "2003", "sort": 2003, "note": "Began as the Indonesian Scriptural Fellowship", "source": "https://www.ircsydney.org.au/about" },
-    { "id": "westside-christian-church", "year": "2003", "sort": 2003, "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "grace-crc-joondalup", "year": "2004", "sort": 2004, "note": "Planted by Willetton; instituted 2007", "source": "https://www.willo.org.au/aboutus" },
-    { "id": "bay-christian-church", "year": "2005", "sort": 2005, "note": "Planted by Kingston; instituted 2010", "source": "https://www.baychristianchurch.com/about" },
-    { "id": "wheatbelt-christian-fellowship", "year": "2006", "sort": 2006, "note": "Monthly services began", "source": "https://wheatbeltchristianfellowship.org/about-us/" },
-    { "id": "redeemer-christian-church", "year": "2009", "sort": 2009, "note": "A Kingston plant", "source": "https://www.redeemercc.org.au" },
-    { "id": "summerleas-christian-church", "year": "2010", "sort": 2010, "note": "A Kingston plant", "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "hallett-cove-crc", "year": "2011", "sort": 2011, "note": "A daughter of Campbelltown CRC", "source": "Wikipedia congregation table (unsourced)", "check": true },
-    { "id": "pakenham-christian-community-church-pc3", "year": "2011", "sort": 2011, "note": "Planted by Dandenong, One Hope and Casey", "source": "https://pc3.org.au/about-us/" },
-    { "id": "hope-community-church-baldivis", "year": "2013", "sort": 2013, "note": "Planted by Gateway", "source": "https://crca.org.au/crca-resources/church-health-network/entry/catalyst/another-church-planted-hope-community-church-baldivis" },
-    { "id": "covenant-grace-geraldton", "year": "2026", "sort": 2026, "note": "Began meeting in 2026", "source": "https://www.covenantgrace.com.au/about" }
+    {
+      "id": "christian-reformed-church-of-penguin",
+      "year": "1951",
+      "sort": 1951.1,
+      "note": "Instituted 13 October 1951; often called the first Reformed church in Australia",
+      "source": "https://dacc.net.au/archive/dutch-australian-history/dutch-migration/christian-reformed-churches-of-australia/"
+    },
+    {
+      "id": "ulverstone-crc",
+      "year": "1951",
+      "sort": 1951.1,
+      "note": "Instituted 13 October 1951 as Ulverstone Reformed Church",
+      "source": "https://ucrc.org.au/our-story"
+    },
+    {
+      "id": "christian-reformed-church-of-sydney",
+      "year": "1951",
+      "sort": 1951.2,
+      "note": "Instituted 16 December 1951 as the Reformed Church of Sydney",
+      "source": "https://www.sydneyreformed.org.au/our-history"
+    },
+    {
+      "id": "wollongong-crc",
+      "year": "1951",
+      "sort": 1951.2,
+      "note": "First service August 1951; instituted 16 December 1951",
+      "source": "https://mhpillawarra.com.au/?p=4766; DACC"
+    },
+    {
+      "id": "kingston-christian-reformed-church",
+      "year": "1952",
+      "sort": 1952,
+      "note": "Started with help from Penguin; mother church of Bay, One Way, Summerleas and Redeemer",
+      "source": "DACC"
+    },
+    {
+      "id": "new-life-christian-church",
+      "year": "1953",
+      "sort": 1953,
+      "note": "Formerly Blacktown Reformed Church",
+      "source": "https://www.newlifechristianchurch.org.au/about.html"
+    },
+    {
+      "id": "mt-evelyn-crc",
+      "year": "1953",
+      "sort": 1953,
+      "source": "Mount Evelyn community news, 2 November 2023",
+      "note": "Celebrated 70 years of worship in 2023"
+    },
+    {
+      "id": "hope-christian-community-church",
+      "year": "1950s",
+      "sort": 1953.5,
+      "note": "Formerly St Marys Reformed Church; mother church of Blaxland",
+      "source": "https://www.hopeccc.org.au/about-us (\"originally established during the 1950s\")"
+    },
+    {
+      "id": "oasis-church",
+      "year": "1950s",
+      "sort": 1953.6,
+      "note": "Began over 70 years ago in the Brisbane YMCA building as the First Reformed Church of Brisbane",
+      "source": "https://oasischurch.com.au/about/"
+    },
+    {
+      "id": "northern-beaches-crc",
+      "year": "1954",
+      "sort": 1954,
+      "note": "Formerly the CRC of Dee Why",
+      "source": "https://deewhy.crca.org.au/about-us.html"
+    },
+    {
+      "id": "riverbank-christian-church",
+      "year": "1954",
+      "sort": 1954,
+      "note": "In Launceston since 1954",
+      "source": "https://www.riverbankcc.org.au/pages/about-us"
+    },
+    {
+      "id": "newcastle-crc-lake-macquarie",
+      "year": "1955",
+      "sort": 1955,
+      "source": "http://newcastlecrc.org/about/"
+    },
+    {
+      "id": "geelong-crc",
+      "year": "1955",
+      "sort": 1955,
+      "note": "Founded October 1955; mother church of South Barwon",
+      "source": "Foundation plaque (churchhistories.net.au)"
+    },
+    {
+      "id": "box-hill-reformed-church",
+      "year": "1957",
+      "sort": 1957,
+      "note": "Instituted 19 May 1957; mother church of One Hope",
+      "source": "https://rcbh.org.au/about"
+    },
+    {
+      "id": "south-gippsland-crc",
+      "year": "1957",
+      "sort": 1957,
+      "source": "CRCA Yearbook 2019/20 (via the Wikipedia congregation table); not on the church’s own site",
+      "check": true
+    },
+    {
+      "id": "pathway-to-life",
+      "year": "1958",
+      "sort": 1958,
+      "source": "CRCA Yearbook 2019/20 (via the Wikipedia congregation table)"
+    },
+    {
+      "id": "australind-crc",
+      "year": "1959",
+      "sort": 1959,
+      "source": "CRCA Yearbook 2019/20 (via the Wikipedia congregation table)",
+      "note": "Formerly the Reformed Church of Brunswick Junction"
+    },
+    {
+      "id": "sutherland-crc",
+      "year": "1960",
+      "sort": 1960,
+      "note": "Began as the Reformed Church of Sutherland",
+      "source": "https://www.sutherlandreformed.com.au/our-history/"
+    },
+    {
+      "id": "good-news-christian-church",
+      "year": "1960",
+      "sort": 1960,
+      "note": "Formerly Hobart CRC",
+      "source": "https://www.goodnewscrc.org/about"
+    },
+    {
+      "id": "dandenong-crc",
+      "year": "1963",
+      "sort": 1963,
+      "source": "https://dcrc.org.au/about-us/ says instituted 1963; the Yearbook gives 1 July 1953",
+      "check": true
+    },
+    {
+      "id": "christian-reformation-community-church",
+      "year": "1965",
+      "sort": 1965,
+      "source": "https://www.inalacrcc.org.au/who-we-are"
+    },
+    {
+      "id": "grace-christian-church-langwarrin",
+      "year": "1968",
+      "sort": 1968,
+      "note": "Began as Frankston Reformed Church",
+      "source": "https://gracecc.au/about"
+    },
+    {
+      "id": "toowoomba-crc",
+      "year": "1969",
+      "sort": 1969,
+      "note": "The Reformed Church of Toowoomba until about 2001",
+      "source": "https://toowoombacrc.com/homepage/welcome/"
+    },
+    {
+      "id": "casey-christian-reformed-church",
+      "year": "1969",
+      "sort": 1969,
+      "source": "https://caseycrc.org.au/who-we-are/"
+    },
+    {
+      "id": "gosnells-crc",
+      "year": "1974",
+      "sort": 1974,
+      "source": "https://gosnellsreformed.church/about/ ('planted in the 1970s'); Wikipedia"
+    },
+    {
+      "id": "macarthur-crc",
+      "year": "1974",
+      "sort": 1974,
+      "source": "CRCA Yearbook 2019/20 (via the Wikipedia congregation table)"
+    },
+    {
+      "id": "reformed-church-of-canberra",
+      "year": "1975",
+      "sort": 1975,
+      "source": "https://reformed.org.au/"
+    },
+    {
+      "id": "wamberal-crc",
+      "year": "1976",
+      "sort": 1976,
+      "note": "Instituted as the Reformed Church of Gosford; services in homes from 1953",
+      "source": "https://www.churchesaustralia.org/list-of-churches/denominations/christian-reformed-churches-of-australia/directory/8000-christian-reformed-church-of-wamberal"
+    },
+    {
+      "id": "cobden-crc",
+      "year": "1978",
+      "sort": 1978,
+      "note": "Church building opened 10 June 1978 (when the congregation began is not yet confirmed)",
+      "source": "https://www.churchesaustralia.org/list-of-churches/locations/victoria/all-towns/directory/744-christian-reformed-church-of-cobden",
+      "check": true
+    },
+    {
+      "id": "wonga-park-crc",
+      "year": "1980",
+      "sort": 1980,
+      "source": "CRCA Yearbook 2019/20 (via the Wikipedia congregation table)"
+    },
+    {
+      "id": "blaxland-crc",
+      "year": "1980",
+      "sort": 1980,
+      "note": "Started by members from St Marys",
+      "source": "https://blaxlandreformed.org.au/about-us/"
+    },
+    {
+      "id": "wishart-community-church",
+      "year": "1980",
+      "sort": 1980,
+      "note": "Formerly Mansfield CRC",
+      "source": "CRCA Yearbook 2019/20 (via the Wikipedia congregation table)"
+    },
+    {
+      "id": "willetton-christian-church",
+      "year": "1984",
+      "sort": 1984,
+      "note": "A daughter of Perth CRC; mother church of Gateway, Grace and Connect",
+      "source": "https://www.willo.org.au/aboutus"
+    },
+    {
+      "id": "south-barwon-crc",
+      "year": "1989",
+      "sort": 1989,
+      "note": "Planted from Geelong CRC",
+      "source": "https://www.southbarwon.org.au/im-new/who-we-are"
+    },
+    {
+      "id": "christian-chinese-reformed-church",
+      "year": "1989",
+      "sort": 1989,
+      "note": "Founded in Dandenong",
+      "source": "https://ccrchurch.com.au/2024English/"
+    },
+    {
+      "id": "tivoli-crc",
+      "year": "1991",
+      "sort": 1991,
+      "note": "Meets in the former Tivoli Congregational Church (1873)",
+      "source": "Wikipedia congregation table (unsourced)",
+      "check": true
+    },
+    {
+      "id": "one-hope-christian-church",
+      "year": "1992",
+      "sort": 1992,
+      "note": "Began 14 June 1992 as Wantirna Christian Community Church, a Box Hill plant; renamed in 2011",
+      "source": "https://www.ohcc.com.au/about"
+    },
+    {
+      "id": "redlands-christian-church",
+      "year": "1999",
+      "sort": 1999,
+      "source": "https://redlandscrc.org.au/about"
+    },
+    {
+      "id": "open-house-crc",
+      "year": "2000",
+      "sort": 2000,
+      "source": "Wikipedia congregation table (unsourced)",
+      "check": true
+    },
+    {
+      "id": "gateway-crc",
+      "year": "2002",
+      "sort": 2002,
+      "note": "Instituted 2002; began meeting in 1995–96 as the CRC of Yangebup, planted by Willetton",
+      "source": "https://www.willo.org.au/aboutus; https://www.gatewaycommunitychurch.com.au/homepage/ourhistory/"
+    },
+    {
+      "id": "one-way-christian-church",
+      "year": "2002",
+      "sort": 2002,
+      "note": "Began from Kingston; instituted 2010",
+      "source": "https://www.onewaymargate.org/about"
+    },
+    {
+      "id": "indonesian-reformed-church",
+      "year": "2003",
+      "sort": 2003,
+      "note": "Began as the Indonesian Scriptural Fellowship",
+      "source": "https://www.ircsydney.org.au/about"
+    },
+    {
+      "id": "westside-christian-church",
+      "year": "2003",
+      "sort": 2003,
+      "source": "Wikipedia congregation table (unsourced)",
+      "check": true
+    },
+    {
+      "id": "grace-crc-joondalup",
+      "year": "2004",
+      "sort": 2004,
+      "note": "Planted by Willetton; instituted 2007",
+      "source": "https://www.willo.org.au/aboutus"
+    },
+    {
+      "id": "bay-christian-church",
+      "year": "2005",
+      "sort": 2005,
+      "note": "Planted by Kingston; instituted 2010",
+      "source": "https://www.baychristianchurch.com/about"
+    },
+    {
+      "id": "wheatbelt-christian-fellowship",
+      "year": "2006",
+      "sort": 2006,
+      "note": "Monthly services began",
+      "source": "https://wheatbeltchristianfellowship.org/about-us/"
+    },
+    {
+      "id": "redeemer-christian-church",
+      "year": "2009",
+      "sort": 2009,
+      "note": "A Kingston plant",
+      "source": "https://www.redeemercc.org.au"
+    },
+    {
+      "id": "summerleas-christian-church",
+      "year": "2010",
+      "sort": 2010,
+      "note": "A Kingston plant; organised as a church in 2010",
+      "source": "Wikipedia congregation table (unsourced)"
+    },
+    {
+      "id": "hallett-cove-crc",
+      "year": "2011",
+      "sort": 2011,
+      "note": "Instituted 13 February 2011; services began in 2005",
+      "source": "Wikipedia congregation table (unsourced)"
+    },
+    {
+      "id": "pakenham-christian-community-church-pc3",
+      "year": "2011",
+      "sort": 2011,
+      "note": "Planted by Dandenong, One Hope and Casey",
+      "source": "https://pc3.org.au/about-us/"
+    },
+    {
+      "id": "hope-community-church-baldivis",
+      "year": "2013",
+      "sort": 2013,
+      "note": "Planted by Gateway",
+      "source": "https://crca.org.au/crca-resources/church-health-network/entry/catalyst/another-church-planted-hope-community-church-baldivis"
+    },
+    {
+      "id": "covenant-grace-geraldton",
+      "year": "2026",
+      "sort": 2026,
+      "note": "Began meeting in 2026",
+      "source": "https://www.covenantgrace.com.au/about"
+    },
+    {
+      "id": "connect-christian-church",
+      "year": "2014",
+      "sort": 2014,
+      "note": "Began meeting in 2014 as Wilson Christian Church (a Willetton plant); instituted 2016; renamed in 2023",
+      "source": "https://www.willo.org.au/aboutus"
+    }
   ],
-  "undated": ["tanilba-crc", "connect-christian-church"],
+  "undated": [
+    "tanilba-crc"
+  ],
   "needsChecking": [
-    "Rows marked check: true rest on a single unsourced Wikipedia table or on sources that disagree. Confirm against Synod records or the Trowel and Sword archive.",
-    "Tanilba: Wikipedia gives 25 May 1955, the same as Newcastle, possibly copied in error. Connect Christian Church is probably the former Wilson Christian Church (began 2014). Both left undated."
+    "Checked against each church’s own website on 25 November 2026. Still to confirm: Dandenong (1953 or 1963), Cobden (when the congregation began; the building opened in 1978, and Cobden is not in the 2019/20 Yearbook), South Gippsland, Tivoli, Open House, Westside, Redlands and Tanilba.",
+    "Rows sourced to the Yearbook come via the Wikipedia table, which cites the CRCA Yearbook 2019/20; a copy of the Yearbook would settle them."
   ]
 }

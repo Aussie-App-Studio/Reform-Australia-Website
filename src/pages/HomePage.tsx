@@ -11,6 +11,7 @@ import { AustraliaDotMap } from '../components/AustraliaDotMap';
 import { getMinistryPage } from '../lib/ministryPages';
 import { responsive } from '../utils/responsiveImage';
 import { formatClosing, openVacancies } from '../lib/vacancies';
+import { recentNews } from '../lib/news';
 
 const allChurches = churchesRaw as ChurchRecord[];
 
@@ -63,6 +64,8 @@ function TwoColumn({ id, title, children, tone = 'white' }: { id: string; title:
 export function HomePage() {
   // Open vacancies (src/data/vacancies/), which drop off after their closing date.
   const vacancies = openVacancies();
+  // Up to three news items from the past year.
+  const news = recentNews(3);
   const navigate = useNavigate();
   const [churchQuery, setChurchQuery] = useState('');
 
@@ -172,6 +175,40 @@ export function HomePage() {
             <Link to="/for-churches/positions-vacant" className="inline-flex shrink-0 items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
               Details and how to apply <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
+          </div>
+        </section>
+      )}
+
+      {/* Latest ministry news (src/data/news/), only when there is news from the past year */}
+      {news.length > 0 && (
+        <section aria-labelledby="latest-news" className="border-b border-stone-200 bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+            <h2 id="latest-news" className="font-serif text-3xl font-semibold text-navy-900">
+              Latest news
+            </h2>
+            <ul className="mt-6 grid gap-8 md:grid-cols-3">
+              {news.map((n) => (
+                <li key={`${n.ministry}-${n.id}`}>
+                  <Link to={`/ministries/${n.ministry}/news/${n.id}`} className="group block">
+                    {n.image && (
+                      <img
+                        src={n.image}
+                        {...responsive(n.image, '(min-width: 768px) 400px, 100vw')}
+                        alt=""
+                        loading="lazy"
+                        className="mb-4 aspect-[3/2] w-full rounded-md bg-stone-100 object-cover"
+                      />
+                    )}
+                    <span className="block text-sm text-stone-600">
+                      {getMinistryPage(n.ministry)?.name} ·{' '}
+                      {new Date(n.date + 'T00:00:00').toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </span>
+                    <span className="mt-1 block font-serif text-xl font-semibold text-navy-900 group-hover:text-teal-700">{n.title}</span>
+                    {n.summary && <span className="mt-1.5 line-clamp-3 block leading-relaxed text-stone-700">{n.summary}</span>}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}

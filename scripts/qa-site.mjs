@@ -30,7 +30,10 @@ for (const m of appText.matchAll(/path="([^"*:]+)"/g)) routes.add(m[1]);
 for (const f of readdirSync(path.join(ROOT, 'src/data/ministry-pages'))) {
   const p = json(`src/data/ministry-pages/${f}`);
   routes.add(`/ministries/${p.slug}`);
-  for (const n of p.news ?? []) routes.add(`/ministries/${p.slug}/news/${n.id}`);
+}
+for (const f of readdirSync(path.join(ROOT, 'src/data/news')).filter((x) => x.endsWith('.json'))) {
+  const n = json(`src/data/news/${f}`);
+  routes.add(`/ministries/${n.ministry}/news/${f.replace(/\.json$/, '').replace(new RegExp(`^${n.ministry}-`), '')}`);
 }
 try {
   for (const f of readdirSync(path.join(ROOT, 'src/data/pages'))) routes.add(json(`src/data/pages/${f}`).path);

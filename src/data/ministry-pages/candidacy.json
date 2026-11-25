@@ -124,8 +124,9 @@
     "src/data/contactTopics.json (candidacy)"
   ],
   "hero": {
-    "src": "/images/stock/recharge.webp",
-    "alt": "People with open Bibles taking notes at a conference",
-    "credit": "CRCA image library"
+    "src": "/images/ministries/candidacy/rtc-students.webp",
+    "alt": "Three students sitting on a lawn with open Bibles and coffee, city buildings behind",
+    "caption": "Students at the Reformed Theological College, Melbourne",
+    "credit": "Reformed Theological College (used with permission)"
   }
 }

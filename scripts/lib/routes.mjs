@@ -19,7 +19,12 @@ export function pageRoutes() {
   for (const f of readdirSync(path.join(ROOT, 'src/data/ministry-pages'))) {
     const p = json(`src/data/ministry-pages/${f}`);
     routes.add(`/ministries/${p.slug}`);
-    for (const n of p.news ?? []) routes.add(`/ministries/${p.slug}/news/${n.id}`);
+  }
+  // News items (src/data/news/<ministry>-<id>.json)
+  for (const f of readdirSync(path.join(ROOT, 'src/data/news')).filter((x) => x.endsWith('.json'))) {
+    const n = json(`src/data/news/${f}`);
+    const id = f.replace(/\.json$/, '').replace(new RegExp(`^${n.ministry}-`), '');
+    routes.add(`/ministries/${n.ministry}/news/${id}`);
   }
   for (const f of readdirSync(path.join(ROOT, 'src/data/pages'))) routes.add(json(`src/data/pages/${f}`).path);
   for (const p of Object.keys(json('public/data/safe-church/content.json').pages)) routes.add(`/safe-church/${p}`);

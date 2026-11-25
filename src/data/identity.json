@@ -99,6 +99,11 @@
         "description": "Up through the 1990s the CRCA experienced steady growth and saw churches established throughout Australia."
       },
       {
+        "era": "2000",
+        "title": "A new name",
+        "description": "Synod 2000 changed the name of the denomination from the Reformed Churches of Australia to the Christian Reformed Churches of Australia."
+      },
+      {
         "era": "Since 2000",
         "title": "Reforming to reach the lost for Christ",
         "description": "Since 2000 the CRCA has renewed its commitment to be a church that is reforming to reach the lost for Christ. It adopted a fourfold task (Pray, Train, Grow, Align) as the framework to expand the CRCA’s gospel impact throughout Australia. In every state there are renewed efforts to continue the pattern of the first CRC churches in Australia: to plant many new churches and also welcome migrants who are making their home in Australia."
@@ -116,7 +121,8 @@
       "https://rtc.edu.au/who-we-are/college-history",
       "https://cadets.crca.org.au",
       "https://www.willo.org.au/aboutus",
-      "https://pc3.org.au/about-us/"
+      "https://pc3.org.au/about-us/",
+      "Name change: Synod 2000 (Acts of Synod 2000, Art. 15), cited at https://deewhy.crca.org.au/church-order.html; also https://www.sutherlandreformed.com.au/our-history/ and https://blaxlandreformed.org.au/about-us/"
     ]
   },
   "fourFoldTask": {
