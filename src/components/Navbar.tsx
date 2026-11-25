@@ -1,8 +1,10 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ArrowRight, ChevronDown, ExternalLink, Mail, MapPin, Menu, X } from 'lucide-react';
+import { ArrowRight, ChevronDown, ExternalLink, MapPin, Menu, X } from 'lucide-react';
 import { CrcaLogo } from './CrcaLogo';
+import { siteConfig } from '../data/siteConfig';
 import { navMenus, type NavLinkItem, type NavMenu } from '../data/navigation';
+import { useFocusTrap } from '../utils/useFocusTrap';
 
 type MenuId = NavMenu['id'] | null;
 
@@ -27,6 +29,10 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSection, setMobileSection] = useState<MenuId>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  // Keyboard focus stays in the phone menu while it is open, and returns to the menu button after.
+  useFocusTrap(drawerRef, mobileOpen, { returnFocusTo: menuButtonRef });
   const closeTimer = useRef<number | null>(null);
   /** How the open menu was opened: by hovering (closes when the mouse leaves) or by a click/tap/key. */
   const openedBy = useRef<'hover' | 'click'>('click');
@@ -206,70 +212,121 @@ export function Navbar() {
                 if (!mobileOpen) setMobileSection(navMenus.find((m) => isActive(m))?.id ?? null);
                 setMobileOpen((v) => !v);
               }}
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              ref={menuButtonRef}
+              aria-label="Open menu"
               aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
               className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-stone-300 text-navy-900"
             >
-              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              <Menu className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu: one tap-to-open section per menu */}
-      {mobileOpen && (
-        <nav aria-label="Main" className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto overscroll-contain border-b border-stone-200 bg-white lg:hidden">
-          <ul className="px-4 sm:px-6">
-            {navMenus.map((m) => {
-              const open = mobileSection === m.id;
-              const panelId = `mobile-menu-${m.id}`;
-              return (
-                <li key={m.id} className="border-b border-stone-200">
-                  <button
-                    type="button"
-                    aria-expanded={open}
-                    aria-controls={panelId}
-                    onClick={() => setMobileSection(open ? null : m.id)}
-                    className="flex min-h-14 w-full items-center justify-between gap-3 text-left font-serif text-xl font-semibold text-navy-900"
-                  >
-                    <span className="flex items-center gap-2.5">
-                      {isActive(m) && <span aria-hidden="true" className="h-2 w-2 rounded-full bg-teal-500" />}
-                      {m.label}
-                    </span>
-                    <ChevronDown className={`h-5 w-5 text-stone-500 transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
-                  </button>
-                  {open && (
-                    <div id={panelId} className="pb-5">
-                      <Link to={m.overview.to} className="mb-1 flex min-h-11 items-center gap-1.5 font-semibold text-teal-700">
-                        {m.overview.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                      </Link>
-                      {m.columns.map((col) => (
-                        <div key={col.heading} className="mt-3">
-                          {m.columns.length > 1 && (
-                            <p className="pb-1 text-sm font-semibold text-stone-600">{col.heading}</p>
-                          )}
-                          <ul className="border-t border-stone-100">
-                            {col.items.map((item) => (
-                              <li key={item.to} className="border-b border-stone-100">
-                                <MenuLink item={item} className="flex min-h-11 items-center text-navy-800" />
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </li>
-              );
-            })}
-            <li>
-              <NavLink to="/contact" className="flex min-h-14 items-center gap-2.5 font-serif text-xl font-semibold text-navy-900">
-                <Mail className="h-5 w-5 text-teal-600" aria-hidden="true" /> Contact
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      )}
+      {/* Phone menu: a panel that slides in from the right over a dimmed page.
+          Focus stays inside it, the page behind doesn't scroll, Escape or the backdrop closes it. */}
+      <div
+        className={`fixed inset-0 z-50 lg:hidden ${mobileOpen ? 'visible' : 'invisible delay-300'} transition-[visibility] duration-0`}
+        inert={!mobileOpen}
+      >
+        <div
+          aria-hidden="true"
+          onClick={() => setMobileOpen(false)}
+          className={`absolute inset-0 bg-navy-950/50 transition-opacity duration-300 motion-reduce:transition-none ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
+        />
+        <div
+          ref={drawerRef}
+          id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+          className={`absolute inset-y-0 right-0 flex w-[min(88vw,26rem)] flex-col bg-white shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        >
+          <div className="flex items-center justify-between border-b border-stone-200 px-5 py-3">
+            <span className="font-serif text-xl font-semibold text-navy-900">Menu</span>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close menu"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-stone-300 text-navy-900"
+            >
+              <X className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </div>
+
+          <nav aria-label="Main" className="flex-1 overflow-y-auto overscroll-contain px-5">
+            <ul>
+              <li className="border-b border-stone-200">
+                <NavLink to="/" end className="flex min-h-14 items-center font-serif text-xl font-semibold text-navy-900">
+                  Home
+                </NavLink>
+              </li>
+              {navMenus.map((m) => {
+                const open = mobileSection === m.id;
+                const panelId = `mobile-menu-${m.id}`;
+                return (
+                  <li key={m.id} className="border-b border-stone-200">
+                    <button
+                      type="button"
+                      aria-expanded={open}
+                      aria-controls={panelId}
+                      onClick={() => setMobileSection(open ? null : m.id)}
+                      className="flex min-h-14 w-full items-center justify-between gap-3 text-left font-serif text-xl font-semibold text-navy-900"
+                    >
+                      <span className="flex items-center gap-2.5">
+                        {isActive(m) && <span aria-hidden="true" className="h-2 w-2 rounded-full bg-teal-500" />}
+                        {m.label}
+                      </span>
+                      <ChevronDown className={`h-5 w-5 text-stone-500 transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
+                    </button>
+                    {open && (
+                      <div id={panelId} className="pb-5">
+                        <Link to={m.overview.to} className="mb-1 flex min-h-11 items-center gap-1.5 font-semibold text-teal-700">
+                          {m.overview.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        </Link>
+                        {m.columns.map((col) => (
+                          <div key={col.heading} className="mt-3">
+                            {m.columns.length > 1 && <p className="pb-1 text-sm font-semibold text-stone-600">{col.heading}</p>}
+                            <ul className="border-t border-stone-100">
+                              {col.items.map((item) => (
+                                <li key={item.to} className="border-b border-stone-100">
+                                  <MenuLink item={item} className="flex min-h-11 items-center text-navy-800" />
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+              <li className="border-b border-stone-200">
+                <NavLink to="/contact" className="flex min-h-14 items-center font-serif text-xl font-semibold text-navy-900">
+                  Contact
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+
+          <div className="border-t border-stone-200 bg-stone-50 px-5 py-4">
+            <Link
+              to="/find-a-church"
+              className="flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-navy-900 px-4 font-semibold text-white hover:bg-navy-800"
+            >
+              <MapPin className="h-4 w-4 text-teal-400" aria-hidden="true" />
+              Find a church
+            </Link>
+            <p className="mt-3 text-center text-sm text-stone-600">
+              Safe Church Unit, any time:{' '}
+              <a href={`tel:${siteConfig.safeChurch.urgent.primaryPhone.replace(/\s/g, '')}`} className="font-semibold text-navy-900 underline underline-offset-2">
+                {siteConfig.safeChurch.urgent.primaryPhone}
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }

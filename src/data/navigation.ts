@@ -207,7 +207,7 @@ export const navMenus: NavMenu[] = [
         heading: 'About us',
         items: [
           { label: 'Vision and values', to: '/who-we-are/vision-values' },
-          { label: 'Four-fold task', to: '/who-we-are/vision-values#four-fold-task' },
+          { label: 'Fourfold task', to: '/who-we-are/vision-values#four-fold-task' },
           { label: 'Strategies', to: '/who-we-are/vision-values#strategies' },
           { label: 'What we believe', to: '/who-we-are/beliefs' },
           { label: 'Our history', to: '/who-we-are/history' },
