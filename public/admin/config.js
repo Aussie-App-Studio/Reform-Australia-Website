@@ -24,7 +24,7 @@ const pageFields = [
     summary: '{{heading}}',
     fields: [
       { label: 'Heading', name: 'heading', widget: 'string', required: false },
-      { label: 'Link name (leave as it is)', name: 'id', widget: 'string', required: false, hint: 'Used in web addresses (#name): lower case with hyphens.' },
+      { name: 'id', widget: 'hidden' },
       paragraphs(),
       { label: 'Bullet list', name: 'list', widget: 'list', required: false, field: { label: 'Item', name: 'item', widget: 'text' } },
       { label: 'Photo', name: 'image', widget: 'object', required: false, collapsed: true, fields: image },
@@ -128,10 +128,10 @@ const pageFields = [
 
 const generalPageFields = [
   { label: 'Page title', name: 'title', widget: 'string' },
-  { label: 'Web address (don’t change)', name: 'path', widget: 'string' },
-  { label: 'Short name (don’t change)', name: 'slug', widget: 'string' },
-  { label: 'Section', name: 'section', widget: 'select', options: [{ label: 'Who we are', value: 'who-we-are' }, { label: 'For churches', value: 'for-churches' }] },
-  { label: 'Icon', name: 'icon', widget: 'hidden', required: false },
+  { name: 'path', widget: 'hidden' },
+  { name: 'slug', widget: 'hidden' },
+  { name: 'section', widget: 'hidden' },
+  { label: 'Icon', name: 'icon', widget: 'hidden' },
   ...pageFields,
 ];
 
@@ -154,7 +154,7 @@ window.CMS_CONFIG = {
   },
   site_url: window.location.origin,
   display_url: window.location.origin,
-  logo_url: '/images/logos/apple-touch-icon.png',
+  logo: { src: '/images/logos/apple-touch-icon.png' },
   media_folder: 'public/images/uploads',
   public_folder: '/images/uploads',
   publish_mode: 'simple',
@@ -220,7 +220,7 @@ window.CMS_CONFIG = {
       summary: '{{name}}',
       fields: [
         { label: 'Ministry name', name: 'name', widget: 'string' },
-        { label: 'Short name (don’t change)', name: 'slug', widget: 'string' },
+        { name: 'slug', widget: 'hidden' },
         {
           label: 'Menu group',
           name: 'group',

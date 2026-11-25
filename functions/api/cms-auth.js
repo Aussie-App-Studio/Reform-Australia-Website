@@ -51,6 +51,14 @@ export async function onRequestGet({ request, env }) {
   }
   if (!email) return page('Please sign in through the CRCA editor login first.', 403);
 
+  // /admin asks for this as JSON straight after the Access sign-in, so editors go straight
+  // into the editor without a second "Sign in with GitHub" step.
+  if (new URL(request.url).searchParams.get('format') === 'json') {
+    return new Response(JSON.stringify({ token: env.GITHUB_TOKEN, email }), {
+      headers: { 'content-type': 'application/json', 'cache-control': 'no-store', 'x-robots-tag': 'noindex' },
+    });
+  }
+
   const provider = new URL(request.url).searchParams.get('provider') || 'github';
   const result = JSON.stringify({ token: env.GITHUB_TOKEN, provider });
   // Standard Decap/Sveltia popup handshake: say we're ready, wait for the editor page to answer
