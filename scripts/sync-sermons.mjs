@@ -281,7 +281,7 @@ async function main() {
   if (files.length !== index.length) console.warn(`Duplicate slugs: ${index.length - files.length}`);
 }
 
-main().catch((err) => {
+main().then(() => import('./build-sermon-topics.mjs')).catch((err) => {
   console.error(err);
   process.exit(1);
 });

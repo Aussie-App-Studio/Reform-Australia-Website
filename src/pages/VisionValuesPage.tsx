@@ -18,7 +18,7 @@ function Section({ id, title, intro, tone = 'white', children }: { id: string; t
 }
 
 export function VisionValuesPage() {
-  const { missionAndVision, coreValues, fourFoldTask, strategies } = identity;
+  const { missionAndVision, coreValues } = identity;
   return (
     <>
       <PageHeader
@@ -63,27 +63,19 @@ export function VisionValuesPage() {
         </dl>
       </Section>
 
-      <Section id="four-fold-task" title="Our fourfold task" intro={fourFoldTask.intro} tone="paper">
-        <ol className="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
-          {fourFoldTask.items.map((t, i) => (
-            <li key={t.id} className="border-t-2 border-navy-900 pt-4">
-              <p className="font-serif text-lg text-teal-700">{i + 1}</p>
-              <h3 className="font-serif text-2xl font-semibold text-navy-900">{t.title}</h3>
-              <p className="mt-2 leading-relaxed text-stone-700">{t.text}</p>
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      <Section id="strategies" title="Our strategies" intro={strategies.intro}>
-        <dl className="grid gap-x-12 border-t border-stone-200 md:grid-cols-2">
-          {strategies.items.map((s) => (
-            <div key={s.id} className="border-b border-stone-200 py-5">
-              <dt className="font-semibold text-navy-900">{s.title}</dt>
-              <dd className="mt-1 leading-relaxed text-stone-700">{s.text}</dd>
-            </div>
-          ))}
-        </dl>
+      <Section id="strategies" title="How we go about it" tone="paper">
+        <div id="four-fold-task" className="max-w-3xl scroll-mt-28 space-y-4 text-lg leading-relaxed text-stone-700">
+          <p>
+            Four tasks shape our work together: to <strong className="text-navy-900">pray</strong> for the Holy Spirit’s work
+            among us, to <strong className="text-navy-900">grow</strong> healthy churches and plant new ones, to{' '}
+            <strong className="text-navy-900">train</strong> disciples and leaders, and to{' '}
+            <strong className="text-navy-900">align</strong> our life together with this mission.
+          </p>
+          <p>
+            In practice that means mentoring pastors, training people for evangelism and leadership, helping churches grow in
+            health, planting new churches, and taking part in mission here and overseas.
+          </p>
+        </div>
         <p className="mt-8 text-lg text-stone-700">
           These grow out of{' '}
           <Link to="/who-we-are/beliefs" className="font-semibold text-teal-700 underline-offset-4 hover:underline">

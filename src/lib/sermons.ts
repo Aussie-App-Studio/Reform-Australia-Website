@@ -98,6 +98,54 @@ function tidySermonHtml(html: string): string {
     .replace(/<\/u>/g, '</em>');
 }
 
+export interface SermonTopic {
+  id: string;
+  label: string;
+  /** Positions in index.sermons, best matches first. */
+  sermons: number[];
+}
+export interface SermonTopics {
+  syncedAt: string;
+  groups: { id: string; label: string; topics: SermonTopic[] }[];
+}
+
+let topicsPromise: Promise<SermonTopics> | null = null;
+/** Topics built by scripts/build-sermon-topics.mjs. */
+export function fetchSermonTopics(): Promise<SermonTopics> {
+  topicsPromise ??= getJson<SermonTopics>(`${BASE}/topics.json`).catch((e) => {
+    topicsPromise = null;
+    throw e;
+  });
+  return topicsPromise;
+}
+
+const wordFiles = new Map<string, Promise<Record<string, number[]>>>();
+function wordFile(prefix: string): Promise<Record<string, number[]>> {
+  let p = wordFiles.get(prefix);
+  if (!p) {
+    p = getJson<{ words: Record<string, number[]> }>(`${BASE}/words/${prefix}.json`).then((f) => f.words, () => ({}));
+    wordFiles.set(prefix, p);
+  }
+  return p;
+}
+
+const SMALL_WORDS = new Set(['the', 'and', 'for', 'with', 'our', 'your', 'his', 'from', 'that', 'this', 'are', 'about', 'sermon', 'sermons']);
+
+/** Sermons whose text uses every word searched for (positions in index.sermons, most-used first). */
+export async function searchSermonText(query: string): Promise<number[]> {
+  const terms = (query.toLowerCase().match(/[a-z]{3,}/g) ?? []).filter((t) => !SMALL_WORDS.has(t));
+  if (!terms.length) return [];
+  let found: number[] | null = null;
+  for (const term of terms) {
+    const words = await wordFile(term.slice(0, 2));
+    const hits = new Set<number>(words[term] ?? []);
+    // "forgiv" or "forgive" also finds "forgiveness".
+    if (term.length >= 4) for (const w of Object.keys(words)) if (w !== term && w.startsWith(term)) words[w].forEach((i) => hits.add(i));
+    found = found === null ? [...hits] : found.filter((i) => hits.has(i));
+  }
+  return found ?? [];
+}
+
 /** Reading time for a sermon read aloud (~130 words per minute). */
 export function readAloudMinutes(words: number): number {
   return Math.max(1, Math.round(words / 130));

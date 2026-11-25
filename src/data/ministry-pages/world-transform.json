@@ -40,7 +40,7 @@
         "Our mandate gives priority to projects connected with the CRCA and to projects in Asia and the South Pacific. Current work includes:"
       ],
       "list": [
-        "India: Peniel Community College near Bangalore, the Heart Project near Barwani in Madhya Pradesh, the King Project in Udaipur District, Rajasthan, the Community Health Program in central western India, and tribal evangelists in central India through IndiWay.",
+        "India: Peniel Community College near Bangalore, the Heart Project near Barwani in Madhya Pradesh, the King Project in Udaipur District, Rajasthan, and the Community Health Program in central western India. World Transform also works alongside IndiWay.",
         "Solomon Islands: clean water, Christian schooling, children's and youth ministry and prison ministry through SWIM.",
         "Papua New Guinea: schools, student health and teaching technology through the Reformed Churches Bible College.",
         "Bethesda DTSC: a training centre for students living with disabilities."
@@ -56,7 +56,7 @@
         "Peniel Community College, Bangalore, India. Its funding comes from World Transform and the National Diaconate Committee of the Reformed Churches of New Zealand.",
         "EFICOR (the Evangelical Fellowship of India Commission on Relief), which runs the Heart Project. Funding is channelled through Tearfund Australia (formerly TEAR Australia), which administers the project.",
         "Christian Reformed Fellowship India (CRFI), which runs the King Project.",
-        "IndiWay, which supports more than 80 tribal evangelists and their families in central India.",
+        "IndiWay, a CRCA mission work connected with World Transform.",
         "SWIM (Supporting Work in Mission), the CRCA's mission base in the Solomon Islands.",
         "The Reformed Churches Bible College in Papua New Guinea.",
         "Bethesda DTSC, which trains students living with disabilities.",
@@ -151,17 +151,10 @@
     },
     {
       "id": "indiway",
-      "heading": "IndiWay: tribal evangelists in central India",
+      "heading": "IndiWay",
       "paragraphs": [
-        "More than 80 tribal evangelists and their families serve full time across central India, taking the gospel to places where Christ has never been named. IndiWay and partners on the ground provide mentoring, training in the Reformed faith and regular encouragement.",
-        "Many evangelists have had little chance of formal theological training. Week-long intensives run by Bible college lecturers give them stronger biblical foundations for planting churches. Motorbikes, helmets and fuel help them reach remote villages across rugged country.",
-        "Supporters of an evangelist receive a profile and prayer updates. For more information, email indiway@crca.org.au or call 0400 784 323."
-      ],
-      "image": {
-        "src": "/images/ministries/world-transform/indiway.webp",
-        "alt": "A large group of men, women and children standing in front of a tiled-roof village building in central India",
-        "caption": "Evangelists and villagers in central India"
-      }
+        "IndiWay is a CRCA mission work connected with World Transform. For more information, speak to your pastor or email indiway@crca.org.au."
+      ]
     },
     {
       "id": "solomon-islands",
@@ -246,10 +239,7 @@
         "Gift 20, Chicken House Extension, Bethesda ($100)",
         "Gift 21, Water Tanks, Bethesda ($100)",
         "Gift 22, Staff Housing and Shower Facilities, Bethesda ($50)",
-        "Gift 23, Training Leaders to Plant New Churches, IndiWay ($750)",
-        "Gift 24, Fuel for the Gospel, IndiWay ($50)",
-        "Gift 25, Reaching the Unreached: a motorbike and helmet for an evangelist, IndiWay ($200 contribution or $1,800 outright)",
-        "Gift 26, Support a Tribal Evangelist, IndiWay ($310 a month or $3,720 a year)",
+        "Gifts 23 to 26, IndiWay (from $50)",
         "Gift 27, Wherever It's Needed Most: the World Transform Committee directs your gift to the most urgent need (any amount from $10)"
       ]
     },
@@ -457,12 +447,6 @@
       "label": "Community Health Program",
       "url": "https://www.youtube.com/watch?v=MqFxV40bpCc",
       "type": "video"
-    },
-    {
-      "label": "IndiWay mailing list",
-      "url": "https://docs.google.com/forms/d/e/1FAIpQLScvdgg-h45mw_slvLqSwpEuYZ4KGaC_5HF-paARG2et20nrBQ/viewform",
-      "type": "link",
-      "note": "Sign up for news and prayer updates from IndiWay"
     },
     {
       "label": "World Transform on Facebook",

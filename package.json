@@ -15,6 +15,7 @@
     "deploy:pages": "node scripts/deploy-gh-pages.mjs",
     "deploy:preview": "node scripts/deploy-gh-pages-preview.mjs",
     "sync-safe-church": "node scripts/sync-safe-church.mjs",
+    "build:sermon-topics": "node scripts/build-sermon-topics.mjs",
     "sync-sermons": "node scripts/sync-sermons.mjs",
     "sync-all": "npm run sync-docs && npm run sync-safe-church && npm run sync-sermons",
     "qa": "node scripts/qa-site.mjs",

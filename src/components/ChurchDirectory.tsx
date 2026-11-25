@@ -620,13 +620,13 @@ export function ChurchDirectory({
                           <Navigation className="h-4 w-4" aria-hidden="true" /> Directions
                         </a>
                         {[
-                          church.website && { href: church.website, label: 'Website', Icon: Globe },
-                          (church.youtube || church.videoUrl) && { href: (church.youtube ?? church.videoUrl)!, label: church.youtube ? 'YouTube' : 'Livestream', Icon: church.youtube ? Youtube : Video },
-                          church.facebook && { href: church.facebook, label: church.livestreamOnFacebook ? 'Facebook livestream' : 'Facebook', Icon: Facebook },
-                          church.podcast && { href: church.podcast, label: 'Podcast', Icon: Headphones },
+                          church.website && { href: church.website, label: 'Website', Icon: Globe, hover: 'hover:border-teal-700 hover:bg-teal-700' },
+                          (church.youtube || church.videoUrl) && { href: (church.youtube ?? church.videoUrl)!, label: church.youtube ? 'YouTube' : 'Livestream', Icon: church.youtube ? Youtube : Video, hover: church.youtube ? 'hover:border-[#e00000] hover:bg-[#e00000]' : 'hover:border-navy-900 hover:bg-navy-900' },
+                          church.facebook && { href: church.facebook, label: church.livestreamOnFacebook ? 'Facebook livestream' : 'Facebook', Icon: Facebook, hover: 'hover:border-[#0866ff] hover:bg-[#0866ff]' },
+                          church.podcast && { href: church.podcast, label: 'Podcast', Icon: Headphones, hover: 'hover:border-[#872ec4] hover:bg-[#872ec4]' },
                         ]
-                          .filter((x): x is { href: string; label: string; Icon: typeof Globe } => Boolean(x))
-                          .map(({ href, label, Icon }) => (
+                          .filter((x): x is { href: string; label: string; Icon: typeof Globe; hover: string } => Boolean(x))
+                          .map(({ href, label, Icon, hover }) => (
                             <a
                               key={label}
                               href={href}
@@ -635,7 +635,7 @@ export function ChurchDirectory({
                               onClick={(e) => e.stopPropagation()}
                               title={`${church.name} ${label}`}
                               aria-label={`${church.name} ${label} (opens in a new tab)`}
-                              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 bg-white text-navy-800 hover:border-teal-600 hover:text-teal-700"
+                              className={`inline-flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 bg-white text-navy-800 transition-colors hover:text-white ${hover}`}
                             >
                               <Icon className="h-4 w-4" aria-hidden="true" />
                             </a>

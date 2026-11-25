@@ -4,6 +4,7 @@ import { PageHeader } from '../components/PageHeader';
 import identity from '../data/identity.json';
 import churchHistory from '../data/churchHistory.json';
 import churchesRaw from '../data/churches.json';
+import { PhotoCredit } from '../components/PhotoCredit';
 import { responsive } from '../utils/responsiveImage';
 
 const churchById = new Map((churchesRaw as { id: string; name: string; suburb: string; state: string }[]).map((c) => [c.id, c]));
@@ -24,12 +25,12 @@ const CC_BY_SA_3 = 'https://creativecommons.org/licenses/by-sa/3.0/';
 function Photo({ src, alt, caption, credit, creditUrl, className = '' }: { src: string; alt: string; caption: string; credit: string; creditUrl?: string; className?: string }) {
   return (
     <figure className={className}>
-      <img src={src} {...responsive(src, '(min-width: 800px) 768px, 100vw')} alt={alt} loading="lazy" decoding="async" className="w-full rounded-md bg-stone-100 object-cover" />
+      <div className="relative">
+        <img src={src} {...responsive(src, '(min-width: 800px) 768px, 100vw')} alt={alt} loading="lazy" decoding="async" className="w-full rounded-md bg-stone-100 object-cover" />
+        <PhotoCredit credit={credit} url={creditUrl} />
+      </div>
       <figcaption className="mt-2 text-sm leading-snug text-stone-600">
-        {caption}{' '}
-        <span className="text-stone-500">
-          Photo: {creditUrl ? <a href={creditUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">{credit}</a> : credit}
-        </span>
+        {caption}
       </figcaption>
     </figure>
   );

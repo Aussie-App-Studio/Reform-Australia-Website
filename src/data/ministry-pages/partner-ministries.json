@@ -1,0 +1,82 @@
+{
+  "slug": "partner-ministries",
+  "name": "Other ministries we support",
+  "group": "global-mission",
+  "summary": "Christian organisations outside the CRCA that our churches support through recommended offerings.",
+  "body": [
+    {
+      "id": "reformed-theological-college",
+      "heading": "RTC Overseas Education Fund",
+      "paragraphs": [
+        "A fund of the Reformed Theological College, the Melbourne college where the CRCA encourages candidates for ordination to study. Contact the college for details of the fund."
+      ],
+      "link": {
+        "label": "Reformed Theological College",
+        "url": "https://rtc.edu.au/"
+      }
+    },
+    {
+      "id": "international-justice-mission",
+      "heading": "International Justice Mission",
+      "paragraphs": [
+        "Works with police, courts and local authorities to protect people from slavery and violence, including rescuing and supporting victims and strengthening justice systems."
+      ],
+      "link": {
+        "label": "International Justice Mission Australia",
+        "url": "https://ijm.org.au/"
+      }
+    },
+    {
+      "id": "crossroads-prison-ministries",
+      "heading": "Crossroads Prison Ministries",
+      "paragraphs": [
+        "Connects people in prison with church volunteers, who mentor them by letter as they study the Bible by correspondence."
+      ],
+      "link": {
+        "label": "Crossroads Prison Ministries Australia",
+        "url": "https://cpm.org.au/"
+      }
+    },
+    {
+      "id": "bible-league",
+      "heading": "Bible League",
+      "paragraphs": [
+        "Works with local ministry partners to provide Bibles, Bible-based literacy classes, and training in discipleship and church planting."
+      ],
+      "link": {
+        "label": "Bible League Australia",
+        "url": "https://www.bibleleague.org.au/"
+      }
+    },
+    {
+      "id": "wycliffe",
+      "heading": "Wycliffe Bible Translators",
+      "paragraphs": [
+        "Works with churches and other partners to translate the Bible into local languages."
+      ],
+      "link": {
+        "label": "Wycliffe Australia",
+        "url": "https://wycliffe.org.au/"
+      }
+    },
+    {
+      "id": "merf",
+      "heading": "Middle East Reformed Fellowship",
+      "paragraphs": [
+        "A Reformed mission organisation that strengthens churches in the Middle East, Africa and Asia through evangelism, church extension, biblical training and practical aid."
+      ],
+      "link": {
+        "label": "Middle East Reformed Fellowship",
+        "url": "https://merf.org.au/"
+      }
+    }
+  ],
+  "sources": [
+    "Acts of Synod 2024: recommended offerings",
+    "Each organisation’s own Australian website, checked 25 November 2026",
+    "List suggested by Jesse Gollan, November 2026"
+  ],
+  "needsChecking": [
+    "RTC Overseas Education Fund: no description was found on rtc.edu.au. Ask the RTC what the fund does and whether there is a page to link to."
+  ]
+}

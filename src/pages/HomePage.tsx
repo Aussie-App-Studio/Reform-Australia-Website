@@ -44,7 +44,7 @@ const LEADER_LINKS = [
   { label: 'Acts of Synod 2024', detail: 'Decisions and committee mandates', to: `${DOCS}/acts-of-synod-01-acts-of-synod-2024` },
   { label: 'Reading sermons', detail: 'Word of Salvation archive', to: '/sermons' },
   { label: 'Safe Church', detail: 'Policies, training and reporting', to: '/safe-church' },
-  { label: 'Contact the office', detail: 'Find the right person', to: '/contact' },
+  { label: 'Contact', detail: 'Find the right person', to: '/contact' },
 ];
 
 
@@ -64,7 +64,7 @@ function TwoColumn({ id, title, children, tone = 'white' }: { id: string; title:
 export function HomePage() {
   // Open vacancies (src/data/vacancies/), which drop off after their closing date.
   const vacancies = openVacancies();
-  // Up to three news items from the past year.
+  // Up to three news items from the past year that an editor chose for the home page.
   const news = recentNews(3);
   const navigate = useNavigate();
   const [churchQuery, setChurchQuery] = useState('');
@@ -151,67 +151,6 @@ export function HomePage() {
           ))}
         </ul>
       </nav>
-
-      {/* Positions vacant (src/data/vacancies/) */}
-      {vacancies.length > 0 && (
-        <section aria-labelledby="vacancies" className="border-b border-stone-200 bg-gold-50/60">
-          <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-6 sm:px-6 md:flex-row md:items-start md:gap-8 lg:px-8">
-            <h2 id="vacancies" className="shrink-0 font-serif text-xl font-semibold text-navy-900">
-              Positions vacant
-            </h2>
-            <ul className="flex-1 space-y-1.5 text-[0.98rem] text-stone-800">
-              {vacancies.map((v) => (
-                <li key={v.id} className="flex gap-2">
-                  <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600" />
-                  <span>
-                    <Link to={`/for-churches/positions-vacant#${v.id}`} className="font-semibold text-navy-900 underline-offset-4 hover:text-teal-700 hover:underline">
-                      {v.title}, {v.organisation}
-                    </Link>
-                    . Applications close {formatClosing(v)}.
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <Link to="/for-churches/positions-vacant" className="inline-flex shrink-0 items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
-              Details and how to apply <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
-        </section>
-      )}
-
-      {/* Latest ministry news (src/data/news/), only when there is news from the past year */}
-      {news.length > 0 && (
-        <section aria-labelledby="latest-news" className="border-b border-stone-200 bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-            <h2 id="latest-news" className="font-serif text-3xl font-semibold text-navy-900">
-              Latest news
-            </h2>
-            <ul className="mt-6 grid gap-8 md:grid-cols-3">
-              {news.map((n) => (
-                <li key={`${n.ministry}-${n.id}`}>
-                  <Link to={`/ministries/${n.ministry}/news/${n.id}`} className="group block">
-                    {n.image && (
-                      <img
-                        src={n.image}
-                        {...responsive(n.image, '(min-width: 768px) 400px, 100vw')}
-                        alt=""
-                        loading="lazy"
-                        className="mb-4 aspect-[3/2] w-full rounded-md bg-stone-100 object-cover"
-                      />
-                    )}
-                    <span className="block text-sm text-stone-600">
-                      {getMinistryPage(n.ministry)?.name} ·{' '}
-                      {new Date(n.date + 'T00:00:00').toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}
-                    </span>
-                    <span className="mt-1 block font-serif text-xl font-semibold text-navy-900 group-hover:text-teal-700">{n.title}</span>
-                    {n.summary && <span className="mt-1.5 line-clamp-3 block leading-relaxed text-stone-700">{n.summary}</span>}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
 
       <TwoColumn id="believe" title="What we believe">
         <p className="font-serif text-xl leading-relaxed text-navy-900 sm:text-2xl sm:leading-relaxed">
@@ -302,6 +241,40 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* Latest ministry news (src/data/news/), only items an editor ticked to show here */}
+      {news.length > 0 && (
+        <section aria-labelledby="latest-news" className="border-b border-stone-200 bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+            <h2 id="latest-news" className="font-serif text-3xl font-semibold text-navy-900">
+              Latest news
+            </h2>
+            <ul className="mt-6 grid gap-8 md:grid-cols-3">
+              {news.map((n) => (
+                <li key={`${n.ministry}-${n.id}`}>
+                  <Link to={`/ministries/${n.ministry}/news/${n.id}`} className="group block">
+                    {n.image && (
+                      <img
+                        src={n.image}
+                        {...responsive(n.image, '(min-width: 768px) 400px, 100vw')}
+                        alt=""
+                        loading="lazy"
+                        className="mb-4 aspect-[3/2] w-full rounded-md bg-stone-100 object-cover"
+                      />
+                    )}
+                    <span className="block text-sm text-stone-600">
+                      {getMinistryPage(n.ministry)?.name} ·{' '}
+                      {new Date(n.date + 'T00:00:00').toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </span>
+                    <span className="mt-1 block font-serif text-xl font-semibold text-navy-900 group-hover:text-teal-700">{n.title}</span>
+                    {n.summary && <span className="mt-1.5 line-clamp-3 block leading-relaxed text-stone-700">{n.summary}</span>}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {/* For church leaders */}
       <section aria-labelledby="leaders" className="border-t border-stone-200 bg-stone-100">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8 lg:py-20">
@@ -326,6 +299,33 @@ export function HomePage() {
           </ul>
         </div>
       </section>
+
+      {/* Positions vacant (src/data/vacancies/) */}
+      {vacancies.length > 0 && (
+        <section aria-labelledby="vacancies" className="border-b border-stone-200 bg-gold-50/60">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-6 sm:px-6 md:flex-row md:items-start md:gap-8 lg:px-8">
+            <h2 id="vacancies" className="shrink-0 font-serif text-xl font-semibold text-navy-900">
+              Positions vacant
+            </h2>
+            <ul className="flex-1 space-y-1.5 text-[0.98rem] text-stone-800">
+              {vacancies.map((v) => (
+                <li key={v.id} className="flex gap-2">
+                  <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600" />
+                  <span>
+                    <Link to={`/for-churches/positions-vacant#${v.id}`} className="font-semibold text-navy-900 underline-offset-4 hover:text-teal-700 hover:underline">
+                      {v.title}, {v.organisation}
+                    </Link>
+                    . Applications close {formatClosing(v)}.
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <Link to="/for-churches/positions-vacant" className="inline-flex shrink-0 items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
+              Details and how to apply <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </section>
+      )}
     </>
   );
 }

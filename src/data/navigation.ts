@@ -44,7 +44,7 @@ export const whoWeAreNavItems: NavLinkItem[] = [
   {
     label: 'Vision and values',
     to: '/who-we-are/vision-values',
-    description: 'Our mission, vision, core values, fourfold task and strategies.',
+    description: 'Our mission, vision and core values.',
   },
   {
     label: 'What we believe',
@@ -135,6 +135,11 @@ export const ministryMegaMenuColumns: MinistryMegaMenuColumn[] = [
         description: 'SWIM (Supporting Work in Mission) is the CRCA’s mission base in Honiara, Solomon Islands, offering Bible teaching, leadership training and practical support.',
       },
       {
+        label: 'Other ministries we support',
+        to: '/ministries/partner-ministries',
+        description: 'Christian organisations outside the CRCA that our churches support.',
+      },
+      {
         label: 'Ecumenical Relations',
         to: '/ministries/ecumenical-relations',
         description: 'A synodical committee that manages the CRCA’s relationships with Reformed and Presbyterian churches in Australia and around the world.',
@@ -207,8 +212,6 @@ export const navMenus: NavMenu[] = [
         heading: 'About us',
         items: [
           { label: 'Vision and values', to: '/who-we-are/vision-values' },
-          { label: 'Fourfold task', to: '/who-we-are/vision-values#four-fold-task' },
-          { label: 'Strategies', to: '/who-we-are/vision-values#strategies' },
           { label: 'What we believe', to: '/who-we-are/beliefs' },
           { label: 'Our history', to: '/who-we-are/history' },
           { label: 'Trowel and Sword', to: '/who-we-are/trowel-and-sword' },
@@ -260,7 +263,7 @@ export const navMenus: NavMenu[] = [
           { label: 'Candidacy', to: '/ministries/candidacy' },
           { label: 'Regional counsellors', to: '/for-churches/regional-counsellors' },
           { label: 'Positions vacant', to: '/for-churches/positions-vacant' },
-          { label: 'Contact the office', to: '/contact' },
+          { label: 'Contact', to: '/contact' },
         ],
       },
     ],

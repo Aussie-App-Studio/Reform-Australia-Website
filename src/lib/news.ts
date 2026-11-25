@@ -1,6 +1,6 @@
 // Ministry news: one file per item in src/data/news/<ministry>-<id>.json (added in /admin).
-// Shown on the ministry's page, on its own page (/ministries/<ministry>/news/<id>), and the most
-// recent items on the home page.
+// Shown on the ministry's page, on its own page (/ministries/<ministry>/news/<id>), and, only
+// when an editor turns on "Show on the home page", on the home page for a year.
 import type { MinistryNewsItem } from './ministryPages';
 
 interface NewsFile {
@@ -9,11 +9,13 @@ interface NewsFile {
   date: string; // YYYY-MM-DD
   summary?: string;
   image?: string;
+  onHomePage?: boolean; // ticked by an editor
   body?: string; // blank line between paragraphs
 }
 
 export interface NewsItem extends MinistryNewsItem {
   ministry: string;
+  onHomePage?: boolean;
 }
 
 const modules = import.meta.glob<NewsFile>('../data/news/*.json', { eager: true, import: 'default' });
@@ -29,6 +31,7 @@ export const allNews: NewsItem[] = Object.entries(modules)
       date: n.date,
       summary: n.summary,
       image: n.image,
+      onHomePage: n.onHomePage,
       paragraphs: n.body ? n.body.replace(/\r/g, '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean) : undefined,
     };
   })
@@ -38,10 +41,10 @@ export function newsFor(ministry: string): NewsItem[] {
   return allNews.filter((n) => n.ministry === ministry);
 }
 
-/** The most recent news from the past year, for the home page. */
+/** News from the past year that an editor chose to show on the home page. */
 export function recentNews(limit = 3): NewsItem[] {
   const cutoff = new Date();
   cutoff.setFullYear(cutoff.getFullYear() - 1);
   const since = cutoff.toISOString().slice(0, 10);
-  return allNews.filter((n) => n.date >= since).slice(0, limit);
+  return allNews.filter((n) => n.onHomePage && n.date >= since).slice(0, limit);
 }

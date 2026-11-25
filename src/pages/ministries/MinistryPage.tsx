@@ -7,6 +7,7 @@ import { ministryMegaMenuColumns } from '../../data/navigation';
 import { getMinistryPage, type MinistryImage, type MinistryPageData } from '../../lib/ministryPages';
 import { usePageTitle } from '../../utils/usePageTitle';
 import { NotFoundPage } from '../NotFoundPage';
+import { PhotoCredit } from '../../components/PhotoCredit';
 import { naturalWidth, responsive } from '../../utils/responsiveImage';
 
 const isInternal = (url: string) => url.startsWith('/') && !/\.(pdf|docx?)$/i.test(url) && !url.startsWith('/ministry-resources/');
@@ -126,13 +127,11 @@ const formatDate = (d: string) =>
 function Figure({ img, className = '' }: { img: MinistryImage; className?: string }) {
   return (
     <figure className={className}>
-      <img src={img.src} {...responsive(img.src, '(min-width: 1024px) 720px, 100vw')} alt={img.alt} loading="lazy" decoding="async" className="w-full rounded-md bg-stone-200 object-cover" />
-      {(img.caption || img.credit) && (
-        <figcaption className="mt-2 text-sm text-stone-600">
-          {img.caption}
-          {img.credit && <span className="text-stone-500"> {img.caption ? '· ' : ''}Photo: {img.credit}</span>}
-        </figcaption>
-      )}
+      <div className="relative">
+        <img src={img.src} {...responsive(img.src, '(min-width: 1024px) 720px, 100vw')} alt={img.alt} loading="lazy" decoding="async" className="w-full rounded-md bg-stone-200 object-cover" />
+        {img.credit && <PhotoCredit credit={img.credit} />}
+      </div>
+      {img.caption && <figcaption className="mt-2 text-sm text-stone-600">{img.caption}</figcaption>}
     </figure>
   );
 }
@@ -290,16 +289,17 @@ export function StandardPage({
       {page.hero && (
         <div className="bg-stone-50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {/* Never wider than the photo itself: small banners would look soft stretched */}
+            <div className="relative" style={{ maxWidth: naturalWidth(page.hero.src) }}>
             <img
               src={page.hero.src}
               {...responsive(page.hero.src, '100vw')}
               alt={page.hero.alt}
               fetchPriority="high"
-              // Never wider than the photo itself (small banners would look soft stretched).
-              style={{ maxWidth: naturalWidth(page.hero.src) }}
               className="aspect-[21/9] max-h-[30rem] w-full rounded-md object-cover"
             />
-            {page.hero.credit && <p className="mt-2 text-right text-xs text-stone-500">Photo: {page.hero.credit}</p>}
+              {page.hero.credit && <PhotoCredit credit={page.hero.credit} />}
+            </div>
           </div>
         </div>
       )}
@@ -323,6 +323,12 @@ export function StandardPage({
                 </ul>
               )}
               {sec.image && <Figure img={sec.image} className="mt-6" />}
+              {sec.link && (
+                <SmartLink url={sec.link.url} className="mt-3 inline-flex min-h-11 items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
+                  {sec.link.label} <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                  <span className="sr-only">(opens in a new tab)</span>
+                </SmartLink>
+              )}
             </section>
           ))}
 

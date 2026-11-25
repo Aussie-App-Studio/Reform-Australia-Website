@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -19,7 +19,44 @@ interface AustraliaChurchMapProps {
   className?: string;
 }
 
-const OPENFREEMAP_STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
+const OPENFREEMAP = 'https://tiles.openfreemap.org/';
+const OPENFREEMAP_STYLE_URL = `${OPENFREEMAP}styles/liberty`;
+
+/**
+ * On the real site the map is fetched through our own address (functions/maptiles), because some
+ * ad-blocker lists block OpenFreeMap. The preview copy and local servers have no functions, so go direct.
+ */
+function mapFileUrl(url: string): string {
+  const viaOurSite = import.meta.env.BASE_URL === '/' && location.protocol === 'https:';
+  return viaOurSite && url.startsWith(OPENFREEMAP) ? `${location.origin}/maptiles/${url.slice(OPENFREEMAP.length)}` : url;
+}
+
+/** A plainer backup map, used if the main one can't be loaded. Pins, zoom and selection all stay. */
+const BACKUP_STYLE: maplibregl.StyleSpecification = {
+  version: 8,
+  sources: {
+    osm: {
+      type: 'raster',
+      tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+      tileSize: 256,
+      maxzoom: 19,
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    },
+  },
+  layers: [{ id: 'osm', type: 'raster', source: 'osm', paint: { 'raster-saturation': -0.35 } }],
+};
+
+/** The CRCA's colours, and no shop or business labels competing with the churches. */
+function applyMapColours(map: maplibregl.Map) {
+  for (const layer of map.getStyle()?.layers ?? []) {
+    if (/^poi|^building-3d/.test(layer.id)) map.setLayoutProperty(layer.id, 'visibility', 'none');
+    else if (layer.id === 'background') map.setPaintProperty(layer.id, 'background-color', '#f7f3ea');
+    else if (layer.id === 'water') map.setPaintProperty(layer.id, 'fill-color', '#bfe0ea');
+  }
+}
+
+/** Smaller pins when zoomed out, so nearby churches don't cover each other. */
+const pinScale = (zoom: number) => (zoom < 4.5 ? 0.55 : zoom < 6 ? 0.7 : zoom < 8 ? 0.85 : 1);
 const AUSTRALIA_CENTER: [number, number] = [133.8, -28.2];
 const AUSTRALIA_DEFAULT_ZOOM = 3.15;
 const AUSTRALIA_MIN_ZOOM = 2.2;
@@ -47,6 +84,7 @@ function applyPinStyling(el: HTMLElement, isSelected: boolean): void {
   el.classList.toggle('crca-map-pin-selected', isSelected);
   el.classList.toggle('crca-map-pin', !isSelected);
 
+  dot.style.transform = isSelected ? 'none' : 'scale(var(--pin-scale, 1))';
   const size = isSelected ? 36 : 26;
   dot.style.width = `${size}px`;
   dot.style.height = `${size}px`;
@@ -131,8 +169,8 @@ function buildPopupHtml(church: ChurchRecord): string {
   }
 
   return `
-    <div style="font-family:Inter,system-ui,sans-serif;min-width:210px;max-width:265px;padding-right:14px;color:#00224c;">
-      <div style="font-family:Lora,Georgia,serif;font-weight:700;font-size:15px;line-height:1.25;">${safeName}</div>
+    <div style="font-family:var(--font-sans);min-width:210px;max-width:265px;padding-right:14px;color:#00224c;">
+      <div style="font-family:var(--font-serif);font-weight:700;font-size:15px;line-height:1.25;">${safeName}</div>
       <div style="margin-top:4px;font-size:12px;color:#423d37;line-height:1.4;">${safeAddress} <a href="${escapeHtml(directionsUrl)}" target="_blank" rel="noopener noreferrer" style="margin-left:4px;font-weight:600;color:#036982;text-decoration:underline;">Directions</a></div>
       ${
         safeService
@@ -296,6 +334,7 @@ export function AustraliaChurchMap({
   totalChurchCount,
   className = 'h-[400px] lg:h-[640px]',
 }: AustraliaChurchMapProps) {
+  const [unavailable, setUnavailable] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
@@ -329,8 +368,12 @@ export function AustraliaChurchMap({
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
 
-    const map = new maplibregl.Map({
-      container: containerRef.current,
+    const container = containerRef.current;
+    let map: maplibregl.Map;
+    try {
+      map = new maplibregl.Map({
+      container,
+      transformRequest: (url) => ({ url: mapFileUrl(url) }),
       style: OPENFREEMAP_STYLE_URL,
       center: AUSTRALIA_CENTER,
       zoom: AUSTRALIA_DEFAULT_ZOOM,
@@ -341,10 +384,15 @@ export function AustraliaChurchMap({
       pitchWithRotate: false,
       touchPitch: false,
       attributionControl: { compact: true },
-    });
+      });
+    } catch {
+      // No WebGL in this browser; the church list still works.
+      setUnavailable(true);
+      return;
+    }
 
     // Keep attribution collapsed behind the (i) button by default
-    const attribEl = containerRef.current.querySelector('.maplibregl-ctrl-attrib');
+    const attribEl = container.querySelector('.maplibregl-ctrl-attrib');
     if (attribEl) {
       attribEl.setAttribute('open', '');
       attribEl.classList.add('maplibregl-compact');
@@ -364,6 +412,39 @@ export function AustraliaChurchMap({
       openPopupChurchIdRef.current = null;
     });
 
+    // Switch to the backup map only when the main one really isn't arriving: the style or tile index
+    // fails, or several tiles in a row do. One dropped tile on a poor connection is left alone.
+    let onBackup = false;
+    let failedInARow = 0;
+    const useBackup = () => {
+      if (onBackup) return;
+      onBackup = true;
+      window.clearTimeout(slowTimer);
+      map.setStyle(BACKUP_STYLE, { diff: false });
+    };
+    const slowTimer = window.setTimeout(useBackup, 12000);
+    map.on('style.load', () => {
+      if (!onBackup) applyMapColours(map);
+    });
+    map.on('load', () => window.clearTimeout(slowTimer));
+    map.on('error', (event) => {
+      const e = event as unknown as { error?: Error; sourceId?: string; tile?: unknown };
+      if (onBackup || e.error?.name === 'AbortError') return;
+      if (e.sourceId === 'openmaptiles') {
+        if (!e.tile || ++failedInARow >= 4) useBackup();
+      } else if (!map.style?._loaded) {
+        useBackup();
+      }
+    });
+    map.on('sourcedata', (event) => {
+      const e = event as unknown as { sourceId?: string; tile?: { state?: string } };
+      if (e.sourceId === 'openmaptiles' && e.tile?.state === 'loaded') failedInARow = 0;
+    });
+
+    const scalePins = () => container.style.setProperty('--pin-scale', String(pinScale(map.getZoom())));
+    scalePins();
+    map.on('zoom', scalePins);
+
     mapRef.current = map;
     popupRef.current = popup;
 
@@ -380,6 +461,7 @@ export function AustraliaChurchMap({
     map.on('zoomend', handleZoomEnd);
 
     return () => {
+      window.clearTimeout(slowTimer);
       map.off('zoomend', handleZoomEnd);
       spiderMarkersRef.current.forEach((m) => m.remove());
       spiderMarkersRef.current = [];
@@ -521,6 +603,14 @@ export function AustraliaChurchMap({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedChurchId, selectionNonce]);
 
+  function showAll() {
+    const map = mapRef.current;
+    if (!map || churchesRef.current.length === 0) return;
+    const bounds = new maplibregl.LngLatBounds();
+    churchesRef.current.forEach((c) => bounds.extend([c.lng, c.lat]));
+    map.fitBounds(bounds, { padding: { top: 40, bottom: 56, left: 40, right: 40 }, maxZoom: 11.5, duration: 400 });
+  }
+
   return (
     <div
       className={`relative z-0 isolate overflow-hidden rounded-lg border border-stone-200 bg-stone-100 ${className}`}
@@ -530,6 +620,19 @@ export function AustraliaChurchMap({
         className="h-full w-full"
         aria-label="Interactive map of Christian Reformed Churches of Australia congregations"
       />
+      {unavailable ? (
+        <p className="absolute inset-0 flex items-center justify-center p-8 text-center text-stone-700">
+          The map can’t be shown in this browser. Every church is in the list on this page.
+        </p>
+      ) : (
+        <button
+          type="button"
+          onClick={showAll}
+          className="absolute left-3 top-3 z-10 min-h-11 rounded-md border border-stone-200 bg-white px-3 text-sm font-semibold text-navy-900 shadow-sm hover:bg-stone-100"
+        >
+          Show all on map
+        </button>
+      )}
       <div className="pointer-events-none absolute bottom-3 left-3 z-10 hidden sm:block rounded-lg bg-white px-2.5 py-1 text-[11px] font-medium text-navy-900 border border-stone-200">
         Select a pin to view service times and church details
       </div>

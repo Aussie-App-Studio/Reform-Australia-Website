@@ -101,7 +101,7 @@ export const ROUTE_META: Record<string, { title: string | null; description?: st
   },
   '/who-we-are/vision-values': {
     title: 'Vision and values',
-    description: 'The mission, vision, core values, fourfold task and strategies of the Christian Reformed Churches of Australia.',
+    description: 'The mission, vision and core values of the Christian Reformed Churches of Australia.',
   },
   '/who-we-are/beliefs': {
     title: 'What we believe',
