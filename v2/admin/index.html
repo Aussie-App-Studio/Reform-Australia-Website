@@ -7,20 +7,82 @@
     <title>Edit the CRCA website</title>
     <link rel="icon" type="image/png" href="/images/logos/favicon-64.png" />
     <style>
+      /* CRCA colours, used by the editor itself (Sveltia CMS reads these settings). */
+      :root[data-theme] {
+        --sui-base-hue: 193 !important;
+      }
+      :root[data-theme='light'] {
+        --sui-primary-accent-color: #036982 !important;
+        --sui-primary-accent-color-light: #00809d !important;
+        --sui-primary-accent-color-dark: #00224c !important;
+      }
+      /* Navy top bar with the logo, like the website. */
+      .main > .toolbar-wrapper > .sui.toolbar.primary {
+        background: #00224c;
+        color: #fff;
+        --sui-primary-foreground-color: #fff;
+        --sui-secondary-foreground-color: #e5ebf3;
+        --sui-tertiary-foreground-color: #cff0f8;
+        --sui-hover-background-color: rgba(255, 255, 255, 0.12);
+        --sui-active-background-color: rgba(255, 255, 255, 0.2);
+        --sui-selected-background-color: rgba(255, 255, 255, 0.2);
+        --sui-textbox-background-color: rgba(255, 255, 255, 0.95);
+        --sui-textbox-foreground-color: #00224c;
+        --sui-textbox-placeholder-foreground-color: #5b554e;
+        border-bottom: 4px solid #d8b566;
+      }
+      .main > .toolbar-wrapper > .sui.toolbar.primary button {
+        color: #fff;
+      }
+      .main > .toolbar-wrapper > .sui.toolbar.primary img.logo {
+        background: #fff;
+        border-radius: 6px;
+        padding: 2px;
+      }
+      .main > .toolbar-wrapper > .sui.toolbar.primary .inner > .buttons:first-child::after {
+        content: 'CRCA website';
+        font: 600 1.15rem/1 'Source Serif 4', Georgia, serif;
+        margin: 0 0.75rem 0 0.5rem;
+        white-space: nowrap;
+      }
+      @media (max-width: 700px) {
+        .main > .toolbar-wrapper > .sui.toolbar.primary .inner > .buttons:first-child::after {
+          content: none;
+        }
+      }
       #crca-admin-loading {
         position: fixed;
         inset: 0;
         z-index: 2147483647;
-        background: #fff;
-        font: 17px/1.5 system-ui, sans-serif;
-        color: #00224c;
+        background: #00224c;
+        font: 18px/1.5 'Source Sans 3', system-ui, sans-serif;
+        color: #fff;
         padding: 15vh 1.5rem 0;
         text-align: center;
+      }
+      #crca-admin-loading img {
+        height: 56px;
+        margin-bottom: 1.5rem;
+      }
+    </style>
+    <style>
+      @font-face {
+        font-family: 'Source Sans 3';
+        font-weight: 200 900;
+        font-display: swap;
+        src: url('/fonts/source-sans-3-latin-wght-normal.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Source Serif 4';
+        font-weight: 200 900;
+        font-display: swap;
+        src: url('/fonts/source-serif-4-latin-wght-normal.woff2') format('woff2');
       }
     </style>
   </head>
   <body>
     <div id="crca-admin-loading">
+      <img src="/images/logos/crca-logo-landscape-white.png" alt="Christian Reformed Churches of Australia" />
       <p><strong>Opening the CRCA website editor…</strong></p>
     </div>
     <!-- Settings (collections and fields) are in config.js. -->
