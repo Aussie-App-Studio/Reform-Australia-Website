@@ -44,6 +44,7 @@ export function HistoryPage() {
       <PageHeader
         title={history.heading}
         description={history.lead}
+        photo={{ src: `${import.meta.env.BASE_URL}images/history/1951-sibajak-emigrants.webp`, alt: 'A Dutch family seated at a dining table on board ship, in black and white', credit: 'Carel L. de Vogel / Anefo, Nationaal Archief (public domain)' }}
         breadcrumbs={[{ label: 'Who we are' }, { label: 'Our history' }]}
       />
 
@@ -114,13 +115,13 @@ export function HistoryPage() {
         </div>
       </section>
 
-      <section className="border-t border-stone-200 bg-stone-50">
+      <section className="bg-gold-50">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20 [&>*]:max-w-3xl">
           <h2 className="font-serif text-3xl font-semibold text-navy-900">Since 1951</h2>
           <dl className="mt-8 divide-y divide-stone-200 border-y border-stone-200">
             {history.milestones.map((milestone) => (
               <div key={milestone.era} className="grid gap-1 py-6 sm:grid-cols-[9rem_1fr] sm:gap-6">
-                <dt className="font-serif text-lg font-semibold text-teal-700">{milestone.era}</dt>
+                <dt className="font-serif text-2xl font-semibold text-brick-700">{milestone.era}</dt>
                 <dd>
                   <p className="font-semibold text-navy-900">{milestone.title}</p>
                   <p className="mt-1 leading-relaxed text-stone-700">{milestone.description}</p>
@@ -181,7 +182,7 @@ export function HistoryPage() {
           <p className="mt-4 text-lg leading-relaxed text-stone-700">{churchHistory.intro}</p>
           {DECADES.map(([decade, list]) => (
             <div key={decade} className="mt-10">
-              <h3 className="font-serif text-2xl font-semibold text-teal-700">{decade}</h3>
+              <h3 className="font-serif text-2xl font-semibold text-brick-700">{decade}</h3>
               <ul className="mt-3 divide-y divide-stone-200 border-y border-stone-200">
                 {list.map((c) => {
                   const church = churchById.get(c.id);

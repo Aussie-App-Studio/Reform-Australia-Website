@@ -83,6 +83,12 @@
   --color-teal-100: #cff0f8;
   --color-teal-50: #e6f7fb;
 
+  /* Section colours from the home page blocks: our story (brick) and ministries (forest) */
+  --color-brick-800: #75291c;
+  --color-brick-700: #8f3526;
+  --color-forest-800: #264932;
+  --color-forest-700: #315a3e;
+
   --color-stone-50: #faf8f5;
   --color-stone-100: #f3efe9;
   --color-stone-200: #e6dfd5;

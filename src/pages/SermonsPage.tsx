@@ -15,6 +15,7 @@ import {
   type SermonIndexItem,
   type SermonTopics,
 } from '../lib/sermons';
+import { Roofline } from '../components/brand';
 import { usePageTitle } from '../utils/usePageTitle';
 
 const PAGE_SIZE = 30;
@@ -197,8 +198,9 @@ export function SermonsPage() {
 
   return (
     <>
-      <header className="bg-navy-900 text-white">
-        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <header className="relative overflow-hidden bg-navy-900 text-white">
+        <Roofline className="absolute -bottom-2 -right-24 hidden w-[30rem] text-teal-500/30 lg:block 2xl:right-12" />
+        <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
           <nav aria-label="Breadcrumb" className="text-base text-navy-100">
             <Link to="/" className="hover:text-white hover:underline">Home</Link> <span aria-hidden="true">/</span>{' '}
             <Link to="/for-churches" className="hover:text-white hover:underline">For churches</Link> <span aria-hidden="true">/</span>{' '}

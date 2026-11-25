@@ -1,6 +1,6 @@
-import { FormEvent, ReactNode, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, ExternalLink, Search } from 'lucide-react';
+import { ArrowRight, BookMarked, BookOpen, BookOpenText, ChurchIcon, ExternalLink, FileText, HeartHandshake, History, Landmark, Mail, Search, ShieldCheck } from 'lucide-react';
 import churchesRaw from '../data/churches.json';
 import identity from '../data/identity.json';
 import beliefs from '../data/beliefs.json';
@@ -9,6 +9,7 @@ import type { ChurchRecord } from '../utils/churchRecord';
 import { loadAuLocations } from '../data/locationHubs';
 import { AustraliaDotMap } from '../components/AustraliaDotMap';
 import { getMinistryPage } from '../lib/ministryPages';
+import { ArchPhoto, ColourBlock, Roofline } from '../components/brand';
 import { responsive } from '../utils/responsiveImage';
 import { formatClosing, openVacancies } from '../lib/vacancies';
 import { recentNews } from '../lib/news';
@@ -39,27 +40,24 @@ const STANDARDS = [
 ];
 
 const LEADER_LINKS = [
-  { label: 'Forms & documents', detail: 'Liturgical forms, creeds and worship readings', to: DOCS },
-  { label: 'Church Order (2022)', detail: 'Searchable, with cross-references', to: `${DOCS}/church-order-01-crca-church-order-2022` },
-  { label: 'Acts of Synod 2024', detail: 'Decisions and committee mandates', to: `${DOCS}/acts-of-synod-01-acts-of-synod-2024` },
-  { label: 'Reading sermons', detail: 'Word of Salvation archive', to: '/sermons' },
-  { label: 'Safe Church', detail: 'Policies, training and reporting', to: '/safe-church' },
-  { label: 'Contact', detail: 'Find the right person', to: '/contact' },
+  { Icon: FileText, label: 'Forms & documents', detail: 'Liturgical forms, creeds and worship readings', to: DOCS },
+  { Icon: BookMarked, label: 'Church Order (2022)', detail: 'Searchable, with cross-references', to: `${DOCS}/church-order-01-crca-church-order-2022` },
+  { Icon: Landmark, label: 'Acts of Synod 2024', detail: 'Decisions and committee mandates', to: `${DOCS}/acts-of-synod-01-acts-of-synod-2024` },
+  { Icon: BookOpenText, label: 'Reading sermons', detail: 'Word of Salvation archive', to: '/sermons' },
+  { Icon: ShieldCheck, label: 'Safe Church', detail: 'Policies, training and reporting', to: '/safe-church' },
+  { Icon: Mail, label: 'Contact', detail: 'Find the right person', to: '/contact' },
 ];
 
 
-function TwoColumn({ id, title, children, tone = 'white' }: { id: string; title: string; children: ReactNode; tone?: 'white' | 'paper' }) {
-  return (
-    <section aria-labelledby={id} className={tone === 'paper' ? 'border-y border-stone-200 bg-stone-50' : 'bg-white'}>
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8 lg:py-24">
-        <h2 id={id} className="font-serif text-3xl font-semibold text-navy-900 lg:col-span-4">
-          {title}
-        </h2>
-        <div className="lg:col-span-8">{children}</div>
-      </div>
-    </section>
-  );
-}
+// The students photo is already used beside What we believe.
+const COMMUNITY_MEAL = { src: `${import.meta.env.BASE_URL}images/ministries/community-meal.webp`, alt: 'Church members preparing a community meal in a kitchen' };
+
+const BLOCKS = [
+  { Icon: BookOpen, title: 'What we believe', detail: 'The Bible, the gospel and our confessions', to: '/who-we-are/beliefs', colour: 'bg-teal-700 text-white hover:bg-[#02566b]' },
+  { Icon: ChurchIcon, title: 'Find a church', detail: 'Map, addresses and service times', to: '/find-a-church', colour: 'bg-gold-400 text-navy-950 hover:bg-gold-500' },
+  { Icon: History, title: 'Our story', detail: 'From 1951 to today', to: '/who-we-are/history', colour: 'bg-brick-700 text-white hover:bg-brick-800' },
+  { Icon: HeartHandshake, title: 'Our ministries', detail: 'Young people, training and mission', to: '/ministries', colour: 'bg-forest-700 text-white hover:bg-forest-800' },
+];
 
 export function HomePage() {
   // Open vacancies (src/data/vacancies/), which drop off after their closing date.
@@ -132,63 +130,61 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Quick paths */}
-      <nav aria-label="Popular" className="border-b border-stone-200 bg-white">
-        {/* One link per row on phones, so each arrow sits with its own link */}
-        <ul className="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-stone-200 px-4 sm:grid-cols-2 sm:divide-y-0 sm:px-6 md:grid-cols-4 lg:px-8">
-          {[
-            { label: 'What we believe', to: '/who-we-are/beliefs' },
-            { label: 'Our history', to: '/who-we-are/history' },
-            { label: 'Ministries', to: '/ministries' },
-            { label: 'For church leaders', to: '/for-churches' },
-          ].map((l) => (
-            <li key={l.to} className="border-stone-200 sm:[&:nth-child(even)]:border-l sm:[&:nth-child(even)]:pl-4 md:[&:not(:first-child)]:border-l md:[&:nth-child(even)]:pl-0">
-              <Link to={l.to} className="group flex items-center justify-between gap-2 px-1 py-4 font-semibold text-navy-900 hover:text-teal-700 md:px-5">
-                {l.label}
-                <ArrowRight className="h-4 w-4 text-teal-600 transition group-hover:translate-x-0.5" aria-hidden="true" />
-              </Link>
+      {/* Four ways in, in the colours used across the site */}
+      <nav aria-label="Start here">
+        <ul className="grid sm:grid-cols-2 lg:grid-cols-4">
+          {BLOCKS.map((b) => (
+            <li key={b.to}>
+              <ColourBlock {...b} />
             </li>
           ))}
         </ul>
       </nav>
 
-      <TwoColumn id="believe" title="What we believe">
-        <p className="font-serif text-xl leading-relaxed text-navy-900 sm:text-2xl sm:leading-relaxed">
-          {beliefs.overview.split('. ').slice(0, 2).join('. ')}.
-        </p>
-        <p className="mt-5 max-w-2xl leading-relaxed text-stone-700">{beliefs.additionalNote}</p>
-        <ul className="mt-8 grid gap-x-10 border-t border-stone-200 sm:grid-cols-2">
-          {STANDARDS.map((s) => (
-            <li key={s.to} className="border-b border-stone-200">
-              <Link to={s.to} className="group flex items-center justify-between py-3 text-navy-900 hover:text-teal-700">
-                {s.label}
-                <ArrowRight className="h-4 w-4 text-stone-400 transition group-hover:translate-x-0.5 group-hover:text-teal-700" aria-hidden="true" />
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <Link to="/who-we-are/beliefs" className="mt-6 inline-flex items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
-          More about our beliefs <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </Link>
-      </TwoColumn>
+      <section aria-labelledby="believe" className="bg-gold-50">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8 lg:py-24">
+          <div className="lg:col-span-7">
+            <h2 id="believe" className="font-serif text-4xl font-semibold text-navy-900">
+              What we believe
+            </h2>
+            <p className="mt-5 font-serif text-2xl leading-relaxed text-navy-900 sm:text-[1.7rem] sm:leading-relaxed">
+              {beliefs.overview.split('. ').slice(0, 2).join('. ')}.
+            </p>
+            <ul className="mt-8 grid gap-x-10 border-t border-gold-100 sm:grid-cols-2">
+              {STANDARDS.map((s) => (
+                <li key={s.to} className="border-b border-gold-100">
+                  <Link to={s.to} className="group flex min-h-12 items-center justify-between text-navy-900 hover:text-teal-700">
+                    {s.label}
+                    <ArrowRight className="h-4 w-4 text-gold-600 transition group-hover:translate-x-0.5" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link to="/who-we-are/beliefs" className="mt-6 inline-flex min-h-11 items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
+              More about our beliefs <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+          <ArchPhoto
+            className="mx-auto w-full max-w-md lg:col-span-5"
+            src={`${import.meta.env.BASE_URL}images/ministries/candidacy/rtc-students.webp`}
+            alt="Three students talking over open Bibles on a lawn"
+            credit="Reformed Theological College (used with permission)"
+          />
+        </div>
+      </section>
 
-      <TwoColumn id="vision" title="Our vision" tone="paper">
-        <blockquote className="border-l-4 border-teal-500 pl-6 font-serif text-2xl leading-snug text-navy-900 sm:text-3xl">
-          {identity.missionAndVision.vision}
-        </blockquote>
-        <h3 className="mt-12 font-serif text-xl font-semibold text-navy-900">Our values</h3>
-        <dl className="mt-4 grid gap-x-10 border-t border-stone-200 sm:grid-cols-2">
-          {identity.coreValues.items.map((v) => (
-            <div key={v.id} className="border-b border-stone-200 py-4">
-              <dt className="font-semibold text-navy-900">{v.title}</dt>
-              <dd className="mt-1 text-[0.95rem] leading-relaxed text-stone-600">{v.summary}</dd>
-            </div>
-          ))}
-        </dl>
-        <Link to="/who-we-are/vision-values" className="mt-6 inline-flex items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
-          Mission, vision and strategy <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </Link>
-      </TwoColumn>
+      <section aria-labelledby="vision" className="relative overflow-hidden bg-teal-700 text-white">
+        <Roofline className="absolute -bottom-2 -right-24 hidden w-[36rem] text-white/15 lg:block 2xl:right-12" />
+        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <h2 id="vision" className="text-xl font-semibold">
+            Our vision
+          </h2>
+          <p className="mt-4 max-w-4xl font-serif text-3xl leading-snug sm:text-4xl sm:leading-snug">{identity.missionAndVision.vision}</p>
+          <Link to="/who-we-are/vision-values" className="mt-7 inline-flex min-h-11 items-center gap-1.5 font-semibold underline underline-offset-4">
+            Our vision and values <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
 
       {/* Ministries */}
       <section aria-labelledby="ministries" className="bg-white">
@@ -205,10 +201,10 @@ export function HomePage() {
             {ministryMegaMenuColumns.map((col) => (
               <div key={col.id}>
                 {(() => {
-                  const photo = col.items.map((i) => getMinistryPage(i.to.split('/').pop() ?? '')?.hero).find(Boolean);
+                  const photo = col.id === 'training-planting' ? COMMUNITY_MEAL : col.items.map((i) => getMinistryPage(i.to.split('/').pop() ?? '')?.hero).find(Boolean);
                   return photo ? <img src={photo.src} {...responsive(photo.src, '(min-width: 1024px) 400px, 100vw')} alt={photo.alt} loading="lazy" className="mb-5 aspect-[3/2] w-full rounded-md object-cover" /> : null;
                 })()}
-                <h3 className="border-b-2 border-navy-900 pb-2 font-serif text-xl font-semibold text-navy-900">{col.heading}</h3>
+                <h3 className="border-b-4 border-forest-700 pb-2 font-serif text-xl font-semibold text-navy-900">{col.heading}</h3>
                 <ul className="divide-y divide-stone-200">
                   {col.items.map((item) => {
                     const body = (
@@ -288,6 +284,7 @@ export function HomePage() {
             {LEADER_LINKS.map((l) => (
               <li key={l.to} className="border-b border-stone-300">
                 <Link to={l.to} className="group flex items-center gap-4 py-4">
+                  <l.Icon className="h-7 w-7 shrink-0 text-teal-700" strokeWidth={1.5} aria-hidden="true" />
                   <span className="flex-1">
                     <span className="block font-semibold text-navy-900 group-hover:text-teal-700">{l.label}</span>
                     <span className="block text-sm text-stone-600">{l.detail}</span>

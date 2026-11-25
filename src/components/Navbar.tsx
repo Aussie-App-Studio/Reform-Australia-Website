@@ -2,7 +2,6 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ArrowRight, ChevronDown, ExternalLink, MapPin, Menu, X } from 'lucide-react';
 import { CrcaLogo } from './CrcaLogo';
-import { siteConfig } from '../data/siteConfig';
 import { navMenus, type NavLinkItem, type NavMenu } from '../data/navigation';
 import { useFocusTrap } from '../utils/useFocusTrap';
 
@@ -318,12 +317,6 @@ export function Navbar() {
               <MapPin className="h-4 w-4 text-teal-400" aria-hidden="true" />
               Find a church
             </Link>
-            <p className="mt-3 text-center text-sm text-stone-600">
-              Safe Church Unit, any time:{' '}
-              <a href={`tel:${siteConfig.safeChurch.urgent.primaryPhone.replace(/\s/g, '')}`} className="font-semibold text-navy-900 underline underline-offset-2">
-                {siteConfig.safeChurch.urgent.primaryPhone}
-              </a>
-            </p>
           </div>
         </div>
       </div>

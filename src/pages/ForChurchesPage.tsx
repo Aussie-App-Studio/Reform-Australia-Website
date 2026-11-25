@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { ArrowRight, Download, Search, X } from 'lucide-react';
+import { ArrowRight, BookMarked, BookOpenText, Briefcase, Download, FileText, GraduationCap, Handshake, Landmark, Mail, MessagesSquare, Search, ShieldCheck, X } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import leaderData from '../data/leaderResources.json';
 import {
@@ -14,16 +14,16 @@ import type { FlattenedDocItem, SearchIndex } from '../lib/crcaDocs/types';
 
 
 const MAIN_ENTRIES = [
-  { title: 'Forms & documents', detail: 'Liturgical forms, creeds and confessions, and worship readings, with a service-preparation tool.', to: '/for-churches/forms-and-documents' },
-  { title: 'Church Order', detail: 'The 2022 Book of Church Order, searchable and cross-referenced.', to: `/for-churches/forms-and-documents/${DOC_IDS.churchOrder2022}` },
-  { title: 'Acts of Synod', detail: 'Decisions of Synod 2024, committee mandates and resolutions.', to: `/for-churches/forms-and-documents/${DOC_IDS.actsOfSynod2024}` },
-  { title: 'Reading sermons', detail: 'The Word of Salvation archive: over 2,000 sermons for reading services.', to: '/sermons' },
-  { title: 'Safe Church', detail: 'Safeguarding policy, volunteer approval, training, forms and how to report a concern.', to: '/safe-church' },
-  { title: 'Candidacy', detail: 'The pathway to ordained ministry in the CRCA.', to: '/ministries/candidacy' },
-  { title: 'Shift coaching', detail: 'Coaching for pastors and church councils.', to: '/ministries/shift-coaching' },
-  { title: 'Positions vacant', detail: 'Current vacancies in the CRCA and its churches.', to: '/for-churches/positions-vacant' },
-  { title: 'Regional counsellors', detail: 'Confidential support for pastors, their families and church councils.', to: '/for-churches/regional-counsellors' },
-  { title: 'Contact the office', detail: 'Find the right committee or person for your question.', to: '/contact' },
+  { Icon: FileText, title: 'Forms & documents', detail: 'Liturgical forms, creeds and confessions, and worship readings, with a service-preparation tool.', to: '/for-churches/forms-and-documents' },
+  { Icon: BookMarked, title: 'Church Order', detail: 'The 2022 Book of Church Order, searchable and cross-referenced.', to: `/for-churches/forms-and-documents/${DOC_IDS.churchOrder2022}` },
+  { Icon: Landmark, title: 'Acts of Synod', detail: 'Decisions of Synod 2024, committee mandates and resolutions.', to: `/for-churches/forms-and-documents/${DOC_IDS.actsOfSynod2024}` },
+  { Icon: BookOpenText, title: 'Reading sermons', detail: 'The Word of Salvation archive: over 2,000 sermons for reading services.', to: '/sermons' },
+  { Icon: ShieldCheck, title: 'Safe Church', detail: 'Safeguarding policy, volunteer approval, training, forms and how to report a concern.', to: '/safe-church' },
+  { Icon: GraduationCap, title: 'Candidacy', detail: 'The pathway to ordained ministry in the CRCA.', to: '/ministries/candidacy' },
+  { Icon: MessagesSquare, title: 'Shift coaching', detail: 'Coaching for pastors and church councils.', to: '/ministries/shift-coaching' },
+  { Icon: Briefcase, title: 'Positions vacant', detail: 'Current vacancies in the CRCA and its churches.', to: '/for-churches/positions-vacant' },
+  { Icon: Handshake, title: 'Regional counsellors', detail: 'Confidential support for pastors, their families and church councils.', to: '/for-churches/regional-counsellors' },
+  { Icon: Mail, title: 'Contact the office', detail: 'Find the right committee or person for your question.', to: '/contact' },
 ];
 
 export function ForChurchesPage() {
@@ -120,6 +120,7 @@ export function ForChurchesPage() {
             {MAIN_ENTRIES.map((e) => (
               <li key={e.to} className="border-b border-stone-200">
                 <Link to={e.to} className="group flex items-start gap-5 py-6">
+                  <e.Icon className="mt-0.5 h-8 w-8 shrink-0 text-teal-700" strokeWidth={1.5} aria-hidden="true" />
                   <span className="flex-1">
                     <span className="block font-serif text-2xl font-semibold text-navy-900 group-hover:text-teal-700">{e.title}</span>
                     <span className="mt-1 block max-w-md leading-relaxed text-stone-600">{e.detail}</span>
@@ -129,13 +130,6 @@ export function ForChurchesPage() {
               </li>
             ))}
           </ul>
-          <p className="mt-8 text-stone-700">
-            Need to report a safeguarding concern? Call the Safe Church Unit on{' '}
-            <a href="tel:0436304451" className="font-semibold text-navy-900 underline underline-offset-4">
-              0436 304 451
-            </a>{' '}
-            (anytime). If someone is in immediate danger, call 000.
-          </p>
         </div>
       </section>
 

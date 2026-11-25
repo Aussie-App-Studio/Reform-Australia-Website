@@ -3,9 +3,11 @@ import { PageHeader } from '../components/PageHeader';
 import identity from '../data/identity.json';
 import { responsive } from '../utils/responsiveImage';
 
+const VALUE_COLOURS = ['border-teal-700', 'border-gold-400', 'border-brick-700', 'border-forest-700'];
+
 function Section({ id, title, intro, tone = 'white', children }: { id: string; title: string; intro?: string; tone?: 'white' | 'paper'; children: React.ReactNode }) {
   return (
-    <section id={id} className={`scroll-mt-28 border-t border-stone-200 ${tone === 'paper' ? 'bg-stone-50' : 'bg-white'}`}>
+    <section id={id} className={`scroll-mt-28 border-t border-stone-200 ${tone === 'paper' ? 'bg-gold-50' : 'bg-white'}`}>
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <div className="max-w-3xl">
           <h2 className="font-serif text-3xl font-semibold text-navy-900">{title}</h2>
@@ -52,9 +54,9 @@ export function VisionValuesPage() {
       </section>
 
       <Section id="core-values" title="Our core values" intro={coreValues.intro}>
-        <dl className="grid gap-x-12 border-t border-stone-200 md:grid-cols-2">
-          {coreValues.items.map((v) => (
-            <div key={v.id} className="border-b border-stone-200 py-6">
+        <dl className="grid gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+          {coreValues.items.map((v, i) => (
+            <div key={v.id} className={`border-t-4 pt-4 ${VALUE_COLOURS[i % VALUE_COLOURS.length]}`}>
               <dt className="font-serif text-xl font-semibold text-navy-900">{v.title}</dt>
               <dd className="mt-1.5 leading-relaxed text-stone-700">{v.summary}</dd>
               <dd className="mt-2 text-sm text-stone-500">{v.scriptures}</dd>

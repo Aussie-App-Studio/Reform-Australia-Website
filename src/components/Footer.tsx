@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ExternalLink, Mail, MapPin, ShieldCheck } from 'lucide-react';
+import { Roofline } from './brand';
 import { CrcaLogo } from './CrcaLogo';
 import { footerColumns } from '../data/navigation';
 import { siteConfig } from '../data/siteConfig';
@@ -8,8 +9,9 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="print:hidden border-t border-navy-800 bg-navy-900 text-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <footer className="relative overflow-hidden border-t border-navy-800 bg-navy-900 text-white print:hidden">
+      <Roofline className="absolute -bottom-2 -left-24 hidden w-[28rem] text-white/5 lg:block" />
+      <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
           {/* Brand & Quick Actions Column */}
           <div className="lg:col-span-4 space-y-5">

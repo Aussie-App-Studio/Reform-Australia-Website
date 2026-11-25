@@ -1,11 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  AlertTriangle,
   ArrowLeft,
   ArrowRight,
   ChevronRight,
-  Mail,
   Phone,
   Search,
 } from 'lucide-react';
@@ -44,65 +42,39 @@ function safeChurchDescription(page: ScPage): string {
   return cut.length < text.length ? `${cut.slice(0, cut.lastIndexOf(' '))}…` : cut;
 }
 
-function UrgentHelpPanel({ compact = false }: { compact?: boolean }) {
+function ReportHelp() {
   return (
-    <aside
-      aria-label="Report a concern"
-      className={`rounded-lg border border-rose-200 bg-rose-50 text-rose-950 ${compact ? 'p-5' : 'p-6 sm:p-7'}`}
-    >
-      <div className="flex items-start gap-3">
-        <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-rose-600 text-white">
-          <AlertTriangle className="h-5 w-5" aria-hidden="true" />
-        </span>
-        <div className="min-w-0">
-          <h2 className={`font-serif font-bold ${compact ? 'text-lg' : 'text-xl sm:text-2xl'}`}>Need to report a concern?</h2>
-          <p className="mt-1 text-sm leading-relaxed text-rose-900">
-            If anyone is in immediate danger, call{' '}
-            <a href={tel(urgent.emergency)} className="font-bold underline underline-offset-2">
-              Police {urgent.emergency}
-            </a>{' '}
-            first.
-          </p>
-        </div>
-      </div>
-      <ul className={`mt-4 grid gap-2.5 ${compact ? '' : 'sm:grid-cols-2'}`}>
-        <li>
-          <a
-            href={tel(urgent.primaryPhone)}
-            className="flex items-center gap-3 rounded-md bg-white px-4 py-3 ring-1 ring-rose-200 transition hover:ring-rose-400"
-          >
-            <Phone className="h-4 w-4 shrink-0 text-rose-600" aria-hidden="true" />
-            <span className="min-w-0">
-              <span className="block text-base font-bold tabular-nums text-navy-900">{urgent.primaryPhone}</span>
-              <span className="block text-xs text-stone-600">{urgent.primaryLabel}</span>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            href={tel(urgent.backupPhone)}
-            className="flex items-center gap-3 rounded-md bg-white px-4 py-3 ring-1 ring-rose-200 transition hover:ring-rose-400"
-          >
-            <Phone className="h-4 w-4 shrink-0 text-rose-600" aria-hidden="true" />
-            <span className="min-w-0">
-              <span className="block text-base font-bold tabular-nums text-navy-900">{urgent.backupPhone}</span>
-              <span className="block text-xs text-stone-600">{urgent.backupLabel}</span>
-            </span>
-          </a>
-        </li>
-      </ul>
-      <div className={`mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold ${compact ? 'flex-col' : ''}`}>
-        <Link to={urgent.childReportPath} className="inline-flex items-center gap-1.5 text-rose-800 hover:text-rose-950">
-          How to report a concern about a child <ArrowRight className="h-4 w-4" aria-hidden="true" />
+    <section aria-labelledby="report" className="border-l-4 border-brick-700 pl-5 leading-relaxed text-stone-700">
+      <h2 id="report" className="font-serif text-2xl font-semibold text-navy-900">
+        Reporting a concern
+      </h2>
+      <p className="mt-2">
+        Read how to report a concern{' '}
+        <Link to={urgent.childReportPath} className="font-semibold text-teal-700 underline underline-offset-4">
+          about a child
+        </Link>{' '}
+        or{' '}
+        <Link to={urgent.adultReportPath} className="font-semibold text-teal-700 underline underline-offset-4">
+          about adult misconduct
         </Link>
-        <Link to={urgent.adultReportPath} className="inline-flex items-center gap-1.5 text-rose-800 hover:text-rose-950">
-          How to report adult misconduct <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </Link>
-        <a href={`mailto:${urgent.email}`} className="inline-flex items-center gap-1.5 text-rose-800 hover:text-rose-950">
-          <Mail className="h-4 w-4" aria-hidden="true" /> {urgent.email}
+        , or email{' '}
+        <a href={`mailto:${urgent.email}`} className="font-semibold text-teal-700 underline underline-offset-4">
+          {urgent.email}
         </a>
-      </div>
-    </aside>
+        .
+      </p>
+      <p className="mt-1">
+        For abuse-related reports the Safe Church Unit answers at any time on{' '}
+        <a href={tel(urgent.primaryPhone)} className="underline underline-offset-4">
+          {urgent.primaryPhone}
+        </a>{' '}
+        (no response:{' '}
+        <a href={tel(urgent.backupPhone)} className="underline underline-offset-4">
+          {urgent.backupPhone}
+        </a>
+        ). If anyone is in immediate danger, call {urgent.emergency} first.
+      </p>
+    </section>
   );
 }
 
@@ -172,7 +144,7 @@ function SafeChurchHub({ content }: { content: SafeChurchContent }) {
       />
 
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-        <UrgentHelpPanel />
+        <ReportHelp />
       </section>
 
       <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
@@ -340,25 +312,12 @@ function SafeChurchArticle({ content, page }: { content: SafeChurchContent; page
               <SectionNav content={content} current={page} />
             </div>
           </details>
-          {/* Reporting help first, so it is always in view */}
-          <div className="hidden lg:block">
-            <UrgentHelpPanel compact />
-          </div>
           <div className="hidden lg:block">
             <SectionNav content={content} current={page} />
           </div>
         </div>
 
         <article className="min-w-0">
-          {/* Mobile: slim always-visible reporting strip */}
-          <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-md border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-950 lg:hidden">
-            <AlertTriangle className="h-4 w-4 shrink-0 text-rose-600" aria-hidden="true" />
-            <span className="font-semibold">Need to report?</span>
-            <a href={tel(urgent.primaryPhone)} className="font-bold tabular-nums underline underline-offset-2">
-              {urgent.primaryPhone}
-            </a>
-            <span className="basis-full pl-7 text-xs text-rose-800">If anyone is in immediate danger, call {urgent.emergency}.</span>
-          </div>
           <div className="rounded-lg border border-stone-200 bg-white p-6 sm:p-8 lg:p-10">
             {hasBody ? (
               <RichHtml html={page.html} className="max-w-[72ch]" />

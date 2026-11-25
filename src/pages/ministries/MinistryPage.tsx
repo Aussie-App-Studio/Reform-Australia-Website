@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { ArrowRight, ChevronDown, Download, ExternalLink, Mail, Phone, PlayCircle } from 'lucide-react';
+import { sectionTheme } from '../../components/brand';
 import { PageHeader } from '../../components/PageHeader';
 import { YouTubeEmbedCard } from '../../components/YouTubeEmbedCard';
 import { ministryMegaMenuColumns } from '../../data/navigation';
@@ -37,7 +38,7 @@ function Actions({ page }: { page: MinistryPageData }) {
           url={a.url}
           className={
             a.kind === 'primary'
-              ? 'inline-flex items-center gap-2 rounded-md bg-navy-900 px-4 py-2.5 font-semibold text-white hover:bg-navy-800'
+              ? 'inline-flex items-center gap-2 rounded-md bg-gold-400 px-4 py-2.5 font-semibold text-navy-950 hover:bg-gold-500'
               : 'inline-flex items-center gap-2 rounded-md border border-stone-300 bg-white px-4 py-2.5 font-semibold text-navy-900 hover:border-navy-900'
           }
         >
@@ -269,6 +270,7 @@ export function StandardPage({
   related?: RelatedLink[];
   relatedTitle?: string;
 }) {
+  const theme = sectionTheme(useLocation().pathname);
   const resources = page.resources ?? [];
   const [allNews, setAllNews] = useState(false);
   const NEWS_LIMIT = 6;
@@ -287,8 +289,9 @@ export function StandardPage({
       />
 
       {page.hero && (
-        <div className="bg-stone-50">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className={`relative ${theme.band}`}>
+          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 bg-stone-50" />
+          <div className="mx-auto relative max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Never wider than the photo itself: small banners would look soft stretched */}
             <div className="relative" style={{ maxWidth: naturalWidth(page.hero.src) }}>
             <img

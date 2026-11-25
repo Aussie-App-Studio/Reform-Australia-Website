@@ -30,7 +30,6 @@ function page<P extends object>(load: Loader, name: string) {
 }
 
 const FindAChurchPage = page(() => import('./pages/FindAChurchPage'), 'FindAChurchPage');
-const HomePreviewPage = page<{ design: 'a' | 'b' }>(() => import('./pages/HomePreviewPage'), 'HomePreviewPage');
 const VisionValuesPage = page(() => import('./pages/VisionValuesPage'), 'VisionValuesPage');
 const BeliefsPage = page(() => import('./pages/BeliefsPage'), 'BeliefsPage');
 const HistoryPage = page(() => import('./pages/HistoryPage'), 'HistoryPage');
@@ -48,7 +47,6 @@ const NotFoundPage = page(() => import('./pages/NotFoundPage'), 'NotFoundPage');
 
 /** Which page component each address uses (kept in step with <Routes> below). */
 const ROUTE_PAGES: [RegExp, string][] = [
-  [/^\/design-[ab]$/, 'HomePreviewPage'],
   [/^\/find-a-church$/, 'FindAChurchPage'],
   [/^\/who-we-are\/vision-values$/, 'VisionValuesPage'],
   [/^\/who-we-are\/beliefs$/, 'BeliefsPage'],
@@ -124,9 +122,6 @@ export function App() {
           <Suspense fallback={<PageLoadingFallback />}>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              {/* Home page design options for review (Nov 2026): remove once one is chosen */}
-              <Route path="/design-a" element={<HomePreviewPage design="a" />} />
-              <Route path="/design-b" element={<HomePreviewPage design="b" />} />
               <Route path="/find-a-church" element={<FindAChurchPage />} />
 
               {/* Who We Are */}

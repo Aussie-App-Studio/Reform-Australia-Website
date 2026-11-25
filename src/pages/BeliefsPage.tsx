@@ -65,17 +65,21 @@ const GROUPS: { title: string; intro: string; docs: StandardDoc[] }[] = [
   },
 ];
 
+const OVERVIEW = beliefsData.overview.split('. ');
+
 export function BeliefsPage() {
   return (
     <>
       <PageHeader
         title="What we believe"
-        description={beliefsData.overview}
+        description={`${OVERVIEW.slice(0, 2).join('. ')}.`}
+        photo={{ src: `${import.meta.env.BASE_URL}images/ministries/candidacy/rtc-students.webp`, alt: 'Three students talking over open Bibles on a lawn', credit: 'Reformed Theological College (used with permission)' }}
         breadcrumbs={[{ label: 'Who we are' }, { label: 'What we believe' }]}
       />
 
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20 [&>*]:max-w-3xl">
+          <p className="mb-14 text-xl leading-relaxed text-stone-700">{OVERVIEW.slice(2).join('. ')}</p>
           {GROUPS.map((group, gi) => (
             <div key={group.title} className={gi > 0 ? 'mt-14' : ''}>
               <h2 className="font-serif text-3xl font-semibold text-navy-900">{group.title}</h2>

@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { AlertTriangle, Check, CheckCircle2, Copy, Mail, Phone, Send } from 'lucide-react';
+import { Check, CheckCircle2, Copy, Mail, Phone, Send } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import contactTopics from '../data/contactTopics.json';
 import { siteConfig } from '../data/siteConfig';
@@ -45,7 +45,6 @@ export function ContactPage() {
   }, [searchParams]);
 
   const topic = topics.find((t) => t.id === topicId) ?? topics[0];
-  const urgent = siteConfig.safeChurch.urgent;
 
   function chooseTopic(id: string) {
     setTopicId(id);
@@ -103,21 +102,6 @@ export function ContactPage() {
   return (
     <>
       <PageHeader title="Contact us" description="Send us a message, or contact the right person directly." breadcrumbs={[{ label: 'Contact' }]} />
-
-      {/* Urgent safeguarding line */}
-      <div className="border-b border-rose-200 bg-rose-50">
-        <p className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-2 gap-y-1 px-4 py-3 text-[0.95rem] text-rose-950 sm:px-6 lg:px-8">
-          <AlertTriangle className="h-4 w-4 shrink-0 text-rose-600" aria-hidden="true" />
-          <span className="font-semibold">Reporting abuse or a safeguarding concern?</span>
-          <span>
-            Call the Safe Church Unit on{' '}
-            <a href={tel(urgent.primaryPhone)} className="font-semibold underline underline-offset-2">
-              {urgent.primaryPhone}
-            </a>{' '}
-            at any time. If someone is in immediate danger, call {urgent.emergency}.
-          </span>
-        </p>
-      </div>
 
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8 lg:py-16">
         {/* Form */}
@@ -236,6 +220,13 @@ export function ContactPage() {
             Looking for a local church?{' '}
             <Link to="/find-a-church" className="font-semibold text-teal-700 underline-offset-4 hover:underline">
               Find a church near you
+            </Link>
+            .
+          </p>
+          <p className="mt-8 border-t border-stone-200 pt-5 text-stone-700">
+            Raising a safeguarding concern?{' '}
+            <Link to="/safe-church" className="font-semibold text-teal-700 underline-offset-4 hover:underline">
+              How to report it to Safe Church
             </Link>
             .
           </p>

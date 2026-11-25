@@ -16,13 +16,14 @@ export function MinistriesPage() {
       <PageHeader
         title="Ministries"
         description="The work CRCA churches do together: with children and young people, in training and church planting, and in mission at home and overseas."
+        photo={{ src: `${import.meta.env.BASE_URL}images/ministries/gems/hero.webp`, alt: 'Girls in bright shirts and red headbands walking arm in arm at a GEMS camp' }}
         breadcrumbs={[{ label: 'Ministries' }]}
       />
 
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         {ministryMegaMenuColumns.map((col) => (
           <section key={col.id} aria-labelledby={`grp-${col.id}`} className="grid gap-6 border-t border-stone-200 py-10 first:border-t-0 first:pt-0 lg:grid-cols-12 lg:gap-16">
-            <h2 id={`grp-${col.id}`} className="font-serif text-2xl font-semibold text-navy-900 lg:col-span-4">
+            <h2 id={`grp-${col.id}`} className="font-serif text-2xl font-semibold text-forest-700 sm:text-3xl lg:col-span-4">
               {GROUP_LABELS[col.id as MinistryGroup]}
             </h2>
             <ul className="divide-y divide-stone-200 border-b border-stone-200 lg:col-span-8">
