@@ -1,0 +1,4 @@
+# Not launched yet: keep the whole site out of search engines.
+# Build with SITE_INDEXING=on at launch.
+User-agent: *
+Disallow: /
