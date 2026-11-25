@@ -387,7 +387,7 @@ export function AustraliaChurchMap({
         className="h-full w-full"
         aria-label="Interactive map of Christian Reformed Churches of Australia congregations"
       />
-      <div className="pointer-events-none absolute bottom-3 left-3 z-[450] hidden sm:block rounded-lg bg-white/90 px-2.5 py-1 text-[11px] font-medium text-navy-900 shadow-xs border border-stone-200">
+      <div className="pointer-events-none absolute bottom-3 left-3 z-[450] hidden sm:block rounded-lg bg-white px-2.5 py-1 text-[11px] font-medium text-navy-900 shadow-xs border border-stone-200">
         Select a pin to view service times and church details
       </div>
     </div>

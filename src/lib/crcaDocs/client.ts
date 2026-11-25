@@ -1,4 +1,5 @@
 import { parseSearchShortcut } from './features';
+import { sentenceCase } from '../../utils/sentenceCase';
 import type {
   ChurchOrderJson,
   DocsIndex,
@@ -39,7 +40,8 @@ export function encodeDocUrl(relPath: string): string {
     relPath
       .split('/')
       .filter((s) => s.length > 0)
-      .map((segment) => encodeURIComponent(segment))
+      // Commas are valid in a URL path; some static servers fail to decode %2C.
+      .map((segment) => encodeURIComponent(segment).replace(/%2C/gi, ','))
       .join('/')
   );
 }
@@ -58,9 +60,55 @@ async function fetchJson<T>(url: string): Promise<T> {
   return (await res.json()) as T;
 }
 
+/**
+ * The synced index (from the crca-forms-and-documents repo) groups everything in the
+ * "Creeds & Confessions" folder together. Present it the way the CRCA describes its standards:
+ *  - Reformed Confessions = the Three Forms of Unity only (Belgic, Heidelberg, Dort)
+ *  - Westminster and Our World Belongs to God are "held in high regard" / "greatly appreciated",
+ *    not confessional standards -> "Other Reformed Statements"
+ *  - the Form of Subscription is a church-order document -> with the Church Order
+ * Doc IDs (and therefore URLs) are unchanged.
+ */
+function regroupIndex(index: DocsIndex): DocsIndex {
+  const creeds = index.categories.find((c) => c.id === 'creeds-and-confessions');
+  const order = index.categories.find((c) => c.id === 'church-order');
+  if (!creeds) return tidyTitles(index);
+  const take = (groupId: string) => {
+    const g = creeds.groups.find((x) => x.id === groupId);
+    creeds.groups = creeds.groups.filter((x) => x.id !== groupId);
+    return g?.items ?? [];
+  };
+  const reformed = creeds.groups.find((g) => g.id === 'reformed-confessions');
+  const westminster = reformed?.items.filter((i) => /westminster/i.test(i.id)) ?? [];
+  if (reformed) {
+    reformed.title = 'Reformed Confessions (Three Forms of Unity)';
+    reformed.items = reformed.items.filter((i) => !/westminster/i.test(i.id));
+  }
+  const testimony = take('contemporary-testimony');
+  const subscription = take('form-of-subscription');
+  if (westminster.length || testimony.length) {
+    creeds.groups.push({ ...(reformed ?? creeds.groups[0]), id: 'other-reformed-statements', title: 'Other Reformed Statements', items: [...westminster, ...testimony] });
+  }
+  if (subscription.length && order?.groups[0]) {
+    order.groups[0].items = [...order.groups[0].items, ...subscription];
+  } else if (subscription.length) {
+    creeds.groups.push({ ...creeds.groups[0], id: 'form-of-subscription', title: 'Form of Subscription', items: subscription });
+  }
+  return tidyTitles(index);
+}
+
+/** Category and group names in sentence case (house style). Document titles are left alone. */
+function tidyTitles(index: DocsIndex): DocsIndex {
+  for (const c of index.categories) {
+    c.title = sentenceCase(c.title);
+    for (const g of c.groups) g.title = sentenceCase(g.title);
+  }
+  return index;
+}
+
 export function fetchDocsIndex(): Promise<DocsIndex> {
   if (!docsIndexPromise) {
-    docsIndexPromise = fetchJson<DocsIndex>(`${DOCS_BASE}/index.json`).catch((err) => {
+    docsIndexPromise = fetchJson<DocsIndex>(`${DOCS_BASE}/index.json`).then(regroupIndex).catch((err) => {
       docsIndexPromise = null;
       throw err;
     });
@@ -109,7 +157,12 @@ export function fetchDocMarkdown(docPath: string): Promise<string> {
       if (!res.ok) {
         throw new Error(`Unable to load document (HTTP ${res.status})`);
       }
-      return res.text();
+      const text = await res.text();
+      // A missing file on a single-page-app host returns the site's index.html with HTTP 200.
+      if (/^s*<!doctype html|^s*<html/i.test(text)) {
+        throw new Error('Unable to load document (file not found)');
+      }
+      return text;
     })
     .catch((err) => {
       markdownCache.delete(docPath);
@@ -147,6 +200,16 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#39;');
 }
 
+/** Lower case without apostrophes, so "lords supper" finds "Lord's Supper". */
+function fold(s: string): string {
+  return s.toLowerCase().replace(/['’‘]/g, '');
+}
+
+/** A pattern that matches the text with or without apostrophes between letters. */
+function loosePattern(t: string): string {
+  return [...t.replace(/['’‘]/g, '')].map(escapeRegex).join("['’‘]?");
+}
+
 function escapeRegex(str: string): string {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -159,11 +222,10 @@ function buildHighlightedSnippet(
   const normalized = rawText.replace(/\s+/g, ' ').trim();
   if (!normalized) return '';
 
-  const lower = normalized.toLowerCase();
-  let matchIdx = lower.indexOf(phrase);
+  let matchIdx = normalized.search(new RegExp(loosePattern(phrase), 'i'));
   if (matchIdx < 0) {
     for (const t of terms) {
-      const idx = lower.indexOf(t);
+      const idx = normalized.search(new RegExp(loosePattern(t), 'i'));
       if (idx >= 0) {
         matchIdx = idx;
         break;
@@ -186,7 +248,7 @@ function buildHighlightedSnippet(
     return `${prefix}${escapeHtml(slice)}${suffix}`;
   }
 
-  const re = new RegExp(`(${highlightTargets.map(escapeRegex).join('|')})`, 'gi');
+  const re = new RegExp(`(${highlightTargets.map(loosePattern).join('|')})`, 'gi');
   let html = '';
   let lastIdx = 0;
   for (const m of slice.matchAll(re)) {
@@ -212,7 +274,7 @@ export function searchDocuments(
   const q = query.trim();
   if (!q) return [];
 
-  const lowerQ = q.toLowerCase();
+  const lowerQ = fold(q);
   const terms = lowerQ.split(/\s+/).filter((t) => t.length > 0);
   const results: SearchResult[] = [];
 
@@ -241,10 +303,10 @@ export function searchDocuments(
   );
 
   for (const doc of allDocs) {
-    const titleLower = doc.title.toLowerCase();
-    const groupLower = `${doc.categoryTitle} ${doc.groupTitle}`.toLowerCase();
+    const titleLower = fold(doc.title);
+    const groupLower = fold(`${doc.categoryTitle} ${doc.groupTitle}`);
     const fullText = searchDocById.get(doc.id) || '';
-    const fullTextLower = fullText.toLowerCase();
+    const fullTextLower = fold(fullText);
 
     let score = 0;
 
@@ -256,7 +318,7 @@ export function searchDocuments(
 
     let matchedHeading: { text: string; slug: string } | null = null;
     for (const h of doc.headings || []) {
-      const hl = h.text.toLowerCase();
+      const hl = fold(h.text);
       if (hl.includes(lowerQ)) {
         score += 95;
         if (!matchedHeading) matchedHeading = h;

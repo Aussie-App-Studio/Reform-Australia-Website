@@ -15,7 +15,7 @@ export function YouTubeEmbedCard({ youtubeId, title, subtitle }: YouTubeEmbedCar
   const [playing, setPlaying] = useState(false);
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-xs">
+    <div className="overflow-hidden rounded-lg border border-stone-200 bg-white">
       <div className="relative aspect-video bg-navy-950">
         {playing ? (
           <iframe
@@ -34,6 +34,7 @@ export function YouTubeEmbedCard({ youtubeId, title, subtitle }: YouTubeEmbedCar
             className="group relative block h-full w-full cursor-pointer text-left"
           >
             <img
+              // hqdefault is the only still every video has (sddefault/maxresdefault can be missing).
               src={`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`}
               alt={title}
               loading="lazy"

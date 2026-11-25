@@ -14,10 +14,12 @@
     "title": "Safe Church Unit",
     "subtitle": "Safeguarding advice, WWCC compliance, training & confidential reporting",
     "routeToLabel": "CRCA Safe Church Unit",
-    "externalUrl": "https://safechurch.crca.org.au/",
-    "externalLabel": "Visit safechurch.crca.org.au",
-    "email": "admin@crca.org.au",
-    "responseNote": "If you need safeguarding support, policy guidance, or training for your local congregation, access the Safe Church portal directly.",
+    "externalUrl": "/safe-church",
+    "externalLabel": "Open the Safe Church section",
+    "email": "scu@crca.org.au",
+    "secondaryEmail": "childsafe@crca.org.au",
+    "phone": "0436 304 451",
+    "responseNote": "All matters are handled promptly and confidentially. For urgent abuse-related reports call 0436 304 451 at any time (no response: 0419 330 003). If anyone is in immediate danger, call Police on 000 first.",
     "iconName": "ShieldCheck"
   },
   {
@@ -39,7 +41,7 @@
     "subtitle": "Church Planting Taskforce (CPT) & $2,500 matching seed grants",
     "routeToLabel": "Church Planting Taskforce Convenor",
     "contactName": "KJ Tromp (CPT Convenor)",
-    "email": "kj@southbarwon.org.au",
+    "email": "kj@openhouse.church",
     "responseNote": "For churches exploring a new plant, revitalisation project, or submitting a Missional Explorations application.",
     "iconName": "MapPinPlus"
   },

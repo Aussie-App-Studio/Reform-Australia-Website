@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Edit the CRCA website</title>
+    <link rel="icon" type="image/png" href="/images/logos/favicon-64.png" />
+    <style>
+      #crca-admin-loading {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483647;
+        background: #fff;
+        font: 17px/1.5 system-ui, sans-serif;
+        color: #00224c;
+        padding: 15vh 1.5rem 0;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="crca-admin-loading">
+      <p><strong>Opening the CRCA website editor…</strong></p>
+    </div>
+    <!-- Settings (collections and fields) are in config.js. -->
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <script src="./config.js"></script>
+    <script>
+      // One-step sign-in: this page is only reachable after the CRCA email-code sign-in
+      // (Cloudflare Access), so fetch the editor's key now and go straight into the editor,
+      // with no "Sign in with GitHub" step.
+      (async function () {
+        var box = document.getElementById('crca-admin-loading');
+        try {
+          var res = await fetch('/api/cms-auth?format=json', { credentials: 'same-origin', cache: 'no-store' });
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          var data = await res.json();
+          // Sveltia's own sign-in link (#/signin/<base64url JSON>): it signs in with the key and
+          // removes it from the address straight away. The part after # never leaves the browser.
+          var json = JSON.stringify({ token: data.token });
+          var b64 = btoa(unescape(encodeURIComponent(json))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+          history.replaceState(null, '', location.pathname + '#/signin/' + b64);
+        } catch (e) {
+          box.innerHTML =
+            '<p><strong>The editor couldn’t open.</strong></p><p>Please reload this page. If it happens again, contact the website administrator.</p>';
+          return;
+        }
+        var s = document.createElement('script');
+        s.src = 'https://unpkg.com/@sveltia/cms@0.262.1/dist/sveltia-cms.js';
+        s.onload = function () {
+          window.CMS.init({ config: window.CMS_CONFIG });
+          // Sveltia asks "Continue only if you created the link yourself" for sign-in links.
+          // We made this link a moment ago on this page, so confirm it, and keep the
+          // "Opening…" screen up until the editor is ready.
+          var started = Date.now();
+          var timer = setInterval(function () {
+            var dialog = [].find.call(document.querySelectorAll('[role="dialog"], [role="alertdialog"], dialog'), function (d) {
+              return /Sign In with Link/i.test(d.textContent || '');
+            });
+            if (dialog) {
+              var ok = [].find.call(dialog.querySelectorAll('button'), function (b) {
+                return /^\s*Sign In\s*$/i.test(b.textContent || '');
+              });
+              if (ok) ok.click();
+              return;
+            }
+            // Ready once the editor's menu (with our first collection) is showing.
+            var text = document.body.innerText || '';
+            var ready = /Positions vacant/.test(text) && !/Sign In with/i.test(text);
+            if (ready || Date.now() - started > 20000) {
+              clearInterval(timer);
+              box.remove();
+            }
+          }, 150);
+        };
+        document.body.appendChild(s);
+      })();
+    </script>
+  </body>
+</html>

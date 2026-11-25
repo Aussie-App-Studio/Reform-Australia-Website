@@ -1,0 +1,498 @@
+{
+  "slug": "world-transform",
+  "name": "World Transform",
+  "group": "global-mission",
+  "summary": "The CRCA's ministry of mercy overseas: showing mercy in Christ's name through development, relief and gospel ministry with partners in India, the Solomon Islands and Papua New Guinea.",
+  "logo": {
+    "src": "/images/logos/ministries/world-transform.webp",
+    "alt": "World Transform logo"
+  },
+  "hero": {
+    "src": "/images/ministries/world-transform/hero.webp",
+    "alt": "Village women in colourful saris standing with water pots around a new hand pump on a rocky hillside in India"
+  },
+  "body": [
+    {
+      "id": "who-we-are",
+      "heading": "Who we are",
+      "paragraphs": [
+        "World Transform is the official denominational ministry of the CRCA: \"Showing mercy – in Christ's name\". We mainly work in deed ministries in developing countries in Asia.",
+        "We believe that our living God is deeply concerned for sinful humanity. We also believe that the Church in this world is to follow Christ's example and reach out to those who bear the image of God."
+      ],
+      "list": [
+        "We reach out by proclaiming the message of the Gospel of God's grace for repentant sinners.",
+        "We also reach out with deeds of love and compassion, as best we can, to those who are poor, the victims of injustice, the sick, the suffering, the orphans and the widows."
+      ]
+    },
+    {
+      "id": "relationship-to-the-crca",
+      "heading": "Our place in the CRCA",
+      "paragraphs": [
+        "The CRCA established what is now known as World Transform in 1965. It was formerly known as WD&R, the World Development and Relief sub-committee of the Christian Reformed Churches of Australia.",
+        "World Transform is a subcommittee under GROW. It has the instruction to minister, in the Name of the Lord of mercy, to the spiritual and physical needs of all those in distress, including through natural disasters, war and hostilities, irrespective of sex, race or creed. This ministry includes advocating for justice for the oppressed.",
+        "World Transform represents the whole denomination in this task. Synod appoints its members, and its mandate can only be changed by Synod."
+      ]
+    },
+    {
+      "id": "where-we-work",
+      "heading": "Where we work",
+      "paragraphs": [
+        "Our mandate gives priority to projects connected with the CRCA and to projects in Asia and the South Pacific. Current work includes:"
+      ],
+      "list": [
+        "India: Peniel Community College near Bangalore, the Heart Project near Barwani in Madhya Pradesh, the King Project in Udaipur District, Rajasthan, the Community Health Program in central western India, and tribal evangelists in central India through IndiWay.",
+        "Solomon Islands: clean water, Christian schooling, children's and youth ministry and prison ministry through SWIM.",
+        "Papua New Guinea: schools, student health and teaching technology through the Reformed Churches Bible College.",
+        "Bethesda DTSC: a training centre for students living with disabilities."
+      ]
+    },
+    {
+      "id": "partners",
+      "heading": "Our partners",
+      "paragraphs": [
+        "Our mandate asks us to work through Reformed relief organisations where there is one in or near the area, and otherwise through the most suitable evangelical organisation. Partners named in World Transform's projects and gift catalogue are:"
+      ],
+      "list": [
+        "Peniel Community College, Bangalore, India. Its funding comes from World Transform and the National Diaconate Committee of the Reformed Churches of New Zealand.",
+        "EFICOR (the Evangelical Fellowship of India Commission on Relief), which runs the Heart Project. Funding is channelled through Tearfund Australia (formerly TEAR Australia), which administers the project.",
+        "Christian Reformed Fellowship India (CRFI), which runs the King Project.",
+        "IndiWay, which supports more than 80 tribal evangelists and their families in central India.",
+        "SWIM (Supporting Work in Mission), the CRCA's mission base in the Solomon Islands.",
+        "The Reformed Churches Bible College in Papua New Guinea.",
+        "Bethesda DTSC, which trains students living with disabilities.",
+        "World Renew, which World Transform worked with on the 2017 Terai flood response in Nepal."
+      ]
+    },
+    {
+      "id": "peniel-community-college",
+      "heading": "Peniel Community College, India",
+      "paragraphs": [
+        "Peniel Community College is near the slums of Bangalore, India. Its mission is to train very poor, vulnerable young women from many religious, ethnic and cultural backgrounds. Dedicated, qualified and experienced Christian teachers train them in sewing, embroidery, garment design, nursing, computer skills and literacy.",
+        "Life is especially tough for girls growing up in poverty in India. They are often mistreated, abused and rejected because of their families' hardships. Many of the students have suffered violence and neglect, and often feel unwanted and unloved.",
+        "A one or two year course at Peniel gives them useful skills so they can find work, and introduces them to the tender love of Jesus (Luke 4:18). Peniel's teachers nurture the students spiritually as well as teaching them skills. Graduation becomes a celebration of the grace of God.",
+        "Each year Peniel helps more than 100 young women gain practical skills in areas such as nursing and tailoring. Around 40 students need board and lodging while they study. Some have fled persecution and others have lost family support.",
+        "A year's training for one student costs about $1,000. After tailoring training, graduates need a manually operated sewing machine (about $120) to earn an income from home.",
+        "For years Peniel has rented its premises and faced rising rents and the threat of eviction. A permanent campus is now being built, with room for classrooms, accommodation, practical training, shared meals and daily Christian nurture."
+      ],
+      "image": {
+        "src": "/images/ministries/world-transform/peniel.webp",
+        "alt": "Peniel nursing students in uniform studying wall charts about blood groups in a classroom",
+        "caption": "Nursing students at Peniel Community College"
+      }
+    },
+    {
+      "id": "heart-project",
+      "heading": "The Heart Project, Madhya Pradesh",
+      "paragraphs": [
+        "Madhya Pradesh, right in the middle of India, is a very poor state with high levels of illiteracy, poor health care and food insecurity among rural people. Women are among the most disadvantaged. Migration, malnutrition and the deaths of children are common, and government schemes often fail to reach the poor.",
+        "World Transform, through experienced partners in India, began this integrated tribal development project in April 2015 in some 20 villages near Barwani. It is in the same area where GOSPEL evangelists teach about the Father heart of God, which is how the project got its name. It brings word and deed together, and our prayer is that \"the people walking in darkness have seen a great light\" (Isaiah 9:2).",
+        "Where there is abject poverty, children can be exploited and enslaved, teenage girls lured into brothels, and illiterate villagers trapped by loans from unscrupulous money lenders after poor harvests. The Heart Project works to break these chains of oppression (Psalm 116:16).",
+        "The aim is for the target villages to be self-reliant after two three-year cycles, through:"
+      ],
+      "list": [
+        "Better agricultural production, including improved seeds and simple training",
+        "Encouraging youth education, so girls do not drop out of school",
+        "Teaching the value and dignity of every image bearer, so people at risk of exploitation know their rights",
+        "Women's self-help groups",
+        "Savings schemes and links with banks, to end dependence on money lenders",
+        "Income generation schemes",
+        "Linking village leaders with local government services",
+        "Better health and sanitation"
+      ],
+      "image": {
+        "src": "/images/ministries/world-transform/heart-project.webp",
+        "alt": "Farmers harvesting a dry crop field below a hill in rural central India",
+        "caption": "Farming families in the Heart Project area"
+      }
+    },
+    {
+      "id": "heart-project-results",
+      "heading": "The Heart Project after five years",
+      "paragraphs": [
+        "EFICOR's 2019 to 2020 annual report says that after five years the 20 villages had grown in community ownership of their own development. Village development committees had filed 618 applications for 16 government schemes, and 514 were approved, bringing roads, electricity and school buildings.",
+        "Links with the local agricultural research centre helped farmers increase their yields and income, which eased hungry seasons and reduced the need to migrate for work. Self-help groups learnt to save, run small businesses and lend to one another, reducing reliance on outside credit. Many people also gave up tobacco and alcohol.",
+        "Because funding for the Heart Project is channelled through Tearfund Australia, gifts to this project can receive a tax-deductible receipt. Email your name and contact details to worldtransform@crca.org.au to request one."
+      ]
+    },
+    {
+      "id": "king-project",
+      "heading": "The King Project, Rajasthan",
+      "paragraphs": [
+        "The King Community Development Project is an integrated tribal development project in 22 villages of Jhadol block, Udaipur District, Rajasthan, India's \"land of kings\". It is run by Christian Reformed Fellowship India (CRFI) and was planned to run from 2019 to 2022.",
+        "Jhadol is hilly, rocky country where about three quarters of the people belong to scheduled tribes. Only about 31% of women can read. CRFI staff chose the villages after surveys and group discussions with men, women, young people, farmers and children, who named health, farming, economic development, education and training as their greatest needs.",
+        "The project plan aimed to help about 12,500 people by:"
+      ],
+      "list": [
+        "Micro-finance and business training to help women start small businesses",
+        "Vocational training in tailoring, beauty work, masonry and bicycle repair",
+        "Seminars on women's rights and preventing sexual harassment",
+        "Bicycles for schoolgirls, so they can keep studying",
+        "A community health centre with mobile outreach, referrals for serious illness and nutrition supplements for pregnant women",
+        "New bore wells, using government schemes",
+        "Training, new techniques and seeds or saplings for farmers",
+        "Awareness of climate change in the villages"
+      ]
+    },
+    {
+      "id": "community-health-program",
+      "heading": "Community Health Program, central western India",
+      "paragraphs": [
+        "India has world-class hospitals in its big cities, but medical care is hardly available to the poor, especially poor tribal people. Superstition, unreliable water, malnutrition and lack of knowledge all harm community health. The Community Health Program, supported by World Transform, is a bridge to share the love of God.",
+        "The team works in two regions. In the northern region of 34 villages, nurses travel by scooter or walk where there are no roads. The southern region, in another district, started six months later. Skin infections, scabies and ringworm are common there, and the needs are very great.",
+        "The program has three parts: medical help, health awareness and counselling. Nurses provide medicine for illnesses such as malaria, typhoid, tuberculosis, gastroenteritis, respiratory and skin infections, anaemia, leprosy and malnutrition, with special care for pregnant women and children. In one year about 7,500 villagers turned from witch doctors to helpful medicine, every village had two awareness programs, and 72 families received counselling.",
+        "One woman, Santaben, injured her foot and was told by a witch doctor that the infection came from evil spirits and that she must not use medicine. After six months she could no longer walk. At the clinic her wound was cleaned and treated with antibiotics, and it healed. She was so thankful that she let the team share the Gospel with her.",
+        "Please pray about the challenges the program faces: high rates of malnutrition, anaemia in 90% of pregnant women, superstition, and early marriage. With God's blessing and the churches' support, World Transform's vision is to at least double this work. A gift of $45 provides up to 100 prescriptions, and $150 supports a nurse for a month."
+      ],
+      "image": {
+        "src": "/images/ministries/world-transform/community-health.webp",
+        "alt": "Nurses in white coats sorting medicines at a crowded village health clinic",
+        "caption": "A Community Health Program clinic"
+      }
+    },
+    {
+      "id": "indiway",
+      "heading": "IndiWay: tribal evangelists in central India",
+      "paragraphs": [
+        "More than 80 tribal evangelists and their families serve full time across central India, taking the gospel to places where Christ has never been named. IndiWay and partners on the ground provide mentoring, training in the Reformed faith and regular encouragement.",
+        "Many evangelists have had little chance of formal theological training. Week-long intensives run by Bible college lecturers give them stronger biblical foundations for planting churches. Motorbikes, helmets and fuel help them reach remote villages across rugged country.",
+        "Supporters of an evangelist receive a profile and prayer updates. For more information, email indiway@crca.org.au or call 0400 784 323."
+      ],
+      "image": {
+        "src": "/images/ministries/world-transform/indiway.webp",
+        "alt": "A large group of men, women and children standing in front of a tiled-roof village building in central India",
+        "caption": "Evangelists and villagers in central India"
+      }
+    },
+    {
+      "id": "solomon-islands",
+      "heading": "SWIM, Solomon Islands",
+      "paragraphs": [
+        "World Transform's gift catalogue also supports the work of SWIM, the CRCA's mission base in the Solomon Islands.",
+        "SWIM provides many villages with clean drinking water. One village elder in Ghorabau thanked the team for bringing taps to the homes of the whole village: \"We no longer need to walk 2 km every day to fetch water from a stream.\" SWIM's pastor also runs Biblical leadership training in the communities.",
+        "SWIM partners with a local Christian school to pay school fees and provide uniforms for sponsored children ($400 a year), and provides Bibles for its growing children's and youth ministries.",
+        "SWIM's pastor has trained helpers to take the Crossroads correspondence Bible study courses into three prisons, reaching hundreds of inmates. Prisoners who finish the course receive a certificate and, on release, a support pack with food, bedding, hygiene items and a Bible. The pastor and his wife continue to support them with short-term accommodation, Bible study and family counselling."
+      ],
+      "image": {
+        "src": "/images/ministries/world-transform/swim-prison-ministry.webp",
+        "alt": "SWIM's pastor standing with a prison officer and newly released prisoners holding Bibles and support packs",
+        "caption": "Released prisoners receive support packs and Bibles"
+      }
+    },
+    {
+      "id": "papua-new-guinea",
+      "heading": "Reformed Churches Bible College, Papua New Guinea",
+      "paragraphs": [
+        "For the Reformed Churches to grow in Papua New Guinea, they need their own schools so that children know the Scriptures and are well educated. Classes in the public system can have about 60 students, and teachers do not always turn up. The Reformed Churches have developed four schools, which use the My Father's World curriculum.",
+        "The health system is under pressure. The college takes seriously ill students to hospital, and buys pain relief and antibiotics that it sells at a much-reduced price to students, church members and neighbours.",
+        "The Bible College is also adding projectors, screens, laptops and whiteboards for teaching. These break down easily in the local conditions, so a technology fund helps maintain them."
+      ],
+      "image": {
+        "src": "/images/ministries/world-transform/png-school.webp",
+        "alt": "Primary school children in blue uniforms working at long tables in an open-sided classroom",
+        "caption": "A Reformed Churches school in Papua New Guinea"
+      }
+    },
+    {
+      "id": "bethesda",
+      "heading": "Bethesda DTSC",
+      "paragraphs": [
+        "Bethesda DTSC trains students living with disabilities. Its main income comes from selling eggs to local shops, so a larger chicken house (budget about $10,000) will help it train more students as numbers grow.",
+        "Bethesda has no town water and depends on tank water for drinking and cooking. Its new trainee houses need guttering and tanks (about $3,000 each), and six staff houses still need their own toilet and shower (about $2,500 each).",
+        "Bethesda offers selected students a six-month paid internship to help them into work, and gives graduates simple tools for sewing, carpentry or farming so they can keep using their skills at home."
+      ],
+      "image": {
+        "src": "/images/ministries/world-transform/bethesda.webp",
+        "alt": "Two new blue timber trainee houses on stilts at the Bethesda training centre",
+        "caption": "New trainee houses at Bethesda"
+      }
+    },
+    {
+      "id": "emergency-relief",
+      "heading": "Emergency relief",
+      "paragraphs": [
+        "World Transform seeks to help when there are emergencies around the world, especially in our region. In such emergencies people need immediate help. Our aim is relief that leads to lasting solutions, so we try to make sure relief work leads to good development.",
+        "When disaster strikes, World Transform may appeal to CRCA churches for donations and send them through the most suitable channel with the least delay. In Australia, it works through the deacons of nearby CRCA churches where possible.",
+        "Before responding, World Transform asks questions such as: is this the most pressing need, is it in our region, will the aid really reach the people in need, is there an evangelical or partner church to distribute it, and will there be an opportunity for gospel follow-up by the local church.",
+        "Past responses include the Kathmandu earthquake in Nepal, the 2017 Terai floods in Nepal (with World Renew) and the 2019 Australian bushfires.",
+        "For information about current emergency appeals, contact Ben Peletier at worldtransform@crca.org.au or 0400 784 323."
+      ]
+    },
+    {
+      "id": "gift-catalogue",
+      "heading": "The 2026 gift catalogue: Gifts that Transform",
+      "paragraphs": [
+        "Each year World Transform publishes a catalogue of gifts. Gifts that Transform 2026 has 27 gifts supporting education, clean water, health care, livelihoods and Christian ministry. All amounts are in Australian dollars."
+      ],
+      "list": [
+        "Gift 01, From Poverty to Purpose: training for a young woman at Peniel College ($83 a month or $1,000 a year)",
+        "Gift 02, A Meal, A Home, A Future: board and lodging for a Peniel student ($20 a month or $240 a year)",
+        "Gift 03, Sewing a Future Together: a sewing machine for a Peniel graduate ($120)",
+        "Gift 04, A Permanent Home for Peniel: towards the new building (any amount from $10)",
+        "Gift 05, A Well of Hope: a well and hand pump for a village ($1,300)",
+        "Gift 06, Planting a Better Future: improved seeds and training for a whole village through the Heart Project ($350, tax deductible)",
+        "Gift 07, Simple Medicines, Huge Changes: up to 100 prescriptions through village clinics ($45)",
+        "Gift 08, A Goat for a Family in Need ($80)",
+        "Gift 09, Chickens for Daily Provision ($40)",
+        "Gift 10, Strong Teachers, Thriving Students: training local educators at tuition centres ($75)",
+        "Gift 11, Supporting Medical Missionaries: a Community Health Program nurse ($150 a month or $1,800 a year)",
+        "Gift 12, Backpacks and Bright Smiles: school supplies, a uniform and a Christmas outfit for a child ($30)",
+        "Gift 13, Christian School Sponsorship, Solomon Islands ($400 a year)",
+        "Gift 14, Bibles for children's and youth ministries, Solomon Islands ($25)",
+        "Gift 15, Prisoner Ministry Support, Solomon Islands ($150)",
+        "Gift 16, Clean Water Project, Solomon Islands ($100 or $1,500, tax deductible)",
+        "Gift 17, School Resources, Papua New Guinea ($50)",
+        "Gift 18, Medical Supplies for Students, Papua New Guinea ($80)",
+        "Gift 19, Technology Fund, Papua New Guinea ($150)",
+        "Gift 20, Chicken House Extension, Bethesda ($100)",
+        "Gift 21, Water Tanks, Bethesda ($100)",
+        "Gift 22, Staff Housing and Shower Facilities, Bethesda ($50)",
+        "Gift 23, Training Leaders to Plant New Churches, IndiWay ($750)",
+        "Gift 24, Fuel for the Gospel, IndiWay ($50)",
+        "Gift 25, Reaching the Unreached: a motorbike and helmet for an evangelist, IndiWay ($200 contribution or $1,800 outright)",
+        "Gift 26, Support a Tribal Evangelist, IndiWay ($310 a month or $3,720 a year)",
+        "Gift 27, Wherever It's Needed Most: the World Transform Committee directs your gift to the most urgent need (any amount from $10)"
+      ]
+    },
+    {
+      "id": "ways-to-give",
+      "heading": "Other ways to give",
+      "paragraphs": [
+        "You can also give to the general work of World Transform, or to IndiWay, online or by bank transfer."
+      ],
+      "list": [
+        "Online, to World Transform: give.tithe.ly (World Transform donation form)",
+        "Online, to IndiWay: give.tithe.ly (IndiWay donation form)",
+        "Bank transfer: World Transform, Commonwealth Bank, BSB 062 668, account 1019 5522"
+      ]
+    },
+    {
+      "id": "faqs",
+      "heading": "Common questions",
+      "list": [
+        "What is a symbolic gift? Each gift represents a way to support a project. The catalogue explains the work it contributes to and how the amount relates to that work.",
+        "Will I receive an item in the post? No. Your contribution supports the work described in the catalogue. No physical item is sent to you.",
+        "Does a month or year option repeat? No. Each option is a single gift for the period shown. The monthly and yearly options have their own amounts.",
+        "Can I choose more than one gift? Yes. You can put several gifts in the same basket and change the quantity of each.",
+        "Can I get a tax receipt? It depends on the project and the organisation receiving the gift. Gifts to the Heart Project (gift 06) can receive a tax-deductible receipt through Tearfund Australia: email worldtransform@crca.org.au. Gifts of $2 or more to the Solomon Islands clean water project (gift 16) are tax deductible: email solomonislandsworkgroup@gmail.com for a receipt. For other projects, contact World Transform."
+      ]
+    },
+    {
+      "id": "mandate",
+      "heading": "Our mandate",
+      "paragraphs": [
+        "World Transform is governed by a mandate approved by the Synod of the CRCA. Its preamble recalls that Jesus pointed to the blind receiving sight and the good news being preached to the poor (Matthew 11:5), that justice and mercy are the weightier matters of the law (Matthew 23:23; Micah 6:8), that the first church shared everything it had (Acts 4:32), and that the early churches sent gifts to believers in need (Acts 11:27-30; 2 Corinthians 8 and 9; Galatians 6:10).",
+        "The members of the CRCA humbly and gratefully acknowledge that the Lord has liberally blessed them with worldly goods, while many people in the world lack the basic necessities of food, water, clothing, medicine, shelter, justice and security.",
+        "Under the mandate, Synod authorises World Transform to:"
+      ],
+      "list": [
+        "Receive and administer offerings from churches, members and others for the relief and rehabilitation of people in need, in Australia or overseas, accompanied where possible by the ministry of the Word",
+        "Make emergency appeals to the churches when circumstances call for it",
+        "Collect, store and forward relief items such as clothing, tools, building materials, food and medical supplies",
+        "Supervise long-term and rehabilitation projects approved by Synod",
+        "Appoint sub-committees for specialised relief work, such as refugee resettlement",
+        "Educate and advocate for justice, helping churches respond to injustice biblically and uphold the dignity, worth and rights of every image bearer of God"
+      ]
+    },
+    {
+      "id": "how-the-committee-works",
+      "heading": "How the committee works",
+      "paragraphs": [
+        "The committee has at least seven members, all communicant members in good standing of the CRCA, appointed by each Synod. A paid officer may attend and advise. Officers (chair, vice-chair, secretary and treasurer) are chosen by the members. The committee meets at least four times a year.",
+        "Overseas, World Transform supports community-based development, which may include medical, agricultural, educational and building projects. It aims to raise the quality of life in needy communities and to support Christian values, social justice and the meeting of material needs.",
+        "Emergency grants from the general fund may not exceed 20% of the fund's average yearly income over the past five years, unless a specific appeal is launched at the same time.",
+        "In Australia, World Transform only helps with relief projects after consulting GROW or at Synod's direction, and where nearby CRCA deacons cannot help or there is no CRCA congregation close by.",
+        "World Transform shares news of its work with the churches and seeks to help CRCA members gain a Christian perspective on poverty, hunger and justice. Deacons are encouraged to promote its projects in their congregations."
+      ]
+    }
+  ],
+  "steps": {
+    "heading": "How giving through the catalogue works",
+    "items": [
+      {
+        "title": "Choose a gift",
+        "text": "Pick an education, health, clean water, livelihoods or ministry project you would like to support."
+      },
+      {
+        "title": "Select an amount",
+        "text": "Some projects offer different amounts or periods of support. Every option is a one-time gift."
+      },
+      {
+        "title": "Give towards the work",
+        "text": "Your contribution supports the work described on the gift page. No physical item is shipped to you."
+      }
+    ]
+  },
+  "facts": [
+    {
+      "label": "Established",
+      "value": "1965 (formerly WD&R)"
+    },
+    {
+      "label": "Part of",
+      "value": "CRCA, a subcommittee under GROW"
+    },
+    {
+      "label": "Works in",
+      "value": "India, Solomon Islands, Papua New Guinea"
+    },
+    {
+      "label": "Contact",
+      "value": "Ben Peletier, 0400 784 323"
+    },
+    {
+      "label": "Post",
+      "value": "PO Box 323, Dee Why NSW 2099"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/images/ministries/world-transform/gal-01.webp",
+      "alt": "The two-storey building in Bangalore that Peniel Community College currently uses, with its sign above the gate",
+      "caption": "Peniel's current premises"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-02.webp",
+      "alt": "The concrete frame of Peniel's new building under construction, with workers and bamboo supports",
+      "caption": "Building a permanent home for Peniel"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-03.webp",
+      "alt": "A long line of women and men each holding a goat in a green field in India",
+      "caption": "Goats help families earn a steady income"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-04.webp",
+      "alt": "A teacher sitting on a mat with a circle of primary school children holding learning cards",
+      "caption": "A tuition centre class"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-05.webp",
+      "alt": "A Community Health Program nurse giving medicine to an older village woman",
+      "caption": "A nurse visiting a village"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-06.webp",
+      "alt": "Rows of uniformed school children sitting on a classroom floor with new backpacks and exercise books",
+      "caption": "Backpacks and school supplies"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-07.webp",
+      "alt": "Evangelists in matching shirts seated on red chairs listening to a lecturer in a decorated hall",
+      "caption": "Training leaders to plant churches"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-08.webp",
+      "alt": "An evangelist and his wife riding a motorbike along a dirt road through trees",
+      "caption": "Motorbikes help evangelists reach remote villages"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-09.webp",
+      "alt": "The open-sided chicken house at Bethesda with a corrugated iron roof",
+      "caption": "Bethesda's chicken house"
+    },
+    {
+      "src": "/images/ministries/world-transform/gal-10.webp",
+      "alt": "A large group of Solomon Islands children waving with their leaders in front of tropical gardens",
+      "caption": "Children's ministry with SWIM"
+    }
+  ],
+  "contact": {
+    "name": "Ben Peletier",
+    "role": "Publicity Officer, World Transform",
+    "email": "worldtransform@crca.org.au",
+    "phone": "0400 784 323"
+  },
+  "actions": [
+    {
+      "label": "Give through the World Transform gift catalogue",
+      "url": "https://worldtransform.org.au/",
+      "kind": "primary"
+    }
+  ],
+  "resources": [
+    {
+      "label": "Give to IndiWay online (Tithe.ly)",
+      "url": "https://give.tithe.ly/?formId=750baa0e-a23a-4b2d-b8b3-004afa98c3ac",
+      "type": "link"
+    },
+    {
+      "label": "Give to World Transform online (Tithe.ly)",
+      "url": "https://give.tithe.ly/?formId=20dea74c-76a0-46d3-a8fd-cd4a2298f9bf",
+      "type": "link"
+    },
+    {
+      "label": "King Project proposal, 2018 (PDF)",
+      "url": "/ministry-resources/world-transform/king-project-proposal-2018.pdf",
+      "type": "pdf",
+      "note": "Christian Reformed Fellowship India's plan for 22 villages in Jhadol, Rajasthan"
+    },
+    {
+      "label": "Heart Project: five years later (PDF)",
+      "url": "/ministry-resources/world-transform/heart-project-five-years-later.pdf",
+      "type": "pdf",
+      "note": "Two-page report from EFICOR"
+    },
+    {
+      "label": "Heart Project annual report 2019-20 (Word document)",
+      "url": "/ministry-resources/world-transform/heart-project-annual-report-2019-20.docx",
+      "type": "link",
+      "note": "EFICOR's full report on year five"
+    },
+    {
+      "label": "World Transform introduction, May 2025",
+      "url": "https://vimeo.com/1242190870",
+      "type": "video"
+    },
+    {
+      "label": "Peniel College and sewing machines",
+      "url": "https://www.youtube.com/watch?v=aVpMs029ZDk",
+      "type": "video"
+    },
+    {
+      "label": "Introducing World Transform's King Project",
+      "url": "https://www.youtube.com/watch?v=4fmk7S3EOkM",
+      "type": "video"
+    },
+    {
+      "label": "Community Health Program",
+      "url": "https://www.youtube.com/watch?v=MqFxV40bpCc",
+      "type": "video"
+    },
+    {
+      "label": "IndiWay mailing list",
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScvdgg-h45mw_slvLqSwpEuYZ4KGaC_5HF-paARG2et20nrBQ/viewform",
+      "type": "link",
+      "note": "Sign up for news and prayer updates from IndiWay"
+    },
+    {
+      "label": "World Transform on Facebook",
+      "url": "https://www.facebook.com/WorldTransform",
+      "type": "link"
+    }
+  ],
+  "video": {
+    "youtubeId": "cZPlfZhcTMQ",
+    "title": "Heart Project: after 5 years"
+  },
+  "sources": [
+    "https://worldtransform.org.au/ (Shopify gift catalogue home page: how it works, FAQs, 2026 gifts; fetched 24 Nov 2026)",
+    "https://worldtransform.org.au/products.json (2026 gift descriptions and photos; older catalogue items CC17 to CC25 for history)",
+    "https://wt.crca.org.au/wp-json/wp/v2/pages and /posts (home/about, our mandate, development projects, Heart Project, Peniel Community College, King Project, Community Health Project, emergency relief, compassionate catalogue, IndiWay, contact; fetched 24 Nov 2026)",
+    "Wayback Machine copies of worldtransform.org.au/pages/about-us, donate, relief-projects, nepal-flood-response, kathmandu-earthquake-response (2024; these pages now return 404)",
+    "cdn.shopify.com World Transform files: 18_10_King_Project_Proposal_Udaipur.pdf, Heart_Project_-_EFICOR.pdf, Annual-Report-_Heart-Tribal-Development-Project-2019-20-1.docx",
+    "YouTube oEmbed titles for cZPlfZhcTMQ, aVpMs029ZDk, 4fmk7S3EOkM, MqFxV40bpCc; Vimeo oEmbed for 1242190870",
+    "Logo: https://wt.crca.org.au/wp-content/uploads/2024/09/checkout_logo_2.png"
+  ],
+  "needsChecking": [
+    "Bethesda DTSC: the catalogue never says where Bethesda is or what DTSC stands for (it mentions 'students living with disabilities'). Confirm its location and full name, and whether it belongs under SWIM or is a separate partner.",
+    "Where-we-work and partner lists are built from the 2026 catalogue and project pages. Confirm which projects are still active, particularly the King Project (planned 2019 to 2022), the Heart Project (began 2015, planned for two three-year cycles) and the Community Health Program (its figures and stories are undated).",
+    "The Community Health Program text names two village women (Santaben and Sampi) in its stories; only Santaben's story is kept. Confirm World Transform is happy for her name to appear.",
+    "The King Project proposal PDF includes the names and phone numbers of CRFI staff. It was public on World Transform's site, but confirm it is still fine to republish.",
+    "Tax receipts: the catalogue FAQ says World Transform 'will confirm the wording for the live catalogue'. The Heart Project and SWIM water project rules are taken from the gift pages. The project page says TEAR Australia; the 2026 catalogue says Tearfund Australia.",
+    "Ben Peletier is named as 'Publicity Officer' on the catalogue page and as the contact on the contact page; IndiWay uses indiway@crca.org.au with the same phone number.",
+    "The page's intro video is on Vimeo (World Transform Intro Video May 2025), which the template cannot embed, so a YouTube video is embedded instead and the Vimeo video is listed under resources.",
+    "Past emergency responses (Kathmandu earthquake, 2017 Nepal floods with World Renew, 2019 bushfire appeal) come from old catalogue pages and product names. Dates for the Kathmandu response are not given in the sources.",
+    "The only post on wt.crca.org.au is a June 2024 SWIM base manager vacancy. It belongs to SWIM and is out of date, so it was not added as news.",
+    "Bank details (CBA, BSB 062 668, account 1019 5522) come from an archived 2024 World Transform donate page; added at the owner’s request. Confirm they are still current."
+  ]
+}

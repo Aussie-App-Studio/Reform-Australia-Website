@@ -1,23 +1,32 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import {
-  Clock,
-  ExternalLink,
   Facebook,
   Globe,
   Headphones,
+  Video,
+  Youtube,
+  Clock,
   Loader2,
   MapPin,
   Navigation,
   Search,
-  Video,
   X,
-  Youtube,
 } from 'lucide-react';
 import churchesRaw from '../data/churches.json';
 import { AuLocationsDataset, loadAuLocations } from '../data/locationHubs';
 import { searchChurches } from '../utils/churchSearch';
 import { handleTabListKeyDown } from '../utils/tablistKeyboard';
-import { AustraliaChurchMap, ChurchRecord, getDirectionsUrl } from './AustraliaChurchMap';
+import { getDirectionsUrl, type ChurchRecord } from '../utils/churchRecord';
+
+// The map library is large, so it loads only when the map is about to come into view.
+const AustraliaChurchMap = lazy(() => import('./AustraliaChurchMap').then((m) => ({ default: m.AustraliaChurchMap })));
+
+function MapPlaceholder() {
+  // Same size as the map (AustraliaChurchMap's default className), so nothing moves when it loads.
+  return <div className="h-[400px] w-full rounded-lg border border-stone-200 bg-stone-100 lg:h-[640px]" aria-hidden="true" />;
+}
+
+const MOBILE_LIST_LIMIT = 8;
 
 const allChurches = churchesRaw as ChurchRecord[];
 
@@ -62,6 +71,8 @@ export function ChurchDirectory({
   });
   const [selectedChurchId, setSelectedChurchId] = useState<string | null>(null);
   const [selectionNonce, setSelectionNonce] = useState(0);
+  // Mobile only: show a short list first so the page isn't 50+ cards tall.
+  const [showAllMobile, setShowAllMobile] = useState(false);
   const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(null);
   const [locating, setLocating] = useState(false);
   const [locationError, setLocationError] = useState<string | null>(null);
@@ -70,9 +81,25 @@ export function ChurchDirectory({
 
   const cardRefs = useRef<Record<string, HTMLElement | null>>({});
   const mapWrapperRef = useRef<HTMLDivElement>(null);
+  // Load the map when it is within a screen of being seen (straight away on desktop).
+  const [showMap, setShowMap] = useState(false);
+  useEffect(() => {
+    const el = mapWrapperRef.current;
+    if (!el || showMap) return;
+    if (typeof IntersectionObserver === 'undefined') return setShowMap(true);
+    const io = new IntersectionObserver((entries) => entries.some((e) => e.isIntersecting) && setShowMap(true), { rootMargin: '600px 0px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [showMap]);
   const geoRequestIdRef = useRef(0);
 
+  // The suburb and postcode list is large: fetch it only once someone starts a search.
+  const [wantLocations, setWantLocations] = useState(false);
   useEffect(() => {
+    if (query.trim()) setWantLocations(true);
+  }, [query]);
+  useEffect(() => {
+    if (!wantLocations) return;
     let active = true;
     loadAuLocations()
       .then((data) => {
@@ -89,7 +116,7 @@ export function ChurchDirectory({
     return () => {
       active = false;
     };
-  }, []);
+  }, [wantLocations]);
 
   useEffect(() => {
     if (externalQuery !== undefined) {
@@ -197,6 +224,7 @@ export function ChurchDirectory({
 
   function handleSelectFromMap(churchId: string) {
     setSelectedChurchId(churchId);
+    setShowAllMobile(true);
     const isDesktop =
       typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches;
     if (!isDesktop) return;
@@ -213,13 +241,7 @@ export function ChurchDirectory({
   function handleSelectFromCard(churchId: string) {
     setSelectedChurchId(churchId);
     setSelectionNonce((n) => n + 1);
-    if (typeof window !== 'undefined' && !window.matchMedia('(min-width: 1024px)').matches) {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      mapWrapperRef.current?.scrollIntoView({
-        behavior: prefersReducedMotion ? 'auto' : 'smooth',
-        block: 'start',
-      });
-    }
+    // On phones the list comes first and the map sits below it, so don't pull the reader away from the list.
   }
 
   function resetAllFilters() {
@@ -245,7 +267,7 @@ export function ChurchDirectory({
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Filter Controls Card */}
-        <div className="rounded-2xl border border-stone-200 bg-white p-4 shadow-xs sm:p-6">
+        <div className="rounded-lg border border-stone-200 bg-white p-4 sm:p-6">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
             <div className="relative flex-1">
               <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-teal-600" />
@@ -253,16 +275,17 @@ export function ChurchDirectory({
                 type="search"
                 value={query}
                 onChange={(e) => handleQueryInput(e.target.value)}
-                placeholder="Search church, suburb, city (e.g. Rockhampton), state (e.g. NSW), or any AU postcode..."
+                onFocus={() => setWantLocations(true)}
+                placeholder="Suburb, postcode or church"
                 aria-label="Filter churches by name, suburb, city, postcode, or state"
-                className="w-full rounded-xl border border-stone-300 bg-stone-50 py-2.5 pl-10 pr-10 text-sm text-navy-900 placeholder:text-stone-600 focus:border-teal-500 focus:bg-white focus:outline-none [&::-webkit-search-cancel-button]:hidden"
+                className="w-full rounded-md border border-stone-300 bg-stone-50 py-2.5 pl-10 pr-10 text-sm text-navy-900 placeholder:text-stone-600 focus:border-teal-500 focus:bg-white focus:outline-none [&::-webkit-search-cancel-button]:hidden"
               />
               {query && (
                 <button
                   type="button"
                   onClick={() => handleQueryInput('')}
                   aria-label="Clear church search"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-stone-600 hover:bg-stone-200 hover:text-navy-900"
+                  className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-md p-2.5 text-stone-600 hover:bg-stone-200 hover:text-navy-900"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -276,7 +299,7 @@ export function ChurchDirectory({
                 disabled={locating}
                 aria-pressed={Boolean(userCoords)}
                 title={userCoords ? 'Turn off location sorting' : undefined}
-                className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold text-white shadow-xs transition-colors disabled:opacity-70 ${
+                className={`inline-flex min-h-11 items-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold text-white transition-colors disabled:opacity-70 ${
                   userCoords
                     ? 'bg-navy-900 hover:bg-navy-800'
                     : 'bg-teal-600 hover:bg-teal-700'
@@ -288,7 +311,7 @@ export function ChurchDirectory({
                   <Navigation className="h-4 w-4" />
                 )}
                 <span>
-                  {locating ? 'Locating...' : userCoords ? 'Sorted by Nearest' : 'Use My Location'}
+                  {locating ? 'Locating…' : userCoords ? 'Sorted by nearest' : 'Use my location'}
                 </span>
                 {userCoords && !locating && (
                   <>
@@ -325,7 +348,7 @@ export function ChurchDirectory({
                         tabPrefix
                       )
                     }
-                    className={`rounded-full px-3.5 py-1 text-xs font-semibold transition-colors ${
+                    className={`min-h-10 rounded-full px-3.5 py-1 text-sm font-semibold transition-colors sm:min-h-0 sm:text-xs ${
                       active
                         ? 'bg-navy-900 text-white'
                         : 'bg-stone-100 text-navy-800 hover:bg-stone-200'
@@ -463,9 +486,9 @@ export function ChurchDirectory({
           className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-12"
         >
           {/* Left: Filterable Church Cards */}
-          <div className="lg:col-span-5 order-2 lg:order-1">
+          <div className="lg:col-span-5">
             {searchResult.isLoadingLocations ? (
-              <div className="rounded-2xl border border-stone-200 bg-white p-10 text-center">
+              <div className="rounded-lg border border-stone-200 bg-white p-10 text-center">
                 <Loader2 className="mx-auto h-8 w-8 animate-spin text-teal-600" />
                 <h3 className="mt-3 font-serif text-lg font-bold text-navy-900">
                   Looking up Australian location...
@@ -475,7 +498,7 @@ export function ChurchDirectory({
                 </p>
               </div>
             ) : filteredChurches.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-stone-300 bg-white p-8 text-center sm:p-10">
+              <div className="rounded-lg border border-dashed border-stone-300 bg-white p-8 text-center sm:p-10">
                 <MapPin className="mx-auto h-8 w-8 text-stone-600" />
                 <h3 className="mt-3 font-serif text-lg font-bold text-navy-900">
                   {searchResult.bannerKind === 'invalid-postcode'
@@ -534,8 +557,8 @@ export function ChurchDirectory({
                 </button>
               </div>
             ) : (
-              <div className="space-y-3 lg:max-h-[640px] lg:overflow-y-auto lg:pr-1">
-                {filteredChurches.map(({ church, distanceKm }) => {
+              <div className="relative space-y-3 lg:max-h-[42rem] lg:overflow-y-auto lg:p-0.5 lg:pr-2">
+                {filteredChurches.map(({ church, distanceKm }, i) => {
                   const isSelected = church.id === selectedChurchId;
                   const directionsUrl = getDirectionsUrl(church);
 
@@ -546,145 +569,90 @@ export function ChurchDirectory({
                         cardRefs.current[church.id] = el;
                       }}
                       onClick={() => handleSelectFromCard(church.id)}
-                      className={`cursor-pointer rounded-2xl border bg-white p-5 transition-all ${
+                      className={`cursor-pointer rounded-lg border bg-white px-4 py-4 transition-colors sm:px-5 ${
+                        !showAllMobile && i >= MOBILE_LIST_LIMIT ? 'max-lg:hidden ' : ''
+                      }${
                         isSelected
-                          ? 'border-teal-600 shadow-md ring-2 ring-teal-500/25'
-                          : 'border-stone-200 hover:border-teal-500/40 hover:shadow-sm'
+                          ? 'border-teal-500 bg-teal-50/60 ring-1 ring-teal-500'
+                          : 'border-stone-200 hover:border-stone-300 hover:bg-stone-50'
                       }`}
                     >
-                      <div className="flex flex-wrap items-start justify-between gap-2">
-                        <div>
-                          <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-teal-700">
-                            {church.state}
-                          </span>
-                          <h3 className="mt-0.5 font-serif text-lg font-bold text-navy-900">
-                            <button
-                              type="button"
-                              aria-pressed={isSelected}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleSelectFromCard(church.id);
-                              }}
-                              className="text-left transition-colors hover:text-teal-700 focus-visible:underline"
-                            >
-                              {church.name}
-                            </button>
-                          </h3>
-                        </div>
-
-                        {distanceKm !== null && (
-                          <span className="shrink-0 rounded-full bg-gold-50 border border-gold-400/50 px-2.5 py-0.5 text-[11px] font-bold text-gold-600">
-                            {distanceKm < 1
+                      <div className="flex items-start justify-between gap-3">
+                        <h3 className="font-serif text-xl font-semibold leading-snug text-navy-900">
+                          <button
+                            type="button"
+                            aria-pressed={isSelected}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleSelectFromCard(church.id);
+                            }}
+                            className="text-left hover:text-teal-700 focus-visible:underline"
+                          >
+                            {church.name}
+                          </button>
+                        </h3>
+                        <span className="shrink-0 pt-1 text-sm text-stone-500">
+                          {distanceKm !== null
+                            ? distanceKm < 1
                               ? '< 1 km'
-                              : `${distanceKm < 10 ? distanceKm.toFixed(1) : Math.round(distanceKm)} km`}
-                          </span>
-                        )}
+                              : `${distanceKm < 10 ? distanceKm.toFixed(1) : Math.round(distanceKm)} km`
+                            : church.state}
+                        </span>
                       </div>
 
-                      <div className="mt-2.5 space-y-1.5 text-xs text-stone-700">
-                        <div className="flex items-start gap-2">
-                          <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-600" />
-                          <span>
-                            {church.address}{' '}
-                            <a
-                              href={directionsUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="ml-1 font-semibold text-teal-700 underline decoration-teal-500/40 hover:text-navy-900"
-                            >
-                              Directions
-                            </a>
-                          </span>
-                        </div>
-
+                      <dl className="mt-2 space-y-1 text-[0.95rem] text-stone-700">
                         {church.serviceTimes && (
-                          <div className="flex items-start gap-2 font-medium text-navy-900">
-                            <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-teal-600" />
-                            <span>Sundays: {church.serviceTimes}</span>
+                          <div className="flex gap-2">
+                            <dt className="sr-only">Sunday services</dt>
+                            <Clock className="mt-1 h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />
+                            <dd className="font-medium text-navy-900">Sundays {church.serviceTimes}</dd>
                           </div>
                         )}
-                      </div>
-
-                      {/* Visitor Preview Media & Website Buttons */}
-                      {(church.website ||
-                        church.youtube ||
-                        church.videoUrl ||
-                        church.facebook ||
-                        church.podcast) && (
-                        <div className="mt-4 flex flex-wrap gap-2 border-t border-stone-100 pt-3">
-                          {church.website && (
-                            <a
-                              href={church.website}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-1.5 rounded-lg bg-navy-900 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-navy-800"
-                            >
-                              <Globe className="h-3.5 w-3.5 text-teal-400" />
-                              <span>Website</span>
-                              <ExternalLink className="h-3 w-3 opacity-70" />
-                            </a>
-                          )}
-
-                          {church.youtube ? (
-                            <a
-                              href={church.youtube}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-700 transition-colors hover:bg-red-100"
-                            >
-                              <Youtube className="h-3.5 w-3.5" />
-                              <span>YouTube</span>
-                            </a>
-                          ) : (
-                            church.videoUrl && (
-                              <a
-                                href={church.videoUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={(e) => e.stopPropagation()}
-                                className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-700 transition-colors hover:bg-red-100"
-                              >
-                                <Video className="h-3.5 w-3.5" />
-                                <span>Livestream</span>
-                              </a>
-                            )
-                          )}
-
-                          {church.facebook && (
-                            <a
-                              href={church.facebook}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-1.5 rounded-lg border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700 transition-colors hover:bg-blue-100"
-                            >
-                              <Facebook className="h-3.5 w-3.5" />
-                              <span>
-                                {church.livestreamOnFacebook ? 'Facebook Livestream' : 'Facebook'}
-                              </span>
-                            </a>
-                          )}
-
-                          {church.podcast && (
-                            <a
-                              href={church.podcast}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-1.5 rounded-lg border border-teal-200 bg-teal-50 px-3 py-1.5 text-xs font-semibold text-teal-700 transition-colors hover:bg-teal-100"
-                            >
-                              <Headphones className="h-3.5 w-3.5" />
-                              <span>Podcast</span>
-                            </a>
-                          )}
+                        <div className="flex gap-2">
+                          <dt className="sr-only">Address</dt>
+                          <MapPin className="mt-1 h-4 w-4 shrink-0 text-stone-400" aria-hidden="true" />
+                          <dd>{church.address}</dd>
                         </div>
-                      )}
+                      </dl>
+
+                      <div className="mt-3 flex flex-wrap items-center gap-2">
+                        <a href={directionsUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="inline-flex h-9 items-center gap-1.5 rounded-full bg-navy-900 px-3.5 text-sm font-semibold text-white hover:bg-navy-800">
+                          <Navigation className="h-4 w-4" aria-hidden="true" /> Directions
+                        </a>
+                        {[
+                          church.website && { href: church.website, label: 'Website', Icon: Globe },
+                          (church.youtube || church.videoUrl) && { href: (church.youtube ?? church.videoUrl)!, label: church.youtube ? 'YouTube' : 'Livestream', Icon: church.youtube ? Youtube : Video },
+                          church.facebook && { href: church.facebook, label: church.livestreamOnFacebook ? 'Facebook livestream' : 'Facebook', Icon: Facebook },
+                          church.podcast && { href: church.podcast, label: 'Podcast', Icon: Headphones },
+                        ]
+                          .filter((x): x is { href: string; label: string; Icon: typeof Globe } => Boolean(x))
+                          .map(({ href, label, Icon }) => (
+                            <a
+                              key={label}
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              title={`${church.name} ${label}`}
+                              aria-label={`${church.name} ${label} (opens in a new tab)`}
+                              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 bg-white text-navy-800 hover:border-teal-600 hover:text-teal-700"
+                            >
+                              <Icon className="h-4 w-4" aria-hidden="true" />
+                            </a>
+                          ))}
+                      </div>
                     </article>
                   );
                 })}
+                {!showAllMobile && filteredChurches.length > MOBILE_LIST_LIMIT && (
+                  <button
+                    type="button"
+                    onClick={() => setShowAllMobile(true)}
+                    className="w-full rounded-lg border border-dashed border-teal-500/50 bg-teal-50 px-5 py-4 text-sm font-semibold text-teal-800 hover:bg-teal-100 lg:hidden"
+                  >
+                    Show all {filteredChurches.length} churches
+                  </button>
+                )}
               </div>
             )}
           </div>
@@ -692,15 +660,22 @@ export function ChurchDirectory({
           {/* Right: Interactive Australian Map */}
           <div
             ref={mapWrapperRef}
-            className="lg:col-span-7 order-1 lg:order-2 scroll-mt-[calc(var(--site-header-height,72px)+1rem)]"
+            className="lg:col-span-7 scroll-mt-[calc(var(--site-header-height,72px)+1rem)]"
           >
-            <AustraliaChurchMap
-              churches={mapChurches}
-              selectedChurchId={selectedChurchId}
-              selectionNonce={selectionNonce}
-              onSelectChurch={handleSelectFromMap}
-              totalChurchCount={allChurches.length}
-            />
+            <h2 className="mb-3 font-serif text-xl font-semibold text-navy-900 lg:sr-only">Map of CRCA churches</h2>
+            {showMap ? (
+              <Suspense fallback={<MapPlaceholder />}>
+                <AustraliaChurchMap
+                  churches={mapChurches}
+                  selectedChurchId={selectedChurchId}
+                  selectionNonce={selectionNonce}
+                  onSelectChurch={handleSelectFromMap}
+                  totalChurchCount={allChurches.length}
+                />
+              </Suspense>
+            ) : (
+              <MapPlaceholder />
+            )}
           </div>
         </div>
       </div>

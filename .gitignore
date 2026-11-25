@@ -31,5 +31,3 @@ Thumbs.db
 *.sln
 *.sw?
 
-# GitHub Actions workflows (templates saved in scripts/github-workflows/)
-.github/workflows/

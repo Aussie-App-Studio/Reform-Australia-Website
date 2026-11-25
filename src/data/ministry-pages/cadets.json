@@ -1,0 +1,166 @@
+{
+  "slug": "cadets",
+  "name": "Cadets",
+  "group": "next-gen",
+  "summary": "A club program run by volunteers in local churches for primary school boys aged 9 to 14.",
+  "logo": {
+    "src": "/images/logos/ministries/cadets.webp",
+    "alt": "Christian Cadet Corps logo"
+  },
+  "hero": {
+    "src": "/images/ministries/cadets/hero.webp",
+    "alt": "A large group of cadets in grey uniform shirts, blue caps and yellow neckerchiefs sit on a log in the bush with Bibles open, with counsellors standing around them",
+    "caption": "Cadets and counsellors at an outdoor Bible time on camp"
+  },
+  "body": [
+    {
+      "id": "what-cadets-is",
+      "heading": "What Cadets is",
+      "paragraphs": [
+        "The Christian Cadet Corps is an independent youth ministry. Its purpose is to give local churches a ministry program that helps them share Christ's love with boys from their church and community.",
+        "Cadets is run by volunteers called counsellors. The program is made for primary school boys aged 9 to 14."
+      ]
+    },
+    {
+      "id": "club-nights",
+      "heading": "What happens at Cadets",
+      "paragraphs": [
+        "At Cadets the boys learn about God, work on badges, make crafts, play games, sing songs and make new friends. Clubs also go on camps and outings."
+      ]
+    },
+    {
+      "id": "history",
+      "heading": "Our history",
+      "paragraphs": [
+        "The Cadet movement was founded in the USA in 1952 and came to Australia in 1964.",
+        "Since then it has grown to 15 clubs around Australia, with about 180 cadets and 70 counsellors."
+      ],
+      "image": {
+        "src": "/images/ministries/cadets/counsellors-history.webp",
+        "alt": "An older photo of fourteen men in Cadet counsellor uniforms with yellow ties, posed in two rows in a bush clearing",
+        "caption": "Cadet counsellors in uniform at a bush campsite, from an earlier era of the ministry"
+      }
+    },
+    {
+      "id": "what-we-believe",
+      "heading": "What we believe",
+      "paragraphs": [
+        "The basis of the Christian Cadet Corps is the Word of God (the Bible) according to the concepts expressed in the Heidelberg Catechism, the Canons of Dort and the Belgic Confession."
+      ]
+    },
+    {
+      "id": "our-goal",
+      "heading": "Our goal",
+      "paragraphs": [
+        "Luke 2:52 says that \"Jesus grew in wisdom and stature, and in favour with God and men.\"",
+        "The goal of the Christian Cadet Corps, based on that verse, is \"to help boys grow spiritually in all areas of life (devotional, mental, physical and social) by providing Christian men with a uniquely designed structure, program and materials.\""
+      ]
+    },
+    {
+      "id": "theme",
+      "heading": "Club theme: Amazing",
+      "paragraphs": [
+        "The club theme is \"Amazing\", based on Joshua 3:5: \"Consecrate yourselves, for tomorrow the Lord will do amazing things among you.\" Cadets and GEMS clubs share this theme.",
+        "Through the year the boys are reminded:"
+      ],
+      "list": [
+        "That God is holy",
+        "That we must prepare ourselves if we are to be in his presence",
+        "That God has done, is doing and will do amazing things"
+      ]
+    },
+    {
+      "id": "for-counsellors",
+      "heading": "For counsellors",
+      "paragraphs": [
+        "These reminders help the boys strive to be holy and to recognise the many ways God blesses them.",
+        "Counsellors are challenged to be an example to their club: look for, find and share the many amazing things God is doing. Show your boys that God is amazing as you encourage them to live for Jesus.",
+        "The theme lessons, bulletin cover and Gold Sheet for the theme are in the resources below."
+      ]
+    },
+    {
+      "id": "find-a-club",
+      "heading": "Finding a club",
+      "paragraphs": [
+        "Cadets clubs meet in local Christian Reformed churches. To find out whether there is a club near you, or to ask about starting one or becoming a counsellor, send us an enquiry or contact your nearest CRCA church."
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "label": "Who it's for",
+      "value": "Boys aged 9 to 14"
+    },
+    {
+      "label": "Run by",
+      "value": "Volunteer counsellors in local churches"
+    },
+    {
+      "label": "In Australia since",
+      "value": "1964 (founded in the USA in 1952)"
+    },
+    {
+      "label": "Size",
+      "value": "About 15 clubs, 180 cadets and 70 counsellors"
+    }
+  ],
+  "contact": {
+    "name": "CRCA Administration",
+    "email": "admin@crca.org.au",
+    "topic": "next-gen"
+  },
+  "actions": [
+    {
+      "label": "Enquire about Cadets",
+      "url": "/contact?topic=next-gen",
+      "kind": "primary"
+    },
+    {
+      "label": "Find a church near you",
+      "url": "/find-a-church",
+      "kind": "secondary"
+    }
+  ],
+  "resources": [
+    {
+      "label": "Theme lessons 2022-2023 (PDF)",
+      "url": "/ministry-resources/cadets-gems/Theme-Lessons-2022.pdf",
+      "type": "pdf",
+      "note": "Bible lessons on the \"Amazing\" theme, from the Calvinist Cadet Corps"
+    },
+    {
+      "label": "Bulletin cover 2022-2023 (PDF)",
+      "url": "/ministry-resources/cadets-gems/Bulletin-Cover-22.8.5x11-Downloadable.pdf",
+      "type": "pdf",
+      "note": "Printable church bulletin cover on the theme verse"
+    },
+    {
+      "label": "Gold Sheet 2022-2023 (PDF)",
+      "url": "/ministry-resources/cadets-gems/2022_2023-Gold-Sheet.pdf",
+      "type": "pdf",
+      "note": "Quick reference for counsellors: theme verses, badges, service ideas and a sample club meeting"
+    }
+  ],
+  "sources": [
+    "https://cadets.crca.org.au/ (home page, fetched via wp-json 24 Nov 2026)",
+    "https://cadets.crca.org.au/wp-json/wp/v2/media (102 items reviewed 24 Nov 2026)",
+    "https://cadets.crca.org.au/wp-content/uploads/2024/09/Theme-Lessons-2022.pdf",
+    "https://cadets.crca.org.au/wp-content/uploads/2024/09/Bulletin-Cover-22.8.5x11-Downloadable.pdf",
+    "https://cadets.crca.org.au/wp-content/uploads/2024/09/2022_2023-Gold-Sheet.pdf",
+    "https://cadets.crca.org.au/wp-content/uploads/2024/09/Cadets-Group-photo.png",
+    "https://cadets.crca.org.au/wp-content/uploads/2024/09/Cadets-Old.png",
+    "https://crca.org.au/ (Our Ministries menu links Cadets to cadets.crca.org.au)",
+    "src/data/nextGenClubs.json",
+    "src/data/contactTopics.json",
+    "Logo: https://cadets.crca.org.au/wp-content/uploads/2024/09/Logo2.png"
+  ],
+  "needsChecking": [
+    "Club numbers (15 clubs, about 180 cadets and 70 counsellors) come from cadets.crca.org.au, which was last updated in 2024. Confirm they are still current.",
+    "The cadets.crca.org.au site calls the 'Amazing' theme the '2024 Theme', but the PDFs are for the 2022-2023 season. Confirm whether there is a newer theme and newer materials.",
+    "Name of the organisation: cadets.crca.org.au says 'Christian Cadet Corps', while the PDFs are published by the 'Calvinist Cadet Corps' (Grand Rapids, USA) and describe Australian clubs as partner clubs. Confirm which name to use.",
+    "No named Cadets contact appears on any source. The page routes enquiries to CRCA Administration (admin@crca.org.au) via the next-gen contact topic, as in contactTopics.json. Confirm this is the right contact, or supply a Cadets coordinator.",
+    "Photos: the old site had only two real Cadets photos (a camp group shot and an older photo of counsellors). Both are about 900px wide, so they will look soft as a full-width hero. The rest of the media library is website-template stock and CRCA logos. Newer, larger photos of club nights and camps would help, and no gallery was added because there were no further photos to use.",
+    "The 'Finding a club' section and the 'Find a church near you' action replace the old site's external link. There is no list of which churches run Cadets clubs. Consider adding one.",
+    "The only logo file online is small (about 100 to 130px wide). Ask the ministry for the original artwork."
+  ]
+}

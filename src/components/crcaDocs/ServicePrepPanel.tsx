@@ -21,8 +21,8 @@ export function ServicePrepPanel({
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-teal-600" />
-          <h2 className="font-sans text-xs font-bold uppercase tracking-wider text-navy-900">
-            Service Prep — Personalise Names &amp; Pronouns
+          <h2 className="font-sans text-sm font-semibold text-navy-900">
+            Service Prep: names and pronouns
           </h2>
         </div>
 

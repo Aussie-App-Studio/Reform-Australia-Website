@@ -1,21 +1,45 @@
 <!doctype html>
 <html lang="en-AU">
   <head>
+    <script>
+      // Deep-link restore for GitHub Pages sub-folder previews (see scripts/deploy-gh-pages-preview.mjs).
+      (function () {
+        var m = window.location.search.match(/[?&]__p=([^&]*)/);
+        if (m) {
+          var base = window.location.pathname.replace(/[^/]*$/, '');
+          window.history.replaceState(null, '', base + decodeURIComponent(m[1]));
+        }
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Christian Reformed Churches of Australia | Reforming to Reach the Lost for Christ</title>
     <meta
       name="description"
-      content="Over 50 Reformed, Bible-based congregations across Australia since 1951. Reforming to reach the lost for Christ."
+      content="Over 50 Reformed, Bible-based congregations across Australia since 1951. Find a church, read what we believe, and find forms, sermons and Safe Church resources."
     />
-    <link rel="icon" type="image/jpeg" href="/images/logos/crca-icon-teal.jpg" />
-    <link rel="apple-touch-icon" href="/images/logos/crca-logo-stacked.jpg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="icon" type="image/png" href="/images/logos/favicon-64.png" />
+    <link rel="apple-touch-icon" href="/images/logos/apple-touch-icon.png" />
+    <link rel="preload" href="/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Christian Reformed Churches of Australia" />
+    <meta property="og:locale" content="en_AU" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#00224c" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Christian Reformed Churches of Australia",
+        "alternateName": "CRCA",
+        "url": "https://crca.org.au/",
+        "logo": "https://crca.org.au/images/logos/crca-logo-stacked.jpg",
+        "foundingDate": "1951",
+        "email": "admin@crca.org.au",
+        "areaServed": "AU"
+      }
+    </script>
   </head>
   <body class="bg-stone-50 text-navy-900 antialiased selection:bg-teal-500/20 selection:text-navy-900">
     <div id="root"></div>

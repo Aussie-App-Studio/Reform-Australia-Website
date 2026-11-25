@@ -7,90 +7,192 @@
     "vision": "We will multiply Bible-based churches which equip and nurture their members and grow throughout Australia and the world."
   },
   "coreValues": {
-    "intro": "As a denomination that is firmly rooted in Scripture, our core values stem from the Bible and shape the culture of a contemporary, Reformed, gospel-focused denomination.",
+    "intro": "Biblical values that shape the culture of a contemporary, Reformed, gospel-focused denomination.",
     "items": [
       {
         "id": "contemporary-reformed",
         "title": "Contemporary Reformed",
         "summary": "We are confessional and contextual.",
-        "detail": "Anchored in the historic Reformed confessions while engaging contemporary Australian communities with clarity, warmth, and cultural understanding.",
         "scriptures": "Eph. 4:3–6; 1 Cor. 11:2; 2 Thess. 2:15; 1 Cor. 9:19–23; Acts 14:8–18; 17:16–31"
       },
       {
         "id": "word-based",
-        "title": "Word Based",
+        "title": "Word based",
         "summary": "We are committed to biblical preaching, teaching, training, equipping.",
-        "detail": "We hold the Bible as God's inspired Word and the final authority for faith, worship, doctrine, and every area of Christian life.",
         "scriptures": "Rom. 10:14–17; 2 Tim. 2:1–2; 3:16–17; Deut. 4:9–14; Col. 3:16; Eph. 4:11–16"
       },
       {
         "id": "gospel-focused",
-        "title": "Gospel Focused",
+        "title": "Gospel focussed",
         "summary": "We are on mission in word and deed, both locally and globally: kingdom-oriented, outward looking, evangelistic, disciple-making, community-hearted.",
-        "detail": "The good news of Jesus Christ moves our congregations outward in sacrificial love, mercy, and faithful witness.",
-        "scriptures": "Micah 6:8; Isa. 1:17; 61:1–11; Luke 4:18–19; Matt. 5:13–16; 6:33; 28:18–20; Phil. 1:14; Acts 1:6–8; Col. 4:5–6; 1 Pet. 2:9–12; Rev. 5:9–10"
+        "scriptures": "Micah 6:8; Isa. 1:17; 61:1–11; Luke 4:18–19; Matt. 5:13–16; 6:33; 25:31–46; 28:18–20; Phil. 1:14; Acts 1:6–8; 4:31; Col. 4:5–6; 1 Pet. 2:9–12; 3:15–16; Rev. 5:9–10"
       },
       {
         "id": "local-church-empowering",
-        "title": "Local Church Empowering",
+        "title": "Local church empowering",
         "summary": "We are light on structures and hierarchy, high on support, partnership, mutual accountability and encouragement.",
-        "detail": "Denominational workgroups and committees exist to serve, equip, and strengthen the ministry of local congregations and their elders.",
         "scriptures": "Matt. 20:24–28; 25:14–30; Heb. 13:17; 1 Thess. 5:11; 2 Cor. 1:24; 8:23; Phil. 1:5; 4:15; 3 John 1:5–8; 1 Pet. 5:3"
       },
       {
         "id": "prayerful-urgency",
-        "title": "Prayerful Urgency",
+        "title": "Prayerful urgency",
         "summary": "We are humbly dependent upon God and filled with prayerful, sacrificial compassion for the lost in all the world.",
-        "detail": "Recognising that only God gives growth, we cultivate earnest, persevering prayer across our churches for spiritual renewal and gospel harvest.",
         "scriptures": "Isa. 62:6; Acts 2:42; Matt. 6:5–13; Rom. 10:1; Eph. 6:10–20; 1 Tim. 2:1–4; 1 Thess. 5:17; Jude 20"
       },
       {
         "id": "historic-orthodoxy",
-        "title": "Historic Orthodoxy",
+        "title": "Historic orthodoxy",
         "summary": "We are complementarian, Scripture-regulated in worship, and unashamedly anchored in unchanging truth rather than cultural trends.",
-        "detail": "Upholding God's design for male and female, lifelong marriage, and the sanctity of life, we gather for expository, Christ-centred preaching and theologically rich singing.",
         "scriptures": "Gen. 1:27–28; 2:24; Deut. 12:32; Ps. 139:13–16; Matt. 19:4–6; Luke 24:27; Eph. 5:19–33; 1 Tim. 2:11–3:7; 2 Tim. 4:2; Heb. 12:28"
       }
-    ]
+    ],
+    "source": "https://crca.org.au/our-core-values/"
   },
   "history": {
     "heading": "History of the CRCA",
     "lead": "The Christian Reformed Churches of Australia (CRCA) includes over fifty congregations across Australia established since 1951 in just about every state and territory.",
-    "scriptureQuote": "All over the world this gospel is bearing fruit and growing...",
+    "scriptureQuote": "the gospel bearing fruit and growing throughout the whole world",
     "scriptureRef": "Colossians 1:6",
-    "reformedEmphasesIntro": "The CRCA stands within the Calvinist or Reformed stream of the Christian Church, which emphasises:",
+    "reformedEmphasesIntro": "The Calvinist or Reformed stream of the Christian Church emphasises:",
     "reformedEmphases": [
-      "God's honour, pre-eminence, and grace in all things",
+      "God’s honour, pre-eminence and grace in all things",
       "Reconciliation with God through Christ Jesus alone",
-      "The work of the Holy Spirit as essential for faith and spiritual growth",
-      "The Bible as the foundation of our faith's substance",
+      "The work of the Holy Spirit essential for faith and growth",
+      "The Bible as the foundation of our faith’s substance",
       "The church as a community in covenant with God"
     ],
     "foundingCommitments": [
-      "Embrace and uphold Biblical and Reformed theology as summarised in the Three Ecumenical Creeds (Apostles', Nicene, Athanasian) and Reformed Confessions (Belgic Confession, Heidelberg Catechism, Canons of Dort, Scottish Westminster Confession, and the Contemporary Testimony of the CRCNA).",
-      "Maintain a national profile able to enfold new settlers and seekers across every Australian state and capital city.",
-      "Be governed locally by elders chosen periodically by the congregation, linked with representative regional (Classis) and national (Synod) assemblies."
+      "Embraced and upheld Biblical and Reformed theology, as expressed in the ecumenical creeds and the Reformed confessions.",
+      "Had a national profile that could enfold new settlers and others interested in every state and capital city.",
+      "Was governed by a group of elders chosen periodically by the church and linked with representative state and national bodies."
     ],
     "milestones": [
       {
         "era": "1951",
-        "title": "Founding & Post-War Migration",
-        "description": "Formed following post-World War II migration of Dutch Christians to Australia, establishing the first CRCA congregation in 1951 with a strong commitment to biblical theology, elder-led governance, and church planting."
+        "title": "The first congregations",
+        "description": "The CRCA was formed as a result of the post-World War 2 migration of Dutch people to Australia. The first congregations were instituted in 1951: Penguin and Ulverstone in Tasmania on 13 October, and Sydney and Wollongong on 16 December."
       },
       {
-        "era": "1950s – 1980s",
-        "title": "Establishing National Roots & Theological Training",
-        "description": "New congregations were planted across major cities and regional towns in nearly every Australian state and territory, supported by denominational publications such as Trowel and Sword (launched October 1954) and Reformed theological education."
+        "era": "1952",
+        "title": "The first Synod",
+        "description": "The first Synod met in June 1952 at East St Kilda, Melbourne, and adopted the name Reformed Churches of Australia."
       },
       {
-        "era": "1990s",
-        "title": "Steady Growth Across Australia",
-        "description": "Through the 1990s the CRCA experienced steady numerical and geographical growth, expanding churches in local Australian communities and welcoming people from diverse cultural backgrounds."
+        "era": "1954",
+        "title": "Reformed Theological College",
+        "description": "Synod resolved to found a theological college to train ministers. Classes began in Geelong in April 1955."
       },
       {
-        "era": "2000s – Present",
-        "title": "Reforming to Reach the Lost for Christ",
-        "description": "Since 2000 the denomination has renewed its missional commitment to planting new churches, reaching multicultural communities, equipping leaders, and partnering locally and globally to see the gospel bear fruit."
+        "era": "1954–2010",
+        "title": "Trowel and Sword",
+        "description": "The first edition of Trowel and Sword was published by and for the Reformed Churches of Australia and New Zealand in October 1954, with the final printed edition distributed in December 2010.",
+        "link": "/who-we-are/trowel-and-sword"
+      },
+      {
+        "era": "1964",
+        "title": "Cadets",
+        "description": "The Cadet program for boys came to Australia, run by volunteers in local churches."
+      },
+      {
+        "era": "To the 1990s",
+        "title": "Steady growth",
+        "description": "Up through the 1990s the CRCA experienced steady growth and saw churches established throughout Australia."
+      },
+      {
+        "era": "Since 2000",
+        "title": "Reforming to reach the lost for Christ",
+        "description": "Since 2000 the CRCA has renewed its commitment to be a church that is reforming to reach the lost for Christ. It adopted a fourfold task (Pray, Train, Grow, Align) as the framework to expand the CRCA’s gospel impact throughout Australia. In every state there are renewed efforts to continue the pattern of the first CRC churches in Australia: to plant many new churches and also welcome migrants who are making their home in Australia."
+      },
+      {
+        "era": "2000s–2010s",
+        "title": "Planting new churches",
+        "description": "Established congregations planted daughter churches: Willetton in Perth planted Gateway, Grace and Connect; Kingston in Tasmania planted One Way, Bay, Summerleas and Redeemer; and Dandenong, One Hope and Casey together planted Pakenham Christian Community Church."
+      }
+    ],
+    "source": "https://crca.org.au/our-history/",
+    "sources": [
+      "https://dacc.net.au/archive/dutch-australian-history/dutch-migration/christian-reformed-churches-of-australia/",
+      "https://www.sutherlandreformed.com.au/our-history/ (first Synod 1952)",
+      "https://rtc.edu.au/who-we-are/college-history",
+      "https://cadets.crca.org.au",
+      "https://www.willo.org.au/aboutus",
+      "https://pc3.org.au/about-us/"
+    ]
+  },
+  "fourFoldTask": {
+    "intro": "As a denomination, we believe that we accomplish our mission and vision through four key tasks:",
+    "source": "https://crca.org.au/four-fold-task/",
+    "items": [
+      {
+        "id": "pray",
+        "title": "Pray",
+        "text": "Pray for such an outpouring of the Holy Spirit that we will be assured of God’s love through his Word, seek to please the Saviour in all things, live holy lives, and be filled with compassion for the lost."
+      },
+      {
+        "id": "grow",
+        "title": "Grow",
+        "text": "Grow healthy churches which nurture and equip their members and, by God’s grace, expand numerically, plant new churches, and embody the Kingdom of God."
+      },
+      {
+        "id": "train",
+        "title": "Train",
+        "text": "Equip all members to be disciples of Christ and multiply the number of well-trained leaders who are actively engaged with God’s mission."
+      },
+      {
+        "id": "align",
+        "title": "Align",
+        "text": "Reform continually the life of the denomination to advance our mission and vision."
+      }
+    ]
+  },
+  "strategies": {
+    "intro": "Strategies to advance our mission and vision in our work in Australia and around the world will be advanced through the various committees of our denomination. Specifically we:",
+    "source": "https://crca.org.au/our-strategies/",
+    "items": [
+      {
+        "id": "mentoring",
+        "title": "Mentoring",
+        "text": "We ensure regular and ongoing mentoring/coaching for all pastors in line with the emphases of our Four Fold task."
+      },
+      {
+        "id": "training",
+        "title": "Training",
+        "text": "The CRCA trains people strategically for evangelism, disciple-making, and leadership development using both internal and external resources."
+      },
+      {
+        "id": "ministry-pathways",
+        "title": "Ministry pathways",
+        "text": "We resource churches and pastors to develop multiple ministry and leadership development pathways."
+      },
+      {
+        "id": "church-health",
+        "title": "Church health analyses",
+        "text": "We provide churches with diagnostic tools to help churches analyse their health, help them plan for the future and strategically put things in place to grow more healthy."
+      },
+      {
+        "id": "church-planting",
+        "title": "Resource church planting",
+        "text": "We resource ongoing church planting throughout the country. This includes re-planting churches and church revitalisation efforts."
+      },
+      {
+        "id": "mission",
+        "title": "Mission",
+        "text": "We invest in cross-cultural mission, both locally and globally, which integrates gospel impact and kingdom transformation."
+      },
+      {
+        "id": "church-strategy",
+        "title": "Church strategy support",
+        "text": "We cultivate and refine models of effective local churches which are proven examples of distinctly reformed and kingdom oriented churches for others to learn from."
+      },
+      {
+        "id": "prayer",
+        "title": "Prayer",
+        "text": "We support churches to increase a church-wide commitment to earnest prayer for gospel workers and gospel growth."
+      },
+      {
+        "id": "partnerships",
+        "title": "Strategic partnerships",
+        "text": "We build and nurture strategic partnerships that serve to support the cause of the gospel in local settings and regions."
       }
     ]
   }

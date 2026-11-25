@@ -95,6 +95,28 @@ function extractFootnotes(rawText) {
   return { bodyText: bodyLines.join("\n"), defs };
 }
 
+
+const SMALL_WORDS = new Set(['a', 'an', 'and', 'as', 'at', 'by', 'for', 'in', 'of', 'on', 'or', 'the', 'to', 'with']);
+
+/** "THE OPENING OF THE SERVICE" -> "The Opening of the Service" (footnote markers untouched). */
+function titleCaseCaps(text) {
+  if (/[a-z]/.test(text.replace(/\[\^[^\]]+\]/g, ''))) return text;
+  let first = true;
+  return text
+    .split(/(\[\^[^\]]+\])/)
+    .map((part) =>
+      part.startsWith('[^')
+        ? part
+        : part.toLowerCase().replace(/[a-z][a-z'’]*/g, (w) => {
+            const isFirst = first;
+            first = false;
+            if (/^(i|ii|iii|iv|v|vi)$/.test(w)) return w.toUpperCase();
+            return isFirst || !SMALL_WORDS.has(w) ? w[0].toUpperCase() + w.slice(1) : w;
+          })
+    )
+    .join('');
+}
+
 const NUMBERED_READING_RE = /^\d+\.\s+(?:[1-3]\s+)?(?:Genesis|Exodus|Leviticus|Numbers|Deuteronomy|Joshua|Judges|Ruth|Samuel|Kings|Chronicles|Ezra|Nehemiah|Esther|Job|Psalms?|Proverbs|Ecclesiastes|Song|Isaiah|Jeremiah|Lamentations|Ezekiel|Daniel|Hosea|Joel|Amos|Obadiah|Jonah|Micah|Nahum|Habakkuk|Zephaniah|Haggai|Zechariah|Malachi|Matthew|Mark|Luke|John|Acts|Romans|Corinthians|Galatians|Ephesians|Philippians|Colossians|Thessalonians|Timothy|Titus|Philemon|Hebrews|James|Peter|Jude|Revelation)\s+\d+/i;
 
 const BAPTISM_CUE_RE = /^(?:Why do we baptise.*\?|(?:Question to Parents|Question to the congregation[^:]*|Baptism|Baptismal prayer|Address to Parents|Prayer of thanksgiving):)$/i;
@@ -280,7 +302,7 @@ function parseListBlock(lines, startIdx, renderInlineFn, shouldStopAt = null) {
 }
 
 function buildSectionActionsHtml(slug, title) {
-  return `<span class="section-actions no-print"><button type="button" class="mini-copy-btn" data-copy-section="${escapeHtml(slug)}" data-copy-format="clean" title="Copy ${escapeHtml(title)}">Copy</button><button type="button" class="mini-copy-btn" data-copy-section="${escapeHtml(slug)}" data-copy-format="slides" title="Copy ${escapeHtml(title)} for slides">Slides</button></span>`;
+  return `<span class="section-actions no-print"><button type="button" class="mini-copy-btn" data-copy-section="${escapeHtml(slug)}" data-copy-format="clean" title="Copy the text of this section" aria-label="Copy the text of ${escapeHtml(title)}">Copy text</button><button type="button" class="mini-copy-btn" data-copy-section="${escapeHtml(slug)}" data-copy-format="slides" title="Copy this section split into slide-sized parts, ready to paste into ProPresenter or PowerPoint" aria-label="Copy ${escapeHtml(title)} as slides">Copy as slides</button></span>`;
 }
 
 export function parseMarkdown(mdText, options = {}) {
@@ -450,13 +472,14 @@ export function parseMarkdown(mdText, options = {}) {
     const imp = checkImplicitAt(i);
     if (imp) {
       const slug = allocateSlug(imp.rawText);
-      const displayText = cleanHeadingDisplay(imp.rawText);
+      const shownText = imp.kind === "implicit" ? titleCaseCaps(imp.rawText) : imp.rawText;
+      const displayText = cleanHeadingDisplay(shownText);
       if (imp.tocLevel !== null) {
         headings.push({ level: imp.tocLevel, text: displayText, slug });
       }
       const cls = imp.kind === "reading" ? "reading-heading section-heading" : "implicit-heading section-heading";
       const actions = buildSectionActionsHtml(slug, displayText);
-      htmlParts.push(`<h${imp.htmlLevel} id="${escapeHtml(slug)}" class="${cls}">${renderInline(imp.rawText)}${actions}</h${imp.htmlLevel}>`);
+      htmlParts.push(`<h${imp.htmlLevel} id="${escapeHtml(slug)}" class="${cls}">${renderInline(shownText)}${actions}</h${imp.htmlLevel}>`);
       i += 1;
       continue;
     }
@@ -523,7 +546,7 @@ export function parseMarkdown(mdText, options = {}) {
       const qaParts = [];
       const firstPara = parseParagraphAt(i);
       i = firstPara.nextIdx;
-      const qaActions = `<span class="qa-actions no-print"><button type="button" class="mini-copy-btn" data-copy-qa="${qNum}" data-copy-format="clean" title="Copy Q&amp;A ${qNum}">Copy</button><button type="button" class="mini-copy-btn" data-copy-qa="${qNum}" data-copy-format="slides" title="Copy Q&amp;A ${qNum} for slides">Slides</button></span>`;
+      const qaActions = `<span class="qa-actions no-print"><button type="button" class="mini-copy-btn" data-copy-qa="${qNum}" data-copy-format="clean" title="Copy the text of Q&amp;A ${qNum}">Copy text</button><button type="button" class="mini-copy-btn" data-copy-qa="${qNum}" data-copy-format="slides" title="Copy Q&amp;A ${qNum} split into slide-sized parts for ProPresenter or PowerPoint">Copy as slides</button></span>`;
       qaParts.push(firstPara.html.replace(/^<p>/, '<p class="qa-question">').replace(/<\/p>$/, `${qaActions}</p>`));
 
       // Collect answer paragraphs / blockquotes / lists up to next Q., heading, or hr
@@ -567,7 +590,7 @@ export function parseMarkdown(mdText, options = {}) {
       const secPara = parseParagraphAt(i);
       i = secPara.nextIdx;
       const wcfId = `${currentWcfChapter}-${secNum}`;
-      const wcfActions = `<span class="qa-actions no-print"><button type="button" class="mini-copy-btn" data-copy-wcf="${wcfId}" data-copy-format="clean" title="Copy WCF ${currentWcfChapter}:${secNum}">Copy</button><button type="button" class="mini-copy-btn" data-copy-wcf="${wcfId}" data-copy-format="slides" title="Copy WCF ${currentWcfChapter}:${secNum} for slides">Slides</button></span>`;
+      const wcfActions = `<span class="qa-actions no-print"><button type="button" class="mini-copy-btn" data-copy-wcf="${wcfId}" data-copy-format="clean" title="Copy the text of WCF ${currentWcfChapter}:${secNum}">Copy text</button><button type="button" class="mini-copy-btn" data-copy-wcf="${wcfId}" data-copy-format="slides" title="Copy WCF ${currentWcfChapter}:${secNum} split into slide-sized parts for ProPresenter or PowerPoint">Copy as slides</button></span>`;
       const innerHtml = secPara.html.replace(/<\/p>$/, `${wcfActions}</p>`);
       htmlParts.push(`<div class="wcf-section-block" id="wcf-${wcfId}" data-wcf-ch="${currentWcfChapter}" data-wcf-sec="${secNum}">${innerHtml}</div>`);
       continue;

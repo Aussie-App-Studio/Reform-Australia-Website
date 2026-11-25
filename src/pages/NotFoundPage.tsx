@@ -1,48 +1,37 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, MapPin, Mail } from 'lucide-react';
-import { CrcaLogo } from '../components/CrcaLogo';
+import { usePageMeta } from '../utils/usePageTitle';
+
+const LINKS = [
+  { to: '/', label: 'Home page' },
+  { to: '/find-a-church', label: 'Find a church' },
+  { to: '/for-churches/forms-and-documents', label: 'Forms and documents' },
+  { to: '/sermons', label: 'Reading sermons' },
+  { to: '/safe-church', label: 'Safe Church' },
+  { to: '/contact', label: 'Contact the office' },
+];
 
 export function NotFoundPage() {
+  usePageMeta({ title: 'Page not found', noindex: true });
   return (
-    <section className="bg-stone-50 py-24">
-      <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
-        <div className="mb-6 flex justify-center">
-          <CrcaLogo variant="stacked" className="h-20" />
-        </div>
-        <span className="inline-block rounded-full bg-gold-50 border border-gold-400/50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-gold-600">
-          404 — Page Not Found
-        </span>
-        <h1 className="mt-4 font-serif text-4xl font-bold text-navy-900">
-          We couldn’t find that page
-        </h1>
-        <p className="mt-3 text-base text-stone-700">
-          The page you&apos;re looking for may have moved or no longer exists. Try heading back home,
-          finding a local congregation, or contacting our national office.
+    <section className="bg-stone-50">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24 [&>*]:max-w-3xl">
+        <h1 className="font-serif text-4xl font-semibold text-navy-900">We couldn’t find that page</h1>
+        <p className="mt-4 text-lg leading-relaxed text-stone-700">
+          It may have moved when the CRCA websites were brought together, or the address may be mistyped. These pages
+          may help:
         </p>
-
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 rounded-xl bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-navy-800"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            <span>Back to Home</span>
-          </Link>
-          <Link
-            to="/find-a-church"
-            className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-700"
-          >
-            <MapPin className="h-4 w-4" />
-            <span>Find a Church</span>
-          </Link>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-navy-900 hover:bg-stone-100"
-          >
-            <Mail className="h-4 w-4 text-teal-600" />
-            <span>Contact Us</span>
-          </Link>
-        </div>
+        <ul className="mt-8 divide-y divide-stone-200 border-y border-stone-200">
+          {LINKS.map((l) => (
+            <li key={l.to}>
+              <Link
+                to={l.to}
+                className="block py-3.5 text-lg font-semibold text-navy-900 underline-offset-4 hover:text-teal-700 hover:underline"
+              >
+                {l.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

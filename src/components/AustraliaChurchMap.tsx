@@ -3,26 +3,12 @@ import * as maplibregl from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
+import { getDirectionsUrl, type ChurchRecord } from '../utils/churchRecord';
+
+export { getDirectionsUrl, type ChurchRecord };
+
 maplibregl.setWorkerUrl(workerUrl);
 
-export interface ChurchRecord {
-  id: string;
-  name: string;
-  suburb: string;
-  state: 'NSW' | 'ACT' | 'QLD' | 'SA' | 'TAS' | 'VIC' | 'WA';
-  postcode: string;
-  classis: string;
-  address: string;
-  lat: number;
-  lng: number;
-  serviceTimes: string | null;
-  website: string | null;
-  facebook: string | null;
-  youtube: string | null;
-  videoUrl: string | null;
-  livestreamOnFacebook: boolean;
-  podcast: string | null;
-}
 
 interface AustraliaChurchMapProps {
   churches: ChurchRecord[];
@@ -36,16 +22,13 @@ interface AustraliaChurchMapProps {
 const OPENFREEMAP_STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
 const AUSTRALIA_CENTER: [number, number] = [133.8, -28.2];
 const AUSTRALIA_DEFAULT_ZOOM = 3.15;
-const AUSTRALIA_MIN_ZOOM = 3.0;
+const AUSTRALIA_MIN_ZOOM = 2.2;
 // Southwest [lng, lat] to Northeast [lng, lat] bounding box around Australia with ocean buffer
 const AUSTRALIA_MAX_BOUNDS: [[number, number], [number, number]] = [
   [95.0, -52.0],
   [172.0, -3.0],
 ];
 
-export function getDirectionsUrl(church: Pick<ChurchRecord, 'lat' | 'lng'>): string {
-  return `https://www.google.com/maps/dir/?api=1&destination=${church.lat},${church.lng}`;
-}
 
 function escapeHtml(text: string): string {
   return text
@@ -64,22 +47,25 @@ function applyPinStyling(el: HTMLElement, isSelected: boolean): void {
   el.classList.toggle('crca-map-pin-selected', isSelected);
   el.classList.toggle('crca-map-pin', !isSelected);
 
-  if (isSelected) {
-    dot.style.width = '24px';
-    dot.style.height = '24px';
-    dot.style.borderRadius = '9999px';
-    dot.style.background = '#00224c';
-    dot.style.border = '3px solid #ffffff';
-    dot.style.boxShadow = '0 0 0 4px rgba(197,155,67,0.55), 0 4px 10px rgba(0,34,76,0.4)';
-    dot.style.transition = 'transform 150ms ease, background-color 150ms ease';
-  } else {
-    dot.style.width = '16px';
-    dot.style.height = '16px';
-    dot.style.borderRadius = '9999px';
-    dot.style.background = '#00a6ca';
-    dot.style.border = '2.5px solid #ffffff';
-    dot.style.boxShadow = '0 2px 6px rgba(0,34,76,0.35)';
-    dot.style.transition = 'transform 150ms ease, background-color 150ms ease';
+  const size = isSelected ? 36 : 26;
+  dot.style.width = `${size}px`;
+  dot.style.height = `${size}px`;
+  dot.style.borderRadius = '9999px';
+  dot.style.display = 'flex';
+  dot.style.alignItems = 'center';
+  dot.style.justifyContent = 'center';
+  dot.style.color = '#ffffff';
+  dot.style.background = isSelected ? '#00224c' : '#0b7f99';
+  dot.style.border = isSelected ? '3px solid #ffffff' : '2px solid #ffffff';
+  dot.style.boxShadow = isSelected
+    ? '0 0 0 4px rgba(197,155,67,0.55), 0 4px 10px rgba(0,34,76,0.4)'
+    : '0 2px 6px rgba(0,34,76,0.35)';
+  dot.style.transition = 'width 150ms ease, height 150ms ease, background-color 150ms ease';
+  const icon = dot.querySelector<SVGElement>('svg');
+  if (icon) {
+    const iconSize = String(isSelected ? 18 : 14);
+    icon.setAttribute('width', iconSize);
+    icon.setAttribute('height', iconSize);
   }
 }
 
@@ -99,6 +85,9 @@ function createPinElement(church: ChurchRecord, isSelected: boolean): HTMLElemen
 
   const dot = document.createElement('div');
   dot.setAttribute('data-pin-dot', 'true');
+  // Lucide "church" icon
+  dot.innerHTML =
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 9h4"/><path d="M12 7v5"/><path d="M14 22v-4a2 2 0 0 0-4 0v4"/><path d="M18 22V5.618a1 1 0 0 0-.553-.894l-4.553-2.277a2 2 0 0 0-1.788 0L6.553 4.724A1 1 0 0 0 6 5.618V22"/><path d="m18 7 3.447 1.724a1 1 0 0 1 .553.894V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.618a1 1 0 0 1 .553-.894L6 7"/></svg>';
   wrapper.appendChild(dot);
 
   applyPinStyling(wrapper, isSelected);
@@ -130,7 +119,7 @@ function buildPopupHtml(church: ChurchRecord): string {
     );
   }
   if (church.facebook) {
-    const fbLabel = church.livestreamOnFacebook ? 'Facebook Livestream' : 'Facebook';
+    const fbLabel = church.livestreamOnFacebook ? 'Facebook livestream' : 'Facebook';
     links.push(
       `<a href="${escapeHtml(church.facebook)}" target="_blank" rel="noopener noreferrer" style="${pillStyle}background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;">${fbLabel}</a>`
     );
@@ -440,16 +429,14 @@ export function AustraliaChurchMap({
       return;
     }
 
-    if (churches.length === totalChurchCount) {
-      map.jumpTo({ center: AUSTRALIA_CENTER, zoom: AUSTRALIA_DEFAULT_ZOOM });
-    } else if (coords.length === 1) {
+    if (coords.length === 1) {
       map.jumpTo({ center: coords[0], zoom: 12 });
     } else {
       const bounds = new maplibregl.LngLatBounds(coords[0], coords[0]);
       for (const coord of coords) {
         bounds.extend(coord);
       }
-      map.fitBounds(bounds, { padding: 48, maxZoom: 11.5, duration: 0 });
+      map.fitBounds(bounds, { padding: { top: 40, bottom: 56, left: 40, right: 40 }, maxZoom: 11.5, duration: 0 });
     }
 
     layoutColocatedMarkers(
@@ -536,14 +523,14 @@ export function AustraliaChurchMap({
 
   return (
     <div
-      className={`relative z-0 isolate overflow-hidden rounded-2xl border border-stone-200 bg-stone-100 shadow-sm ${className}`}
+      className={`relative z-0 isolate overflow-hidden rounded-lg border border-stone-200 bg-stone-100 ${className}`}
     >
       <div
         ref={containerRef}
         className="h-full w-full"
         aria-label="Interactive map of Christian Reformed Churches of Australia congregations"
       />
-      <div className="pointer-events-none absolute bottom-3 left-3 z-10 hidden sm:block rounded-lg bg-white/90 px-2.5 py-1 text-[11px] font-medium text-navy-900 shadow-xs border border-stone-200">
+      <div className="pointer-events-none absolute bottom-3 left-3 z-10 hidden sm:block rounded-lg bg-white px-2.5 py-1 text-[11px] font-medium text-navy-900 border border-stone-200">
         Select a pin to view service times and church details
       </div>
     </div>

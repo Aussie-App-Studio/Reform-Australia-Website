@@ -16,36 +16,31 @@ export function Footer() {
             <Link to="/" className="inline-block">
               <CrcaLogo variant="light" />
             </Link>
-            <p className="text-sm leading-relaxed text-navy-100/90 max-w-sm">
-              {siteConfig.tagline}. Over 50 Reformed, Bible-based congregations serving
-              communities across Australia since {siteConfig.establishedYear}.
+            <p className="max-w-sm leading-relaxed text-navy-100">
+              A family of Reformed churches across Australia since {siteConfig.establishedYear}.
             </p>
-            <div className="flex flex-wrap items-center gap-3 pt-1">
-              <Link
-                to="/find-a-church"
-                className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-white/15"
-              >
-                <MapPin className="h-3.5 w-3.5 text-gold-400" />
-                <span>Find a Church</span>
-              </Link>
-              <a
-                href={`mailto:${siteConfig.adminEmail}`}
-                className="inline-flex items-center gap-2 rounded-lg border border-white/15 px-3.5 py-2 text-xs font-medium text-navy-100 transition-colors hover:border-white/30 hover:text-white"
-              >
-                <Mail className="h-3.5 w-3.5 text-teal-400" />
-                <span>{siteConfig.adminEmail}</span>
-              </a>
-            </div>
+            <ul className="space-y-1.5 text-sm">
+              <li>
+                <Link to="/find-a-church" className="inline-flex items-center gap-2 text-white hover:underline underline-offset-4">
+                  <MapPin className="h-4 w-4 text-teal-400" aria-hidden="true" /> Find a church
+                </Link>
+              </li>
+              <li>
+                <a href={`mailto:${siteConfig.adminEmail}`} className="inline-flex items-center gap-2 text-white hover:underline underline-offset-4">
+                  <Mail className="h-4 w-4 text-teal-400" aria-hidden="true" /> {siteConfig.adminEmail}
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* Balanced 3-Column Navigation Sitemap */}
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 lg:col-span-8">
             {footerColumns.map((col) => (
               <div key={col.title}>
-                <h3 className="font-sans text-xs font-bold uppercase tracking-wider text-gold-400">
+                <h3 className="font-sans text-base font-semibold text-white">
                   {col.title}
                 </h3>
-                <ul className="mt-4 space-y-2.5">
+                <ul className="mt-3 lg:mt-4 lg:space-y-2.5">
                   {col.links.map((link) => (
                     <li key={link.label}>
                       {link.isExternal ? (
@@ -53,7 +48,7 @@ export function Footer() {
                           href={link.to}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-sm text-navy-100/85 transition-colors hover:text-white"
+                          className="inline-flex items-center gap-1.5 py-2 text-sm text-navy-100/85 transition-colors hover:text-white lg:py-0"
                         >
                           <span>{link.label}</span>
                           <ExternalLink className="h-3 w-3 shrink-0 opacity-50" />
@@ -61,7 +56,7 @@ export function Footer() {
                       ) : (
                         <Link
                           to={link.to}
-                          className="text-sm text-navy-100/85 transition-colors hover:text-white"
+                          className="inline-block py-2 text-sm text-navy-100/85 transition-colors hover:text-white lg:py-0"
                         >
                           {link.label}
                         </Link>
@@ -80,18 +75,16 @@ export function Footer() {
             © {currentYear} {siteConfig.brandName}. Established {siteConfig.establishedYear}.
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <a
-              href={siteConfig.safeChurch.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-medium text-teal-100 transition-colors hover:text-white"
+            <Link
+              to={siteConfig.safeChurch.url}
+              className="inline-flex items-center gap-1.5 py-2 font-medium text-teal-100 transition-colors hover:text-white"
             >
               <ShieldCheck className="h-3.5 w-3.5 text-teal-400" />
-              <span>Safe Church &amp; Safeguarding</span>
-            </a>
+              <span>Safe Church</span>
+            </Link>
             <span className="text-white/25">•</span>
-            <Link to="/contact" className="transition-colors hover:text-white">
-              National Enquiries
+            <Link to="/contact" className="inline-block py-2 transition-colors hover:text-white">
+              Contact
             </Link>
           </div>
         </div>

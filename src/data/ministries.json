@@ -51,7 +51,9 @@
     "url": "/ministries/missional-explorations",
     "isExternal": false,
     "ctaLabel": "Explore Missional Explorations",
-    "highlights": ["Up to $2,500 matching seed funding from CPT"],
+    "highlights": [
+      "Up to $2,500 matching seed funding from CPT"
+    ],
     "contact": "KJ Tromp (CPT Convenor) — kj@southbarwon.org.au",
     "secondaryLinks": [
       {
@@ -90,7 +92,10 @@
     "url": "/ministries/candidacy",
     "isExternal": false,
     "ctaLabel": "View 11-Step Pathway",
-    "highlights": ["4 ordination tracks", "11-step pathway with 1-year vicariate"],
+    "highlights": [
+      "4 ordination tracks",
+      "11-step pathway with 1-year vicariate"
+    ],
     "contact": "Rev. Josh Hartog (Chair) — 0423 814 700 • joshhartog@outlook.com",
     "secondaryLinks": [
       {
@@ -155,9 +160,9 @@
     "megaMenuGroup": "training-planting",
     "homepageTab": "next-gen-families",
     "iconName": "ShieldCheck",
-    "url": "https://safechurch.crca.org.au/",
-    "isExternal": true,
-    "ctaLabel": "Visit safechurch.crca.org.au"
+    "url": "/safe-church",
+    "isExternal": false,
+    "ctaLabel": "Open Safe Church"
   },
   {
     "id": "world-transform",
@@ -167,15 +172,15 @@
     "megaMenuGroup": "global-mission",
     "homepageTab": "global",
     "iconName": "Globe2",
-    "url": "https://worldtransform.org.au/",
-    "isExternal": true,
-    "ctaLabel": "Visit worldtransform.org.au"
+    "url": "/ministries/world-transform",
+    "isExternal": false,
+    "ctaLabel": "Read about World Transform"
   },
   {
     "id": "swim-solomon-islands",
     "name": "Solomon Islands SWIM",
     "shortDescription": "Supports indigenous church life, leadership equipping, and practical community ministry at the SWIM mission base in the Solomon Islands.",
-    "fullDescription": "SWIM (Supporting Work in Ministry) is an overseas mission arm of the CRCA connecting Australian congregations with believers in the Solomon Islands through mutual encouragement, training, community partnerships, and short-term mission teams.",
+    "fullDescription": "SWIM (Supporting Work in Mission) is an overseas mission arm of the CRCA connecting Australian congregations with believers in the Solomon Islands through mutual encouragement, training, community partnerships, and short-term mission teams.",
     "megaMenuGroup": "global-mission",
     "homepageTab": "global",
     "iconName": "Anchor",

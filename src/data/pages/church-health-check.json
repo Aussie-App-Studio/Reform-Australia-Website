@@ -1,0 +1,81 @@
+{
+  "slug": "church-health-check",
+  "path": "/for-churches/church-health-check",
+  "section": "for-churches",
+  "title": "Church health check",
+  "summary": "Help for CRCA churches to look at their health and grow, including the NCD church health survey.",
+  "icon": "Activity",
+  "body": [
+    {
+      "id": "about",
+      "heading": "Healthy churches are growing churches",
+      "paragraphs": [
+        "Healthy churches are growing churches. The CRCA is committed to assist churches so that local initiatives are leveraged for gospel and kingdom growth.",
+        "CRCA Ministry Formation will assist churches in their respective state to maximise church health in areas such as:"
+      ],
+      "list": [
+        "The marks of the true church as identified in the Belgic Confession",
+        "CRCA Church Order distinctives: worship, faith nurture, pastoral care and oversight, and missions;",
+        "The eight characteristics of a healthy church as identified by NCD (Natural Church Development)",
+        "Other church health issues raised by individual congregations."
+      ]
+    },
+    {
+      "id": "survey",
+      "heading": "Do you need a church health check-up?",
+      "paragraphs": [
+        "Is your church healthy? What are the signs of a healthy church? Do you need a church health check-up? Watch the video below, and order your church health survey from NCD-Australia."
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "label": "Who it's for",
+      "value": "CRCA churches"
+    },
+    {
+      "label": "Survey",
+      "value": "NCD church survey, ordered from NCD-Australia"
+    }
+  ],
+  "contact": {
+    "name": "CRCA Administration",
+    "email": "admin@crca.org.au",
+    "topic": "outreach"
+  },
+  "actions": [
+    {
+      "label": "Order the NCD church survey",
+      "url": "https://toolshed.ncd-australia.org/tools/ncd-church-survey",
+      "kind": "primary"
+    },
+    {
+      "label": "Ask about a health check",
+      "url": "/contact?topic=outreach",
+      "kind": "secondary"
+    }
+  ],
+  "video": {
+    "youtubeId": "W8cGpr1590Q",
+    "title": "Church health check"
+  },
+  "resources": [
+    {
+      "label": "NCD church survey (NCD-Australia)",
+      "url": "https://toolshed.ncd-australia.org/tools/ncd-church-survey",
+      "type": "link"
+    },
+    {
+      "label": "Belgic Confession",
+      "url": "/who-we-are/beliefs",
+      "type": "link"
+    }
+  ],
+  "sources": [
+    "https://crca.org.au/church-health-check/"
+  ],
+  "needsChecking": [
+    "The official page says 'CRCA Ministry Formation will assist churches'. Ministry Formation has its own website (not linked, under the one-platform rule). Is Ministry Formation still the right name, and who does this work while the Ministry Development Coordinator role is vacant?",
+    "The video title is not given on the official page; 'Church health check' is a placeholder title."
+  ]
+}

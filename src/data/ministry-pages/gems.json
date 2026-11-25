@@ -1,0 +1,184 @@
+{
+  "slug": "gems",
+  "name": "GEMS",
+  "group": "next-gen",
+  "summary": "Christian girls' clubs for girls aged 9 to 15, run by women volunteers from CRCA churches, with Busy Bees for girls aged 6 to 8.",
+  "logo": {
+    "src": "/images/logos/ministries/gems.webp",
+    "alt": "GEMS Girls' Clubs badge"
+  },
+  "hero": {
+    "src": "/images/ministries/gems/hero.webp",
+    "alt": "A line of girls wearing red headbands link arms and walk together across a grassy camp field during an outdoor game, with more girls and a red flag behind them",
+    "caption": "Girls playing a team game outdoors at a GEMS camp"
+  },
+  "body": [
+    {
+      "id": "what-gems-is",
+      "heading": "What GEMS is",
+      "paragraphs": [
+        "G.E.M.S. is a Christian organisation, run by volunteers, with a program made for girls aged 9 to 15. Some groups also run a program called Busy Bees for girls aged 6 to 8.",
+        "Groups usually meet weekly or fortnightly. They are run by Christian women who are members of the Christian Reformed Churches of Australia."
+      ]
+    },
+    {
+      "id": "mission-and-vision",
+      "heading": "Mission and vision",
+      "paragraphs": [
+        "G.E.M.S. stands for Girls Everywhere Meeting the Saviour. The name represents both the mission and the vision of G.E.M.S. Girls' Clubs.",
+        "Mission: \"To help bring girls into a living, dynamic relationship with Jesus Christ.\"",
+        "Vision: \"To see girls actively and enthusiastically expressing love for God and others by equipping and encouraging them to live out their faith.\""
+      ],
+      "image": {
+        "src": "/images/ministries/gems/friends.webp",
+        "alt": "Four smiling girls in jumpers and beanies standing together outdoors at a GEMS camp"
+      }
+    },
+    {
+      "id": "the-bible",
+      "heading": "The Bible at every meeting",
+      "paragraphs": [
+        "The Bible is central to the G.E.M.S. program. At each meeting the girls are asked, \"What does the Lord require of us?\" They all answer: \"To act justly, to love kindness and to walk humbly with our God\" (Micah 6:8).",
+        "Part of each G.E.M.S. evening is set aside to learn from God's Word, either in group Bible studies or from Bible talks by the leaders."
+      ]
+    },
+    {
+      "id": "activities",
+      "heading": "Other activities",
+      "paragraphs": [
+        "Girls also have the chance to take part in:"
+      ],
+      "list": [
+        "Badge work",
+        "Games, craft, drama and singing",
+        "Serving others, for example by visiting nursing homes",
+        "Outings such as swimming, walks and other recreation",
+        "Club or state camps"
+      ],
+      "image": {
+        "src": "/images/ministries/gems/camp-group.webp",
+        "alt": "A large group of girls and women leaders in warm jumpers gather for a group photo outside a camp dining hall",
+        "caption": "Girls and leaders together on camp"
+      }
+    },
+    {
+      "id": "levels",
+      "heading": "Three levels",
+      "paragraphs": [
+        "The G.E.M.S. program is divided into three levels. Each level is designed to meet the spiritual, social, physical and emotional needs of girls. Girls learn how to apply the teaching of the Bible to their own lives and find answers to the challenges they face today."
+      ],
+      "list": [
+        "Busy Bees (Awareness): girls aged 6 to 8",
+        "Discovery level: girls aged 9 to 13",
+        "Advanced level: girls aged 13 to 15"
+      ]
+    },
+    {
+      "id": "theme",
+      "heading": "Club theme: Amazing",
+      "paragraphs": [
+        "The club theme is \"Amazing\", based on Joshua 3:5: \"Consecrate yourselves, for tomorrow the Lord will do amazing things among you.\" GEMS and Cadets clubs share this theme.",
+        "Through the year the girls are reminded:"
+      ],
+      "list": [
+        "That God is holy",
+        "That we must prepare ourselves if we are to be in his presence",
+        "That God has done, is doing and will do amazing things"
+      ]
+    },
+    {
+      "id": "for-leaders",
+      "heading": "For leaders",
+      "paragraphs": [
+        "These reminders help the girls strive to be holy and to recognise the many ways God blesses them.",
+        "Leaders are challenged to be an example to their club: look for, find and share the many amazing things God is doing. Show your girls that God is amazing as you encourage them to live for Jesus.",
+        "The theme lessons, bulletin cover and Gold Sheet for the theme are in the resources below."
+      ]
+    },
+    {
+      "id": "find-a-club",
+      "heading": "Finding a club",
+      "paragraphs": [
+        "GEMS groups meet in local Christian Reformed churches. To find out whether there is a group near you, or to ask about starting one or becoming a leader, send us an enquiry or contact your nearest CRCA church."
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "label": "Who it's for",
+      "value": "Girls aged 9 to 15 (Busy Bees for ages 6 to 8 in some groups)"
+    },
+    {
+      "label": "Led by",
+      "value": "Christian women from CRCA churches"
+    },
+    {
+      "label": "Meets",
+      "value": "Usually weekly or fortnightly"
+    },
+    {
+      "label": "Motto",
+      "value": "Micah 6:8"
+    }
+  ],
+  "contact": {
+    "name": "CRCA Administration",
+    "email": "admin@crca.org.au",
+    "topic": "next-gen"
+  },
+  "actions": [
+    {
+      "label": "Enquire about GEMS",
+      "url": "/contact?topic=next-gen",
+      "kind": "primary"
+    },
+    {
+      "label": "Find a church near you",
+      "url": "/find-a-church",
+      "kind": "secondary"
+    }
+  ],
+  "resources": [
+    {
+      "label": "Theme lessons 2022-2023 (PDF)",
+      "url": "/ministry-resources/cadets-gems/Theme-Lessons-2022.pdf",
+      "type": "pdf",
+      "note": "Bible lessons on the \"Amazing\" theme (Joshua 3:5), shared with Cadets"
+    },
+    {
+      "label": "Bulletin cover 2022-2023 (PDF)",
+      "url": "/ministry-resources/cadets-gems/Bulletin-Cover-22.8.5x11-Downloadable.pdf",
+      "type": "pdf",
+      "note": "Printable church bulletin cover on the theme verse, shared with Cadets"
+    },
+    {
+      "label": "Gold Sheet 2022-2023 (PDF)",
+      "url": "/ministry-resources/cadets-gems/2022_2023-Gold-Sheet.pdf",
+      "type": "pdf",
+      "note": "Leader quick reference, shared with Cadets"
+    }
+  ],
+  "sources": [
+    "https://gems.crca.org.au/ (home page, fetched via wp-json 24 Nov 2026)",
+    "https://gems.crca.org.au/wp-json/wp/v2/media (100 items reviewed 24 Nov 2026)",
+    "https://gems.crca.org.au/wp-content/uploads/2024/09/Theme-Lessons-2022.pdf",
+    "https://gems.crca.org.au/wp-content/uploads/2024/09/Bulletin-Cover-22.8.5x11-Downloadable.pdf",
+    "https://gems.crca.org.au/wp-content/uploads/2024/09/2022_2023-Gold-Sheet.pdf",
+    "https://gems.crca.org.au/wp-content/uploads/2024/09/gems-photos-1.jpg",
+    "https://gems.crca.org.au/wp-content/uploads/2024/09/gems-photos-2.jpg",
+    "https://gems.crca.org.au/wp-content/uploads/2024/09/gems-photos-3.jpg",
+    "https://crca.org.au/ (Our Ministries menu links GEMS to www.gems.crca.org.au)",
+    "src/data/nextGenClubs.json",
+    "src/data/contactTopics.json",
+    "Logo: https://gems.crca.org.au/wp-content/uploads/2024/09/gems-badge.png"
+  ],
+  "needsChecking": [
+    "The three resources are Cadets materials from the Calvinist Cadet Corps (they talk about boys, cadets and counsellors). gems.crca.org.au links the same files, so they are kept here, but confirm GEMS wants them or has its own materials.",
+    "gems.crca.org.au (last updated 2024) shows the same 'Amazing' theme as Cadets, labelled '2024 Theme'. Confirm whether there is a newer theme.",
+    "The crca.org.au menu links to https://www.gems.crca.org.au/, which does not resolve. Once this page is live, that menu link and any other links to gems.crca.org.au should point here.",
+    "No named GEMS contact appears on any source. Enquiries route to CRCA Administration (admin@crca.org.au) via the next-gen contact topic, as in contactTopics.json. Confirm, or supply a GEMS coordinator.",
+    "Photos: the old site had only three real GEMS photos, each 938x342px, so they will look soft as a full-width hero. The rest of the media library is website-template stock and CRCA logos. Newer, larger photos of club nights and camps would help, and no separate gallery was added because there were no further photos to use.",
+    "The 'Finding a club' section and the 'Find a church near you' action replace the old site's external link. There is no list of which churches run GEMS groups. Consider adding one.",
+    "The only logo file online is small (about 100 to 130px wide). Ask the ministry for the original artwork."
+  ]
+}

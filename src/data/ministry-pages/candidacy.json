@@ -1,0 +1,131 @@
+{
+  "slug": "candidacy",
+  "name": "Candidacy",
+  "group": "training-planting",
+  "summary": "How to become a candidate for ordained ministry in the CRCA, from first contact through study, vicariate and ordination.",
+  "body": [
+    {
+      "heading": "Becoming a minister in the CRCA",
+      "paragraphs": [
+        "If you are interested in becoming an ordained minister in the CRCA, we would love to encourage you. We encourage candidates for ordination to study through the Reformed Theological College (RTC).",
+        "After their studies, candidates complete a vicariate. This is a one-year internship alongside a senior minister.",
+        "We encourage you to start the candidacy process before you start studying."
+      ]
+    },
+    {
+      "heading": "The Candidacy Committee",
+      "paragraphs": [
+        "The Candidacy Committee (CC) oversees the training process and vicariate placements, and approves students as ministry candidates. It has a State Representative in each Classis and an Executive in Geelong, Victoria.",
+        "You can reach your State Representative through your Classis Clerk."
+      ]
+    },
+    {
+      "heading": "Ordination tracks",
+      "paragraphs": [
+        "There are currently four ordination tracks."
+      ],
+      "list": [
+        "Four years of study at RTC. This is the preferred option.",
+        "Task3: two years of church-based study and two years at RTC.",
+        "Study at another theological college, then one year at RTC.",
+        "Study at another theological college and complete the required units at RTC."
+      ]
+    }
+  ],
+  "steps": {
+    "heading": "The candidacy process",
+    "items": [
+      {
+        "title": "Initial contact",
+        "text": "Talk with your local minister first. Then contact your State or Classis Representative, who will visit you, get to know you, talk about why you want to enter the ordained ministry and guide you through the process. You must also write to the Candidacy Committee stating your desire to train for the ordained ministry and your reasons."
+      },
+      {
+        "title": "Letter of recommendation",
+        "text": "The CC asks your home church for a letter of recommendation. This helps it gauge your character (1 Timothy 3) and how your gifts have shown in the ministry of the local church."
+      },
+      {
+        "title": "Psychological profiling",
+        "text": "The CC asks you to complete a psychological profile, a Working with Children Check (or your state's equivalent) and a police check."
+      },
+      {
+        "title": "Study requirements",
+        "text": "The CC discusses your study requirements with RTC and approves a program that meets ordination requirements under one of the recognised tracks."
+      },
+      {
+        "title": "Approval",
+        "text": "When the CC approves you as a ministry candidate, it lets you, your church council and RTC know. Approval makes you eligible for RTC student subsidies and any funding the denomination provides for ministry candidates."
+      },
+      {
+        "title": "Annual reviews",
+        "text": "Each year of your studies the CC meets with you to see how you are going in spiritual growth, personal development, academic progress, family and church life, and financial and special needs. RTC also provides a written report each year."
+      },
+      {
+        "title": "Mentoring",
+        "text": "You are assigned a mentor who supports you in your studies and helps you work through any concerns raised by your recommendation, profiling, or contact with the CC and RTC faculty."
+      },
+      {
+        "title": "Final approval",
+        "text": "After you complete your degree, the CC decides whether to declare you a suitable candidate for a vicariate. In close consultation with faculty and your mentors, it may withhold a vicariate if that seems wise for you and the denomination. If that happens, you can appeal to your sending church council to review the decision."
+      },
+      {
+        "title": "Vicariate",
+        "text": "The CC, in consultation with CRCA congregations, decides the best place for your vicariate. During the vicariate it keeps in regular contact with you and your supervising minister."
+      },
+      {
+        "title": "Eligibility for call (examination)",
+        "text": "Towards the end of your vicariate, you apply through the church council where you are serving to sit a Preliminary Examination in your local Classis. If you pass, the Classis declares you eligible to be called as a Minister of the Word and Sacraments."
+      },
+      {
+        "title": "Ordination",
+        "text": "Once you accept a call to a church, you are ordained as a Minister of the Word and Sacraments in the CRCA."
+      }
+    ]
+  },
+  "facts": [
+    {
+      "label": "Who it's for",
+      "value": "Anyone considering ordained ministry in the CRCA"
+    },
+    {
+      "label": "Preferred study",
+      "value": "Four years at the Reformed Theological College"
+    },
+    {
+      "label": "Vicariate",
+      "value": "A one-year internship alongside a senior minister"
+    },
+    {
+      "label": "When to start",
+      "value": "Before you begin your studies"
+    }
+  ],
+  "contact": {
+    "name": "Rev. Josh Hartog",
+    "role": "Chair, National Candidacy Committee",
+    "email": "joshhartog@outlook.com",
+    "phone": "0423 814 700",
+    "topic": "candidacy"
+  },
+  "actions": [
+    {
+      "label": "Contact the Candidacy Committee",
+      "url": "/contact?topic=candidacy",
+      "kind": "primary"
+    },
+    {
+      "label": "Reformed Theological College",
+      "url": "https://rtc.edu.au/",
+      "kind": "secondary"
+    }
+  ],
+  "sources": [
+    "https://crca.org.au/candidacy/",
+    "src/data/internalMinistries.json (candidacy)",
+    "src/data/contactTopics.json (candidacy)"
+  ],
+  "hero": {
+    "src": "/images/stock/recharge.webp",
+    "alt": "People with open Bibles taking notes at a conference",
+    "credit": "CRCA image library"
+  }
+}

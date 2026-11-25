@@ -102,6 +102,13 @@ for (const cat of docsIndex.categories || []) {
 
 const srcFiles = walkFiles(SRC_DIR);
 
+/** File text to scan for links. In JSON data, ignore reviewer-only notes ("source", "sources", "needsChecking"). */
+function scannableText(file) {
+  const txt = fs.readFileSync(file, "utf8");
+  if (!file.endsWith(".json")) return txt;
+  return JSON.stringify(JSON.parse(txt), (key, value) => (["source", "sources", "needsChecking"].includes(key) ? undefined : value));
+}
+
 // Check DOC_IDS in src/lib/crcaDocs/client.ts
 const clientText = fs.readFileSync(path.join(SRC_DIR, 'lib/crcaDocs/client.ts'), 'utf8');
 const docIdsBlock = clientText.match(/export const DOC_IDS = \{([\s\S]*?)\} as const;/);
@@ -150,26 +157,47 @@ for (const file of srcFiles) {
   }
 }
 
-// 4. Validate RelatedMinistriesBar slugs & MinistryIcon names
+// 4. Ministry pages (src/data/ministry-pages/*.json) + "one platform" rule
 const ministries = readJson('src/data/ministries.json');
-const ministryIds = new Set(ministries.map((m) => m.id));
-const internalMinistries = readJson('src/data/internalMinistries.json');
-
-for (const file of srcFiles) {
-  const txt = fs.readFileSync(file, 'utf8');
-  for (const m of txt.matchAll(/slugs=\{\[([^\]]+)\]\}/g)) {
-    for (const s of m[1].matchAll(/'([^']+)'/g)) {
-      if (!ministryIds.has(s[1])) {
-        errors.push(`Unknown RelatedMinistriesBar slug "${s[1]}" in ${path.relative(ROOT, file)}`);
-      }
-    }
+const MINISTRY_DIR = path.join(SRC_DIR, 'data', 'ministry-pages');
+let ministryPageCount = 0;
+for (const file of fs.readdirSync(MINISTRY_DIR).filter((x) => x.endsWith('.json'))) {
+  const rel = `src/data/ministry-pages/${file}`;
+  const page = readJson(rel);
+  ministryPageCount++;
+  for (const key of ['slug', 'name', 'group', 'summary', 'body']) {
+    if (!page[key]) errors.push(`${rel}: missing "${key}"`);
+  }
+  if (page.slug && `${page.slug}.json` !== file) errors.push(`${rel}: slug "${page.slug}" does not match file name`);
+  const images = [
+    page.hero?.src,
+    ...(page.body || []).map((x) => x.image?.src),
+    ...(page.gallery || []).map((g) => g.src),
+    ...(page.team || []).map((t) => t.photo),
+    ...(page.news || []).map((n) => n.image),
+  ].filter(Boolean);
+  for (const src of images) {
+    if (!fs.existsSync(path.join(PUBLIC_DIR, decodeURIComponent(src)))) errors.push(`${rel}: missing image ${src}`);
+  }
+  const ids = new Set();
+  for (const n of page.news || []) {
+    if (ids.has(n.id)) errors.push(`${rel}: duplicate news id ${n.id}`);
+    ids.add(n.id);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(n.date || '')) errors.push(`${rel}: news "${n.id}" has invalid date "${n.date}"`);
   }
 }
-for (const [slug, page] of Object.entries(internalMinistries.detailPages || {})) {
-  for (const rel of page.relatedSlugs || []) {
-    if (!ministryIds.has(rel)) {
-      errors.push(`Unknown relatedSlug "${rel}" in internalMinistries.json (${slug})`);
-    }
+
+// One platform: no links to other CRCA websites (their content now lives here).
+// Congregations' own websites (churches.json) and email addresses are fine.
+const CRCA_SITE_RE = /https?:\/\/(?:[a-z0-9-]+\.)*(?:crca\.org\.au|crcaconvention\.au|safechurchcrca\.org\.au|ministryformation\.com\.au|gospel\.net\.au)\b[^"'\s)]*/gi;
+for (const file of srcFiles) {
+  const relPath = path.relative(ROOT, file);
+  if (/churches\.json$/.test(relPath)) continue;
+  const txt = scannableText(file);
+  for (const m of txt.matchAll(CRCA_SITE_RE)) {
+    // This site's own future address (canonical links, sitemap) is not another site.
+    if (/^https?:\/\/(www\.)?crca\.org\.au\/?$/i.test(m[0])) continue;
+    errors.push(`Link to another CRCA website (${m[0]}) in ${relPath}: bring that content into this site instead`);
   }
 }
 
@@ -297,7 +325,7 @@ for (const m of ministries) {
 }
 
 for (const file of srcFiles) {
-  const txt = fs.readFileSync(file, 'utf8');
+  const txt = scannableText(file);
   if (txt.includes('crca.org.au/wp-content/uploads/')) {
     errors.push(`Legacy WordPress upload URL found in ${path.relative(ROOT, file)}`);
   }
@@ -306,6 +334,107 @@ for (const file of srcFiles) {
   }
   if (txt.includes('#positions-vacant')) {
     errors.push(`Stale anchor "#positions-vacant" found in ${path.relative(ROOT, file)}`);
+  }
+}
+
+const siteConfigText = fs.readFileSync(path.join(SRC_DIR, 'data/siteConfig.ts'), 'utf8');
+
+// 6c. Safe Church content (public/data/safe-church/, synced by scripts/sync-safe-church.mjs)
+let safeChurchPageCount = 0;
+let safeChurchPaths = new Set();
+try {
+  const sc = readJson('public/data/safe-church/content.json');
+  safeChurchPaths = new Set(Object.keys(sc.pages));
+  safeChurchPageCount = safeChurchPaths.size;
+  for (const s of sc.sections) {
+    if (!sc.pages[s.path]) errors.push(`Safe Church section page missing: ${s.path}`);
+  }
+  for (const page of Object.values(sc.pages)) {
+    for (const m of page.html.matchAll(/href="\{\{BASE\}\}(data\/)?safe-church\/([^"#]*)/g)) {
+      const target = decodeURIComponent(m[2]);
+      if (m[1] && !target.startsWith('files/')) errors.push(`Safe Church page "${page.path}" has a bad data link ${target}`);
+      if (m[1]) {
+        const full = path.join(PUBLIC_DIR, 'data', 'safe-church', target);
+        if (!fs.existsSync(full)) errors.push(`Safe Church page "${page.path}" links to missing file ${target}`);
+      } else if (target && !sc.pages[target]) {
+        errors.push(`Safe Church page "${page.path}" links to unknown page "${target}"`);
+      }
+    }
+    if (page.html.includes('safechurch.crca.org.au/wp-content')) {
+      warnings.push(`Safe Church page "${page.path}" still links to a legacy upload on safechurch.crca.org.au`);
+    }
+  }
+  const sitePaths = [
+    siteConfigText.match(/childReportPath: '([^']+)'/)?.[1],
+    siteConfigText.match(/adultReportPath: '([^']+)'/)?.[1],
+  ].filter(Boolean);
+  for (const p of sitePaths) {
+    if (!sc.pages[p.replace(/^\/safe-church\//, '')]) errors.push(`siteConfig Safe Church path not found: ${p}`);
+  }
+} catch (err) {
+  errors.push(`Failed to validate public/data/safe-church/content.json: ${err.message}`);
+}
+
+// 6d. Word of Salvation sermons (public/data/sermons/, synced by scripts/sync-sermons.mjs)
+let sermonCount = 0;
+try {
+  const idx = readJson('public/data/sermons/index.json');
+  sermonCount = idx.sermons.length;
+  const files = new Set(fs.readdirSync(path.join(PUBLIC_DIR, 'data', 'sermons', 's')).map((f) => f.replace(/\.json$/, '')));
+  const ids = new Set();
+  for (const s of idx.sermons) {
+    if (ids.has(s.id)) errors.push(`Duplicate sermon id ${s.id}`);
+    ids.add(s.id);
+    if (!files.has(s.id)) errors.push(`Sermon index entry without file: ${s.id}`);
+    if (s.p && !idx.preachers[s.p]) errors.push(`Sermon ${s.id} has unknown preacher key ${s.p}`);
+  }
+  for (const f of files) if (!ids.has(f)) warnings.push(`Orphan sermon file not in index: ${f}.json`);
+  if (sermonCount < 1000) errors.push(`Expected 1000+ sermons, found ${sermonCount}`);
+} catch (err) {
+  errors.push(`Failed to validate public/data/sermons/: ${err.message}`);
+}
+
+// 6d2. Top-level public/ folders must not share a name with a page route,
+// otherwise static hosts serve the folder instead of the app.
+{
+  const appText = fs.readFileSync(path.join(SRC_DIR, 'App.tsx'), 'utf8');
+  const topRoutes = new Set([...appText.matchAll(/path="\/([^"/*:]+)/g)].map((m) => m[1]));
+  for (const entry of fs.readdirSync(PUBLIC_DIR, { withFileTypes: true })) {
+    // public/documents/ is allowed: /documents is redirected by _redirects and .htaccess.
+    if (entry.isDirectory() && topRoutes.has(entry.name) && entry.name !== "documents") {
+      errors.push(`public/${entry.name}/ clashes with the /${entry.name} page route`);
+    }
+  }
+}
+
+// 6e. Every internal route referenced from data/navigation must resolve to a real page.
+{
+  const appText = fs.readFileSync(path.join(SRC_DIR, 'App.tsx'), 'utf8');
+  const exact = new Set([...appText.matchAll(/path="([^"*:]+)"/g)].map((m) => m[1]));
+  const contentPaths = new Set(fs.readdirSync(path.join(SRC_DIR, 'data', 'pages')).filter((x) => x.endsWith('.json')).map((x) => readJson(`src/data/pages/${x}`).path));
+  for (const target of Object.values(readJson('src/data/legacyRedirects.json'))) {
+    const t = String(target).split('#')[0];
+    if (!exact.has(t) && !contentPaths.has(t) && !t.startsWith('/for-churches/forms-and-documents/') && !t.startsWith('/ministries/')) errors.push(`legacyRedirects.json: target ${target} is not a known page`);
+  }
+  const isKnownRoute = (p) => {
+    const clean = p.split(/[?#]/)[0].replace(/\/$/, '') || '/';
+    if (exact.has(clean)) return true;
+    if (clean.startsWith('/for-churches/forms-and-documents/')) return true; // validated above by doc ID
+    if (clean === '/safe-church') return true;
+    if (contentPaths.has(clean)) return true;
+    if (clean.startsWith('/safe-church/')) return safeChurchPaths.has(clean.slice('/safe-church/'.length));
+    if (clean.startsWith('/sermons/')) return fs.existsSync(path.join(PUBLIC_DIR, 'data', 'sermons', 's', `${clean.slice(9)}.json`));
+    return false;
+  };
+  const routeRefRe = /(?:\bto|"url"|"externalUrl"|\burl|Path)\s*[:=]\s*["'](\/(?!images\/|documents\/|ministry-resources\/|data\/)[^"']*)["']/g;
+  for (const file of srcFiles) {
+    const rel = path.relative(ROOT, file);
+    if (!/src[\\/](data|components|pages)[\\/]/.test(rel)) continue;
+    const txt = fs.readFileSync(file, 'utf8');
+    for (const m of txt.matchAll(routeRefRe)) {
+      if (m[1].includes('${')) continue;
+      if (!isKnownRoute(m[1])) errors.push(`Internal link to unknown route "${m[1]}" in ${rel}`);
+    }
   }
 }
 
@@ -395,7 +524,7 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `Verification passed: ${docMap.size} documents, ${churches.length} churches, ${ministries.length} ministries, 0 errors` +
+  `Verification passed: ${docMap.size} documents, ${churches.length} churches, ${ministryPageCount} ministry pages, ${safeChurchPageCount} Safe Church pages, ${sermonCount} sermons, 0 errors` +
     (warnings.length > 0 ? `, ${warnings.length} warning(s).` : '.')
 );
 process.exit(0);
