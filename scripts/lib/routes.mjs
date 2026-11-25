@@ -3,6 +3,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { publishedSermons } from './sermons.mjs';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const json = (p) => JSON.parse(readFileSync(path.join(ROOT, p), 'utf8'));
@@ -30,7 +31,7 @@ export function pageRoutes() {
   for (const p of Object.keys(json('public/data/safe-church/content.json').pages)) routes.add(`/safe-church/${p}`);
   const docs = json('public/documents/index.json');
   for (const c of docs.categories) for (const g of c.groups) for (const i of g.items) routes.add(`/for-churches/forms-and-documents/${i.id}`);
-  for (const s of json('public/data/sermons/index.json').sermons) routes.add(`/sermons/${s.id}`);
+  for (const s of publishedSermons().sermons) routes.add(`/sermons/${s.id}`);
   return [...routes];
 }
 

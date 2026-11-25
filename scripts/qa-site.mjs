@@ -12,6 +12,7 @@ import { chromium } from 'playwright';
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { publishedSermons } from './lib/sermons.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = (process.argv[2] || 'http://localhost:4173').replace(/\/$/, '');
@@ -41,7 +42,7 @@ try {
 for (const p of Object.keys(json('public/data/safe-church/content.json').pages)) routes.add(`/safe-church/${p}`);
 const docs = json('public/documents/index.json');
 for (const c of docs.categories) for (const g of c.groups) for (const i of g.items) routes.add(`/for-churches/forms-and-documents/${i.id}`);
-const sermons = json('public/data/sermons/index.json').sermons;
+const sermons = publishedSermons().sermons;
 for (let i = 0; i < sermons.length; i += Math.ceil(sermons.length / 40)) routes.add(`/sermons/${sermons[i].id}`);
 const legacy = (() => { try { return json('src/data/legacyRedirects.json'); } catch { return {}; } })();
 const legacyChecks = Object.entries(legacy);

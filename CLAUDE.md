@@ -59,6 +59,7 @@ This file provides context for Claude Code (and other AI coding assistants) when
    - Forms library grouping is adjusted at display time in `regroupIndex()` (`src/lib/crcaDocs/client.ts`): Three Forms of Unity vs “Other Reformed Statements”, Form of Subscription under Church Order. Liturgies get speaker labels / rubric styling from `src/lib/crcaDocs/liturgy.ts`. Synced files in `public/documents/` are never edited by hand.
    - Navigation menus (desktop panels + mobile) come from `navMenus` in `src/data/navigation.ts`.
    - `/safe-church/*` → `SafeChurchPage.tsx` (hub + every migrated page; urgent contact numbers live in `siteConfig.safeChurch.urgent`).
+   - Hidden preachers: `src/data/sermonSettings.json` (edited in /admin); `scripts/apply-sermon-settings.mjs` takes their sermons out of `dist/`. `public/data/sermons/` keeps everything. Use `publishedSermons()` from `scripts/lib/sermons.mjs` in scripts.
    - `/sermons` and `/sermons/:sermonId` → `SermonsPage.tsx` / `SermonPage.tsx`. Old `/word-of-salvation/<slug>` URLs redirect.
    - Migrated HTML is rendered with `components/RichHtml.tsx` (resolves `{{BASE}}` placeholders, routes in-site links through React Router).
    - Fixed routes get their title and description from `ROUTE_META` in `src/utils/usePageTitle.ts`; dynamic pages call `usePageTitle(title, description)` (sets canonical and share tags too).

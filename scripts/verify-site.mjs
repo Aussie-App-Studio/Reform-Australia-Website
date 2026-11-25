@@ -1,3 +1,4 @@
+import { publishedSermons } from './lib/sermons.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -389,6 +390,7 @@ try {
     if (s.p && !idx.preachers[s.p]) errors.push(`Sermon ${s.id} has unknown preacher key ${s.p}`);
   }
   for (const f of files) if (!ids.has(f)) warnings.push(`Orphan sermon file not in index: ${f}.json`);
+  publishedSermons(); // fails on an unknown preacher in sermonSettings.json
   if (sermonCount < 1000) errors.push(`Expected 1000+ sermons, found ${sermonCount}`);
 } catch (err) {
   errors.push(`Failed to validate public/data/sermons/: ${err.message}`);

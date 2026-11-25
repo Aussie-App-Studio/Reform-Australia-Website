@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/prerender.mjs",
+    "build": "tsc -b && vite build && node scripts/apply-sermon-settings.mjs && node scripts/prerender.mjs",
     "preview": "vite preview",
     "sync-docs": "node scripts/sync-crca-docs.mjs",
     "build:au-locations": "node scripts/build-au-locations.mjs",
@@ -19,7 +19,7 @@
     "sync-sermons": "node scripts/sync-sermons.mjs",
     "sync-all": "npm run sync-docs && npm run sync-safe-church && npm run sync-sermons",
     "qa": "node scripts/qa-site.mjs",
-    "build:spa": "tsc -b && vite build",
+    "build:spa": "tsc -b && vite build && node scripts/apply-sermon-settings.mjs",
     "serve": "node scripts/serve-dist.mjs",
     "images": "node scripts/optimise-images.mjs",
     "deploy:cloudflare": "node scripts/deploy-cloudflare.mjs"
