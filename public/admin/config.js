@@ -162,9 +162,101 @@ window.CMS_CONFIG = {
   collections: [
     {
       name: 'vacancies',
-      label: 'Positions vacant',
-      description: 'The first list (“Current vacancies”) is also shown on the home page. Take a vacancy off both the list and its section when it closes.',
-      files: [{ name: 'positions-vacant', label: 'Positions vacant page', file: 'src/data/pages/positions-vacant.json', format: 'json', fields: generalPageFields }],
+      label: 'Vacancies',
+      label_singular: 'vacancy',
+      description: 'Click “New” to add a vacancy. Each one shows on the Positions vacant page and the home page, and disappears by itself after its closing date.',
+      folder: 'src/data/vacancies',
+      format: 'json',
+      extension: 'json',
+      create: true,
+      delete: true,
+      identifier_field: 'title',
+      slug: '{{organisation}}-{{title}}',
+      summary: '{{title}}, {{organisation}} (closes {{closes}})',
+      sortable_fields: { fields: ['closes', 'title'], default: { field: 'closes', direction: 'ascending' } },
+      editor: { preview: false },
+      fields: [
+        { label: 'Role', name: 'title', widget: 'string', hint: 'e.g. Pastor, Youth Worker, Ministry Development Coordinator' },
+        { label: 'Church or organisation', name: 'organisation', widget: 'string', hint: 'e.g. One Hope Community Church' },
+        { label: 'Location', name: 'location', widget: 'string', required: false, hint: 'Suburb and state, e.g. Scoresby VIC' },
+        { label: 'Hours', name: 'hours', widget: 'string', required: false, hint: 'e.g. Full time, or 0.6 FTE' },
+        { label: 'Applications close', name: 'closes', widget: 'datetime', time_format: false, format: 'YYYY-MM-DD', hint: 'The vacancy is taken off the website automatically after this day.' },
+        { label: 'Closing time (optional)', name: 'closingTime', widget: 'string', required: false, hint: 'e.g. 5:00pm AEDT' },
+        { label: 'Short summary', name: 'summary', widget: 'text', hint: 'One or two sentences about the role.' },
+        {
+          label: 'Full details',
+          name: 'details',
+          widget: 'text',
+          required: false,
+          hint: 'Leave a blank line between paragraphs. Start a line with "## " for a small heading, or "- " for a bullet point.',
+        },
+        { label: 'How to apply', name: 'howToApply', widget: 'text', required: false },
+        {
+          label: 'Contact person',
+          name: 'contact',
+          widget: 'object',
+          required: false,
+          fields: [
+            { label: 'Name', name: 'name', widget: 'string', required: false },
+            { label: 'Email', name: 'email', widget: 'string', required: false },
+            { label: 'Phone', name: 'phone', widget: 'string', required: false },
+          ],
+        },
+        {
+          label: 'Advertisement to download (optional)',
+          name: 'attachment',
+          widget: 'object',
+          required: false,
+          fields: [
+            { label: 'File (PDF or Word)', name: 'file', widget: 'file', required: false, media_folder: '/public/ministry-resources/vacancies', public_folder: '/ministry-resources/vacancies' },
+            { label: 'Button text', name: 'label', widget: 'string', required: false, default: 'Full advertisement' },
+          ],
+        },
+        { label: 'Church website (optional)', name: 'website', widget: 'string', required: false },
+        { name: 'needsChecking', widget: 'hidden' },
+      ],
+    },
+    {
+      name: 'contacts',
+      label: 'Contacts',
+      description: 'Who receives each kind of message from the Contact page. Changing an email here changes where those messages go.',
+      editor: { preview: false },
+      files: [
+        {
+          name: 'contact-topics',
+          label: 'Contact page: who gets what',
+          file: 'src/data/contactTopics.json',
+          format: 'json',
+          fields: [
+            {
+              label: 'Topics on the Contact page',
+              name: 'topics',
+              widget: 'list',
+              root: true,
+              summary: '{{title}} → {{email}}',
+              collapsed: true,
+              // Editors change who gets what; adding or removing topics needs a developer.
+              allow_add: false,
+              allow_remove: false,
+              allow_reorder: false,
+              fields: [
+                { label: 'Topic (what people choose on the Contact page)', name: 'title', widget: 'string' },
+                { label: 'Short description of the topic', name: 'subtitle', widget: 'string' },
+                { label: 'Who looks after it', name: 'contactName', widget: 'string', required: false, hint: 'A person or team, e.g. Rev. Josh Hartog (Chair)' },
+                { label: 'Messages go to this email', name: 'email', widget: 'string' },
+                { label: 'A copy also goes to (optional)', name: 'secondaryEmail', widget: 'string', required: false },
+                { label: 'Phone (optional)', name: 'phone', widget: 'string', required: false },
+                { label: 'Shown on the form as “Sent to”', name: 'routeToLabel', widget: 'string' },
+                { label: 'Note shown to the person writing', name: 'responseNote', widget: 'text', required: false },
+                { name: 'id', widget: 'hidden' },
+                { name: 'iconName', widget: 'hidden' },
+                { name: 'externalUrl', widget: 'hidden' },
+                { name: 'externalLabel', widget: 'hidden' },
+              ],
+            },
+          ],
+        },
+      ],
     },
     {
       name: 'churches',
@@ -250,3 +342,6 @@ window.CMS_CONFIG = {
     },
   ],
 };
+
+// Keep every form simple: no side-by-side preview (the site itself is the preview, after saving).
+for (const c of window.CMS_CONFIG.collections) c.editor = c.editor || { preview: false };

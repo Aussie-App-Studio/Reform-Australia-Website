@@ -3,6 +3,7 @@ import { contentPages, getContentPageByPath, SECTION_LABELS } from '../lib/conte
 import { usePageTitle } from '../utils/usePageTitle';
 import { NotFoundPage } from './NotFoundPage';
 import { StandardPage } from './ministries/MinistryPage';
+import { PositionsVacantPage } from './PositionsVacantPage';
 
 /** Renders a general content page from src/data/pages/*.json, matched by its `path`. */
 export function ContentPage() {
@@ -10,6 +11,7 @@ export function ContentPage() {
   const page = getContentPageByPath(pathname);
   usePageTitle(page?.title ?? 'Page', page?.summary);
   if (!page) return <NotFoundPage />;
+  if (page.slug === 'positions-vacant') return <PositionsVacantPage page={page} />;
   const section = SECTION_LABELS[page.section];
   const related = contentPages
     .filter((p) => p.section === page.section && p.path !== page.path)

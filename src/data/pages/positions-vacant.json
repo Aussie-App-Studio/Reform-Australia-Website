@@ -7,164 +7,16 @@
   "icon": "Briefcase",
   "body": [
     {
-      "id": "current-vacancies",
-      "heading": "Current vacancies",
-      "list": [
-        "CRCA: Ministry Development Coordinator (full time). Applications close 5:00pm AEDT Friday 29 January 2027.",
-        "One Hope Community Church, Scoresby VIC: Pastor (1.0 FTE, second pastor). Applications close 30 November 2026."
-      ]
-    },
-    {
-      "id": "ministry-development-coordinator",
-      "heading": "Ministry Development Coordinator (CRCA)",
+      "id": "about",
       "paragraphs": [
-        "The Ministry and Missions (M&M) Workgroup is recruiting a new Ministry Development Coordinator (MDC).",
-        "This is an opportunity to partner in gospel ministry with leaders across the Christian Reformed Churches of Australia, to use your leadership, coaching and mentoring skills to grow and develop ministers and ministry leaders across the denomination, and to be a force for establishing new churches across Australia and shaping denominational culture."
-      ]
-    },
-    {
-      "id": "mdc-about-us",
-      "heading": "About us",
-      "paragraphs": [
-        "The Christian Reformed Churches of Australia (CRCA) has over fifty congregations across Australia.",
-        "The CRCA strives to reach the lost, to cultivate healthy churches, to grow passionate disciples, to raise the next generation of leaders, and to think globally as well as locally."
-      ]
-    },
-    {
-      "id": "mdc-opportunity",
-      "heading": "About the opportunity",
-      "paragraphs": [
-        "CRCA is offering the influential opportunity for a full-time Ministry Development Coordinator to partner with ministers and ministry leaders across the denomination in God's mission to reach the lost for Christ.",
-        "Reporting to, and being supported by, a Synod appointed Accountability Group, you will collaborate with pastors, elders and other ministry leaders to grow and develop our established churches and gospel workers, as well as identifying new church planting opportunities and developing new gospel workers. You will also play a key role in helping shape denominational culture.",
-        "This is an established role with a start date in the first half of 2027 (by mutual agreement), with an initial contract period to mid-2030.",
-        "You will be required to travel throughout Australia at your planning and within your budgetary allocation. Ideally you should be located on the Eastern Seaboard of Australia. Maintaining a home office would be desirable, although an external office can be considered."
-      ]
-    },
-    {
-      "id": "mdc-about-you",
-      "heading": "About you",
-      "paragraphs": [
-        "You will need to be a person of good character and conviction who is grounded in Christ's love, led by the Spirit, shaped by prayer and above reproach, and so lead with humility and an understanding and discernment of God's will in the varied contexts in which we live and minister.",
-        "Ideally you will have the following competence:"
-      ],
-      "list": [
-        "Proven ability to influence others, anticipate needs, and translate strategy into practical action.",
-        "Good time management, ability to prioritise, maintain clear goals and structured plans, ability to work remotely with minimal daily oversight.",
-        "Proven ability to coach, mentor and train ministry leaders.",
-        "Proven ability to build trusted, long-term relationships with a diversity of leaders; communicates proactively and clearly; works collaboratively through teams and partnerships; holds others to account and recognises gifts in them.",
-        "Proven ability to resolve leadership issues effectively.",
-        "Experience in developing, collating, and presenting training material and resources.",
-        "Excellent written and verbal communication skills, including the ability to present well.",
-        "Relevant computer and video conferencing software skills."
-      ]
-    },
-    {
-      "id": "mdc-experience",
-      "heading": "Experience and qualifications",
-      "list": [
-        "Minimum B.Th., M.Div., or similar from a theological college. Postgraduate study is an advantage.",
-        "Minimum 7 years' experience in leadership and/or management roles within local church ministry.",
-        "Good knowledge of, and commitment to, the teaching of Scripture and the Reformed confessions, the life and polity of the CRCA.",
-        "Be a member (or be willing to become a member) of the CRCA and be willing to sign the Form of Subscription.",
-        "Hold a valid Blue Card (or state equivalent Working with Children Card) or ability to acquire one.",
-        "Permanent work rights in Australia with no restrictions.",
-        "Pass the national Federal Police Check."
-      ]
-    },
-    {
-      "id": "mdc-remuneration",
-      "heading": "Remuneration package",
-      "paragraphs": [
-        "An attractive remuneration package is offered, including:"
-      ],
-      "list": [
-        "Superannuation",
-        "Housing and vehicle allowance",
-        "Professional development and book allowance",
-        "5 weeks annual leave",
-        "Relocation assistance, if required"
-      ]
-    },
-    {
-      "id": "mdc-apply",
-      "heading": "How to apply for the MDC role",
-      "paragraphs": [
-        "To request a role description, please email Julia King: julia@kingstoncrc.org.au.",
-        "If this sounds like the opportunity for you, please email a letter of application outlining why you would like the role, along with a detailed résumé and a list of three referees, to Julia King: julia@kingstoncrc.org.au.",
-        "Applications close at 5:00pm AEDT Friday 29 January 2027. All applications and requests for role descriptions will be treated in the strictest confidence."
-      ]
-    },
-    {
-      "id": "one-hope-pastor",
-      "heading": "Pastor, One Hope Community Church (Scoresby VIC)",
-      "paragraphs": [
-        "One Hope Community Church is seeking a second Pastor (1.0 FTE) to join its team.",
-        "One Hope is a Christian church passionate about moving people in following Christ. It aims to develop and send people to grow disciples, care for people and reach the world with the good news of redemption and restoration in Jesus Christ. It is a member of the Christian Reformed Churches of Australia, committed to gospel proclamation, expository Bible teaching, prayerful dependence on God, and Reformed theology."
-      ]
-    },
-    {
-      "id": "one-hope-role",
-      "heading": "Role overview and responsibilities",
-      "paragraphs": [
-        "The second Pastor will be a person of godly character with a passion to help move people in following Christ. They will ideally be ordained in the ministry of, or officially recognised by, the Christian Reformed Churches of Australia. They will humbly and enthusiastically serve as part of the team, bringing leadership to key ministry areas and providing pastoral care and support.",
-        "The second Pastor's primary role will be to facilitate and nurture the spiritual growth of the church, with leadership and pastoral oversight of a range of ministries. In close partnership with the Lead Pastor and Leadership team, they will provide biblical, spiritual, pastoral, and strategic leadership while contributing to the overall preaching, teaching, and pastoral care of the wider congregation."
-      ]
-    },
-    {
-      "id": "one-hope-details",
-      "heading": "Key details",
-      "list": [
-        "This is a full-time position.",
-        "The start date will ideally be February 2027 (though there is flexibility).",
-        "The second Pastor will report to the Lead Pastor.",
-        "Experience working with youth and/or young adults ministry would be highly desirable.",
-        "Relocation support may be available for interstate candidates.",
-        "Any offer of employment is subject to the applicant agreeing to abide by, and upholding, the Code of Conduct, and successfully completing the relevant screening process, including passing a National Police Criminal Record Check and holding a current WWCC."
-      ]
-    },
-    {
-      "id": "one-hope-apply",
-      "heading": "How to apply for the One Hope role",
-      "paragraphs": [
-        "A more detailed position description is available on request to admin@ohcc.com.au.",
-        "To apply, please send a copy of your resume and a letter of application, outlining your ministry experience, including references from those you have served alongside in a ministry context, or familiar with your appropriate character, conviction, and competencies for this role. Shortlisted candidates will be contacted for interviews and screening checks.",
-        "Applications close 30 November 2026.",
-        "One Hope Community Church, 15 Cavell Street, Scoresby VIC 3179. Phone 03 9759 9155. Email admin@ohcc.com.au."
+        "Vacancies in the CRCA and its churches are listed here until their closing date."
       ]
     }
-  ],
-  "facts": [
-    { "label": "Vacancies", "value": "2" },
-    { "label": "MDC applications close", "value": "5:00pm AEDT Friday 29 January 2027" },
-    { "label": "One Hope applications close", "value": "30 November 2026" }
-  ],
-  "contact": {
-    "name": "Julia King",
-    "role": "Applications and role descriptions, Ministry Development Coordinator",
-    "email": "julia@kingstoncrc.org.au",
-    "topic": "admin"
-  },
-  "actions": [
-    { "label": "MDC advertisement (PDF)", "url": "/ministry-resources/crca/CRCA-Ministry-Development-Coordinator-Advertisement-Nov-2026.pdf", "kind": "primary" },
-    { "label": "One Hope pastor advertisement (Word)", "url": "/ministry-resources/crca/One-Hope-Community-Church-Pastor-Advertisement-2026.docx", "kind": "secondary" }
-  ],
-  "resources": [
-    { "label": "Ministry Development Coordinator advertisement, long version, 18 November 2026 (PDF)", "url": "/ministry-resources/crca/CRCA-Ministry-Development-Coordinator-Advertisement-Nov-2026.pdf", "type": "pdf" },
-    { "label": "One Hope Community Church pastor advertisement (Word document)", "url": "/ministry-resources/crca/One-Hope-Community-Church-Pastor-Advertisement-2026.docx", "type": "pdf", "note": "Word document" },
-    { "label": "One Hope Community Church website", "url": "https://www.ohcc.com.au/", "type": "link" }
   ],
   "sources": [
     "https://crca.org.au/ (Positions Vacant box, updated 18 November 2026)",
     "https://crca.org.au/updates/position-vacant-mdc/",
     "https://crca.org.au/wp-content/uploads/2026/11/MDC-Advertisement-Long-VersionV2-18Nov26.pdf (copied to public/ministry-resources/crca/)",
     "https://crca.org.au/wp-content/uploads/2026/11/Pastor-Advertisement.docx (copied to public/ministry-resources/crca/)"
-  ],
-  "needsChecking": [
-    "Take the One Hope listing down after applications close on 30 November 2026, and the MDC listing after 29 January 2027. This page has no automatic expiry.",
-    "The crca.org.au home page calls the role 'Minister Development Coordinator'; the advertisement and the post say 'Ministry Development Coordinator'. The advertisement's wording is used.",
-    "The older MDC advertisement linked from the 2024 post (MDC-Advertisement-Long-Version.pdf, applications closing 9 October 2026, start 'early 2027') is superseded by the 18 November 2026 version and was not copied.",
-    "The One Hope advertisement does not say where to send applications; it only gives admin@ohcc.com.au for the position description. Confirm the application address with the church.",
-    "Resource type for the Word document is set to 'pdf' because the template has no 'docx' type; the label says it is a Word document.",
-    "The MDC advertisement asks readers to visit crca.org.au; that sentence is left out (one-platform rule)."
   ]
 }

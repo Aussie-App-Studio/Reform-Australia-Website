@@ -6,6 +6,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Every night (just after midnight in Sydney), so closed vacancies drop off the pre-built pages.
+  schedule:
+    - cron: '5 14 * * *'
 
 # A newer push (e.g. several quick edits in /admin) replaces a publish that is still running.
 concurrency:

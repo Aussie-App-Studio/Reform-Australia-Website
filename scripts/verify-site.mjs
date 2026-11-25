@@ -515,6 +515,30 @@ for (const w of warnings) {
   console.warn(`WARN: ${w}`);
 }
 
+// Vacancies and contact topics are edited in /admin: check the essentials so a bad save
+// stops the publish instead of breaking the site.
+{
+  const dir = path.join(ROOT, 'src/data/vacancies');
+  for (const f of fs.existsSync(dir) ? fs.readdirSync(dir).filter((n) => n.endsWith('.json')) : []) {
+    let v;
+    try {
+      v = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+    } catch (e) {
+      errors.push(`Vacancy ${f}: not valid JSON (${e.message})`);
+      continue;
+    }
+    for (const k of ['title', 'organisation', 'summary']) if (!String(v[k] ?? '').trim()) errors.push(`Vacancy ${f}: "${k}" is empty`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(v.closes ?? ''))) errors.push(`Vacancy ${f}: closing date "${v.closes}" should look like 2027-01-29`);
+    const file = v.attachment?.file;
+    if (file && file.startsWith('/') && !fs.existsSync(path.join(ROOT, 'public', decodeURIComponent(file)))) errors.push(`Vacancy ${f}: attachment ${file} not found in public/`);
+  }
+  const topics = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/contactTopics.json'), 'utf8'));
+  for (const t of topics) {
+    if (!t.id || !t.title) errors.push(`Contact topic is missing its id or title: ${JSON.stringify(t).slice(0, 80)}`);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(t.email ?? ''))) errors.push(`Contact topic "${t.title}": "${t.email}" is not an email address`);
+  }
+}
+
 if (errors.length > 0) {
   for (const e of errors) {
     console.error(`ERROR: ${e}`);

@@ -9,13 +9,12 @@ import type { ChurchRecord } from '../utils/churchRecord';
 import { loadAuLocations } from '../data/locationHubs';
 import { AustraliaDotMap } from '../components/AustraliaDotMap';
 import { getMinistryPage } from '../lib/ministryPages';
-import { getContentPageByPath } from '../lib/contentPages';
 import { responsive } from '../utils/responsiveImage';
+import { formatClosing, openVacancies } from '../lib/vacancies';
 
 const allChurches = churchesRaw as ChurchRecord[];
 
-// Current vacancies are the first list on the Positions vacant page.
-const vacancies: string[] = getContentPageByPath('/for-churches/positions-vacant')?.body.find((b) => b.list?.length)?.list ?? [];
+
 
 const STATES: { code: ChurchRecord['state']; name: string }[] = [
   { code: 'NSW', name: 'New South Wales' },
@@ -62,6 +61,8 @@ function TwoColumn({ id, title, children, tone = 'white' }: { id: string; title:
 }
 
 export function HomePage() {
+  // Open vacancies (src/data/vacancies/), which drop off after their closing date.
+  const vacancies = openVacancies();
   const navigate = useNavigate();
   const [churchQuery, setChurchQuery] = useState('');
 
@@ -148,7 +149,7 @@ export function HomePage() {
         </ul>
       </nav>
 
-      {/* Positions vacant (from src/data/pages/positions-vacant.json) */}
+      {/* Positions vacant (src/data/vacancies/) */}
       {vacancies.length > 0 && (
         <section aria-labelledby="vacancies" className="border-b border-stone-200 bg-gold-50/60">
           <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-6 sm:px-6 md:flex-row md:items-start md:gap-8 lg:px-8">
@@ -157,9 +158,14 @@ export function HomePage() {
             </h2>
             <ul className="flex-1 space-y-1.5 text-[0.98rem] text-stone-800">
               {vacancies.map((v) => (
-                <li key={v} className="flex gap-2">
+                <li key={v.id} className="flex gap-2">
                   <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600" />
-                  <span>{v}</span>
+                  <span>
+                    <Link to={`/for-churches/positions-vacant#${v.id}`} className="font-semibold text-navy-900 underline-offset-4 hover:text-teal-700 hover:underline">
+                      {v.title}, {v.organisation}
+                    </Link>
+                    . Applications close {formatClosing(v)}.
+                  </span>
                 </li>
               ))}
             </ul>
