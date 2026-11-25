@@ -101,6 +101,12 @@
 }
 
 @layer base {
+  /* Highlighted text keeps its own colour (white on navy, navy on light) with a soft teal highlight. */
+  ::selection {
+    background-color: rgb(0 166 202 / 0.35);
+    color: inherit;
+  }
+
   html {
     font-family: var(--font-sans);
     /* Slightly larger base size: many readers are older, and Source Sans runs small. */

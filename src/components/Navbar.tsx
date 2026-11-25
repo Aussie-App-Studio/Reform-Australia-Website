@@ -281,7 +281,7 @@ export function Navbar() {
                       <ChevronDown className={`h-5 w-5 text-stone-500 transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
                     </button>
                     {open && (
-                      <div id={panelId} className="pb-5">
+                      <div id={panelId} className="pb-3">
                         <Link to={m.overview.to} className="mb-1 flex min-h-11 items-center gap-1.5 font-semibold text-teal-700">
                           {m.overview.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
                         </Link>
@@ -290,7 +290,7 @@ export function Navbar() {
                             {m.columns.length > 1 && <p className="pb-1 text-sm font-semibold text-stone-600">{col.heading}</p>}
                             <ul className="border-t border-stone-100">
                               {col.items.map((item) => (
-                                <li key={item.to} className="border-b border-stone-100">
+                                <li key={item.to} className="border-b border-stone-100 last:border-b-0">
                                   <MenuLink item={item} className="flex min-h-11 items-center text-navy-800" />
                                 </li>
                               ))}
