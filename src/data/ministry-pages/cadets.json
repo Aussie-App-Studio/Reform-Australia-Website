@@ -16,25 +16,17 @@
     {
       "id": "what-cadets-is",
       "heading": "What Cadets is",
-      "paragraphs": [
-        "The Christian Cadet Corps is an independent youth ministry. Its purpose is to give local churches a ministry program that helps them share Christ's love with boys from their church and community.",
-        "Cadets is run by volunteers called counsellors. The program is made for primary school boys aged 9 to 14."
-      ]
+      "text": "The Christian Cadet Corps is an independent youth ministry. Its purpose is to give local churches a ministry program that helps them share Christ's love with boys from their church and community.\n\nCadets is run by volunteers called counsellors. The program is made for primary school boys aged 9 to 14."
     },
     {
       "id": "club-nights",
       "heading": "What happens at Cadets",
-      "paragraphs": [
-        "At Cadets the boys learn about God, work on badges, make crafts, play games, sing songs and make new friends. Clubs also go on camps and outings."
-      ]
+      "text": "At Cadets the boys learn about God, work on badges, make crafts, play games, sing songs and make new friends. Clubs also go on camps and outings."
     },
     {
       "id": "history",
       "heading": "Our history",
-      "paragraphs": [
-        "The Cadet movement was founded in the USA in 1952 and came to Australia in 1964.",
-        "Since then it has grown to 15 clubs around Australia, with about 180 cadets and 70 counsellors."
-      ],
+      "text": "The Cadet movement was founded in the USA in 1952 and came to Australia in 1964.\n\nSince then it has grown to 15 clubs around Australia, with about 180 cadets and 70 counsellors.",
       "image": {
         "src": "/images/ministries/cadets/counsellors-history.webp",
         "alt": "An older photo of fourteen men in Cadet counsellor uniforms with yellow ties, posed in two rows in a bush clearing",
@@ -44,46 +36,27 @@
     {
       "id": "what-we-believe",
       "heading": "What we believe",
-      "paragraphs": [
-        "The basis of the Christian Cadet Corps is the Word of God (the Bible) according to the concepts expressed in the Heidelberg Catechism, the Canons of Dort and the Belgic Confession."
-      ]
+      "text": "The basis of the Christian Cadet Corps is the Word of God (the Bible) according to the concepts expressed in the Heidelberg Catechism, the Canons of Dort and the Belgic Confession."
     },
     {
       "id": "our-goal",
       "heading": "Our goal",
-      "paragraphs": [
-        "Luke 2:52 says that \"Jesus grew in wisdom and stature, and in favour with God and men.\"",
-        "The goal of the Christian Cadet Corps, based on that verse, is \"to help boys grow spiritually in all areas of life (devotional, mental, physical and social) by providing Christian men with a uniquely designed structure, program and materials.\""
-      ]
+      "text": "Luke 2:52 says that \"Jesus grew in wisdom and stature, and in favour with God and men.\"\n\nThe goal of the Christian Cadet Corps, based on that verse, is \"to help boys grow spiritually in all areas of life (devotional, mental, physical and social) by providing Christian men with a uniquely designed structure, program and materials.\""
     },
     {
       "id": "theme",
       "heading": "Club theme: Amazing",
-      "paragraphs": [
-        "The club theme is \"Amazing\", based on Joshua 3:5: \"Consecrate yourselves, for tomorrow the Lord will do amazing things among you.\" Cadets and GEMS clubs share this theme.",
-        "Through the year the boys are reminded:"
-      ],
-      "list": [
-        "That God is holy",
-        "That we must prepare ourselves if we are to be in his presence",
-        "That God has done, is doing and will do amazing things"
-      ]
+      "text": "The club theme is \"Amazing\", based on Joshua 3:5: \"Consecrate yourselves, for tomorrow the Lord will do amazing things among you.\" Cadets and GEMS clubs share this theme.\n\nThrough the year the boys are reminded:\n\n- That God is holy\n- That we must prepare ourselves if we are to be in his presence\n- That God has done, is doing and will do amazing things"
     },
     {
       "id": "for-counsellors",
       "heading": "For counsellors",
-      "paragraphs": [
-        "These reminders help the boys strive to be holy and to recognise the many ways God blesses them.",
-        "Counsellors are challenged to be an example to their club: look for, find and share the many amazing things God is doing. Show your boys that God is amazing as you encourage them to live for Jesus.",
-        "The theme lessons, bulletin cover and Gold Sheet for the theme are in the resources below."
-      ]
+      "text": "These reminders help the boys strive to be holy and to recognise the many ways God blesses them.\n\nCounsellors are challenged to be an example to their club: look for, find and share the many amazing things God is doing. Show your boys that God is amazing as you encourage them to live for Jesus.\n\nThe theme lessons, bulletin cover and Gold Sheet for the theme are in the resources below."
     },
     {
       "id": "find-a-club",
       "heading": "Finding a club",
-      "paragraphs": [
-        "Cadets clubs meet in local Christian Reformed churches. To find out whether there is a club near you, or to ask about starting one or becoming a counsellor, send us an enquiry or contact your nearest CRCA church."
-      ]
+      "text": "Cadets clubs meet in local Christian Reformed churches. To find out whether there is a club near you, or to ask about starting one or becoming a counsellor, send us an enquiry or contact your nearest CRCA church."
     }
   ],
   "facts": [

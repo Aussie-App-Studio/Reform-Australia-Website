@@ -6,30 +6,15 @@
   "body": [
     {
       "heading": "Becoming a minister in the CRCA",
-      "paragraphs": [
-        "If you are interested in becoming an ordained minister in the CRCA, we would love to encourage you. We encourage candidates for ordination to study through the Reformed Theological College (RTC).",
-        "After their studies, candidates complete a vicariate. This is a one-year internship alongside a senior minister.",
-        "We encourage you to start the candidacy process before you start studying."
-      ]
+      "text": "If you are interested in becoming an ordained minister in the CRCA, we would love to encourage you. We encourage candidates for ordination to study through the Reformed Theological College (RTC).\n\nAfter their studies, candidates complete a vicariate. This is a one-year internship alongside a senior minister.\n\nWe encourage you to start the candidacy process before you start studying."
     },
     {
       "heading": "The Candidacy Committee",
-      "paragraphs": [
-        "The Candidacy Committee (CC) oversees the training process and vicariate placements, and approves students as ministry candidates. It has a State Representative in each Classis and an Executive in Geelong, Victoria.",
-        "You can reach your State Representative through your Classis Clerk."
-      ]
+      "text": "The Candidacy Committee (CC) oversees the training process and vicariate placements, and approves students as ministry candidates. It has a State Representative in each Classis and an Executive in Geelong, Victoria.\n\nYou can reach your State Representative through your Classis Clerk."
     },
     {
       "heading": "Ordination tracks",
-      "paragraphs": [
-        "There are currently four ordination tracks."
-      ],
-      "list": [
-        "Four years of study at RTC. This is the preferred option.",
-        "Task3: two years of church-based study and two years at RTC.",
-        "Study at another theological college, then one year at RTC.",
-        "Study at another theological college and complete the required units at RTC."
-      ]
+      "text": "There are currently four ordination tracks.\n\n- Four years of study at RTC. This is the preferred option.\n- Task3: two years of church-based study and two years at RTC.\n- Study at another theological college, then one year at RTC.\n- Study at another theological college and complete the required units at RTC."
     }
   ],
   "steps": {

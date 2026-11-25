@@ -15,12 +15,7 @@
     {
       "id": "what-is-swim",
       "heading": "What SWIM is",
-      "paragraphs": [
-        "SWIM stands for Supporting Work in Mission. It is a mission arm of the Christian Reformed Churches of Australia (CRCA). In the Solomon Islands, SWIM is a Registered Charitable Trust and an associate member of the Solomon Islands Christian Association (SICA).",
-        "The Solomon Islands Workgroup (SIW) oversees SWIM for the CRCA, working with a local leadership team (LLT) and the base managers in Honiara. SIW board members visit the base to meet staff, check the facilities and see the ministries at work.",
-        "SWIM's main supporters are the members of CRCA churches in Australia, through their prayers, encouragement and giving. Churches and individuals have also sent containers of donated goods, run fundraising badges through Cadets and GEMS, and sent short-term mission teams.",
-        "SWIM works alongside churches across the Solomon Islands, and keeps up its links with SICA, the Solomon Islands Gospel Fellowship Association (SIGFA) and local congregations."
-      ],
+      "text": "SWIM stands for Supporting Work in Mission. It is a mission arm of the Christian Reformed Churches of Australia (CRCA). In the Solomon Islands, SWIM is a Registered Charitable Trust and an associate member of the Solomon Islands Christian Association (SICA).\n\nThe Solomon Islands Workgroup (SIW) oversees SWIM for the CRCA, working with a local leadership team (LLT) and the base managers in Honiara. SIW board members visit the base to meet staff, check the facilities and see the ministries at work.\n\nSWIM's main supporters are the members of CRCA churches in Australia, through their prayers, encouragement and giving. Churches and individuals have also sent containers of donated goods, run fundraising badges through Cadets and GEMS, and sent short-term mission teams.\n\nSWIM works alongside churches across the Solomon Islands, and keeps up its links with SICA, the Solomon Islands Gospel Fellowship Association (SIGFA) and local congregations.",
       "image": {
         "src": "/images/ministries/swim/staff-and-visitors.webp",
         "alt": "SWIM staff and two visiting SIW board members standing together on the lawn in front of a base building in Honiara.",
@@ -30,56 +25,22 @@
     {
       "id": "mission-and-vision",
       "heading": "Mission and vision",
-      "paragraphs": [
-        "SWIM's mission: \"Serving in Solomon Islands with compassion through Biblical teaching, equipping, and support in Jesus' name.\"",
-        "SWIM's vision: \"As a mission community of Christ-centered people we will provide effective, practical, compassionate support and Bible based teaching and equipping ministries to build up Christians and establish self-reliant communities in Solomon Islands using our base facilities, resources, and the talents of our long and short term team members.\""
-      ]
+      "text": "SWIM's mission: \"Serving in Solomon Islands with compassion through Biblical teaching, equipping, and support in Jesus' name.\"\n\nSWIM's vision: \"As a mission community of Christ-centered people we will provide effective, practical, compassionate support and Bible based teaching and equipping ministries to build up Christians and establish self-reliant communities in Solomon Islands using our base facilities, resources, and the talents of our long and short term team members.\""
     },
     {
       "id": "core-values",
       "heading": "Core biblical values",
-      "paragraphs": [
-        "The Bible contains many values that shape decisions and inform ministry priorities. SWIM has chosen eight biblical values as the foundation of all its ministries. In SWIM's own words:"
-      ],
-      "list": [
-        "Biblical teaching: We value the Bible as God's authoritative and accurate word for salvation and service (2 Tim. 3:16-17; Deut. 4:19-14). Therefore, we will strive to teach God's Word with integrity and authority so those seeking will find Christ and believers will mature in him. We believe that the Bible is God's written revelation to humanity and the 66 books of the Bible given to us by the Holy Spirit are inspired equally in all parts (1 Cor. 2:7-14; 2 Peter 1:20-21).",
-        "Unity: We value unity focusing on the things that unite us, not the things that divide us. We are all united in our Lord Jesus Christ (Eph. 4:3-5; 1 Cor. 1:10). Refusing to give audience to a spirit of complaining, we will instead be courageous in solving every problem in a way that honours God and builds biblical character. We value healthy relationships by protecting the unity of the Spirit in our ministries (John 17:21; 1 Peter 3:8; Rom. 16:17; Psalm 133:1).",
-        "Teamwork: We value everyone and believe that \"doing ministry as a team\" is God's design for effective ministry (Ephesians 4:11-16; 1 Peter 2:4-9). A Spirit-empowered serving with the willing hearted involvement of every person is vital to God's plan being accomplished. We are stronger together than apart (1 Cor. 12:14-30; Eccl. 4:9-12).",
-        "Godly leadership: We value godly servant leadership and believe that a godly ministry can rise no higher than its leadership (2 Tim. 4:1-5; 1 Peter 5:1-4). It will be our goal to have men and women who possess servant leadership characteristics and can lead with godly wisdom, character, integrity, productivity, accountability and promote unity and biblical moral values (1 Cor. 3:5-23; Rom. 12:8).",
-        "Loving people: We value biblical community where people have opportunity to minister to and love one another. We believe no individual is ever more or less important than another (1 Cor. 13; 1 John 4:7-12). We also believe one of the main roles of our ministry is to serve and care for the poor, oppressed and marginalized in our villages, communities, and ministry contexts (Micah 6:8; 1 John 3:17; Matthew 25:31-46).",
-        "Prayer: We value prayer as a discipline that should precede and permeate our work. We believe that prayer should consume a significant part of our daily lives. Without prayer we are disconnected from God; our hearts and minds are at loose ends, doing what we think is right, instead of listening to God and doing what He says is right. Without prayer it is impossible to please God or succeed in ministry (Acts 2:42; Matthew 6:5-13; Eph. 6:18-20; 1 Tim. 2:1-4).",
-        "Spiritual growth: We value a commitment to consistent spiritual growth with honest accountability (2 Peter 1:5-9; Eph. 4:15-16). A genuine love for God is always the first priority. Every Christian should yearn for continual spiritual growth. Therefore, discipleship through small groups, accountability, and open honesty is critical to maturing in our faith (Mark 12:29-31; Acts 2:44-47; 1 Peter 2:2).",
-        "Cultural relevance: We believe that while God's message is timeless, forms and methods must adapt to those we are seeking to serve (1 Cor. 9:22; 2 Cor. 5:14-21). We believe it's important to speak the language of our culture while not compromising biblical truth. It is possible to guard the truth of the gospel and live holy lives while at the same time speaking and ministering in a manner which the culture we are trying to reach can understand (Luke 5:36-39)."
-      ]
+      "text": "The Bible contains many values that shape decisions and inform ministry priorities. SWIM has chosen eight biblical values as the foundation of all its ministries. In SWIM's own words:\n\n- Biblical teaching: We value the Bible as God's authoritative and accurate word for salvation and service (2 Tim. 3:16-17; Deut. 4:19-14). Therefore, we will strive to teach God's Word with integrity and authority so those seeking will find Christ and believers will mature in him. We believe that the Bible is God's written revelation to humanity and the 66 books of the Bible given to us by the Holy Spirit are inspired equally in all parts (1 Cor. 2:7-14; 2 Peter 1:20-21).\n- Unity: We value unity focusing on the things that unite us, not the things that divide us. We are all united in our Lord Jesus Christ (Eph. 4:3-5; 1 Cor. 1:10). Refusing to give audience to a spirit of complaining, we will instead be courageous in solving every problem in a way that honours God and builds biblical character. We value healthy relationships by protecting the unity of the Spirit in our ministries (John 17:21; 1 Peter 3:8; Rom. 16:17; Psalm 133:1).\n- Teamwork: We value everyone and believe that \"doing ministry as a team\" is God's design for effective ministry (Ephesians 4:11-16; 1 Peter 2:4-9). A Spirit-empowered serving with the willing hearted involvement of every person is vital to God's plan being accomplished. We are stronger together than apart (1 Cor. 12:14-30; Eccl. 4:9-12).\n- Godly leadership: We value godly servant leadership and believe that a godly ministry can rise no higher than its leadership (2 Tim. 4:1-5; 1 Peter 5:1-4). It will be our goal to have men and women who possess servant leadership characteristics and can lead with godly wisdom, character, integrity, productivity, accountability and promote unity and biblical moral values (1 Cor. 3:5-23; Rom. 12:8).\n- Loving people: We value biblical community where people have opportunity to minister to and love one another. We believe no individual is ever more or less important than another (1 Cor. 13; 1 John 4:7-12). We also believe one of the main roles of our ministry is to serve and care for the poor, oppressed and marginalized in our villages, communities, and ministry contexts (Micah 6:8; 1 John 3:17; Matthew 25:31-46).\n- Prayer: We value prayer as a discipline that should precede and permeate our work. We believe that prayer should consume a significant part of our daily lives. Without prayer we are disconnected from God; our hearts and minds are at loose ends, doing what we think is right, instead of listening to God and doing what He says is right. Without prayer it is impossible to please God or succeed in ministry (Acts 2:42; Matthew 6:5-13; Eph. 6:18-20; 1 Tim. 2:1-4).\n- Spiritual growth: We value a commitment to consistent spiritual growth with honest accountability (2 Peter 1:5-9; Eph. 4:15-16). A genuine love for God is always the first priority. Every Christian should yearn for continual spiritual growth. Therefore, discipleship through small groups, accountability, and open honesty is critical to maturing in our faith (Mark 12:29-31; Acts 2:44-47; 1 Peter 2:2).\n- Cultural relevance: We believe that while God's message is timeless, forms and methods must adapt to those we are seeking to serve (1 Cor. 9:22; 2 Cor. 5:14-21). We believe it's important to speak the language of our culture while not compromising biblical truth. It is possible to guard the truth of the gospel and live holy lives while at the same time speaking and ministering in a manner which the culture we are trying to reach can understand (Luke 5:36-39)."
     },
     {
       "id": "ministry-areas",
       "heading": "Key ministry areas",
-      "list": [
-        "Teaching and equipping church leaders",
-        "Know Your Bible (KYB)",
-        "SWIM short-term mission teams",
-        "Community development and assistance",
-        "Practical aid and disaster relief",
-        "Days for Girls program",
-        "School sponsorship",
-        "Conference centre and accommodation",
-        "Prison ministry (Crossroads)",
-        "Media ministry",
-        "Support for the Bethesda Disability Centre"
-      ]
+      "text": "- Teaching and equipping church leaders\n- Know Your Bible (KYB)\n- SWIM short-term mission teams\n- Community development and assistance\n- Practical aid and disaster relief\n- Days for Girls program\n- School sponsorship\n- Conference centre and accommodation\n- Prison ministry (Crossroads)\n- Media ministry\n- Support for the Bethesda Disability Centre"
     },
     {
       "id": "weekly-ministries",
       "heading": "Weekly ministries at the base",
-      "paragraphs": [
-        "Each week SWIM runs ministries for the neighbouring communities around the base. Every program includes a devotion, and numbers have grown steadily.",
-        "Women's ministry meets on Tuesdays for Bible study and life skills such as sewing, knitting, patching, tie-dyeing, cooking and baking. Visiting volunteers have run sewing courses, including a 5-day course in 2025 and a 3-day basic sewing course at Solmere Bethesda in 2024.",
-        "Children's ministry offers Bible stories, memory verses, singing, arts and crafts, face painting and drawing. In 2025 the teachers, Martina Gegeu, Janet Light and Phillistus Wate, completed training at the Evangelism School for Children and began a character-building program.",
-        "Youth ministry meets on Thursdays and is led by John Mark and Martina. It focuses on building Christlike character, with topics such as forgiveness, and ends the year with Bible quizzes.",
-        "Sports ministry starts with a devotion and then training. Young men from the nearby communities play in the SWIM FC futsal team, with Pastor Michael Light as head coach. SWIM FC played in the SALT 2024 Futsal Challenge and the Hatanga Futsal League in 2025, and about 50 young men came to the 2025 closing tournament.",
-        "In early 2025 the Solomon Islands Trauma Healing Association (SITHA) ran trauma healing sessions for the women's, children's and youth ministries."
-      ],
+      "text": "Each week SWIM runs ministries for the neighbouring communities around the base. Every program includes a devotion, and numbers have grown steadily.\n\nWomen's ministry meets on Tuesdays for Bible study and life skills such as sewing, knitting, patching, tie-dyeing, cooking and baking. Visiting volunteers have run sewing courses, including a 5-day course in 2025 and a 3-day basic sewing course at Solmere Bethesda in 2024.\n\nChildren's ministry offers Bible stories, memory verses, singing, arts and crafts, face painting and drawing. In 2025 the teachers, Martina Gegeu, Janet Light and Phillistus Wate, completed training at the Evangelism School for Children and began a character-building program.\n\nYouth ministry meets on Thursdays and is led by John Mark and Martina. It focuses on building Christlike character, with topics such as forgiveness, and ends the year with Bible quizzes.\n\nSports ministry starts with a devotion and then training. Young men from the nearby communities play in the SWIM FC futsal team, with Pastor Michael Light as head coach. SWIM FC played in the SALT 2024 Futsal Challenge and the Hatanga Futsal League in 2025, and about 50 young men came to the 2025 closing tournament.\n\nIn early 2025 the Solomon Islands Trauma Healing Association (SITHA) ran trauma healing sessions for the women's, children's and youth ministries.",
       "image": {
         "src": "/images/ministries/swim/swim-fc.webp",
         "alt": "The SWIM FC futsal team in green uniforms, posing in two rows on an indoor court with their coaches.",
@@ -89,12 +50,7 @@
     {
       "id": "leadership-training",
       "heading": "Teaching and equipping church leaders",
-      "paragraphs": [
-        "SWIM's pastor, Michael Light, runs biblical leadership training at the base and in the provinces. Courses bring together pastors, women's leaders and youth leaders from many churches, including SSEC, Assembly of God, Anglican and Church of Christ congregations. SWIM provides the teaching, resources and meals.",
-        "Recent courses include training for community church leaders at the base (February 2025), 20 pastors and leaders in Auki (April 2025), 29 community leaders in Samasodu (July 2025), more than 100 youths at the Zion Worship Centre in Malaita on end-time events (July 2025), more than 30 church leaders at Kwainafala (September 2025), more than 70 leaders at Baurara, East Fataleka (November 2025), and more than 60 leaders at Capernaum Centre, East Mbaelelea, North Malaita (January 2026). More than 20 leaders received certificates after a two-day course at Bethesda in Honiara.",
-        "Before Pastor Michael, Pastor Andrew Fanasia served as SWIM's pastor for four years. He and his wife Unity ran courses such as a five-day leadership training for the Marebo SSEC Association in November 2024, and a youth leadership course alongside grassroots futsal coaching for leaders from Lunga.",
-        "Know Your Bible (KYB) workshops have also been run in Honiara."
-      ],
+      "text": "SWIM's pastor, Michael Light, runs biblical leadership training at the base and in the provinces. Courses bring together pastors, women's leaders and youth leaders from many churches, including SSEC, Assembly of God, Anglican and Church of Christ congregations. SWIM provides the teaching, resources and meals.\n\nRecent courses include training for community church leaders at the base (February 2025), 20 pastors and leaders in Auki (April 2025), 29 community leaders in Samasodu (July 2025), more than 100 youths at the Zion Worship Centre in Malaita on end-time events (July 2025), more than 30 church leaders at Kwainafala (September 2025), more than 70 leaders at Baurara, East Fataleka (November 2025), and more than 60 leaders at Capernaum Centre, East Mbaelelea, North Malaita (January 2026). More than 20 leaders received certificates after a two-day course at Bethesda in Honiara.\n\nBefore Pastor Michael, Pastor Andrew Fanasia served as SWIM's pastor for four years. He and his wife Unity ran courses such as a five-day leadership training for the Marebo SSEC Association in November 2024, and a youth leadership course alongside grassroots futsal coaching for leaders from Lunga.\n\nKnow Your Bible (KYB) workshops have also been run in Honiara.",
       "image": {
         "src": "/images/ministries/swim/leadership-training.webp",
         "alt": "A large group of men and women standing in front of a church building, holding up their training certificates.",
@@ -104,12 +60,7 @@
     {
       "id": "crossroads",
       "heading": "Crossroads prison ministry",
-      "paragraphs": [
-        "Crossroad Bible Institute (CBI) equips the church to disciple people in prison with the Word of God, free of charge, wherever they are held. It is a personal, in-depth and long-term program that helps prisoners grow in a life-changing relationship with Jesus Christ, and prepares and helps them for a successful return to the community. Research shows a significant reduction in re-offending for people who receive Bible instruction while in prison.",
-        "Pastor Michael Light and his wife Janet coordinate the Crossroads ministry with SWIM. They teach weekly at Rove Correctional Centre in Honiara, where inmates work through courses such as \"Great truths of the Bible\" and \"Survey of the Bible\". More than 50 inmates graduated in late 2025, and in 2025 twenty students were recognised for good behaviour.",
-        "In 2026 the ministry grew to two more centres. More than 30 inmates graduated at Tetere Correctional Centre in February 2026, and SWIM trained 12 volunteers to teach Crossroads lessons at Auki Correctional Centre.",
-        "SWIM also gives release packs to inmates when they leave prison, and in December 2025 a SWIM team provided a Christmas meal at Rove Correctional Centre."
-      ],
+      "text": "Crossroad Bible Institute (CBI) equips the church to disciple people in prison with the Word of God, free of charge, wherever they are held. It is a personal, in-depth and long-term program that helps prisoners grow in a life-changing relationship with Jesus Christ, and prepares and helps them for a successful return to the community. Research shows a significant reduction in re-offending for people who receive Bible instruction while in prison.\n\nPastor Michael Light and his wife Janet coordinate the Crossroads ministry with SWIM. They teach weekly at Rove Correctional Centre in Honiara, where inmates work through courses such as \"Great truths of the Bible\" and \"Survey of the Bible\". More than 50 inmates graduated in late 2025, and in 2025 twenty students were recognised for good behaviour.\n\nIn 2026 the ministry grew to two more centres. More than 30 inmates graduated at Tetere Correctional Centre in February 2026, and SWIM trained 12 volunteers to teach Crossroads lessons at Auki Correctional Centre.\n\nSWIM also gives release packs to inmates when they leave prison, and in December 2025 a SWIM team provided a Christmas meal at Rove Correctional Centre.",
       "image": {
         "src": "/images/ministries/swim/prison-ministry.webp",
         "alt": "A man standing outside the fenced entrance of Rove Central Correctional Centre in Honiara.",
@@ -119,12 +70,7 @@
     {
       "id": "bethesda",
       "heading": "Bethesda Disability Centre",
-      "paragraphs": [
-        "Bethesda is being developed by SWIM together with the Ministry of Health and People With Disabilities Solomon Islands (PWDSI). It meets some of the needs of people with disabilities by teaching life skills and helping each person reach their full potential.",
-        "Construction began in April 2008. Since 2010 Bethesda has run three eight-week residential courses each year. Students learn about the Christian faith and personal healthcare, and gain skills such as gardening, woodwork and sewing, so they can be more self-sufficient in their communities.",
-        "The centre has student accommodation, an administration building and classrooms, ablution blocks and four staff houses. A poultry farm provides income to run the centre, and the long-term plan is for Bethesda to be fully self-sufficient from eggs and other produce grown on site. More staff houses are still needed, and building teams are welcome to help finish the project.",
-        "SWIM staff have also helped Bethesda in practical ways, such as building a laundry, and ran a pilot healthy eating and nutrition project with the centre in 2019. In 2024 Pastor Michael attended Bethesda's graduation for seven students, where Prime Minister Jeremiah Manele was the keynote speaker."
-      ],
+      "text": "Bethesda is being developed by SWIM together with the Ministry of Health and People With Disabilities Solomon Islands (PWDSI). It meets some of the needs of people with disabilities by teaching life skills and helping each person reach their full potential.\n\nConstruction began in April 2008. Since 2010 Bethesda has run three eight-week residential courses each year. Students learn about the Christian faith and personal healthcare, and gain skills such as gardening, woodwork and sewing, so they can be more self-sufficient in their communities.\n\nThe centre has student accommodation, an administration building and classrooms, ablution blocks and four staff houses. A poultry farm provides income to run the centre, and the long-term plan is for Bethesda to be fully self-sufficient from eggs and other produce grown on site. More staff houses are still needed, and building teams are welcome to help finish the project.\n\nSWIM staff have also helped Bethesda in practical ways, such as building a laundry, and ran a pilot healthy eating and nutrition project with the centre in 2019. In 2024 Pastor Michael attended Bethesda's graduation for seven students, where Prime Minister Jeremiah Manele was the keynote speaker.",
       "image": {
         "src": "/images/ministries/swim/bethesda.webp",
         "alt": "Blue weatherboard buildings with louvred windows at the Bethesda Disability Centre, joined by a concrete path and garden beds.",
@@ -134,12 +80,7 @@
     {
       "id": "samasodu",
       "heading": "Samasodu village and Katova High School",
-      "paragraphs": [
-        "SWIM partners in Australia, led from Wamberal CRC in New South Wales, have worked with Samasodu village in Isabel Province since 2006. Samasodu is about 22 hours by boat from Honiara. The first team of 27 volunteers built a medical clinic. Over the years teams built a Rural Health Centre and staff housing, and improved sanitation and the water supply.",
-        "The partnership is now building Katova High School for the Katova District. The plan includes about 50 buildings: classrooms, dormitories, kitchens, administration buildings and staff housing, so that more than 400 young people can go to high school. Rod Peet, an elder at Wamberal CRC, has coordinated the teams.",
-        "Teams have travelled most years since 2018, including 18 people in October 2018, 33 volunteers from Sydney, Tasmania and Perth in April 2019, a team in July 2024 that completed classrooms, toilets, staff houses and dormitories, and 35 people in July 2025 who built a new girls' dormitory, upgraded the school's wi-fi and helped teach. In 2024 SWIM also prepared a boat and engine for the school to use for transport.",
-        "Teams also run children's and community programs in the village, and SWIM's pastor ran the first biblical leadership training in Samasodu in 2025."
-      ],
+      "text": "SWIM partners in Australia, led from Wamberal CRC in New South Wales, have worked with Samasodu village in Isabel Province since 2006. Samasodu is about 22 hours by boat from Honiara. The first team of 27 volunteers built a medical clinic. Over the years teams built a Rural Health Centre and staff housing, and improved sanitation and the water supply.\n\nThe partnership is now building Katova High School for the Katova District. The plan includes about 50 buildings: classrooms, dormitories, kitchens, administration buildings and staff housing, so that more than 400 young people can go to high school. Rod Peet, an elder at Wamberal CRC, has coordinated the teams.\n\nTeams have travelled most years since 2018, including 18 people in October 2018, 33 volunteers from Sydney, Tasmania and Perth in April 2019, a team in July 2024 that completed classrooms, toilets, staff houses and dormitories, and 35 people in July 2025 who built a new girls' dormitory, upgraded the school's wi-fi and helped teach. In 2024 SWIM also prepared a boat and engine for the school to use for transport.\n\nTeams also run children's and community programs in the village, and SWIM's pastor ran the first biblical leadership training in Samasodu in 2025.",
       "image": {
         "src": "/images/ministries/swim/samasodu-classroom.webp",
         "alt": "Inside a timber classroom with long wooden desks, a dirt floor and colourful learning charts on the walls.",
@@ -149,20 +90,12 @@
     {
       "id": "community-development",
       "heading": "Community development and water projects",
-      "paragraphs": [
-        "SWIM works with communities on practical projects that local people have asked for, often with help from short-term teams.",
-        "At Kwainafala in North Malaita, the community had struggled without a water supply for more than 50 years. In 2025 SWIM built a dam, two water tanks and 25 standpipes, giving 30 households access to clean water. SWIM also ran a three-day leadership training for the community's church leaders.",
-        "SWIM built the Honiara Hospital School more than ten years before 2019. It lets sick children and their brothers and sisters keep learning while in hospital, sometimes for months. In 2019 SWIM added a ramp from the children's ward, a toilet, water, lighting and ceiling fans, funded by more than $2,000 raised by Cadets and GEMS clubs in Australia and New Zealand.",
-        "Other projects have included disability toilets with the Community Based Rehabilitation program, a planned water tank, school repairs and toilets at Mamosa village, and building help for local churches and schools near the base."
-      ]
+      "text": "SWIM works with communities on practical projects that local people have asked for, often with help from short-term teams.\n\nAt Kwainafala in North Malaita, the community had struggled without a water supply for more than 50 years. In 2025 SWIM built a dam, two water tanks and 25 standpipes, giving 30 households access to clean water. SWIM also ran a three-day leadership training for the community's church leaders.\n\nSWIM built the Honiara Hospital School more than ten years before 2019. It lets sick children and their brothers and sisters keep learning while in hospital, sometimes for months. In 2019 SWIM added a ramp from the children's ward, a toilet, water, lighting and ceiling fans, funded by more than $2,000 raised by Cadets and GEMS clubs in Australia and New Zealand.\n\nOther projects have included disability toilets with the Community Based Rehabilitation program, a planned water tank, school repairs and toilets at Mamosa village, and building help for local churches and schools near the base."
     },
     {
       "id": "practical-aid",
       "heading": "Practical aid and Days for Girls",
-      "paragraphs": [
-        "SWIM gives practical help where it is needed. Containers of donated goods from Australia are cleared at the base and shared with the community. Donations have included knitted bonnets and socks for newborn babies at the hospital maternity ward, sterile aprons and exercise books for the Hospital School, and medical supplies for Honiara Hospital.",
-        "SWIM is part of the Days for Girls program, and gives release packs to people leaving prison."
-      ],
+      "text": "SWIM gives practical help where it is needed. Containers of donated goods from Australia are cleared at the base and shared with the community. Donations have included knitted bonnets and socks for newborn babies at the hospital maternity ward, sterile aprons and exercise books for the Hospital School, and medical supplies for Honiara Hospital.\n\nSWIM is part of the Days for Girls program, and gives release packs to people leaving prison.",
       "image": {
         "src": "/images/ministries/swim/days-for-girls.webp",
         "alt": "A woman smiling and holding up a clear bag containing a Days for Girls hygiene kit.",
@@ -172,10 +105,7 @@
     {
       "id": "school-sponsorship",
       "heading": "School sponsorship",
-      "paragraphs": [
-        "The government education system in the Solomon Islands is under-resourced, and schooling is neither free nor compulsory. Many children do not go to school, and only a few go on to tertiary or university study.",
-        "SWIM has contact with many primary and secondary schools and helps children get an education as far as it can. Donations help pay tuition fees, school supplies and uniforms. There is never enough to pay fees for every child who needs help, so regular donors make a real difference. A one-off gift, such as a workplace collection, could also support a university student studying in your own field."
-      ],
+      "text": "The government education system in the Solomon Islands is under-resourced, and schooling is neither free nor compulsory. Many children do not go to school, and only a few go on to tertiary or university study.\n\nSWIM has contact with many primary and secondary schools and helps children get an education as far as it can. Donations help pay tuition fees, school supplies and uniforms. There is never enough to pay fees for every child who needs help, so regular donors make a real difference. A one-off gift, such as a workplace collection, could also support a university student studying in your own field.",
       "image": {
         "src": "/images/ministries/swim/school-sponsorship.webp",
         "alt": "A group of young people sitting and standing on the steps of a green timber building.",
@@ -185,44 +115,22 @@
     {
       "id": "short-term-missions",
       "heading": "Short-term mission teams",
-      "paragraphs": [
-        "There is nothing short about God's call to mission. However long people are physically in the country, all of SWIM's mission is long-term mission. Teams from Australia, New Zealand and elsewhere travel to the Solomon Islands to take part in God's mission through SWIM, and SWIM provides training resources for every team.",
-        "Over the years dozens of teams have come to the SWIM base. A trip might last several weeks or longer, and sometimes individuals come to join SWIM's work. What does it mean to serve in the Solomon Islands? Is it service, tourism, a personal pilgrimage or something else? These trips can affect people culturally and challenge them to think about their own faith.",
-        "SWIM is committed to resourcing everyone who comes to serve, so that short-term mission supports the long-term mission, is culturally relevant, and works towards self-reliant communities in the Solomon Islands. Building or trade skills are very useful, but a willing heart to serve matters most."
-      ]
+      "text": "There is nothing short about God's call to mission. However long people are physically in the country, all of SWIM's mission is long-term mission. Teams from Australia, New Zealand and elsewhere travel to the Solomon Islands to take part in God's mission through SWIM, and SWIM provides training resources for every team.\n\nOver the years dozens of teams have come to the SWIM base. A trip might last several weeks or longer, and sometimes individuals come to join SWIM's work. What does it mean to serve in the Solomon Islands? Is it service, tourism, a personal pilgrimage or something else? These trips can affect people culturally and challenge them to think about their own faith.\n\nSWIM is committed to resourcing everyone who comes to serve, so that short-term mission supports the long-term mission, is culturally relevant, and works towards self-reliant communities in the Solomon Islands. Building or trade skills are very useful, but a willing heart to serve matters most."
     },
     {
       "id": "team-conduct",
       "heading": "Conduct and dress code for teams",
-      "paragraphs": [
-        "All team members sign the SWIM short-term mission agreement form. While part of a team in the Solomon Islands, everyone agrees to:"
-      ],
-      "list": [
-        "No alcohol, betel nut, illicit drugs or smoking (including cigarettes) at any time.",
-        "No coarse or crude language, swearing or blasphemy.",
-        "Wear modest clothing that follows the SWIM dress code.",
-        "Respect culturally appropriate ways of relating to the opposite sex. In general, no physical contact apart from shaking hands, with other team members or with Solomon Islanders.",
-        "Women: loose shorts or skirts over the knee (some villages require skirts only, so check with your SWIM contact), a dress or skirt and a top covering the shoulders for church, loose and modest tops with wide shoulder straps, and board shorts with a T-shirt for swimming.",
-        "Men: loose shorts or board shorts for swimming, ideally with a T-shirt or singlet.",
-        "Everyone: no clothing with offensive pictures or words, light cotton clothes, thongs and a spare pair, strong sandals for muddy tracks, and a hat.",
-        "The dress code is deliberately conservative so that teams are above reproach. It also gives the best sun protection and comfort. You don't need a new wardrobe: borrow or visit a second-hand shop."
-      ]
+      "text": "All team members sign the SWIM short-term mission agreement form. While part of a team in the Solomon Islands, everyone agrees to:\n\n- No alcohol, betel nut, illicit drugs or smoking (including cigarettes) at any time.\n- No coarse or crude language, swearing or blasphemy.\n- Wear modest clothing that follows the SWIM dress code.\n- Respect culturally appropriate ways of relating to the opposite sex. In general, no physical contact apart from shaking hands, with other team members or with Solomon Islanders.\n- Women: loose shorts or skirts over the knee (some villages require skirts only, so check with your SWIM contact), a dress or skirt and a top covering the shoulders for church, loose and modest tops with wide shoulder straps, and board shorts with a T-shirt for swimming.\n- Men: loose shorts or board shorts for swimming, ideally with a T-shirt or singlet.\n- Everyone: no clothing with offensive pictures or words, light cotton clothes, thongs and a spare pair, strong sandals for muddy tracks, and a hat.\n- The dress code is deliberately conservative so that teams are above reproach. It also gives the best sun protection and comfort. You don't need a new wardrobe: borrow or visit a second-hand shop."
     },
     {
       "id": "full-time-roles",
       "heading": "Full-time roles",
-      "paragraphs": [
-        "From time to time the SIW recruits long-term mission workers for the base. The Deed Missionary looks after all SWIM buildings and property, supervises new building work, maintains SWIM's vehicles and equipment, and prepares and orders supplies for SWIM team projects, working alongside the other base staff.",
-        "Packages for long-term workers are agreed with the SIW Board and can include on-base accommodation, use of a vehicle, superannuation, insurance and travel. To ask whether any role is currently open, contact the SIW Chairperson."
-      ]
+      "text": "From time to time the SIW recruits long-term mission workers for the base. The Deed Missionary looks after all SWIM buildings and property, supervises new building work, maintains SWIM's vehicles and equipment, and prepares and orders supplies for SWIM team projects, working alongside the other base staff.\n\nPackages for long-term workers are agreed with the SIW Board and can include on-base accommodation, use of a vehicle, superannuation, insurance and travel. To ask whether any role is currently open, contact the SIW Chairperson."
     },
     {
       "id": "the-base",
       "heading": "The base",
-      "paragraphs": [
-        "The SWIM base is on a 5 acre block on the eastern outskirts of Honiara, about 12 km from the town centre and 4 km from the international airport. Drinking water comes from rain catchment and other water from a bore. The houses have 240V power from solar panels, backed up by a generator. A new solar system was installed in late 2025 to cut fuel use, and new solar lighting in early 2026.",
-        "Long-term team members live and do much of their daily work in seven houses on the base. Staff keep the grounds, gardens and buildings in good order, and grow vegetables in the base garden."
-      ],
+      "text": "The SWIM base is on a 5 acre block on the eastern outskirts of Honiara, about 12 km from the town centre and 4 km from the international airport. Drinking water comes from rain catchment and other water from a bore. The houses have 240V power from solar panels, backed up by a generator. A new solar system was installed in late 2025 to cut fuel use, and new solar lighting in early 2026.\n\nLong-term team members live and do much of their daily work in seven houses on the base. Staff keep the grounds, gardens and buildings in good order, and grow vegetables in the base garden.",
       "image": {
         "src": "/images/ministries/swim/base.webp",
         "alt": "A long yellow building with a green roof set among lawns and large shade trees at the SWIM base in Honiara.",
@@ -232,11 +140,7 @@
     {
       "id": "conference-centre",
       "heading": "Conference centre and accommodation",
-      "paragraphs": [
-        "The Conference Centre and Transit House sleeps 34 people in bunk-style rooms. A large central area holds the common room, dining area and kitchen.",
-        "A large leaf meeting house is available for conferences and workshops, with extra facilities. There are plenty of quiet spaces for small groups, grass and garden areas for recreation, and the beach is a 20 minute walk away.",
-        "The centre is available for short-term mission teams, retreats, conferences and workshops. Rates are very reasonable and self-catering is usually required, although SWIM also offers catering. Recent guests include church and youth groups, government ministries, university groups, community organisations and Bible college students. Contact SWIM for bookings, rates or questions."
-      ]
+      "text": "The Conference Centre and Transit House sleeps 34 people in bunk-style rooms. A large central area holds the common room, dining area and kitchen.\n\nA large leaf meeting house is available for conferences and workshops, with extra facilities. There are plenty of quiet spaces for small groups, grass and garden areas for recreation, and the beach is a 20 minute walk away.\n\nThe centre is available for short-term mission teams, retreats, conferences and workshops. Rates are very reasonable and self-catering is usually required, although SWIM also offers catering. Recent guests include church and youth groups, government ministries, university groups, community organisations and Bible college students. Contact SWIM for bookings, rates or questions."
     }
   ],
   "steps": {

@@ -9,34 +9,42 @@
     {
       "id": "about",
       "heading": "Helping, not harming",
-      "paragraphs": [
-        "Short term mission trips can be a great blessing and experience for people. But how can we ensure that we honour the people we seek to serve? How do we make sure we are helping and not harming? The CRCA has developed a best practice guide for short term missions to help churches plan their next mission trip."
-      ]
+      "text": "Short term mission trips can be a great blessing and experience for people. But how can we ensure that we honour the people we seek to serve? How do we make sure we are helping and not harming? The CRCA has developed a best practice guide for short term missions to help churches plan their next mission trip."
     },
     {
       "id": "commitments",
       "heading": "What the code covers",
-      "paragraphs": [
-        "The code sets out four commitments, each with examples of best practice:"
-      ],
-      "list": [
-        "Leadership: \"We will send well-managed teams led by committed, faithful and well-equipped leaders.\" This covers character and Christian commitment, leadership ability, adaptability and cultural sensitivity, effective delegation and servant leadership.",
-        "Validation and evaluation: \"We will evaluate honestly and wisely the value and impact of our trips on the host community, team members and sending churches.\" This covers determining need with the community and long term missionaries, agreeing the trip's length, resources, personnel and costing, seeking the wisdom of experience, and evaluating the trip 2 months and 12 months after it returns.",
-        "Culture and development: \"We will seek to always minister in culturally appropriate and sustainable ways.\" This covers thorough preparation, a biblical view of culture, sensitivity and respect, fostering independence and self sufficiency, supporting long term and ongoing efforts, and responsible gift giving.",
-        "Team preparation and debriefing: \"Our mission team members and the project will be carefully prepared and effectively debriefed.\" This covers resources and budget, recreational time, involvement, screening of applicants (including police or working with children checks for trips ministering to minors), team cohesion and debriefing for 12 months after re-entry."
-      ]
+      "text": "The code sets out four commitments, each with examples of best practice:\n\n- Leadership: \"We will send well-managed teams led by committed, faithful and well-equipped leaders.\" This covers character and Christian commitment, leadership ability, adaptability and cultural sensitivity, effective delegation and servant leadership.\n- Validation and evaluation: \"We will evaluate honestly and wisely the value and impact of our trips on the host community, team members and sending churches.\" This covers determining need with the community and long term missionaries, agreeing the trip's length, resources, personnel and costing, seeking the wisdom of experience, and evaluating the trip 2 months and 12 months after it returns.\n- Culture and development: \"We will seek to always minister in culturally appropriate and sustainable ways.\" This covers thorough preparation, a biblical view of culture, sensitivity and respect, fostering independence and self sufficiency, supporting long term and ongoing efforts, and responsible gift giving.\n- Team preparation and debriefing: \"Our mission team members and the project will be carefully prepared and effectively debriefed.\" This covers resources and budget, recreational time, involvement, screening of applicants (including police or working with children checks for trips ministering to minors), team cohesion and debriefing for 12 months after re-entry."
     }
   ],
   "facts": [
-    { "label": "Who it's for", "value": "Churches planning a short term mission trip" },
-    { "label": "Prepared by", "value": "CRCA Resource Centre and the RTC" }
+    {
+      "label": "Who it's for",
+      "value": "Churches planning a short term mission trip"
+    },
+    {
+      "label": "Prepared by",
+      "value": "CRCA Resource Centre and the RTC"
+    }
   ],
   "actions": [
-    { "label": "Download the code (PDF)", "url": "/ministry-resources/governance/Mission-best-practice.pdf", "kind": "primary" },
-    { "label": "Solomon Islands SWIM", "url": "/ministries/swim", "kind": "secondary" }
+    {
+      "label": "Download the code (PDF)",
+      "url": "/ministry-resources/governance/Mission-best-practice.pdf",
+      "kind": "primary"
+    },
+    {
+      "label": "Solomon Islands SWIM",
+      "url": "/ministries/swim",
+      "kind": "secondary"
+    }
   ],
   "resources": [
-    { "label": "Code of best practice for short term missions (PDF)", "url": "/ministry-resources/governance/Mission-best-practice.pdf", "type": "pdf" }
+    {
+      "label": "Code of best practice for short term missions (PDF)",
+      "url": "/ministry-resources/governance/Mission-best-practice.pdf",
+      "type": "pdf"
+    }
   ],
   "sources": [
     "https://crca.org.au/short-term-missions-best-practice/",

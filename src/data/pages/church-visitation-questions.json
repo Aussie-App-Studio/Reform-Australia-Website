@@ -9,46 +9,51 @@
     {
       "id": "about",
       "heading": "Helping churches stay healthy",
-      "paragraphs": [
-        "We are committed to helping churches stay healthy. As part of this practice neighbouring churches will visit each other to help them think through various aspects of church life. To guide this process we have adopted the following church visitation questions."
-      ]
+      "text": "We are committed to helping churches stay healthy. As part of this practice neighbouring churches will visit each other to help them think through various aspects of church life. To guide this process we have adopted the following church visitation questions."
     },
     {
       "id": "preliminaries",
       "heading": "How a visitation works",
-      "paragraphs": [
-        "The Classis shall appoint at least two senior ministers as Church Visitors (see CO Art 45), to visit each church annually. The date set for the visit must allow sufficient time for the Session to prepare thoroughly for the visitation. Much of the benefit of the Church Visitation will be in the way the Session interacts on the questions before the visit. The questions would provide excellent material for a Session retreat.",
-        "The meeting with the Church Visitors should be announced to the congregation. Congregation members should have the opportunity to meet with the Church Visitors if they have concerns that they have already discussed with the Session but have not yet been satisfactorily resolved.",
-        "It is expected that the minister/s, elders and deacons will attend the meeting, with an attendance of not less than 75% of the full session. The Church Visitors should take a full record of the discussions, submitting this to the Session for approval after the meeting. Once agreed upon, this record of the meeting will be submitted to Classis.",
-        "Sessions should be frank and open with the Church Visitors and identify any areas of difficulty or tension in church life that threaten the well-being of the church and the work of the gospel."
-      ]
+      "text": "The Classis shall appoint at least two senior ministers as Church Visitors (see CO Art 45), to visit each church annually. The date set for the visit must allow sufficient time for the Session to prepare thoroughly for the visitation. Much of the benefit of the Church Visitation will be in the way the Session interacts on the questions before the visit. The questions would provide excellent material for a Session retreat.\n\nThe meeting with the Church Visitors should be announced to the congregation. Congregation members should have the opportunity to meet with the Church Visitors if they have concerns that they have already discussed with the Session but have not yet been satisfactorily resolved.\n\nIt is expected that the minister/s, elders and deacons will attend the meeting, with an attendance of not less than 75% of the full session. The Church Visitors should take a full record of the discussions, submitting this to the Session for approval after the meeting. Once agreed upon, this record of the meeting will be submitted to Classis.\n\nSessions should be frank and open with the Church Visitors and identify any areas of difficulty or tension in church life that threaten the well-being of the church and the work of the gospel."
     },
     {
       "id": "key-areas",
       "heading": "Key areas of interaction",
-      "paragraphs": [
-        "The areas of discussion are shaped around the CRCA fourfold mission task. The intention is not that Sessions try to give \"right\" answers, but that they think carefully and interact honestly on how the church is doing in its gospel calling. The full questions are in the document below."
-      ],
-      "list": [
-        "Prayer and worship: prayer for the lost, the approach to public worship, and the preaching ministry.",
-        "Multiplication of ministry: growth and church planting, mission locally and overseas, diaconal ministry and links with the local community, new ministries, the Session's vision and goals, a Christian world and life view, and problems that impede the work of the gospel.",
-        "Training for ministry: training and oversight of leaders, care and review of the minister/s, discipleship of children, young people, new Christians and established members, and pastoral care.",
-        "Alignment: how local church structures serve the church's vision, and how the church aligns with the CRCA Church Order and synodical decisions.",
-        "Stewardship: giving and financial health, church statistics, child protection and compliance policies, and records such as audited accounts and the signed Form of Subscription."
-      ]
+      "text": "The areas of discussion are shaped around the CRCA fourfold mission task. The intention is not that Sessions try to give \"right\" answers, but that they think carefully and interact honestly on how the church is doing in its gospel calling. The full questions are in the document below.\n\n- Prayer and worship: prayer for the lost, the approach to public worship, and the preaching ministry.\n- Multiplication of ministry: growth and church planting, mission locally and overseas, diaconal ministry and links with the local community, new ministries, the Session's vision and goals, a Christian world and life view, and problems that impede the work of the gospel.\n- Training for ministry: training and oversight of leaders, care and review of the minister/s, discipleship of children, young people, new Christians and established members, and pastoral care.\n- Alignment: how local church structures serve the church's vision, and how the church aligns with the CRCA Church Order and synodical decisions.\n- Stewardship: giving and financial health, church statistics, child protection and compliance policies, and records such as audited accounts and the signed Form of Subscription."
     }
   ],
   "facts": [
-    { "label": "Adopted", "value": "Updated August 2018" },
-    { "label": "Visitors", "value": "At least two senior ministers appointed by Classis" },
-    { "label": "How often", "value": "Each church annually" }
+    {
+      "label": "Adopted",
+      "value": "Updated August 2018"
+    },
+    {
+      "label": "Visitors",
+      "value": "At least two senior ministers appointed by Classis"
+    },
+    {
+      "label": "How often",
+      "value": "Each church annually"
+    }
   ],
   "actions": [
-    { "label": "Download the visitation questions (PDF)", "url": "/ministry-resources/governance/Church-Visitation-Questions-Update-from-Synod-2018.pdf", "kind": "primary" },
-    { "label": "Church Order Article 45", "url": "/for-churches/forms-and-documents/church-order-01-crca-church-order-2022#article-45-church-visitors", "kind": "secondary" }
+    {
+      "label": "Download the visitation questions (PDF)",
+      "url": "/ministry-resources/governance/Church-Visitation-Questions-Update-from-Synod-2018.pdf",
+      "kind": "primary"
+    },
+    {
+      "label": "Church Order Article 45",
+      "url": "/for-churches/forms-and-documents/church-order-01-crca-church-order-2022#article-45-church-visitors",
+      "kind": "secondary"
+    }
   ],
   "resources": [
-    { "label": "Church visitation questions, updated August 2018 (PDF)", "url": "/ministry-resources/governance/Church-Visitation-Questions-Update-from-Synod-2018.pdf", "type": "pdf" }
+    {
+      "label": "Church visitation questions, updated August 2018 (PDF)",
+      "url": "/ministry-resources/governance/Church-Visitation-Questions-Update-from-Synod-2018.pdf",
+      "type": "pdf"
+    }
   ],
   "sources": [
     "https://crca.org.au/church-visitation-quesions/",

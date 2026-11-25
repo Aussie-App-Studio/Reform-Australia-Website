@@ -11,23 +11,46 @@ const image = [
   { label: 'Caption', name: 'caption', widget: 'string', required: false },
   { label: 'Photo credit', name: 'credit', widget: 'string', required: false },
 ];
-const paragraphs = (label = 'Paragraphs') => ({ label, name: 'paragraphs', widget: 'list', required: false, field: { label: 'Paragraph', name: 'paragraph', widget: 'text' } });
+/** The writing box: bold, italics, links, headings, lists and photos, like a simple Word document. */
+const writing = (label, name, more = {}) => ({
+  label,
+  name,
+  widget: 'richtext',
+  modes: ['rich_text'],
+  buttons: ['bold', 'italic', 'link', 'heading-two', 'heading-three', 'bulleted-list', 'numbered-list', 'quote'],
+  editor_components: ['image'],
+  linked_images: false,
+  required: false,
+  ...more,
+});
+const PHOTOS = 'To add a photo, click the picture button.';
 
 /** The shared page layout used by ministry pages and general pages. */
 const pageFields = [
   { label: 'Summary (under the title, and in search results)', name: 'summary', widget: 'text' },
-  { label: 'Main photo', name: 'hero', widget: 'object', required: false, collapsed: true, fields: image },
+  { label: 'Main photo', name: 'hero', widget: 'object', required: false, fields: image },
   {
     label: 'Sections',
     name: 'body',
     widget: 'list',
+    label_singular: 'section',
     summary: '{{heading}}',
+    collapsed: true,
     fields: [
       { label: 'Heading', name: 'heading', widget: 'string', required: false },
       { name: 'id', widget: 'hidden' },
-      paragraphs(),
-      { label: 'Bullet list', name: 'list', widget: 'list', required: false, field: { label: 'Item', name: 'item', widget: 'text' } },
-      { label: 'Photo', name: 'image', widget: 'object', required: false, collapsed: true, fields: image },
+      writing('Text', 'text', { hint: PHOTOS }),
+      { label: 'Large photo below the text (optional)', name: 'image', widget: 'object', required: false, fields: image },
+      {
+        label: 'Link below the text (optional)',
+        name: 'link',
+        widget: 'object',
+        required: false,
+        fields: [
+          { label: 'Link text', name: 'label', widget: 'string' },
+          { label: 'Web address', name: 'url', widget: 'string' },
+        ],
+      },
     ],
   },
   {
@@ -141,6 +164,9 @@ window.CMS_CONFIG = {
   site_url: window.location.origin,
   display_url: window.location.origin,
   logo: { src: '/images/logos/apple-touch-icon.png' },
+  app_title: 'CRCA website editor',
+  // Photos are shrunk when they are uploaded, so editors can use them straight from a phone or camera.
+  media_libraries: { all: { transformations: { raster_image: { format: 'webp', quality: 82, width: 1600, height: 1600 } } } },
   media_folder: 'public/images/uploads',
   public_folder: '/images/uploads',
   publish_mode: 'simple',
@@ -148,6 +174,7 @@ window.CMS_CONFIG = {
   collections: [
     {
       name: 'vacancies',
+      icon: 'work',
       label: 'Vacancies',
       label_singular: 'vacancy',
       description: 'Click “New” to add a vacancy. Each one shows on the Positions vacant page and the home page, and disappears by itself after its closing date.',
@@ -169,14 +196,8 @@ window.CMS_CONFIG = {
         { label: 'Applications close', name: 'closes', widget: 'datetime', time_format: false, format: 'YYYY-MM-DD', hint: 'The vacancy is taken off the website automatically after this day.' },
         { label: 'Closing time (optional)', name: 'closingTime', widget: 'string', required: false, hint: 'e.g. 5:00pm AEDT' },
         { label: 'Short summary', name: 'summary', widget: 'text', hint: 'One or two sentences about the role.' },
-        {
-          label: 'Full details',
-          name: 'details',
-          widget: 'text',
-          required: false,
-          hint: 'Leave a blank line between paragraphs. Start a line with "## " for a small heading, or "- " for a bullet point.',
-        },
-        { label: 'How to apply', name: 'howToApply', widget: 'text', required: false },
+        writing('Full details', 'details'),
+        writing('How to apply', 'howToApply'),
         {
           label: 'Contact person',
           name: 'contact',
@@ -204,6 +225,7 @@ window.CMS_CONFIG = {
     },
     {
       name: 'news',
+      icon: 'newspaper',
       label: 'News',
       label_singular: 'news item',
       description: 'Click “New” to add news. It shows on the ministry’s page. Turn on “Show on the home page” only for news that matters to everyone.',
@@ -241,11 +263,12 @@ window.CMS_CONFIG = {
         { label: 'Short summary', name: 'summary', widget: 'text', hint: 'One or two sentences, shown in lists.' },
         { label: 'Photo (optional)', name: 'image', widget: 'image', required: false, media_folder: '/public/images/news', public_folder: '/images/news' },
         { label: 'Show on the home page', name: 'onHomePage', widget: 'boolean', default: false, required: false, hint: 'Leave off for ordinary newsletters. It still shows on the ministry’s own page.' },
-        { label: 'Full story (optional)', name: 'body', widget: 'text', required: false, hint: 'Leave a blank line between paragraphs.' },
+        writing('Full story (optional)', 'body', { hint: PHOTOS }),
       ],
     },
     {
       name: 'contacts',
+      icon: 'contact_mail',
       label: 'Contacts',
       description: 'Who receives each kind of message from the Contact page. Changing an email here changes where those messages go.',
       editor: { preview: false },
@@ -288,6 +311,7 @@ window.CMS_CONFIG = {
     },
     {
       name: 'sermons',
+      icon: 'menu_book',
       label: 'Reading sermons',
       description: 'Hide or show a preacher’s sermons on the website.',
       files: [
@@ -316,6 +340,7 @@ window.CMS_CONFIG = {
     },
     {
       name: 'churches',
+      icon: 'church',
       label: 'Churches',
       description: 'Public details only: never add membership numbers or pastors’ personal details.',
       files: [
@@ -356,6 +381,7 @@ window.CMS_CONFIG = {
     },
     {
       name: 'ministries',
+      icon: 'diversity_3',
       label: 'Ministry pages',
       description: 'One page per ministry, all with the same layout. News items show on the ministry page and get their own page.',
       folder: 'src/data/ministry-pages',
@@ -384,6 +410,7 @@ window.CMS_CONFIG = {
     },
     {
       name: 'pages',
+      icon: 'description',
       label: 'Other pages',
       description: 'Regional counsellors, Trowel and Sword, Church health check and similar pages.',
       folder: 'src/data/pages',

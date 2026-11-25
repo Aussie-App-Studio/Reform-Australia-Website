@@ -8,9 +8,7 @@
   "body": [
     {
       "id": "about",
-      "paragraphs": [
-        "Vacancies in the CRCA and its churches are listed here until their closing date."
-      ]
+      "text": "Vacancies in the CRCA and its churches are listed here until their closing date."
     }
   ],
   "sources": [

@@ -6,27 +6,15 @@
   "body": [
     {
       "heading": "About the taskforce",
-      "paragraphs": [
-        "The Church Planting Taskforce (CPT) encourages CRCA churches in the task of planting churches throughout Australia. It researches how churches can be planted and renewed, and it helps fund local churches that are trying something new."
-      ]
+      "text": "The Church Planting Taskforce (CPT) encourages CRCA churches in the task of planting churches throughout Australia. It researches how churches can be planted and renewed, and it helps fund local churches that are trying something new."
     },
     {
       "heading": "What the CPT researches",
-      "list": [
-        "How effective it is to multiply congregations",
-        "Models of church reinvigoration and church planting",
-        "The financial development of congregations",
-        "Base numbers and goal numbers for church planting (where we start and what we are aiming for)",
-        "The areas, geographical and sociological, where we are not reaching the community",
-        "Where we can have the most effective outreach"
-      ]
+      "text": "- How effective it is to multiply congregations\n- Models of church reinvigoration and church planting\n- The financial development of congregations\n- Base numbers and goal numbers for church planting (where we start and what we are aiming for)\n- The areas, geographical and sociological, where we are not reaching the community\n- Where we can have the most effective outreach"
     },
     {
       "heading": "Seed funding for Missional Explorations",
-      "paragraphs": [
-        "Missional Explorations are a stepping stone between a congregation's regular outreach and a new church plant. Under the supervision of the local church, an exploration might develop its own identity and lead to a formal church plant.",
-        "The CPT matches local church funding up to $2,500. The money can go towards core-team training, equipment, venue hire and printing promotional material."
-      ]
+      "text": "Missional Explorations are a stepping stone between a congregation's regular outreach and a new church plant. Under the supervision of the local church, an exploration might develop its own identity and lead to a formal church plant.\n\nThe CPT matches local church funding up to $2,500. The money can go towards core-team training, equipment, venue hire and printing promotional material."
     }
   ],
   "facts": [

@@ -9,23 +9,12 @@
     {
       "id": "about",
       "heading": "Healthy churches are growing churches",
-      "paragraphs": [
-        "Healthy churches are growing churches. The CRCA is committed to assist churches so that local initiatives are leveraged for gospel and kingdom growth.",
-        "CRCA Ministry Formation will assist churches in their respective state to maximise church health in areas such as:"
-      ],
-      "list": [
-        "The marks of the true church as identified in the Belgic Confession",
-        "CRCA Church Order distinctives: worship, faith nurture, pastoral care and oversight, and missions;",
-        "The eight characteristics of a healthy church as identified by NCD (Natural Church Development)",
-        "Other church health issues raised by individual congregations."
-      ]
+      "text": "Healthy churches are growing churches. The CRCA is committed to assist churches so that local initiatives are leveraged for gospel and kingdom growth.\n\nCRCA Ministry Formation will assist churches in their respective state to maximise church health in areas such as:\n\n- The marks of the true church as identified in the Belgic Confession\n- CRCA Church Order distinctives: worship, faith nurture, pastoral care and oversight, and missions;\n- The eight characteristics of a healthy church as identified by NCD (Natural Church Development)\n- Other church health issues raised by individual congregations."
     },
     {
       "id": "survey",
       "heading": "Do you need a church health check-up?",
-      "paragraphs": [
-        "Is your church healthy? What are the signs of a healthy church? Do you need a church health check-up? Watch the video below, and order your church health survey from NCD-Australia."
-      ]
+      "text": "Is your church healthy? What are the signs of a healthy church? Do you need a church health check-up? Watch the video below, and order your church health survey from NCD-Australia."
     }
   ],
   "facts": [

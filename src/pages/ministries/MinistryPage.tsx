@@ -3,6 +3,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { ArrowRight, ChevronDown, Download, ExternalLink, Mail, Phone, PlayCircle } from 'lucide-react';
 import { sectionTheme } from '../../components/brand';
 import { PageHeader } from '../../components/PageHeader';
+import { SimpleText } from '../../components/SimpleText';
 import { YouTubeEmbedCard } from '../../components/YouTubeEmbedCard';
 import { ministryMegaMenuColumns } from '../../data/navigation';
 import { getMinistryPage, type MinistryImage, type MinistryPageData } from '../../lib/ministryPages';
@@ -223,11 +224,7 @@ export function MinistryNewsPage() {
       <article className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="max-w-[70ch]">
           {item.image && <img src={item.image} {...responsive(item.image, '(min-width: 800px) 768px, 100vw')} alt={altFor(page, item.image) ?? item.title} className="mb-8 w-full rounded-md object-cover" />}
-          {(item.paragraphs ?? [item.summary ?? '']).map((p, i) => (
-            <p key={i} className="mt-4 text-[1.06rem] leading-relaxed text-stone-700 first:mt-0">
-              {p}
-            </p>
-          ))}
+          <SimpleText text={item.body ?? item.summary} />
           <Link to={`/ministries/${page.slug}#news`} className="mt-10 inline-flex items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">
             More {page.name} news <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
@@ -313,18 +310,7 @@ export function StandardPage({
           {page.body.map((sec, i) => (
             <section key={i} id={sec.id} className={`scroll-mt-28 ${i ? 'mt-12' : ''}`}>
               {sec.heading && <h2 className="font-serif text-2xl font-semibold text-navy-900">{sec.heading}</h2>}
-              {sec.paragraphs?.map((p, j) => (
-                <p key={j} className="mt-3 text-[1.06rem] leading-relaxed text-stone-700">
-                  {p}
-                </p>
-              ))}
-              {sec.list && (
-                <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[1.06rem] leading-relaxed text-stone-700 marker:text-teal-600">
-                  {sec.list.map((li, j) => (
-                    <li key={j}>{li}</li>
-                  ))}
-                </ul>
-              )}
+              <SimpleText text={sec.text} className="mt-3" />
               {sec.image && <Figure img={sec.image} className="mt-6" />}
               {sec.link && (
                 <SmartLink url={sec.link.url} className="mt-3 inline-flex min-h-11 items-center gap-1.5 font-semibold text-teal-700 hover:text-navy-900">

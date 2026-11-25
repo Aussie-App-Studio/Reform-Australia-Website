@@ -8,7 +8,7 @@ import { formatClosing, openVacancies } from '../lib/vacancies';
 /** Positions vacant: the page's introduction, then every open vacancy (src/data/vacancies/). */
 export function PositionsVacantPage({ page }: { page: ContentPageData }) {
   const vacancies = openVacancies();
-  const intro = page.body.flatMap((b) => b.paragraphs ?? []);
+  const intro = page.body.flatMap((b) => b.text?.split(/\n\s*\n/) ?? []);
   return (
     <>
       <PageHeader

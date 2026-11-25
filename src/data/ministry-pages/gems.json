@@ -16,19 +16,12 @@
     {
       "id": "what-gems-is",
       "heading": "What GEMS is",
-      "paragraphs": [
-        "G.E.M.S. is a Christian organisation, run by volunteers, with a program made for girls aged 9 to 15. Some groups also run a program called Busy Bees for girls aged 6 to 8.",
-        "Groups usually meet weekly or fortnightly. They are run by Christian women who are members of the Christian Reformed Churches of Australia."
-      ]
+      "text": "G.E.M.S. is a Christian organisation, run by volunteers, with a program made for girls aged 9 to 15. Some groups also run a program called Busy Bees for girls aged 6 to 8.\n\nGroups usually meet weekly or fortnightly. They are run by Christian women who are members of the Christian Reformed Churches of Australia."
     },
     {
       "id": "mission-and-vision",
       "heading": "Mission and vision",
-      "paragraphs": [
-        "G.E.M.S. stands for Girls Everywhere Meeting the Saviour. The name represents both the mission and the vision of G.E.M.S. Girls' Clubs.",
-        "Mission: \"To help bring girls into a living, dynamic relationship with Jesus Christ.\"",
-        "Vision: \"To see girls actively and enthusiastically expressing love for God and others by equipping and encouraging them to live out their faith.\""
-      ],
+      "text": "G.E.M.S. stands for Girls Everywhere Meeting the Saviour. The name represents both the mission and the vision of G.E.M.S. Girls' Clubs.\n\nMission: \"To help bring girls into a living, dynamic relationship with Jesus Christ.\"\n\nVision: \"To see girls actively and enthusiastically expressing love for God and others by equipping and encouraging them to live out their faith.\"",
       "image": {
         "src": "/images/ministries/gems/friends.webp",
         "alt": "Four smiling girls in jumpers and beanies standing together outdoors at a GEMS camp"
@@ -37,24 +30,12 @@
     {
       "id": "the-bible",
       "heading": "The Bible at every meeting",
-      "paragraphs": [
-        "The Bible is central to the G.E.M.S. program. At each meeting the girls are asked, \"What does the Lord require of us?\" They all answer: \"To act justly, to love kindness and to walk humbly with our God\" (Micah 6:8).",
-        "Part of each G.E.M.S. evening is set aside to learn from God's Word, either in group Bible studies or from Bible talks by the leaders."
-      ]
+      "text": "The Bible is central to the G.E.M.S. program. At each meeting the girls are asked, \"What does the Lord require of us?\" They all answer: \"To act justly, to love kindness and to walk humbly with our God\" (Micah 6:8).\n\nPart of each G.E.M.S. evening is set aside to learn from God's Word, either in group Bible studies or from Bible talks by the leaders."
     },
     {
       "id": "activities",
       "heading": "Other activities",
-      "paragraphs": [
-        "Girls also have the chance to take part in:"
-      ],
-      "list": [
-        "Badge work",
-        "Games, craft, drama and singing",
-        "Serving others, for example by visiting nursing homes",
-        "Outings such as swimming, walks and other recreation",
-        "Club or state camps"
-      ],
+      "text": "Girls also have the chance to take part in:\n\n- Badge work\n- Games, craft, drama and singing\n- Serving others, for example by visiting nursing homes\n- Outings such as swimming, walks and other recreation\n- Club or state camps",
       "image": {
         "src": "/images/ministries/gems/camp-group.webp",
         "alt": "A large group of girls and women leaders in warm jumpers gather for a group photo outside a camp dining hall",
@@ -64,43 +45,22 @@
     {
       "id": "levels",
       "heading": "Three levels",
-      "paragraphs": [
-        "The G.E.M.S. program is divided into three levels. Each level is designed to meet the spiritual, social, physical and emotional needs of girls. Girls learn how to apply the teaching of the Bible to their own lives and find answers to the challenges they face today."
-      ],
-      "list": [
-        "Busy Bees (Awareness): girls aged 6 to 8",
-        "Discovery level: girls aged 9 to 13",
-        "Advanced level: girls aged 13 to 15"
-      ]
+      "text": "The G.E.M.S. program is divided into three levels. Each level is designed to meet the spiritual, social, physical and emotional needs of girls. Girls learn how to apply the teaching of the Bible to their own lives and find answers to the challenges they face today.\n\n- Busy Bees (Awareness): girls aged 6 to 8\n- Discovery level: girls aged 9 to 13\n- Advanced level: girls aged 13 to 15"
     },
     {
       "id": "theme",
       "heading": "Club theme: Amazing",
-      "paragraphs": [
-        "The club theme is \"Amazing\", based on Joshua 3:5: \"Consecrate yourselves, for tomorrow the Lord will do amazing things among you.\" GEMS and Cadets clubs share this theme.",
-        "Through the year the girls are reminded:"
-      ],
-      "list": [
-        "That God is holy",
-        "That we must prepare ourselves if we are to be in his presence",
-        "That God has done, is doing and will do amazing things"
-      ]
+      "text": "The club theme is \"Amazing\", based on Joshua 3:5: \"Consecrate yourselves, for tomorrow the Lord will do amazing things among you.\" GEMS and Cadets clubs share this theme.\n\nThrough the year the girls are reminded:\n\n- That God is holy\n- That we must prepare ourselves if we are to be in his presence\n- That God has done, is doing and will do amazing things"
     },
     {
       "id": "for-leaders",
       "heading": "For leaders",
-      "paragraphs": [
-        "These reminders help the girls strive to be holy and to recognise the many ways God blesses them.",
-        "Leaders are challenged to be an example to their club: look for, find and share the many amazing things God is doing. Show your girls that God is amazing as you encourage them to live for Jesus.",
-        "The theme lessons, bulletin cover and Gold Sheet for the theme are in the resources below."
-      ]
+      "text": "These reminders help the girls strive to be holy and to recognise the many ways God blesses them.\n\nLeaders are challenged to be an example to their club: look for, find and share the many amazing things God is doing. Show your girls that God is amazing as you encourage them to live for Jesus.\n\nThe theme lessons, bulletin cover and Gold Sheet for the theme are in the resources below."
     },
     {
       "id": "find-a-club",
       "heading": "Finding a club",
-      "paragraphs": [
-        "GEMS groups meet in local Christian Reformed churches. To find out whether there is a group near you, or to ask about starting one or becoming a leader, send us an enquiry or contact your nearest CRCA church."
-      ]
+      "text": "GEMS groups meet in local Christian Reformed churches. To find out whether there is a group near you, or to ask about starting one or becoming a leader, send us an enquiry or contact your nearest CRCA church."
     }
   ],
   "facts": [

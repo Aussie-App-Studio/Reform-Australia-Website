@@ -6,54 +6,23 @@
   "body": [
     {
       "heading": "About the committee",
-      "paragraphs": [
-        "The CRCA keeps relationships with a number of denominations around the world. The Committee of Ecumenical Relations (CER), a committee of Synod, manages these relationships on behalf of the churches.",
-        "The committee has three members, who live in different parts of Australia. It meets several times a year, usually by Zoom, and handles ongoing matters by email and phone."
-      ]
+      "text": "The CRCA keeps relationships with a number of denominations around the world. The Committee of Ecumenical Relations (CER), a committee of Synod, manages these relationships on behalf of the churches.\n\nThe committee has three members, who live in different parts of Australia. It meets several times a year, usually by Zoom, and handles ongoing matters by email and phone."
     },
     {
       "heading": "What the committee does",
-      "paragraphs": [
-        "Synod has given the committee this mandate:"
-      ],
-      "list": [
-        "Facilitate the CRCA's ecumenical relationships through contact with other churches of Reformed/Presbyterian persuasion, with a view to establishing mutually beneficial ecumenical fellowship.",
-        "Participate in ecumenical organisations in which the CRCA has membership, in accordance with the Church Order and synodical decisions.",
-        "Develop and maintain relationships with other Reformed/Presbyterian churches on the basis of Reformed confessions, polity and liturgy, an agreed bilateral relationship, and shared membership in the International Conference of Reformed Churches or another ecumenical agency the CRCA belongs to.",
-        "Facilitate ecumenical relationships in line with synodical decisions about Churches in Ecclesiastical Fellowship (CEF).",
-        "Keep the churches informed about developments in the Churches in Ecclesiastical Fellowship.",
-        "Advise Synod on how established relationships are going, which churches should be received as Churches in Ecclesiastical Fellowship and at what level, and which Reformed ecumenical organisations the CRCA should seek to join."
-      ]
+      "text": "Synod has given the committee this mandate:\n\n- Facilitate the CRCA's ecumenical relationships through contact with other churches of Reformed/Presbyterian persuasion, with a view to establishing mutually beneficial ecumenical fellowship.\n- Participate in ecumenical organisations in which the CRCA has membership, in accordance with the Church Order and synodical decisions.\n- Develop and maintain relationships with other Reformed/Presbyterian churches on the basis of Reformed confessions, polity and liturgy, an agreed bilateral relationship, and shared membership in the International Conference of Reformed Churches or another ecumenical agency the CRCA belongs to.\n- Facilitate ecumenical relationships in line with synodical decisions about Churches in Ecclesiastical Fellowship (CEF).\n- Keep the churches informed about developments in the Churches in Ecclesiastical Fellowship.\n- Advise Synod on how established relationships are going, which churches should be received as Churches in Ecclesiastical Fellowship and at what level, and which Reformed ecumenical organisations the CRCA should seek to join."
     },
     {
       "heading": "Goals of these relationships",
-      "list": [
-        "Mutual understanding of our shared calling as Reformed churches, seeking always to maintain confessional integrity",
-        "Mutual cooperation in mission and diaconal work",
-        "Mutual encouragement in proclamation of the Kingdom of our Lord Jesus Christ",
-        "Mutual pursuit of the unity of the Church of Jesus Christ (Church Order Art 52) at local, regional, national and international levels"
-      ]
+      "text": "- Mutual understanding of our shared calling as Reformed churches, seeking always to maintain confessional integrity\n- Mutual cooperation in mission and diaconal work\n- Mutual encouragement in proclamation of the Kingdom of our Lord Jesus Christ\n- Mutual pursuit of the unity of the Church of Jesus Christ (Church Order Art 52) at local, regional, national and international levels"
     },
     {
       "heading": "Churches in ecumenical fellowship",
-      "paragraphs": [
-        "The CRCA is currently in ecumenical fellowship with these churches. It is also a member of the International Conference of Reformed Churches (ICRC)."
-      ],
-      "list": [
-        "Presbyterian Church of Eastern Australia",
-        "Reformed Churches of New Zealand",
-        "Orthodox Presbyterian Church (USA)",
-        "Reformed Churches in South Africa"
-      ]
+      "text": "The CRCA is currently in ecumenical fellowship with these churches. It is also a member of the International Conference of Reformed Churches (ICRC).\n\n- Presbyterian Church of Eastern Australia\n- Reformed Churches of New Zealand\n- Orthodox Presbyterian Church (USA)\n- Reformed Churches in South Africa"
     },
     {
       "heading": "Other churches we have contact with",
-      "list": [
-        "Presbyterian Church of Australia",
-        "Westminster Presbyterian Church (Australia)",
-        "Reformed Presbyterian Church (Australia)",
-        "United Reformed Churches of North America"
-      ]
+      "text": "- Presbyterian Church of Australia\n- Westminster Presbyterian Church (Australia)\n- Reformed Presbyterian Church (Australia)\n- United Reformed Churches of North America"
     }
   ],
   "facts": [

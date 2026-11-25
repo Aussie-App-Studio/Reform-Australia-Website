@@ -9,43 +9,52 @@
     {
       "id": "about",
       "heading": "Trowel and Sword",
-      "paragraphs": [
-        "The first edition of Trowel and Sword was published by and for the Reformed Churches of Australia and New Zealand in October 1954, with the final printed edition being distributed in December 2010."
-      ]
+      "text": "The first edition of Trowel and Sword was published by and for the Reformed Churches of Australia and New Zealand in October 1954, with the final printed edition being distributed in December 2010."
     },
     {
       "id": "revisited",
       "heading": "Trowel and Sword Revisited",
-      "paragraphs": [
-        "Some members of the denomination have taken it upon themselves to rework some of the excellent content of the original Trowel and Sword for the internet, on a website called Trowel and Sword Revisited (T&S Revisited).",
-        "Please note that this is not a denominational publication, but it may be of interest to some within the denomination."
-      ]
+      "text": "Some members of the denomination have taken it upon themselves to rework some of the excellent content of the original Trowel and Sword for the internet, on a website called Trowel and Sword Revisited (T&S Revisited).\n\nPlease note that this is not a denominational publication, but it may be of interest to some within the denomination."
     },
     {
       "id": "what-you-will-find",
       "heading": "What you will find there",
-      "paragraphs": [
-        "T&S Revisited is a blog, started in September 2023 with the motto \"Moving forward by looking back\". It republishes one article from past issues of Trowel and Sword each week. Each post gives the author and the issue it first appeared in, and most begin with a short preamble from the editors on why the article still matters today."
-      ],
-      "list": [
-        "Articles grouped by topic, including church life, Christian life, Christian leadership, history, culture, theology, preaching, worship, church and family, faith, education, mission and evangelism",
-        "Book and film reviews, editorials and letters to the editor from the magazine",
-        "A short history of Trowel and Sword and the early Reformed churches in Australia and New Zealand",
-        "Email subscription to the weekly post, and a feedback form"
-      ]
+      "text": "T&S Revisited is a blog, started in September 2023 with the motto \"Moving forward by looking back\". It republishes one article from past issues of Trowel and Sword each week. Each post gives the author and the issue it first appeared in, and most begin with a short preamble from the editors on why the article still matters today.\n\n- Articles grouped by topic, including church life, Christian life, Christian leadership, history, culture, theology, preaching, worship, church and family, faith, education, mission and evangelism\n- Book and film reviews, editorials and letters to the editor from the magazine\n- A short history of Trowel and Sword and the early Reformed churches in Australia and New Zealand\n- Email subscription to the weekly post, and a feedback form"
     }
   ],
   "facts": [
-    { "label": "Published", "value": "October 1954 to December 2010" },
-    { "label": "Published by", "value": "Reformed Churches of Australia and New Zealand" },
-    { "label": "T&S Revisited", "value": "Not a denominational publication" }
+    {
+      "label": "Published",
+      "value": "October 1954 to December 2010"
+    },
+    {
+      "label": "Published by",
+      "value": "Reformed Churches of Australia and New Zealand"
+    },
+    {
+      "label": "T&S Revisited",
+      "value": "Not a denominational publication"
+    }
   ],
   "actions": [
-    { "label": "Visit Trowel and Sword Revisited", "url": "https://tsrevisited.com/", "kind": "primary" },
-    { "label": "Our history", "url": "/who-we-are/history", "kind": "secondary" }
+    {
+      "label": "Visit Trowel and Sword Revisited",
+      "url": "https://tsrevisited.com/",
+      "kind": "primary"
+    },
+    {
+      "label": "Our history",
+      "url": "/who-we-are/history",
+      "kind": "secondary"
+    }
   ],
   "resources": [
-    { "label": "Trowel and Sword Revisited (tsrevisited.com)", "url": "https://tsrevisited.com/", "type": "link", "note": "Independent website run by members of the denomination" }
+    {
+      "label": "Trowel and Sword Revisited (tsrevisited.com)",
+      "url": "https://tsrevisited.com/",
+      "type": "link",
+      "note": "Independent website run by members of the denomination"
+    }
   ],
   "sources": [
     "https://crca.org.au/trowel-and-sword/",

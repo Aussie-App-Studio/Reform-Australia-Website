@@ -9,31 +9,23 @@
     {
       "id": "about",
       "heading": "What regional counsellors do",
-      "paragraphs": [
-        "Regional Counsellors are appointed by each classis for the support, encouragement, and as a resource person for pastors and churches."
-      ]
+      "text": "Regional Counsellors are appointed by each classis for the support, encouragement, and as a resource person for pastors and churches."
     },
     {
       "id": "role-description",
       "heading": "Role description",
-      "paragraphs": [
-        "A regional counsellor's role is:"
-      ],
-      "list": [
-        "To act as a mentor or find mentors for those ministers who request such, especially newly ordained ministers, within the classis.",
-        "To serve as consultant to the local Pastoral Support Group, including the guidance and training of these committees.",
-        "To take a pro-active role in meeting with each pastoral couple annually to discuss the form of pastoral support they are utilising and its effectiveness. Where this is not possible for reasons of distance or personality, to encourage pastors themselves to nominate a mentor to his session with whom he is able to meet a few times each year.",
-        "To be available as consultant to any minister in case of a pastor-church relationship problem.",
-        "To be aware of the good resources available for the support and training of ministers.",
-        "To be aware of what local or regional resources are available for the counselling of office bearers so that this can be given to any session which needs help in this area.",
-        "To ensure that ongoing pastoral care is either provided or arranged for a minister and his family when a minister is released from the ministry. This is done in consultation with Classis and the session who released him.",
-        "To provide advice to Classis when a mentor is assigned to those requesting such, especially: (a) any pastors who are in crisis or have chronic problems; (b) any pastor who has been released from office and wishes to work toward reinstatement to ministry; (c) any pastor who enters the CRCA ministry from another ministry (includes missionary and other denominations)."
-      ]
+      "text": "A regional counsellor's role is:\n\n- To act as a mentor or find mentors for those ministers who request such, especially newly ordained ministers, within the classis.\n- To serve as consultant to the local Pastoral Support Group, including the guidance and training of these committees.\n- To take a pro-active role in meeting with each pastoral couple annually to discuss the form of pastoral support they are utilising and its effectiveness. Where this is not possible for reasons of distance or personality, to encourage pastors themselves to nominate a mentor to his session with whom he is able to meet a few times each year.\n- To be available as consultant to any minister in case of a pastor-church relationship problem.\n- To be aware of the good resources available for the support and training of ministers.\n- To be aware of what local or regional resources are available for the counselling of office bearers so that this can be given to any session which needs help in this area.\n- To ensure that ongoing pastoral care is either provided or arranged for a minister and his family when a minister is released from the ministry. This is done in consultation with Classis and the session who released him.\n- To provide advice to Classis when a mentor is assigned to those requesting such, especially: (a) any pastors who are in crisis or have chronic problems; (b) any pastor who has been released from office and wishes to work toward reinstatement to ministry; (c) any pastor who enters the CRCA ministry from another ministry (includes missionary and other denominations)."
     }
   ],
   "facts": [
-    { "label": "Appointed by", "value": "Each classis" },
-    { "label": "Who they support", "value": "Pastors, pastoral couples, sessions and churches" }
+    {
+      "label": "Appointed by",
+      "value": "Each classis"
+    },
+    {
+      "label": "Who they support",
+      "value": "Pastors, pastoral couples, sessions and churches"
+    }
   ],
   "contact": {
     "name": "CRCA Administration",
@@ -41,10 +33,20 @@
     "topic": "admin"
   },
   "actions": [
-    { "label": "Ask about regional counsellors", "url": "/contact?topic=admin", "kind": "primary" },
-    { "label": "Shift coaching", "url": "/ministries/shift-coaching", "kind": "secondary" }
+    {
+      "label": "Ask about regional counsellors",
+      "url": "/contact?topic=admin",
+      "kind": "primary"
+    },
+    {
+      "label": "Shift coaching",
+      "url": "/ministries/shift-coaching",
+      "kind": "secondary"
+    }
   ],
-  "sources": ["https://crca.org.au/regional-counsellors/"],
+  "sources": [
+    "https://crca.org.au/regional-counsellors/"
+  ],
   "needsChecking": [
     "The official page gives no contact for regional counsellors and does not name them. The contact here is the CRCA office (admin@crca.org.au), as on the For Churches page; confirm the office forwards enquiries to the right classis, or add each classis's counsellor.",
     "Item 6 says 'local/regional resources' on the official page; written here as 'local or regional resources'. Otherwise the role description is copied word for word."

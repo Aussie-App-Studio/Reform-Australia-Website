@@ -19,6 +19,7 @@ export interface MinistryNewsItem {
   summary?: string;
   image?: string;
   paragraphs?: string[];
+  body?: string;
 }
 
 export interface MinistryPageData {
@@ -29,7 +30,7 @@ export interface MinistryPageData {
   hero?: MinistryImage;
   /** The ministry's own logo, shown in the page header and the Ministries list. */
   logo?: { src: string; alt: string };
-  body: { id?: string; heading?: string; paragraphs?: string[]; list?: string[]; image?: MinistryImage; link?: { label: string; url: string } }[];
+  body: { id?: string; heading?: string; text?: string; image?: MinistryImage; link?: { label: string; url: string } }[];
   team?: { name: string; role?: string; text?: string; photo?: string }[];
   gallery?: MinistryImage[];
   news?: MinistryNewsItem[];

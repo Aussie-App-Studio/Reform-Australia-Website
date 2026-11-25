@@ -32,6 +32,7 @@ export const allNews: NewsItem[] = Object.entries(modules)
       summary: n.summary,
       image: n.image,
       onHomePage: n.onHomePage,
+      body: n.body,
       paragraphs: n.body ? n.body.replace(/\r/g, '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean) : undefined,
     };
   })
